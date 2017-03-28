@@ -39,16 +39,20 @@ that can be passed to the editor.
 
 <strong>For a complete list of options have a look over our <a href="https://www.froala.com/wysiwyg-editor/docs/options">options list</a> </strong>
 
-Simple init example:
+Example of simple init :
+
 ```php
 // Static method for easy instantiation for the editor.
 // '#comment'  Represents the html element selector.
 
-Froala_Editor::activate('#comment'); </code>
+Froala_Editor::activate('#comment');
+
 ```
 
-Two paramenters init example:
+Example of inti using 2 params:
+
 ```php
+
 // Static method for easy instantiation for the editor.
 // '#comment'  Represents the html element selector.
 // 'array()'   Represents the list of options that are passed to the editor.
@@ -56,9 +60,10 @@ Two paramenters init example:
 Froala_Editor::activate('#comment',array('colorsBackground' => ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE'],
                                          'colorsText'       => ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE']
                                         ));
+                                        
 ```
 
-Init example for usage on the front-end but saving the images inside WordPress media library:
+Example for usage on the front-end but saving the images inside WordPress media library:
 
 ```php
 
@@ -74,6 +79,101 @@ Froala_Editor::activate('#comment',array('colorsBackground   '=> ['#61BD6D', '#1
                                         ));
 
 ```
+
+Example of RTL LTR Direction Buttons:
+
+```php
+
+// Static method for easy instantiation for the editor.
+// '#comment'  Represents the html element selector.
+// 'array()'   Represents the list of options that are passed to the editor.
+
+Froala_Editor::activate('#comment',array('colorsBackground'=> ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE'],
+                                         'direction' =>'rtl'
+                                         ));
+                                         
+```
+
+Example of setting the min height and limiting the Html attributes:
+
+```php
+// Static method for easy instantiation for the editor.
+// '#comment'  Represents the html element selector.
+// 'array()'   Represents the list of options that are passed to the editor.
+
+Froala_Editor::activate('#comment',array('htmlAllowedAttrs' => ['title', 'href', 'alt', 'src', 'style'],
+	                                     'heightMin' => '200'
+                                         ));
+
+```
+
+Example of limiting the Html tags and removing unwanted tags:
+
+```php
+// Static method for easy instantiation for the editor.
+// '#comment'  Represents the html element selector.
+// 'array()'   Represents the list of options that are passed to the editor.
+
+Froala_Editor::activate('#comment',array('htmlAllowedTags' => ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+	                                     'htmlRemoveTags'  => ['script', 'style', 'base']
+                                         ));
+
+```
+
+Example of setting the toolbar buttons and toolbar position:
+
+```php
+// Static method for easy instantiation for the editor.
+// '#comment'  Represents the html element selector.
+// 'array()'   Represents the list of options that are passed to the editor.
+
+Froala_Editor::activate('#comment',array('toolbarButtons' => ['bold', 'italic', 'underline'],
+                                         'toolbarBottom' => true
+                                         ));
+
+```
+
+Example of code beautifier passing options as object:
+
+```php
+// Static method for easy instantiation for the editor.
+// '#comment'  Represents the html element selector.
+// 'array()'   Represents the list of options that are passed to the editor.
+
+
+Froala_Editor::activate('#comment',(object)  ['codeBeautifierOptions' =>[
+                                              'end_with_newline' => true,
+                                              'indent_inner_html'=> true,
+                                              'extra_liners' =>['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'pre', 'ul', 'ol', 'table', 'dl'],
+                                              'brace_style' =>'expand',
+                                              'indent_char' => ' ',
+                                              'indent_size' => '4',
+                                              'wrap_line_length'=> '0'
+                                              ],]);
+
+```
+
+Example of using the editor in inline mode and allowing only some types of images: 
+
+```php 
+
+Froala_Editor::activate('#comment',array('imageAllowedTypes' => ['jpeg', 'jpg', 'png'],
+                                         'toolbarInline' => true
+                                         ));
+
+```
+
+
+Example of using the tolbar sticky and setting an offeset for it:
+
+```php 
+
+Froala_Editor::activate('#comment',array('toolbarSticky' => true,
+                                         'toolbarStickyOffset' => '50'
+                                         ));
+
+```
+
 
 <h2>License</h2>
 
