@@ -1,6 +1,5 @@
 # WordPress Froala WYSIWYG Editor
 
-
 <h3>Compatibility</h3>
 
 Version: 3.3.0 up to present versions of WordPress.
@@ -8,20 +7,20 @@ Version: 3.3.0 up to present versions of WordPress.
 
 <h2>Manual Instalation</h2>
 
-Clone or download the contents of this repo, make a new folder inside your WordPress instalation under plugins folder.
-Coppy the contentes that you previously downloaded to the new folder.
+Clone or download the contents of this repo, make a new folder inside your WordPress installation under plugins folder.
+Copy the contents that you previously downloaded to the new folder.
 
 The plugin will be available under plugins in your WordPress admin area.
 
 <h2>Instalation</h2>
 
-Enter your admin area of your WordPress instalation, go to plugins and cick add new. Search for Froala Wysiwyg Editor
-and follow the automated proccess. In most cases the "ftp://" credentials will be needed. This is default WordPress behaivour
+Enter your admin area of your WordPress installation, go to plugins and click add new. Search for Froala Wysiwyg Editor
+and follow the automated process. In most cases the "ftp://" credentials will be needed. This is default WordPress behavior
 when installing new plugins.
 
 <h2>Integration</h2>
 
-Go to your plugins page inside the admin area of your WordPress instalation and activate the plugin.
+Go to your plugins page inside the admin area of your WordPress installation and activate the plugin.
 <br/><em>The plugin will replace the default editor</em>
 
 
@@ -29,12 +28,12 @@ Go to your plugins page inside the admin area of your WordPress instalation and 
 
 The plugin can be used under the admin area as soon as it is active.
 
-The plugin has a settings page that will be availalbe after you activate the plugin. Under the settings page there will 
+The plugin has a settings page that will be available after you activate the plugin. Under the settings page there will 
 be an input for the licence key and a dropdown with all the available plugins that can be activated/deactivated.
 
 To use the Froala Editor on the front-end part of the website, the plugin must be initialized from themes folder.
 
-The activate function accepts 2 paramenters but the editor can be init using just one. The second param can be an array or object of options
+The activate function accepts 2 parameters but the editor can be init using just one. The second param can be an array or object of options
 that can be passed to the editor.
 
 <strong>For a complete list of options have a look over our <a href="https://www.froala.com/wysiwyg-editor/docs/options">options list</a> </strong>
