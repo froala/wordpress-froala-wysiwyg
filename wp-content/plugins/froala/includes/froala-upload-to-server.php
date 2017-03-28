@@ -26,10 +26,9 @@
 include_once( '../../../.././wp-load.php' );
 
 /**
- * Standard function that get's a url of an image or thumb image
+ * Standard function that get's  url of an image or thumb image
  * and returns the attachment id of it.
  *
-
  * @param $url      * The image url
  *
  * @return int      * The id of the attachment.

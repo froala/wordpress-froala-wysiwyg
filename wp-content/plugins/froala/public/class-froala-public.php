@@ -34,12 +34,6 @@ class Froala_Editor {
 			$licence_key = get_option('froala_fr_licence' );
 			$active_plugins = get_option('froala_plugin_list');
 
-			if ($licence_key !== null) {
-				$licence_script = "\t\t" .'<script id="fr-fek"> try{(function (k){localStorage.FEK=k;t=document.getElementById(\'fr-fek\');t.parentNode.removeChild(t);})(\''.$licence_key.'\')}catch(e){} </script>'. "\n";
-				wp_enqueue_script( 'editor-init-licence', plugins_url('public/js/plugins/editor-init.js',dirname( __FILE__ )),array(), '1.0' );
-				wp_add_inline_script( 'editor-init-licence', $licence_script );
-			}
-
 			Froala_Editor::enqueue_styles();
 			Froala_Editor::enqueue_scripts();
 
@@ -52,10 +46,11 @@ class Froala_Editor {
 			}
 
 			if (is_array($editor_options) || is_object($editor_options)) {
-				$editor_options = json_encode($editor_options);
+				$editor_options['key']  =  $licence_key;
+				$editor_options         = json_encode($editor_options);
 			}
 			else {
-				$editor_options = '{}';
+				$editor_options = '{\'key\':\''.$licence_key.'\'}';
 			}
 
 			$content = "\t\t" . '<script> jQuery(window).on(\'load\', function(e){
@@ -137,7 +132,7 @@ class Froala_Editor {
 		 * class.
 		 */
 
-		wp_register_script('froala_editor',plugins_url('js/froala_editor.min.js',dirname( __FILE__ )),array('jquery','editor-init'), true);
+		wp_register_script('froala_editor',plugins_url('public/js/froala_editor.min.js',dirname( __FILE__ )),array('jquery','editor-init'), true);
 		wp_enqueue_script('froala_editor');
 
 	}
