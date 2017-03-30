@@ -48,7 +48,7 @@ Froala_Editor::activate('#comment');
 
 ```
 
-Example of inti using 2 params:
+Example of init using 2 params:
 
 ```php
 
@@ -137,7 +137,7 @@ Example of code beautifier passing options as object:
 ```php
 // Static method for easy instantiation for the editor.
 // '#comment'  Represents the html element selector.
-// 'array()'   Represents the list of options that are passed to the editor.
+// '(object)'   Represents the list of options that are passed to the editor.
 
 
 Froala_Editor::activate('#comment',(object)  ['codeBeautifierOptions' =>[
