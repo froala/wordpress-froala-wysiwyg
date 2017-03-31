@@ -9,7 +9,7 @@ Version: 3.3.0 up to present versions of WordPress.
 ## Manual Instalation
 
 Clone or download the contents of this repo, make a new folder inside your WordPress instalation under plugins folder.
-Coppy the contentes that you previously downloaded to the new folder.
+Copy the contentes that you previously downloaded to the new folder.
 
 The plugin will be available under plugins in your WordPress admin area.
 
