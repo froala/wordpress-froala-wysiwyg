@@ -6,22 +6,22 @@
 Version: 3.3.0 up to present versions of WordPress.
 
 
-## Manual Instalation
+## Manual Installation
 
-Clone or [download the contents of this repo](https://github.com/froala/wordpress-froala-wysiwyg/archive/master.zip), make a new folder inside your WordPress instalation under plugins folder.
+Clone or [download the contents of this repo](https://github.com/froala/wordpress-froala-wysiwyg/archive/master.zip), make a new folder inside your WordPress installation under plugins folder.
 Copy the contentes that you previously downloaded to the new folder.
 
 The plugin will be available under plugins in your WordPress admin area.
 
-## Instalation
+## Installation
 
-Enter your admin area of your WordPress instalation, go to plugins and cick add new. Search for Froala Wysiwyg Editor
+Enter your admin area of your WordPress installation, go to plugins and cick add new. Search for Froala Wysiwyg Editor
 and follow the automated proccess. In most cases the "ftp://" credentials will be needed. This is default WordPress behaivour
 when installing new plugins.
 
 ## Integration
 
-Go to your plugins page inside the admin area of your WordPress instalation and activate the plugin.
+Go to your plugins page inside the admin area of your WordPress installation and activate the plugin.
 **The plugin will replace the default editor**.
 
 
