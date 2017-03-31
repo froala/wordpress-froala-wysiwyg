@@ -80,18 +80,6 @@ Froala_Editor::activate('#comment',array('colorsBackground   '=> ['#61BD6D', '#1
 
 ```
 
-
-Example of using the tolbar sticky and setting an offeset for it:
-
-```php 
-
-Froala_Editor::activate('#comment',array('toolbarSticky' => true,
-                                         'toolbarStickyOffset' => '50'
-                                         ));
-
-```
-
-
 ## License
 
 The `WordPress Froala WYSIWYG Editor` project is under MIT license. However, in order to use WordPress Froala WYSIWYG Editor plugin you should purchase a license for it.
