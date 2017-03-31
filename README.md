@@ -29,12 +29,12 @@ Go to your plugins page inside the admin area of your WordPress installation and
 
 The plugin can be used under the admin area as soon as it is active.
 
-The plugin has a settings page that will be availalbe after you activate the plugin. Under the settings page there will 
+The plugin has a settings page that will be available after you activate the plugin. Under the settings page there will 
 be an input for the licence key and a dropdown with all the available plugins that can be activated/deactivated.
 
 To use the Froala Editor on the front-end part of the website, the plugin must be initialized from themes folder.
 
-The activate function accepts 2 paramenters but the editor can be init using just one. The second param can be an array or object of options
+The activate function accepts 2 parameters but the editor can be init using just one. The second param can be an array or object of options
 that can be passed to the editor.
 
 **For a complete list of options have a look over our [options list](https://www.froala.com/wysiwyg-editor/docs/options).**
