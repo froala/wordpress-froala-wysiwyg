@@ -11,7 +11,7 @@
  * Description:       This plugin will add advance rich text editing capabilities to your WordPress CMS.
  * On activation will replace the default Tiny MCE editor on the admin area. The plugin is easily scalable
  * using the public part of the plugin.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Radu
  * Author URI:        www.froala.com
  * License:           GPL-2.0+

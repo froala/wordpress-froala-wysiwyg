@@ -62,6 +62,10 @@ class Froala_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		if ( !get_option( $this->option_name .'_plugin_list') ) {
+			update_option( $this->option_name .'_plugin_list', array('align','char_counter'));
+		}
+
 	}
 
 	/**
@@ -84,7 +88,6 @@ class Froala_Admin {
 		/*   REGISTER ALL CSS FOR SITE */
 
 		wp_register_style('froala_editor_css',plugin_dir_url( __FILE__ ) . 'css/froala_editor.css');
-		wp_register_style('froala_editor_pkgd_css',plugin_dir_url( __FILE__ ) . 'css/froala_editor.pkgd.css');
 		wp_register_style('froala_style_css',plugin_dir_url( __FILE__ ) . 'css/froala_style.css');
 		wp_register_style('froala_admin_css',plugin_dir_url( __FILE__ ) . 'css/froala-admin.css');
 		wp_register_style('font_asm','https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
@@ -106,7 +109,6 @@ class Froala_Admin {
 		wp_register_style('video_css',plugin_dir_url( __FILE__ ) . 'css/plugins/video.css');
 
 		wp_enqueue_style('froala_editor_css');
-		wp_enqueue_style('froala_editor_pkgd_css');
 		wp_enqueue_style('froala_style_css');
 		wp_enqueue_style('froala_admin_css');
 		wp_enqueue_style('font_asm');
@@ -307,7 +309,7 @@ class Froala_Admin {
 		$path = plugins_url('includes/froala-upload-to-server.php', dirname( __FILE__ ));
 
 		foreach ($active_plugins as $script) {
-			echo "\t\t" . '<script type="text/javascript" src="' . plugins_url( 'js/plugins/' . $script . $suffix, dirname( __FILE__ ) ) . '"></script>' . "\n"; // xss ok
+			echo "\t\t" . '<script type="text/javascript" src="' . plugins_url( 'admin/js/plugins/' . $script . $suffix, dirname( __FILE__ ) ) . '"></script>' . "\n"; // xss ok
         }
 
 		if ($editor_id == null) {
