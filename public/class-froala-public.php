@@ -45,8 +45,11 @@ class Froala_Editor {
 				Froala_Editor::enque_editor_plugins_css($script,$css_suffix);
 			}
 
-			if (is_array($editor_options) || is_object($editor_options)) {
+			if (is_array($editor_options)) {
 				$editor_options['key']  =  $licence_key;
+				$editor_options         = json_encode($editor_options);
+			} else if (is_object($editor_options)) {
+				$editor_options->key =  $licence_key;
 				$editor_options         = json_encode($editor_options);
 			}
 			else {
@@ -178,9 +181,4 @@ class Froala_Editor {
 	}
 
 }
-
-
-
-
-
 
