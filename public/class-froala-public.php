@@ -161,6 +161,12 @@ class Froala_Editor {
 	public function enque_editor_plugins_css ($name = null, $suffix = null) {
 
 		$path = plugin_dir_url( __FILE__ ) . 'css/plugins/'.$name.$suffix;
+		stream_context_set_default( [
+			'ssl' => [
+				'verify_peer' => false,
+				'verify_peer_name' => false,
+			],
+		]);
 		$headers = @get_headers($path);
 
 		if (preg_match("|200|", $headers[0])) {
