@@ -2,14 +2,14 @@
 
 /**
  * @link              www.froala.com
- * @since             1.0.0
+ * @since             1.0.2
  * @package           Froala
  *
  * @wordpress-plugin
  * Plugin Name:       Froala-Wysiwyg
  * Plugin URI:        http://froala.com
  * Description:       This plugin will add advance rich text editing capabilities to your WordPress CMS.
- * On activation will replace the default Tiny MCE editor on the admin area. The plugin is easily scalable
+ * On activation will replace the default editor on the admin area. The plugin is easily scalable
  * using the public part of the plugin.
  * Version:           1.0.1
  * Author:            Radu
@@ -65,6 +65,6 @@ function run_froala() {
 
 	$plugin = new Froala();
 	$plugin->run();
-
+	define('PluginPath', '/'.basename(__DIR__).'/includes/froala-upload-to-server.php');
 }
 run_froala();
