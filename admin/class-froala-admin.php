@@ -50,6 +50,9 @@ class Froala_Admin {
 	 */
 	private $version;
 
+	public $plugin_list = array();
+
+	public $active_plugins = array();
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -65,7 +68,6 @@ class Froala_Admin {
 		if ( !get_option( $this->option_name .'_plugin_list') ) {
 			update_option( $this->option_name .'_plugin_list', array('align','char_counter'));
 		}
-
 	}
 
 	/**
@@ -193,21 +195,21 @@ class Froala_Admin {
 		);
 
 		add_settings_field(
-            $this->option_name .'_fr_licence',
+			$this->option_name .'_fr_licence',
 			__( 'Licence Key', $this->option_name),
-            array($this, $this->option_name.'_licence_input'),
-            $this->plugin_name,
+			array($this, $this->option_name.'_licence_input'),
+			$this->plugin_name,
 			$this->option_name . '_general_settings',
 			array('label_for' => $this->option_name . '_fr_licence')
-        );
-        add_settings_field(
-            $this->option_name .'_plugin_list',
+		);
+		add_settings_field(
+			$this->option_name .'_plugin_list',
 			__( 'Plugin List', $this->option_name),
-            array($this, $this->option_name.'_plugin_list'),
-            $this->plugin_name,
+			array($this, $this->option_name.'_plugin_list'),
+			$this->plugin_name,
 			$this->option_name . '_general_settings',
 			array('label_for' => $this->option_name . 'plugin_list')
-        );
+		);
 
 		register_setting( $this->plugin_name, 'pluginPage' );
 		register_setting( $this->plugin_name, $this->option_name . '_fr_licence');
@@ -226,74 +228,76 @@ class Froala_Admin {
 
 	/**
 	 * Render the froala licence input
-     *
-     * @since 1.0.0
+	 *
+	 * @since 1.0.0
 	 */
 	public function froala_licence_input () {
 		$licence_key = get_option( $this->option_name . '_fr_licence' );
 
 		echo '<input type="text" name="' . $this->option_name . '_fr_licence' . '" id="' . $this->option_name . '_fr_licence' . '" value="' . $licence_key . '">';
-    }
+	}
 
 	/**
 	 * Render the froala plugin list
-     *
-     * @since 1.0.0
+	 *
+	 * @since 1.0.0
 	 */
 	public function froala_plugin_list () {
-	    $options = get_option( $this->option_name .'_plugin_list');
-	    $plugin_list = array(
-	            array('id' => 1 ,'name'=>'align'),
-                array('id' => 2 ,'name'=>'char_counter' ),
-                array('id' => 3 ,'name'=>'code_beautifier'),
-                array('id' => 4 ,'name'=>'code_view'),
-                array('id' => 5 ,'name'=>'colors'),
-                array('id' => 6 ,'name'=>'draggable'),
-                array('id' => 7 ,'name'=>'emoticons'),
-                array('id' => 8 ,'name'=>'entities'),
-                array('id' => 9 ,'name'=>'file'),
-                array('id' => 10 ,'name'=>'font_family'),
-                array('id' => 11 ,'name'=>'font_size'),
-                array('id' => 12 ,'name'=>'forms'),
-                array('id' => 13 ,'name'=>'fullscreen'),
-                array('id' => 14 ,'name'=>'help'),
-                array('id' => 15 ,'name'=>'image'),
-                array('id' => 16 ,'name'=>'image_manager'),
-                array('id' => 17 ,'name'=>'inline_style'),
-                array('id' => 18 ,'name'=>'line_breaker'),
-                array('id' => 19 ,'name'=>'link'),
-                array('id' => 20 ,'name'=>'lists'),
-                array('id' => 21 ,'name'=>'paragraph_format'),
-                array('id' => 22 ,'name'=>'paragraph_style'),
-                array('id' => 23 ,'name'=>'print'),
-                array('id' => 24 ,'name'=>'quick_insert'),
-                array('id' => 25 ,'name'=>'quote'),
-                array('id' => 26 ,'name'=>'save'),
-                array('id' => 27 ,'name'=>'special_characters'),
-                array('id' => 28 ,'name'=>'table'),
-                array('id' => 29 ,'name'=>'url'),
-                array('id' => 30 ,'name'=>'video')
-            );
-	    ?>
+
+		$options = get_option( $this->option_name .'_plugin_list');
+
+		array_push($this->plugin_list,
+			array('name'=>'align'),
+			array('name'=>'char_counter' ),
+			array('name'=>'code_beautifier'),
+			array('name'=>'code_view'),
+			array('name'=>'colors'),
+			array('name'=>'draggable'),
+			array('name'=>'emoticons'),
+			array('name'=>'entities'),
+			array('name'=>'file'),
+			array('name'=>'font_family'),
+			array('name'=>'font_size'),
+			array('name'=>'forms'),
+			array('name'=>'fullscreen'),
+			array('name'=>'help'),
+			array('name'=>'image'),
+			array('name'=>'image_manager'),
+			array('name'=>'inline_style'),
+			array('name'=>'line_breaker'),
+			array('name'=>'link'),
+			array('name'=>'lists'),
+			array('name'=>'paragraph_format'),
+			array('name'=>'paragraph_style'),
+			array('name'=>'print'),
+			array('name'=>'quick_insert'),
+			array('name'=>'quote'),
+			array('name'=>'save'),
+			array('name'=>'special_characters'),
+			array('name'=>'table'),
+			array('name'=>'url'),
+			array('name'=>'video'));
+		?>
+
 
         <ul class="fr-admin-dropdown triple" id="fr_admin_dropdown_ul">
-            <?php foreach ($plugin_list as $plugin) {
-	            $selected = in_array( $plugin['name'], $options) ? ' checked="checked" ' : '';
-                ?>
+			<?php foreach ($this->plugin_list as $plugin) {
+				$selected = in_array( $plugin['name'], $options) ? ' checked="checked" ' : '';
+				?>
                 <li id="fr_admin_dropdown_li">
                     <input <?php echo $selected; ?> type="checkbox" id="<?php echo 'fr_'.$plugin['name'] ?>" name="<?php echo $this->option_name .'_plugin_list[]' ?>" value="<?php echo $plugin['name']; ?>">
                     <label for=<?php echo 'fr_'.$plugin['name'] ?>><?php echo ucfirst($plugin['name']) ?></label>
                 </li>
-            <?php
-            }
-        ?>
+				<?php
+			}
+			?>
         </ul>
-    <?php
-    }
+		<?php
+	}
 
 	/**
-     * Initialize the froala editor on the admin panel default html tag has id #content
-     *
+	 * Initialize the froala editor on the admin panel default html tag has id #content
+	 *
 	 * @param $settings                  *Settings for wp_editor() function.
 	 * @param null $editor_id            *Selector on which the Froala Editor will be initialized.
 	 *
@@ -301,20 +305,27 @@ class Froala_Admin {
 	 */
 	public function froala_editor ($settings, $editor_id = null) {
 
-	    $active_plugins = get_option( $this->option_name .'_plugin_list');
+		$this->active_plugins = get_option( $this->option_name .'_plugin_list');
 		$settings['tinymce']   = false;
 		$settings['quicktags'] = false;
 		$settings['media_buttons'] = false;
 		$suffix = '.min.js';
 		$path = plugins_url('includes/froala-upload-to-server.php', dirname( __FILE__ ));
 
-		foreach ($active_plugins as $script) {
+		if ($custom_plugins = $this->froala_check_custom_plugins($this->active_plugins)) {
+
+			foreach ($custom_plugins as $plugin) {
+				echo "\t\t" . '<script type="text/javascript" src="' . $plugin['path'] . '"></script>' . "\n"; // xss ok
+			}
+		}
+
+		foreach ($this->active_plugins as $script) {
 			echo "\t\t" . '<script type="text/javascript" src="' . plugins_url( 'admin/js/plugins/' . $script . $suffix, dirname( __FILE__ ) ) . '"></script>' . "\n"; // xss ok
-        }
+		}
 
 		if ($editor_id == null) {
-		    $editor_id ='#content';
-        }
+			$editor_id ='#content';
+		}
 
 		echo "\t\t" . '<script> jQuery(document).ready(function(){
 						 jQuery(\''.$editor_id.'\').froalaEditor({\'imageUploadURL\':\''.$path.'?upload_image=1\',
@@ -324,8 +335,69 @@ class Froala_Admin {
 		return $settings;
 	}
 
+	/** Callback function to add new plugin
+	 * @param null $path                 *Path for the file
+	 * @param null $name                 *File name
+	 *
+	 * @return array|WP_Error
+	 * @since 1.0.2
+	 */
+	public function froala_editor_before ($path = null, $name = null) {
+
+		if ($this->froala_check_plugin_path($path)) {
+
+			array_push($this->plugin_list, array('name' => $name , 'path' => $path));
+			return $this->plugin_list;
+		}
+		return new WP_Error( 'broke', __( '<div class="error notice"><p>Please check your plugin path because the file was not found on the server. <br/> This may be from an improper htaccess config or read wright on that folder.</p></div>'));
+
+	}
+
+	/** Helper function checks if the file path is correct if not it will return error message.
+	 * @param null $path
+	 *
+	 * @return bool
+	 * @since 1.0.2
+	 */
+	public function froala_check_plugin_path ($path = null) {
+
+		stream_context_set_default( [
+			'ssl' => [
+				'verify_peer' => false,
+				'verify_peer_name' => false,
+			],
+		]);
+		$headers = @get_headers($path);
+
+		if (preg_match("|200|", $headers[0])) {
+			return true;
+		}
+		return false;
+	}
+
+	/** Helper function checks if custom plugins are active and if they it will add them
+	 * to the loading que with the correct file path.
+	 * @param null $active_plugins
+	 *
+	 * @return array|bool
+	 * @since 1.0.2
+	 */
+	public function froala_check_custom_plugins ($active_plugins = null) {
+
+		if ($active_plugins !== null) {
+			$custom_plugins = array();
+
+			for ($i = 0; $i < count($active_plugins); $i++) {
+
+				if (in_array($this->plugin_list[$i]['name'],$active_plugins)) {
+					array_push( $custom_plugins, $this->plugin_list[$i]);
+					unset($this->active_plugins[$i]);
+				}
+			}
+			return $custom_plugins;
+		}
+		return false;
+
+	}
+
 }
-
-
-
-

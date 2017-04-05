@@ -33,12 +33,10 @@ class Froala_Editor {
 
 			$licence_key = get_option('froala_fr_licence' );
 			$active_plugins = get_option('froala_plugin_list');
-
 			Froala_Editor::enqueue_styles();
 			Froala_Editor::enqueue_scripts();
 
 			foreach ($active_plugins as $script) {
-
 				$suffix = '.min.js';
 				$css_suffix = '.css';
 				Froala_Editor::enque_editor_plugins($script,$suffix);
@@ -145,11 +143,37 @@ class Froala_Editor {
 	 *
 	 * @param null $name       *Will be the name of the file same as the plugin name
 	 * @param null $suffix     *Will be the suffix of the file like: ".min.js", ".js"
+	 * Modified
+	 * @since 1.0.2
 	 */
 	public function enque_editor_plugins ($name = null, $suffix = null) {
 
-		wp_register_script($name,plugins_url('public/js/plugins/'.$name.$suffix,dirname( __FILE__ )),array('jquery'), true);
-		wp_enqueue_script($name);
+		$path = plugins_url('public/js/plugins/'.$name.$suffix,dirname( __FILE__ ));
+
+		stream_context_set_default( [
+			'ssl' => [
+				'verify_peer' => false,
+				'verify_peer_name' => false,
+			],
+		]);
+
+		$headers = @get_headers($path);
+
+		if (preg_match("|200|", $headers[0])) {
+
+			wp_register_script('froala-'.$name,$path);
+			wp_enqueue_script('froala-'.$name);
+		}
+		else {
+			$path = plugins_url(CustomJSFolderPath.$name.'.js');
+			$headers = @get_headers($path);
+
+			if (preg_match("|200|", $headers[0])) {
+				wp_register_script('froala-'.$name,$path);
+				wp_enqueue_script('froala-'.$name);
+			}
+		}
+
 	}
 
 	/**
@@ -186,5 +210,11 @@ class Froala_Editor {
 		wp_add_inline_script( 'editor-init', $content );
 	}
 
+
 }
+
+
+
+
+
 
