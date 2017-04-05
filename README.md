@@ -70,8 +70,9 @@ Froala_Editor::activate('#comment',array('colorsBackground' => ['#61BD6D', '#1AB
 // Static method for easy instantiation for the editor.
 // '#comment'  Represents the html element selector.
 // 'array()'   Represents the list of options that are passed to the editor.
+// PluginPath  Represents a constant defined on plugin activation.
 
-$path = plugins_url('includes/froala-upload-to-server.php', dirname( __FILE__ ));
+$path = plugins_url(PluginPath);
 Froala_Editor::activate('#comment',array('colorsBackground   '=> ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE'],
                                          'colorsText'         => ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE'],
                                          'imageUploadURL'     => $path.'?upload_image=1',
