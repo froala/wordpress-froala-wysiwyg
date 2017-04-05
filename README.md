@@ -113,7 +113,7 @@ if( is_wp_error( $new_plugin ) ) {
 Add the above code to your functions file inside your theme to see how it works. For an easier understanding the plugin will come with a dummy file
 placed inside "plugin_name/custom/js/". You can delete this file at any time.
 
-After adding a new plugin, it needs to be activate from the admin panel.
+After adding a new plugin, it needs to be activated from the admin panel.
 
 ## License
 
