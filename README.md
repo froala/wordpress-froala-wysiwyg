@@ -91,7 +91,7 @@ Froala_Editor::activate('#comment',array('colorsBackground   '=> ['#61BD6D', '#1
 ```
 
 
-#### Example for adding new plugin the popper way
+#### Example for adding new plugin
 
 ```php
 
