@@ -38,6 +38,15 @@ The activate function accepts 2 parameters but the editor can be init using just
 that can be passed to the editor.
 
 **For a complete list of options have a look over our [options list](https://www.froala.com/wysiwyg-editor/docs/options).**
+#### New constants :
+
+```php
+define('PluginPath', '/'.basename(__DIR__).'/includes/froala-upload-to-server.php');
+define('CustomJSFolderPath', '/'.basename(__DIR__).'/custom/js');
+define('CustomCSSFolderPath', '/'.basename(__DIR__).'/custom/css');
+
+```
+
 
 #### Example of simple init :
 
@@ -78,6 +87,29 @@ Froala_Editor::activate('#comment',array('colorsBackground   '=> ['#61BD6D', '#1
                                          'imageUploadURL'     => $path.'?upload_image=1',
                                          'imageManagerLoadURL'=> $path.'?view_images=1
                                         ));
+
+```
+
+
+#### Example for adding new plugin the popper way
+
+```php
+
+// CustomJSFolderPath is a constant defined on plugin activation will return
+// the path to the Custom JS folder e.g: /froala/custom/js    
+// froala_before_init custom hook that integrates the new plugin and registers the new script
+// The hook takes 2 params, 1'st the path to the plugin and 2'nd the name of the plugin.
+// The if statement check if there are any erros on registering the new plugin
+
+
+$custom_plugin_path = plugins_url(CustomJSFolderPath);
+
+$new_plugin = apply_filters('froala_before_init', $custom_plugin_path . '/test.js', 'test');
+
+if( is_wp_error( $new_plugin ) ) {
+	echo $new_plugin->get_error_message();
+}
+
 
 ```
 
