@@ -165,7 +165,7 @@ class Froala_Editor {
 			wp_enqueue_script('froala-'.$name);
 		}
 		else {
-			$path = plugins_url(CustomJSFolderPath.$name.'.js');
+			$path = plugins_url(CustomJSFolderPath.'/'.$name.'.js');
 			$headers = @get_headers($path);
 
 			if (preg_match("|200|", $headers[0])) {
