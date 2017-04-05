@@ -101,9 +101,7 @@ Froala_Editor::activate('#comment',array('colorsBackground   '=> ['#61BD6D', '#1
 // The hook takes 2 params, 1'st the path to the plugin and 2'nd the name of the plugin.
 // The if statement check if there are any erros on registering the new plugin
 
-
 $custom_plugin_path = plugins_url(CustomJSFolderPath);
-
 $new_plugin = apply_filters('froala_before_init', $custom_plugin_path . '/test.js', 'test');
 
 if( is_wp_error( $new_plugin ) ) {
@@ -112,6 +110,10 @@ if( is_wp_error( $new_plugin ) ) {
 
 
 ```
+Add the above code to your functions file inside your theme to see how it works. The plugin will come with a dummy file
+placed inside "/custom/js/" for an easier understanding. You can delete this file at any time.
+
+After adding a new plugin, it needs to be activate from the admin panel.
 
 ## License
 
