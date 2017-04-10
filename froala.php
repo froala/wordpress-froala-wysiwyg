@@ -2,7 +2,7 @@
 
 /**
  * @link              www.froala.com
- * @since             1.0.2
+ * @since             1.0.3
  * @package           Froala
  *
  * @wordpress-plugin

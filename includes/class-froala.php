@@ -148,15 +148,16 @@ class Froala {
 
 		$plugin_admin = new Froala_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_options_page' );
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_setting' );
-		$this->loader->add_filter( 'wp_editor_settings', $plugin_admin, 'froala_editor' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles', 5 );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts', 5 );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_options_page', 6 );
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_setting', 7);
+		$this->loader->add_filter( 'wp_editor_settings', $plugin_admin, 'froala_editor', 10);
 
 		// Added custom hooks, helps adding new plugins or any other custom functionality
-		$this->loader->add_action( 'froala_before_init', $plugin_admin, 'froala_editor_before', 10, 3);
-		$this->loader->add_action( 'froala_after_init', $plugin_admin, 'froala_editor_after' , 10, 3);
+		$this->loader->add_action( 'froala_before_init', $plugin_admin, 'froala_editor_before', 7, 4);
+		$this->loader->add_action( 'froala_new_plugin', $plugin_admin, 'froala_new_plugin', 9, 2);
+		$this->loader->add_action( 'froala_after_init', $plugin_admin, 'froala_editor_after' , 10, 4);
 
 
 	}
@@ -174,8 +175,13 @@ class Froala {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_public, 'enqueue_styles');
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_public, 'enqueue_scripts');
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles', 10);
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts', 10);
+
+		// Added custom hooks, helps adding new plugins or any other custom functionality
+		$this->loader->add_action( 'froala_before_public_init', $plugin_public, 'froala_editor_before', 10, 4);
+		$this->loader->add_action( 'froala_after_public_init', $plugin_public, 'froala_editor_after' , 10, 4);
+
 
 	}
 

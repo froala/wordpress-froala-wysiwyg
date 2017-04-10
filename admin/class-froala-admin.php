@@ -53,6 +53,10 @@ class Froala_Admin {
 	public $plugin_list = array();
 
 	public $active_plugins = array();
+
+	public $custom_scripts = array();
+
+	public $custom_scripts_status = '';
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -279,7 +283,6 @@ class Froala_Admin {
 			array('name'=>'video'));
 		?>
 
-
         <ul class="fr-admin-dropdown triple" id="fr_admin_dropdown_ul">
 			<?php foreach ($this->plugin_list as $plugin) {
 				$selected = in_array( $plugin['name'], $options) ? ' checked="checked" ' : '';
@@ -304,6 +307,11 @@ class Froala_Admin {
 	 * @return mixed                     *Returns the settings array for the wp_editor.
 	 */
 	public function froala_editor ($settings, $editor_id = null) {
+
+
+		if (isset($this->custom_scripts_status) && $this->custom_scripts_status == 'before') {
+			$this->forala_set_custom_script();
+		}
 
 		$this->active_plugins = get_option( $this->option_name .'_plugin_list');
 		$settings['tinymce']   = false;
@@ -332,6 +340,9 @@ class Froala_Admin {
                                                                   \'imageManagerLoadURL\':\''.$path.'?view_images=1\'});
 						}); </script>' . "\n";
 
+		if (isset($this->custom_scripts_status) && $this->custom_scripts_status == 'after') {
+			$this->forala_set_custom_script();
+		}
 		return $settings;
 	}
 
@@ -342,7 +353,7 @@ class Froala_Admin {
 	 * @return array|WP_Error
 	 * @since 1.0.2
 	 */
-	public function froala_editor_before ($path = null, $name = null) {
+	public function froala_new_plugin ($path = null, $name = null) {
 
 		if ($this->froala_check_plugin_path($path)) {
 
@@ -398,6 +409,134 @@ class Froala_Admin {
 		}
 		return false;
 
+	}
+
+	/** Callback function for public hook "froala_before_init"
+	 *
+	 * @param null $path        * File path on server.
+	 * @param null $type        * Can be js or css
+	 * @param string $prop      * Can be inline|file
+	 * @param null $mix         * If prop = file, mix will be the file name else if prop = inline mix will be the data.
+	 *
+	 * @return array|WP_Error
+	 */
+	public function froala_editor_before ($path = null, $type = null, $prop = 'file', $mix = null) {
+		return $this->froala_check_script_before_insert($path, $type, $prop, $mix,'before');
+	}
+
+	/** Callback function for public hook "froala_after_init"
+	 *
+	 * @param null $path        * File path on server.
+	 * @param null $type        * Can be js or css
+	 * @param string $prop      * Can be inline|file
+	 * @param null $mix         * If prop = file, mix will be the file name else if prop = inline mix will be the data.
+	 *
+	 * @return array|WP_Error
+	 */
+
+	public function froala_editor_after($path = null, $type = null, $prop = 'file', $mix = null) {
+		return $this->froala_check_script_before_insert($path, $type, $prop, $mix,'after');
+	}
+
+	/** Helper function that adds js or css scripts to the page.
+	 *
+	 * @param null $path    * Script path
+	 * @param null $type    * Can be js or css.
+	 * @param string $prop  * Can be file|inline default file
+	 * @param null $mix     * If prop = file, mix will be the file name else if prop = inline mix will be the data.
+	 *
+	 * @return array|WP_Error
+	 */
+
+	public function froala_check_script_before_insert ($path = null, $type = null, $prop = 'file', $mix = null, $when = null) {
+
+		$allowed_types = ['js','css'];
+		$allowed_prop = ['file','inline'];
+
+		if (!is_null($type) && !in_array(strtolower($type),$allowed_types)) {
+			return new WP_Error( 'broke', __( '<div class="error notice"><p>The type param for this hook can be "css" or "js", change accordingly.</p></div>' ) );
+		}
+
+		if (!is_null($prop) && !in_array(strtolower($prop),$allowed_prop)) {
+			return new WP_Error( 'broke', __( '<div class="error notice"><p>The property param for this hook can be "file" or "inline", change accordingly.</p></div>' ) );
+		}
+
+		if (!is_null($prop) && strtolower($prop) == 'file') {
+
+			if (is_null($type)) return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new script as a file the file "type" can not be null, change accordingly.</p></div>' ) );
+			if (is_null($mix)) return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new script as a file the file "name" can not be null, change accordingly.</p></div>' ) );
+			if (is_null($path)) return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new script as a file the file "path" can not be null, change accordingly.</p></div>' ) );
+		}
+
+		if (!is_null($prop) && strtolower($prop) == 'inline') {
+
+			if (is_null($mix)) return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding inline scripts, the script must contain "data", change accordingly.</p></div>' ) );
+		}
+
+		if (!is_null($path) ) {
+
+			if ( $this->froala_check_plugin_path( $path ) ) {
+
+				array_push( $this->custom_scripts, array( 'path' => $path,
+				                                          'type' => strtolower($type),
+				                                          'prop' => strtolower($prop),
+				                                          'mix' =>  $mix )
+				);
+				$this->custom_scripts_status = $when;
+
+				return $this->custom_scripts;
+			}
+		} else if (is_null($path) && !is_null($mix) && strtolower($prop) == 'inline') {
+
+			if (is_null($type)) return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new inline script the file "type" can not be null, change accordingly.</p></div>' ) );
+
+			array_push( $this->custom_scripts, array( 'path' => $path,
+			                                          'type' => strtolower($type),
+			                                          'prop' => strtolower($prop),
+			                                          'mix' =>  $mix )
+			);
+			$this->custom_scripts_status = $when;
+
+			return $this->custom_scripts;
+		}
+
+		return new WP_Error( 'broke', __( '<div class="error notice"><p>Please check your path, the file was not found on the server. <br/> This may be from an improper htaccess config or read wright on that folder.</p></div>' ) );
+
+	}
+
+	/** Callback function that inserts inline|file scripts
+	 *
+	 */
+	public function forala_set_custom_script() {
+
+		if (isset($this->custom_scripts)) {
+
+			foreach ($this->custom_scripts as $c_script) {
+
+				if ($c_script['prop'] == 'file') {
+
+					if (strtolower($c_script['type']) == 'css') {
+						wp_register_style($c_script['mix'], $c_script['path']);
+						wp_enqueue_style($c_script['mix']);
+					}
+
+					if (strtolower($c_script['type']) == 'js') {
+						wp_register_script($c_script['mix'], $c_script['path']);
+						wp_enqueue_script($c_script['mix']);
+					}
+
+				} else if ($c_script['prop'] == 'inline') {
+
+					if (strtolower($c_script['type']) == 'css') {
+						echo "\t\t" . '<style type="text/css">' . $c_script['mix'] . '</style>' . "\n";
+					}
+
+					if (strtolower($c_script['type']) == 'js') {
+						echo "\t\t" . '<script>' . $c_script['mix'] . '</script>' . "\n";
+					}
+				}
+			}
+		}
 	}
 
 }

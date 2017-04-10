@@ -19,48 +19,9 @@
 class Froala_Editor {
 
 	private $option_name = 'froala';
+	public $custom_scripts = array();
+	public $custom_scripts_status = '';
 
-	/**
-	 * Static method for easy initialization with the editor.
-	 *
-	 * @param null                          $element_selector        Represents the html element selector.
-	 * @param array('option' => 'argument') $editor_options          Represents the options that the editor can load.
-	 *
-	 */
-	public static function activate($element_selector = null, $editor_options = null) {
-
-		if ( $element_selector !== null) {
-
-			$licence_key = get_option('froala_fr_licence' );
-			$active_plugins = get_option('froala_plugin_list');
-			Froala_Editor::enqueue_styles();
-			Froala_Editor::enqueue_scripts();
-
-			foreach ($active_plugins as $script) {
-				$suffix = '.min.js';
-				$css_suffix = '.css';
-				Froala_Editor::enque_editor_plugins($script,$suffix);
-				Froala_Editor::enque_editor_plugins_css($script,$css_suffix);
-			}
-
-			if (is_array($editor_options)) {
-				$editor_options['key']  =  $licence_key;
-				$editor_options         = json_encode($editor_options);
-			} else if (is_object($editor_options)) {
-				$editor_options->key =  $licence_key;
-				$editor_options         = json_encode($editor_options);
-			}
-			else {
-				$editor_options = '{\'key\':\''.$licence_key.'\'}';
-			}
-
-			$content = "\t\t" . '<script> jQuery(window).on(\'load\', function(e){
-						 jQuery(\''.$element_selector.'\').froalaEditor('.$editor_options.');
-						}); </script>' . "\n";
-
-			Froala_Editor::enque_editor_script($content);
-		}
-	}
 
 	/**
 	 * The ID of this plugin.
@@ -94,6 +55,116 @@ class Froala_Editor {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 	}
+
+	/** Helper function, gets active filters for a specific action
+	 *
+	 * @param string $hook      * The name of the hook.
+	 *
+	 * @return string|WP_Hook
+	 */
+	public function froala_get_filters_for( $hook = '' ) {
+		global $wp_filter;
+		if( empty( $hook ) || !isset( $wp_filter[$hook] ) ) {
+			return 'none';
+		}
+
+		return $wp_filter[$hook];
+	}
+
+
+	/** Helper function to get filter arguments.
+	 * @param null $object          * Wp_filter object for specific action.
+	 * @param null $filter          * The callback function for action.
+	 * @param null $priority        * Action priority that it's set on class Froala
+	 *
+	 * If priority for a hook it's changed it will impact this file too, so the change
+	 * must be made also here. When calling this function make sure that the same priority
+	 * is passed to the function.
+	 *
+	 * @return bool
+	 */
+	public function froala_get_filter_data ($object = null, $filter = null, $priority = null) {
+		$active_filters = $object->callbacks[$priority];
+
+		if (is_array($active_filters) || is_object($active_filters)) {
+
+			foreach ($active_filters as $callback) {
+
+				if ( in_array( $filter, $callback['function'] ) ) {
+					$this->custom_scripts        = $callback['function'][0]->custom_scripts;
+					$this->custom_scripts_status = $callback['function'][0]->custom_scripts_status;
+
+					return true;
+				} else {
+
+					return false;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Public method for easy initialization for the Froala Editor.
+	 *
+	 * @param null                          $element_selector        Represents the html element selector.
+	 * @param array('option' => 'argument') $editor_options          Represents the options that the editor can load.
+	 *
+	 */
+
+	public function activate($element_selector = null, $editor_options = null) {
+
+		$filter = $this->froala_get_filters_for('froala_before_public_init');
+
+		if ( $filter !== 'none') {
+			$filter = $this->froala_get_filter_data($filter,'froala_editor_before','10');
+		}
+
+		if (isset($this->custom_scripts_status) && $this->custom_scripts_status == 'before') {
+			$this->froala_set_custom_script();
+		}
+
+		if ( $element_selector !== null) {
+
+			$licence_key = get_option('froala_fr_licence' );
+			$active_plugins = get_option('froala_plugin_list');
+			$this->enqueue_styles();
+			$this->enqueue_scripts();
+
+			foreach ($active_plugins as $script) {
+				$suffix = '.min.js';
+				$css_suffix = '.css';
+				$this->enque_editor_plugins($script,$suffix);
+				$this->enque_editor_plugins_css($script,$css_suffix);
+			}
+
+			if (is_array($editor_options)) {
+				$editor_options['key']  =  $licence_key;
+				$editor_options         = json_encode($editor_options);
+			} else if (is_object($editor_options)) {
+				$editor_options->key    =  $licence_key;
+				$editor_options         = json_encode($editor_options);
+			}
+			else {
+				$editor_options = '{\'key\':\''.$licence_key.'\'}';
+			}
+
+			$content = "\t\t" . '<script> jQuery(window).on(\'load\', function(e){
+						 jQuery(\''.$element_selector.'\').froalaEditor('.$editor_options.');
+						}); </script>' . "\n";
+
+			$this->enque_editor_script($content);
+			$filter = $this->froala_get_filters_for('froala_after_public_init');
+
+			if ( $filter !== 'none') {
+				$filter = $this->froala_get_filter_data('froala_editor_after','10');
+			}
+
+			if (isset($this->custom_scripts_status) && $this->custom_scripts_status == 'after') {
+				$this->froala_set_custom_script();
+			}
+		}
+	}
+
 
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
@@ -147,7 +218,6 @@ class Froala_Editor {
 	 * @since 1.0.2
 	 */
 	public function enque_editor_plugins ($name = null, $suffix = null) {
-
 		$path = plugins_url('public/js/plugins/'.$name.$suffix,dirname( __FILE__ ));
 
 		stream_context_set_default( [
@@ -156,7 +226,6 @@ class Froala_Editor {
 				'verify_peer_name' => false,
 			],
 		]);
-
 		$headers = @get_headers($path);
 
 		if (preg_match("|200|", $headers[0])) {
@@ -173,7 +242,6 @@ class Froala_Editor {
 				wp_enqueue_script('froala-'.$name);
 			}
 		}
-
 	}
 
 	/**
@@ -204,12 +272,215 @@ class Froala_Editor {
 	 *
 	 * @param null $content
 	 */
-	public function enque_editor_script ($content=null) {
+	public function enque_editor_script ($content = null) {
 
 		wp_enqueue_script( 'editor-init', plugins_url('public/js/plugins/editor-init.js',dirname( __FILE__ )),array('jquery'), '1.0' );
 		wp_add_inline_script( 'editor-init', $content );
 	}
 
+	/** Helper function checks if the file path is correct if not it will return error message.
+	 * @param null $path
+	 *
+	 * @return bool
+	 * @since 1.0.2
+	 */
+	public function froala_check_plugin_path ($path = null) {
+
+		stream_context_set_default( [
+			'ssl' => [
+				'verify_peer' => false,
+				'verify_peer_name' => false,
+			],
+		]);
+		$headers = @get_headers($path);
+
+		if (preg_match("|200|", $headers[0])) {
+			return true;
+		}
+		return false;
+	}
+
+	/** Helper function checks if the file path is correct if not it will return error message.
+	 * @param null $path
+	 *
+	 * @return bool
+	 * @since 1.0.2
+	 */
+	public function froala_check_script_path ($path = null) {
+
+		stream_context_set_default( [
+			'ssl' => [
+				'verify_peer' => false,
+				'verify_peer_name' => false,
+			],
+		]);
+		$headers = @get_headers($path);
+
+		if (preg_match("|200|", $headers[0])) {
+			return true;
+		}
+		return false;
+	}
+
+
+	/** Callback function for public hook "froala_before_public_init"
+	 *
+	 * @param null $path        * File path on server.
+	 * @param null $type        * Can be js or css
+	 * @param string $prop      * Can be inline|file
+	 * @param null $mix         * If prop = file, mix will be the file name else if prop = inline mix will be the data.
+	 *
+	 * @return array|WP_Error
+	 */
+	public function froala_editor_before ($path = null, $type = null, $prop = 'file', $mix = null) {
+
+		return $this->froala_check_script_before_insert($path, $type, $prop, $mix, 'before');
+	}
+
+	/** Callback function for public hook "froala_after_public_init"
+	 *
+	 * @param null $path        * File path on server.
+	 * @param null $type        * Can be js or css
+	 * @param string $prop      * Can be inline|file
+	 * @param null $mix         * If prop = file, mix will be the file name else if prop = inline mix will be the data.
+	 *
+	 * @return array|WP_Error
+	 */
+	public function froala_editor_after ($path = null, $type = null, $prop = 'file', $mix = null) {
+
+		return $this->froala_check_script_before_insert($path, $type, $prop, $mix, 'after');
+	}
+
+	/** Helper function that adds js or css scripts to the page.
+	 *
+	 * @param null $path    * Script path
+	 * @param null $type    * Can be js or css.
+	 * @param string $prop  * Can be file|inline default file
+	 * @param null $mix     * If prop = file, mix will be the file name else if prop = inline mix will be the data.
+	 *
+	 * @return array|WP_Error
+	 */
+
+	public function froala_check_script_before_insert ($path, $type, $prop, $mix, $when) {
+
+		$allowed_types = [ 'js', 'css' ];
+		$allowed_prop  = [ 'file', 'inline' ];
+
+		if ( ! is_null( $type ) && ! in_array( strtolower( $type ), $allowed_types ) ) {
+			return new WP_Error( 'broke', __( '<div class="error notice"><p>The type param for this hook can be "css" or "js", change accordingly.</p></div>' ) );
+		}
+
+		if ( ! is_null( $prop ) && ! in_array( strtolower( $prop ), $allowed_prop ) ) {
+			return new WP_Error( 'broke', __( '<div class="error notice"><p>The property param for this hook can be "file" or "inline", change accordingly.</p></div>' ) );
+		}
+
+		if ( ! is_null( $prop ) && strtolower( $prop ) == 'file' ) {
+
+			if ( is_null( $type ) ) {
+				return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new script as a file the file "type" can not be null, change accordingly.</p></div>' ) );
+			}
+			if ( is_null( $mix ) ) {
+				return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new script as a file the file "name" can not be null, change accordingly.</p></div>' ) );
+			}
+			if ( is_null( $path ) ) {
+				return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new script as a file the file "path" can not be null, change accordingly.</p></div>' ) );
+			}
+		}
+
+		if ( ! is_null( $prop ) && strtolower( $prop ) == 'inline' ) {
+
+			if ( is_null( $mix ) ) {
+				return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding inline scripts, the script must contain "data", change accordingly.</p></div>' ) );
+			}
+		}
+
+		if ( ! is_null( $path ) ) {
+
+
+			if ( $this->froala_check_plugin_path( $path ) ) {
+
+				array_push( $this->custom_scripts, array(
+						'path' => $path,
+						'type' => strtolower( $type ),
+						'prop' => strtolower( $prop ),
+						'mix'  => $mix
+					)
+				);
+				$this->custom_scripts_status = $when;
+
+				return $this->custom_scripts;
+			}
+		} else if ( is_null( $path ) && ! is_null( $mix ) && strtolower( $prop ) == 'inline' ) {
+
+			if ( is_null( $type ) ) {
+				return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new inline script the file "type" can not be null, change accordingly.</p></div>' ) );
+			}
+
+			array_push( $this->custom_scripts, array(
+					'path' => $path,
+					'type' => strtolower( $type ),
+					'prop' => strtolower( $prop ),
+					'mix'  => $mix
+				)
+			);
+			$this->custom_scripts_status = $when;
+
+			return $this->custom_scripts;
+		}
+		return new WP_Error( 'broke', __( '<div class="error notice"><p>Please check your path, the file was not found on the server. <br/> This may be from an improper htaccess config or read wright on that folder.</p></div>' ) );
+	}
+
+	/** Callback function that inserts inline|file scripts
+	 *
+	 */
+	public function froala_set_custom_script () {
+
+		if (isset($this->custom_scripts)) {
+
+			foreach ($this->custom_scripts as $c_script) {
+
+				if ($c_script['prop'] == 'file') {
+
+					if (strtolower($c_script['type']) == 'css') {
+						wp_register_style($c_script['mix'], $c_script['path']);
+						wp_enqueue_style($c_script['mix']);
+					}
+
+					if (strtolower($c_script['type']) == 'js') {
+						wp_register_script($c_script['mix'], $c_script['path']);
+						wp_enqueue_script($c_script['mix']);
+					}
+
+				} else if ($c_script['prop'] == 'inline') {
+
+					if (strtolower($c_script['type']) == 'css') {
+						$this->froala_add_inline_css($c_script['mix']);
+					}
+
+					if (strtolower($c_script['type']) == 'js') {
+						$this->froala_add_inline_js($c_script['mix']);
+					}
+				}
+			}
+		}
+
+	}
+
+	/** Adds inline javascript.
+	 * @param null $content     * Must be the actual javascript content. e.g alert('test')
+	 */
+	public function froala_add_inline_js ($content = null) {
+		wp_enqueue_script( 'froala-custom-scripts-js', plugins_url('public/js/plugins/editor-init.js',dirname( __FILE__ )), array(), '1' );
+		wp_add_inline_script( 'froala-custom-scripts-js', $content );
+	}
+
+	/** Adds inline css.
+	 * @param null $content     * Must be the actual css content e.g h1 {background-color: #00ffff;}
+	 */
+	public function froala_add_inline_css ($content = null) {
+		wp_enqueue_style( 'froala-custom-scripts-css', '#', array(), '1.0' );
+		wp_add_inline_style( 'froala-custom-scripts-css', $content );
+	}
 
 }
 
