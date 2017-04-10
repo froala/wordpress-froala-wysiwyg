@@ -38,7 +38,7 @@ The activate function accepts 2 parameters but the editor can be init using just
 that can be passed to the editor.
 
 **For a complete list of options have a look over our [options list](https://www.froala.com/wysiwyg-editor/docs/options).**
-#### New constants :
+#### Constants :
 
 ```php
 define('PluginPath', '/'.basename(__DIR__).'/includes/froala-upload-to-server.php');
@@ -47,14 +47,160 @@ define('CustomCSSFolderPath', '/'.basename(__DIR__).'/custom/css');
 
 ```
 
+#### Public hooks:
+
+```php
+
+// There are 2 available hooks that work for the front-end part of the website.
+// froala_before_public_init acts before the editor gets initialized and 
+// froala_after_public_init acts after the editor and all the plugins are loaded.
+// Callback function for these hooks acepts 4 params
+
+/** Callback function for public hooks"
+	 *
+	 * @param null $path        * File path on server.
+	 * @param null $type        * Can be js or css
+	 * @param string $prop      * Can be inline|file
+	 * @param null $mix         * If prop = file, mix will be the file name else if prop = inline mix will be the data.
+	 *
+	 * @return array|WP_Error
+	 *
+	 *
+   * To use a public hook, it needs to be registered before the editor get's initialized. The propper way 
+   * would be to store it in a variable so you can have access to the debug log.
+   *
+   * This example includes a custom css file and load's it acordingly, because it's used after public init the css file
+   * will be at the very bottom of your head tag.
+
+   * To understand better, the params are in this way: 
+   * 1' st froala_after_public_init        => name of the hook.
+   * 2' nd $custom_css_path.'/test.css'    => path to the file.
+   * 3' rd 'css'                           => script type.
+   * 4' th 'file'                          => script property, can be file|inline.
+   * 5' th 'test'                          => the name of the file. 
+*/
+
+$hook = apply_filters('froala_after_public_init', $custom_css_path.'/test.css', 'css', 'file','test');
+
+if( is_wp_error( $hook ) ) {
+	echo $hook->get_error_message();
+}
+
+// Same as the example above but it includes a javascript file and the action of the hook it's before Froala Editor's initialization.
+
+$hook = apply_filters('froala_before_public_init', $custom_css_path.'/test.js', 'js', 'file','test');
+
+if( is_wp_error( $hook ) ) {
+	echo $hook->get_error_message();
+}
+
+// Example using inline script
+
+$hook = apply_filters('froala_after_public_init', null, 'js', 'inline', 'console.log("test")');
+
+
+if( is_wp_error( $hook ) ) {
+	echo $hook->get_error_message();
+}
+
+// Example using inline css
+
+$hook = apply_filters('froala_before_public_init', null, 'css', 'inline', 'h1 {background-color: #00ffff;}');
+
+
+if( is_wp_error( $hook ) ) {
+	echo $hook->get_error_message();
+}
+
+// Note! 
+//The hooks must be registered before instantiating the FroalaEditor class.
+
+$hook = apply_filters('froala_before_public_init', null, 'css', 'inline', 'h1 {background-color: #00ffff;}');
+.
+.
+.
+$Froala_Editor = new Froala_Editor();
+$froala->activate('#comment',array('colorsBackground   '=> ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE'],
+                                         'colorsText'         => ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE']
+                                        ));
+```
+
+#### Admin hooks:
+
+```php
+
+// There are 2 available hooks that work for the admin part of the website.
+// froala_before_init acts before the editor gets initialized and 
+// froala_after_init acts after the editor and all the plugins are loaded.
+// Callback function for these hooks acepts 4 params
+
+/** Callback function for public hooks"
+	 *
+	 * @param null $path        * File path on server.
+	 * @param null $type        * Can be js or css
+	 * @param string $prop      * Can be inline|file
+	 * @param null $mix         * If prop = file, mix will be the file name else if prop = inline mix will be the data.
+	 *
+	 * @return array|WP_Error
+	 *
+	 *
+   * To use a private hook, it needs to be registered before the editor get's initialized. The propper way 
+   * would be to store it in a variable so you can have access to the debug log.
+   *
+   * This example includes a custom css file and load's it acordingly, because it's used after admin init the css file
+   * will be at the very bottom of your head tag.
+
+   * To understand better, the params are in this way: 
+   * 1' st froala_after_public_init        => name of the hook.
+   * 2' nd $custom_css_path.'/test.css'    => path to the file.
+   * 3' rd 'css'                           => script type.
+   * 4' th 'file'                          => script property, can be file|inline.
+   * 5' th 'test'                          => the name of the file. 
+*/
+
+$hook = apply_filters('froala_after_init', $custom_css_path.'/test.css', 'css', 'file','test');
+
+if( is_wp_error( $hook ) ) {
+	echo $hook->get_error_message();
+}
+
+// Same as the example above but it includes a javascript file and the action of the hook it's before Froala Editor's initialization.
+
+$hook = apply_filters('froala_before_init', $custom_css_path.'/test.js', 'js', 'file','test');
+
+if( is_wp_error( $hook ) ) {
+	echo $hook->get_error_message();
+}
+
+// Example using inline script
+
+$hook = apply_filters('froala_after_init', null, 'js', 'inline', 'console.log("test")');
+
+
+if( is_wp_error( $hook ) ) {
+	echo $hook->get_error_message();
+}
+
+// Example using inline css
+
+$hook = apply_filters('froala_before_init', null, 'css', 'inline', 'h1 {background-color: #00ffff;}');
+
+
+if( is_wp_error( $hook ) ) {
+	echo $hook->get_error_message();
+}
+
+```
+
 
 #### Example of simple init :
 
 ```php
-// Static method for easy instantiation for the editor.
+// Public method for easy instantiation for the editor.
 // '#comment'  Represents the html element selector.
 
-Froala_Editor::activate('#comment');
+$Froala_Editor = new Froala_Editor();
+$Froala_Editor->activate('#comment');
 
 ```
 
@@ -66,7 +212,8 @@ Froala_Editor::activate('#comment');
 // '#comment'  Represents the html element selector.
 // 'array()'   Represents the list of options that are passed to the editor.
 
-Froala_Editor::activate('#comment',array('colorsBackground' => ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE'],
+$Froala_Editor = new Froala_Editor();
+$Froala_Editor->activate('#comment',array('colorsBackground' => ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE'],
                                          'colorsText'       => ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE']
                                         ));
                                         
@@ -82,7 +229,8 @@ Froala_Editor::activate('#comment',array('colorsBackground' => ['#61BD6D', '#1AB
 // PluginPath  Represents a constant defined on plugin activation.
 
 $path = plugins_url(PluginPath);
-Froala_Editor::activate('#comment',array('colorsBackground   '=> ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE'],
+$Froala_Editor = new Froala_Editor();
+$Froala_Editor->activate('#comment',array('colorsBackground   '=> ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE'],
                                          'colorsText'         => ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE'],
                                          'imageUploadURL'     => $path.'?upload_image=1',
                                          'imageManagerLoadURL'=> $path.'?view_images=1
@@ -90,8 +238,8 @@ Froala_Editor::activate('#comment',array('colorsBackground   '=> ['#61BD6D', '#1
 
 ```
 
-
-#### Example for adding new plugin
+#### Example for adding new plugin for Froala Editor
+This will be visible in the admin under Froala WYSIWYG settings and can be activated/deactivated
 
 ```php
 
