@@ -57,29 +57,28 @@ define('CustomCSSFolderPath', '/'.basename(__DIR__).'/custom/css');
 // Callback function for these hooks acepts 4 params
 
 /** Callback function for public hooks"
-	 *
-	 * @param null $path        * File path on server.
-	 * @param null $type        * Can be js or css
-	 * @param string $prop      * Can be inline|file
-	 * @param null $mix         * If prop = file, mix will be the file name else if prop = inline mix will be the data.
-	 *
-	 * @return array|WP_Error
-	 *
-	 *
-   * To use a public hook, it needs to be registered before the editor get's initialized. The propper way 
-   * would be to store it in a variable so you can have access to the debug log.
-   *
-   * This example includes a custom css file and load's it acordingly, because it's used after public init the css file
-   * will be at the very bottom of your head tag.
+ *
+ * @param null $path        * File path on server.
+ * @param null $type        * Can be js or css
+ * @param string $prop      * Can be inline|file
+ * @param null $mix         * If prop = file, mix will be the file name else if prop = inline mix will be the data.
+ *
+ * @return array|WP_Error
+ *
+ *
+* To use a public hook, it needs to be registered before the editor get's initialized. The propper way 
+* would be to store it in a variable so you can have access to the debug log.
+*
+* This example includes a custom css file and load's it acordingly, because it's used after public init the css file
+* will be at the very bottom of your head tag.
 
-   * To understand better, the params are in this way: 
-   * 1' st froala_after_public_init        => name of the hook.
-   * 2' nd $custom_css_path.'/test.css'    => path to the file.
-   * 3' rd 'css'                           => script type.
-   * 4' th 'file'                          => script property, can be file|inline.
-   * 5' th 'test'                          => the name of the file. 
+* To understand better, the params are in this way: 
+* 1' st froala_after_public_init        => name of the hook.
+* 2' nd $custom_css_path.'/test.css'    => path to the file.
+* 3' rd 'css'                           => script type.
+* 4' th 'file'                          => script property, can be file|inline.
+* 5' th 'test'                          => the name of the file. 
 */
-
 $hook = apply_filters('froala_after_public_init', $custom_css_path.'/test.css', 'css', 'file','test');
 
 if( is_wp_error( $hook ) ) {
@@ -87,29 +86,25 @@ if( is_wp_error( $hook ) ) {
 }
 
 // Same as the example above but it includes a javascript file and the action of the hook it's before Froala Editor's initialization.
-
 $hook = apply_filters('froala_before_public_init', $custom_css_path.'/test.js', 'js', 'file','test');
 
 if( is_wp_error( $hook ) ) {
-	echo $hook->get_error_message();
+  echo $hook->get_error_message();
 }
-
 // Example using inline script
 
 $hook = apply_filters('froala_after_public_init', null, 'js', 'inline', 'console.log("test")');
 
-
 if( is_wp_error( $hook ) ) {
-	echo $hook->get_error_message();
+  echo $hook->get_error_message();
 }
 
 // Example using inline css
-
 $hook = apply_filters('froala_before_public_init', null, 'css', 'inline', 'h1 {background-color: #00ffff;}');
 
 
 if( is_wp_error( $hook ) ) {
-	echo $hook->get_error_message();
+  echo $hook->get_error_message();
 }
 
 // Note! 
@@ -135,59 +130,54 @@ $froala->activate('#comment',array('colorsBackground   '=> ['#61BD6D', '#1ABC9C'
 // Callback function for these hooks acepts 4 params
 
 /** Callback function for public hooks"
-	 *
-	 * @param null $path        * File path on server.
-	 * @param null $type        * Can be js or css
-	 * @param string $prop      * Can be inline|file
-	 * @param null $mix         * If prop = file, mix will be the file name else if prop = inline mix will be the data.
-	 *
-	 * @return array|WP_Error
-	 *
-	 *
-   * To use a private hook, it needs to be registered before the editor get's initialized. The propper way 
-   * would be to store it in a variable so you can have access to the debug log.
-   *
-   * This example includes a custom css file and load's it acordingly, because it's used after admin init the css file
-   * will be at the very bottom of your head tag.
+ *
+ * @param null $path        * File path on server.
+ * @param null $type        * Can be js or css
+ * @param string $prop      * Can be inline|file
+ * @param null $mix         * If prop = file, mix will be the file name else if prop = inline mix will be the data.
+ *
+ * @return array|WP_Error
+ *
+ *
+* To use a private hook, it needs to be registered before the editor get's initialized. The propper way 
+* would be to store it in a variable so you can have access to the debug log.
+*
+* This example includes a custom css file and load's it acordingly, because it's used after admin init the css file
+* will be at the very bottom of your head tag.
 
-   * To understand better, the params are in this way: 
-   * 1' st froala_after_public_init        => name of the hook.
-   * 2' nd $custom_css_path.'/test.css'    => path to the file.
-   * 3' rd 'css'                           => script type.
-   * 4' th 'file'                          => script property, can be file|inline.
-   * 5' th 'test'                          => the name of the file. 
+* To understand better, the params are in this way: 
+* 1' st froala_after_public_init        => name of the hook.
+* 2' nd $custom_css_path.'/test.css'    => path to the file.
+* 3' rd 'css'                           => script type.
+* 4' th 'file'                          => script property, can be file|inline.
+* 5' th 'test'                          => the name of the file. 
 */
 
 $hook = apply_filters('froala_after_init', $custom_css_path.'/test.css', 'css', 'file','test');
 
 if( is_wp_error( $hook ) ) {
-	echo $hook->get_error_message();
+  echo $hook->get_error_message();
 }
-
 // Same as the example above but it includes a javascript file and the action of the hook it's before Froala Editor's initialization.
 
 $hook = apply_filters('froala_before_init', $custom_css_path.'/test.js', 'js', 'file','test');
 
 if( is_wp_error( $hook ) ) {
-	echo $hook->get_error_message();
+  echo $hook->get_error_message();
 }
-
 // Example using inline script
 
 $hook = apply_filters('froala_after_init', null, 'js', 'inline', 'console.log("test")');
 
-
 if( is_wp_error( $hook ) ) {
-	echo $hook->get_error_message();
+  echo $hook->get_error_message();
 }
-
 // Example using inline css
 
 $hook = apply_filters('froala_before_init', null, 'css', 'inline', 'h1 {background-color: #00ffff;}');
 
-
 if( is_wp_error( $hook ) ) {
-	echo $hook->get_error_message();
+ echo $hook->get_error_message();
 }
 
 ```
