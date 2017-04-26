@@ -65,9 +65,8 @@ function run_froala() {
 
 	$plugin = new Froala();
 	$plugin->run();
-	define('PluginPath', '/'.basename(__DIR__).'/includes/froala-upload-to-server.php');
-	define('CustomJSFolderPath', '/'.basename(__DIR__).'/custom/js');
-	define('CustomCSSFolderPath', '/'.basename(__DIR__).'/custom/css');
+	define('FroalaEditorCustomJSFolderPath', '/'.basename(__DIR__).'/custom/js');
+	define('FroalaEditorCustomCSSFolderPath', '/'.basename(__DIR__).'/custom/css');
 
 }
 run_froala();

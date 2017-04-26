@@ -309,16 +309,16 @@ class Froala_Admin {
 	public function froala_editor ($settings, $editor_id = null) {
 
 
-		if (isset($this->custom_scripts_status) && $this->custom_scripts_status == 'before') {
-			$this->forala_set_custom_script();
-		}
+	    if (isset($this->custom_scripts_status) && $this->custom_scripts_status == 'before') {
+		    $this->forala_set_custom_script();
+        }
 
 		$this->active_plugins = get_option( $this->option_name .'_plugin_list');
 		$settings['tinymce']   = false;
 		$settings['quicktags'] = false;
 		$settings['media_buttons'] = false;
 		$suffix = '.min.js';
-		$path = plugins_url('includes/froala-upload-to-server.php', dirname( __FILE__ ));
+		$path = admin_url( 'admin-ajax.php' );
 
 		if ($custom_plugins = $this->froala_check_custom_plugins($this->active_plugins)) {
 
@@ -336,8 +336,10 @@ class Froala_Admin {
 		}
 
 		echo "\t\t" . '<script> jQuery(document).ready(function(){
-						 jQuery(\''.$editor_id.'\').froalaEditor({\'imageUploadURL\':\''.$path.'?upload_image=1\',
-                                                                  \'imageManagerLoadURL\':\''.$path.'?view_images=1\'});
+						 jQuery(\''.$editor_id.'\').froalaEditor({\'imageUploadURL\':\''.$path.'\',
+                                                                  \'imageManagerLoadURL\':\''.$path.'\',
+                                                                  \'imageUploadParams\': {\'action\' : \'froala_upload_files\'},
+                                                                  \'imageManagerLoadParams\':{\'action\' : \'froala_image_manager\'}});
 						}); </script>' . "\n";
 
 		if (isset($this->custom_scripts_status) && $this->custom_scripts_status == 'after') {
@@ -436,7 +438,7 @@ class Froala_Admin {
 
 	public function froala_editor_after($path = null, $type = null, $prop = 'file', $mix = null) {
 		return $this->froala_check_script_before_insert($path, $type, $prop, $mix,'after');
-	}
+    }
 
 	/** Helper function that adds js or css scripts to the page.
 	 *
@@ -448,61 +450,61 @@ class Froala_Admin {
 	 * @return array|WP_Error
 	 */
 
-	public function froala_check_script_before_insert ($path = null, $type = null, $prop = 'file', $mix = null, $when = null) {
+    public function froala_check_script_before_insert ($path = null, $type = null, $prop = 'file', $mix = null, $when = null) {
 
-		$allowed_types = ['js','css'];
-		$allowed_prop = ['file','inline'];
+	    $allowed_types = ['js','css'];
+	    $allowed_prop = ['file','inline'];
 
-		if (!is_null($type) && !in_array(strtolower($type),$allowed_types)) {
-			return new WP_Error( 'broke', __( '<div class="error notice"><p>The type param for this hook can be "css" or "js", change accordingly.</p></div>' ) );
-		}
+	    if (!is_null($type) && !in_array(strtolower($type),$allowed_types)) {
+		    return new WP_Error( 'broke', __( '<div class="error notice"><p>The type param for this hook can be "css" or "js", change accordingly.</p></div>' ) );
+	    }
 
-		if (!is_null($prop) && !in_array(strtolower($prop),$allowed_prop)) {
-			return new WP_Error( 'broke', __( '<div class="error notice"><p>The property param for this hook can be "file" or "inline", change accordingly.</p></div>' ) );
-		}
+	    if (!is_null($prop) && !in_array(strtolower($prop),$allowed_prop)) {
+		    return new WP_Error( 'broke', __( '<div class="error notice"><p>The property param for this hook can be "file" or "inline", change accordingly.</p></div>' ) );
+	    }
 
-		if (!is_null($prop) && strtolower($prop) == 'file') {
+	    if (!is_null($prop) && strtolower($prop) == 'file') {
 
-			if (is_null($type)) return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new script as a file the file "type" can not be null, change accordingly.</p></div>' ) );
-			if (is_null($mix)) return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new script as a file the file "name" can not be null, change accordingly.</p></div>' ) );
-			if (is_null($path)) return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new script as a file the file "path" can not be null, change accordingly.</p></div>' ) );
-		}
+		    if (is_null($type)) return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new script as a file the file "type" can not be null, change accordingly.</p></div>' ) );
+		    if (is_null($mix)) return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new script as a file the file "name" can not be null, change accordingly.</p></div>' ) );
+		    if (is_null($path)) return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new script as a file the file "path" can not be null, change accordingly.</p></div>' ) );
+	    }
 
-		if (!is_null($prop) && strtolower($prop) == 'inline') {
+	    if (!is_null($prop) && strtolower($prop) == 'inline') {
 
-			if (is_null($mix)) return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding inline scripts, the script must contain "data", change accordingly.</p></div>' ) );
-		}
+		    if (is_null($mix)) return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding inline scripts, the script must contain "data", change accordingly.</p></div>' ) );
+	    }
 
-		if (!is_null($path) ) {
+	    if (!is_null($path) ) {
 
-			if ( $this->froala_check_plugin_path( $path ) ) {
+		    if ( $this->froala_check_plugin_path( $path ) ) {
 
-				array_push( $this->custom_scripts, array( 'path' => $path,
-				                                          'type' => strtolower($type),
-				                                          'prop' => strtolower($prop),
-				                                          'mix' =>  $mix )
-				);
-				$this->custom_scripts_status = $when;
+			    array_push( $this->custom_scripts, array( 'path' => $path,
+			                                              'type' => strtolower($type),
+			                                              'prop' => strtolower($prop),
+			                                              'mix' =>  $mix )
+			    );
+			    $this->custom_scripts_status = $when;
 
-				return $this->custom_scripts;
-			}
-		} else if (is_null($path) && !is_null($mix) && strtolower($prop) == 'inline') {
+			    return $this->custom_scripts;
+		    }
+	    } else if (is_null($path) && !is_null($mix) && strtolower($prop) == 'inline') {
 
-			if (is_null($type)) return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new inline script the file "type" can not be null, change accordingly.</p></div>' ) );
+		    if (is_null($type)) return new WP_Error( 'broke', __( '<div class="error notice"><p>When adding a new inline script the file "type" can not be null, change accordingly.</p></div>' ) );
 
-			array_push( $this->custom_scripts, array( 'path' => $path,
-			                                          'type' => strtolower($type),
-			                                          'prop' => strtolower($prop),
-			                                          'mix' =>  $mix )
-			);
-			$this->custom_scripts_status = $when;
+		    array_push( $this->custom_scripts, array( 'path' => $path,
+		                                              'type' => strtolower($type),
+		                                              'prop' => strtolower($prop),
+		                                              'mix' =>  $mix )
+		    );
+		    $this->custom_scripts_status = $when;
 
-			return $this->custom_scripts;
-		}
+		    return $this->custom_scripts;
+	    }
 
-		return new WP_Error( 'broke', __( '<div class="error notice"><p>Please check your path, the file was not found on the server. <br/> This may be from an improper htaccess config or read wright on that folder.</p></div>' ) );
+	    return new WP_Error( 'broke', __( '<div class="error notice"><p>Please check your path, the file was not found on the server. <br/> This may be from an improper htaccess config or read wright on that folder.</p></div>' ) );
 
-	}
+    }
 
 	/** Callback function that inserts inline|file scripts
 	 *
@@ -537,6 +539,61 @@ class Froala_Admin {
 				}
 			}
 		}
+    }
+
+	/** Image File Upload
+	 * Upload Files to WordPress Media Folder
+	 *
+	 * returns file path in json format
+	 */
+	public function froala_upload_files(){
+
+		if ($_FILES) {
+			$attachment_id = media_handle_upload( 'file', 0 );
+
+			if ( is_wp_error( $attachment_id ) ) {
+				// There was an error uploading the image.
+			} else {
+				// The image was uploaded successfully!
+				$file_path      = wp_get_attachment_url( $attachment_id );
+				$response       = new StdClass;
+				$response->link = $file_path;
+
+				echo stripslashes( json_encode( $response ) );
+			}
+		}
+		exit();
+	}
+
+	/** Image File Manger
+	 * Pulls all the images from the Wordpress Media.
+	 *
+	 * returns object in json format
+	 */
+	public function froala_image_manager() {
+
+
+		$query_images_args = array (
+			'post_type'      => 'attachment',
+			'post_mime_type' => 'image',
+			'post_status'    => 'inherit',
+			'posts_per_page' => - 1,
+		);
+
+		$query_images = new WP_Query( $query_images_args );
+
+		$images = array();
+		$obj = array();
+		foreach ( $query_images->posts as $image ) {
+			$images['url']   = wp_get_attachment_url( $image->ID );
+			$images['thumb'] = wp_get_attachment_image_src( $image->ID, $size = 'thumbnail', $icon = false )[0];
+			$images['tag']   = get_post_meta( $image->ID, '_wp_attachment_image_alt', true );
+			$obj[]           = $images;
+		}
+
+		echo(stripslashes(json_encode($obj)));
+
+		exit();
 	}
 
 }
