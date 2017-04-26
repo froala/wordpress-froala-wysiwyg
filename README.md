@@ -41,9 +41,8 @@ that can be passed to the editor.
 #### Constants :
 
 ```php
-define('PluginPath', '/'.basename(__DIR__).'/includes/froala-upload-to-server.php');
-define('CustomJSFolderPath', '/'.basename(__DIR__).'/custom/js');
-define('CustomCSSFolderPath', '/'.basename(__DIR__).'/custom/css');
+define('FroalaCustomJSFolderPath', '/'.basename(__DIR__).'/custom/js');
+define('FroalaCustomCSSFolderPath', '/'.basename(__DIR__).'/custom/css');
 
 ```
 
@@ -213,18 +212,17 @@ $Froala_Editor->activate('#comment',array('colorsBackground' => ['#61BD6D', '#1A
 
 ```php
 
-// Static method for easy instantiation for the editor.
+// Public method for easy instantiation of the Froala WYSIWYG
 // '#comment'  Represents the html element selector.
 // 'array()'   Represents the list of options that are passed to the editor.
-// PluginPath  Represents a constant defined on plugin activation.
 
-$path = plugins_url(PluginPath);
 $Froala_Editor = new Froala_Editor();
-$Froala_Editor->activate('#comment',array('colorsBackground   '=> ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE'],
-                                         'colorsText'         => ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE'],
-                                         'imageUploadURL'     => $path.'?upload_image=1',
-                                         'imageManagerLoadURL'=> $path.'?view_images=1
-                                        ));
+$Froala_Editor->activate('#comment',array(
+                                    'imageUploadParams'  => ['action' =>'froala_upload_files'],
+                                    'imageUploadURL'     => admin_url( 'admin-ajax.php' ),
+                                    'imageManagerLoadParams'   => ['action' =>'froala_image_manager'],
+                                    'imageManagerLoadURL'=> admin_url( 'admin-ajax.php' )
+                                    ));
 
 ```
 

@@ -159,6 +159,10 @@ class Froala {
 		$this->loader->add_action( 'froala_new_plugin', $plugin_admin, 'froala_new_plugin', 9, 2);
 		$this->loader->add_action( 'froala_after_init', $plugin_admin, 'froala_editor_after' , 10, 4);
 
+		// Added hooks for image upload and image mananger
+		$this->loader->add_action('wp_ajax_froala_upload_files', $plugin_admin, 'froala_upload_files');
+		$this->loader->add_action('wp_ajax_froala_image_manager', $plugin_admin,'froala_image_manager');
+
 
 	}
 
@@ -181,6 +185,12 @@ class Froala {
 		// Added custom hooks, helps adding new plugins or any other custom functionality
 		$this->loader->add_action( 'froala_before_public_init', $plugin_public, 'froala_editor_before', 10, 4);
 		$this->loader->add_action( 'froala_after_public_init', $plugin_public, 'froala_editor_after' , 10, 4);
+
+		// Added hooks for image upload and image mananger on the front-end part of the website.
+		$this->loader->add_action('wp_ajax_froala_upload_files', $plugin_public, 'froala_upload_files');
+		$this->loader->add_action('wp_ajax_nopriv_froala_upload_files', $plugin_public, 'froala_upload_files'); // Allow front-end submission
+		$this->loader->add_action('wp_ajax_froala_image_manager', $plugin_public,'froala_image_manager');
+		$this->loader->add_action('wp_ajax_nopriv_froala_image_manager', $plugin_public,'froala_image_manager'); // Allow front-end image browsing
 
 
 	}

@@ -133,8 +133,8 @@ class Froala_Editor {
 			foreach ($active_plugins as $script) {
 				$suffix = '.min.js';
 				$css_suffix = '.css';
-				$this->enque_editor_plugins($script,$suffix);
-				$this->enque_editor_plugins_css($script,$css_suffix);
+				$this->froala_enque_editor_plugins($script,$suffix);
+				$this->froala_enque_editor_plugins_css($script,$css_suffix);
 			}
 
 			if (is_array($editor_options)) {
@@ -152,7 +152,7 @@ class Froala_Editor {
 						 jQuery(\''.$element_selector.'\').froalaEditor('.$editor_options.');
 						}); </script>' . "\n";
 
-			$this->enque_editor_script($content);
+			$this->froala_enque_editor_script($content);
 			$filter = $this->froala_get_filters_for('froala_after_public_init');
 
 			if ( $filter !== 'none') {
@@ -217,7 +217,7 @@ class Froala_Editor {
 	 * Modified
 	 * @since 1.0.2
 	 */
-	public function enque_editor_plugins ($name = null, $suffix = null) {
+	public function froala_enque_editor_plugins ($name = null, $suffix = null) {
 		$path = plugins_url('public/js/plugins/'.$name.$suffix,dirname( __FILE__ ));
 
 		stream_context_set_default( [
@@ -250,7 +250,7 @@ class Froala_Editor {
 	 * @param null $name        *Will be the name of the file same as the plugin name
 	 * @param null $suffix      *Will be the suffix of the file like: ".min.css", ".css"
 	 */
-	public function enque_editor_plugins_css ($name = null, $suffix = null) {
+	public function froala_enque_editor_plugins_css ($name = null, $suffix = null) {
 
 		$path = plugin_dir_url( __FILE__ ) . 'css/plugins/'.$name.$suffix;
 		stream_context_set_default( [
@@ -272,7 +272,7 @@ class Froala_Editor {
 	 *
 	 * @param null $content
 	 */
-	public function enque_editor_script ($content = null) {
+	public function froala_enque_editor_script ($content = null) {
 
 		wp_enqueue_script( 'editor-init', plugins_url('public/js/plugins/editor-init.js',dirname( __FILE__ )),array('jquery'), '1.0' );
 		wp_add_inline_script( 'editor-init', $content );
@@ -480,6 +480,63 @@ class Froala_Editor {
 	public function froala_add_inline_css ($content = null) {
 		wp_enqueue_style( 'froala-custom-scripts-css', '#', array(), '1.0' );
 		wp_add_inline_style( 'froala-custom-scripts-css', $content );
+	}
+
+	/** Image File Upload
+	 * Upload Files to WordPress Media Folder
+	 *
+	 * returns file path in json format
+	 */
+	public function froala_upload_files() {
+
+		if ($_FILES) {
+
+			// Let WordPress handle the upload.
+			$attachment_id = media_handle_upload( 'file', 0 );
+
+			if ( is_wp_error( $attachment_id ) ) {
+				// There was an error uploading the image.
+			} else {
+				// The image was uploaded successfully!
+				$file_path      = wp_get_attachment_url( $attachment_id );
+				$response       = new StdClass;
+				$response->link = $file_path;
+
+				echo stripslashes( json_encode( $response ) );
+			}
+		}
+		exit();
+	}
+
+	/** Image File Manger
+	 * Pulls all the images from the Wordpress Media.
+	 *
+	 * returns object in json format
+	 */
+	public function froala_image_manager() {
+
+
+		$query_images_args = array (
+			'post_type'      => 'attachment',
+			'post_mime_type' => 'image',
+			'post_status'    => 'inherit',
+			'posts_per_page' => - 1,
+		);
+
+		$query_images = new WP_Query( $query_images_args );
+
+		$images = array();
+		$obj = array();
+		foreach ( $query_images->posts as $image ) {
+			$images['url']   = wp_get_attachment_url( $image->ID );
+			$images['thumb'] = wp_get_attachment_image_src( $image->ID, $size = 'thumbnail', $icon = false )[0];
+			$images['tag']   = get_post_meta( $image->ID, '_wp_attachment_image_alt', true );
+			$obj[]           = $images;
+		}
+
+		echo(stripslashes(json_encode($obj)));
+
+		exit();
 	}
 
 }
