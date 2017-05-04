@@ -220,21 +220,46 @@ class Froala_Editor {
 	public function froala_enque_editor_plugins ($name = null, $suffix = null) {
 		$path = plugins_url('public/js/plugins/'.$name.$suffix,dirname( __FILE__ ));
 
-		stream_context_set_default( [
-			'ssl' => [
-				'verify_peer' => false,
-				'verify_peer_name' => false,
-			],
-		]);
-		$headers = @get_headers($path);
+		$js_array_list = [
+			'align.min.js',
+			'char_counter.min.js',
+			'code_beautifier.min.js',
+			'code_view.min.js',
+			'colors.min.js',
+			'draggable.min.js',
+			'emoticons.min.js',
+			'entities.min.js',
+			'file.min.js',
+			'font_family.min.js',
+			'font_size.min.js',
+			'forms.min.js',
+			'fullscreen.min.js',
+			'help.min.js',
+			'image.min.js',
+			'image_manager.min.js',
+			'inline_style.min.js',
+			'line_breaker.min.js',
+			'link.min.js',
+			'lists.min.js',
+			'paragraph_format.min.js',
+			'paragraph_style.min.js',
+			'print.min.js',
+			'quick_insert.min.js',
+			'quote.min.js',
+			'save.min.js',
+			'special_characters.min.js',
+			'url.min.js',
+			'video.min.js',
+			'word_paste.min.js'
+		];
 
-		if (preg_match("|200|", $headers[0])) {
+		if (in_array($name.$suffix,$js_array_list)){
 
 			wp_register_script('froala-'.$name,$path);
 			wp_enqueue_script('froala-'.$name);
 		}
 		else {
-			$path = plugins_url(CustomJSFolderPath.'/'.$name.'.js');
+			$path = plugins_url(FroalaEditorCustomJSFolderPath.'/'.$name.'.js');
 			$headers = @get_headers($path);
 
 			if (preg_match("|200|", $headers[0])) {
@@ -252,16 +277,27 @@ class Froala_Editor {
 	 */
 	public function froala_enque_editor_plugins_css ($name = null, $suffix = null) {
 
-		$path = plugin_dir_url( __FILE__ ) . 'css/plugins/'.$name.$suffix;
-		stream_context_set_default( [
-			'ssl' => [
-				'verify_peer' => false,
-				'verify_peer_name' => false,
-			],
-		]);
-		$headers = @get_headers($path);
+		$css_array_list = [
+			'char_counter.css',
+			'code_view.css',
+			'colors.css',
+			'draggable.css',
+			'emoticons.css',
+			'file.css',
+			'fullscreen.css',
+			'help.css',
+			'image.css',
+			'image_manager.css',
+			'line_breaker.css',
+			'quick_insert.css',
+			'special_characters.css',
+			'table.css',
+			'video.css'
+		];
 
-		if (preg_match("|200|", $headers[0])) {
+		$path = plugin_dir_url( __FILE__ ) . 'css/plugins/'.$name.$suffix;
+
+		if (in_array($name.$suffix,$css_array_list)) {
 			wp_register_style('froala-'.$name,$path);
 			wp_enqueue_style('froala-'.$name);
 		}
@@ -299,29 +335,6 @@ class Froala_Editor {
 		}
 		return false;
 	}
-
-	/** Helper function checks if the file path is correct if not it will return error message.
-	 * @param null $path
-	 *
-	 * @return bool
-	 * @since 1.0.2
-	 */
-	public function froala_check_script_path ($path = null) {
-
-		stream_context_set_default( [
-			'ssl' => [
-				'verify_peer' => false,
-				'verify_peer_name' => false,
-			],
-		]);
-		$headers = @get_headers($path);
-
-		if (preg_match("|200|", $headers[0])) {
-			return true;
-		}
-		return false;
-	}
-
 
 	/** Callback function for public hook "froala_before_public_init"
 	 *
@@ -434,6 +447,7 @@ class Froala_Editor {
 	 *
 	 */
 	public function froala_set_custom_script () {
+
 
 		if (isset($this->custom_scripts)) {
 

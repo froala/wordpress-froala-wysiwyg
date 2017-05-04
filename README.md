@@ -65,7 +65,7 @@ define('FroalaCustomCSSFolderPath', '/'.basename(__DIR__).'/custom/css');
  * @return array|WP_Error
  *
  *
-* To use a public hook, it needs to be registered before the editor get's initialized. The propper way 
+* To use a public hook, it needs to be registered right after the editor get's instantiated. The propper way 
 * would be to store it in a variable so you can have access to the debug log.
 *
 * This example includes a custom css file and load's it acordingly, because it's used after public init the css file
@@ -78,6 +78,9 @@ define('FroalaCustomCSSFolderPath', '/'.basename(__DIR__).'/custom/css');
 * 4' th 'file'                          => script property, can be file|inline.
 * 5' th 'test'                          => the name of the file. 
 */
+$custom_css_path = plugins_url(FroalaEditorCustomCSSFolderPath);
+$custom_js_path = plugins_url(FroalaEditorCustomJSFolderPath);
+
 $hook = apply_filters('froala_after_public_init', $custom_css_path.'/test.css', 'css', 'file','test');
 
 if( is_wp_error( $hook ) ) {
@@ -85,7 +88,7 @@ if( is_wp_error( $hook ) ) {
 }
 
 // Same as the example above but it includes a javascript file and the action of the hook it's before Froala Editor's initialization.
-$hook = apply_filters('froala_before_public_init', $custom_css_path.'/test.js', 'js', 'file','test');
+$hook = apply_filters('froala_before_public_init', $custom_js_path.'/test.js', 'js', 'file','test');
 
 if( is_wp_error( $hook ) ) {
   echo $hook->get_error_message();
@@ -106,14 +109,16 @@ if( is_wp_error( $hook ) ) {
   echo $hook->get_error_message();
 }
 
-// Note! 
-//The hooks must be registered before instantiating the FroalaEditor class.
+// Note!! 
+//The hooks must be registered right after instantiating the FroalaEditor class.
 
+$Froala_Editor = new Froala_Editor();
+.
+.
+.
 $hook = apply_filters('froala_before_public_init', null, 'css', 'inline', 'h1 {background-color: #00ffff;}');
 .
 .
-.
-$Froala_Editor = new Froala_Editor();
 $froala->activate('#comment',array('colorsBackground   '=> ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE'],
                                          'colorsText'         => ['#61BD6D', '#1ABC9C', '#54ACD2', 'REMOVE']
                                         ));
@@ -152,6 +157,9 @@ $froala->activate('#comment',array('colorsBackground   '=> ['#61BD6D', '#1ABC9C'
 * 5' th 'test'                          => the name of the file. 
 */
 
+$custom_css_path = plugins_url(FroalaEditorCustomCSSFolderPath);
+$custom_js_path = plugins_url(FroalaEditorCustomJSFolderPath);
+
 $hook = apply_filters('froala_after_init', $custom_css_path.'/test.css', 'css', 'file','test');
 
 if( is_wp_error( $hook ) ) {
@@ -159,7 +167,7 @@ if( is_wp_error( $hook ) ) {
 }
 // Same as the example above but it includes a javascript file and the action of the hook it's before Froala Editor's initialization.
 
-$hook = apply_filters('froala_before_init', $custom_css_path.'/test.js', 'js', 'file','test');
+$hook = apply_filters('froala_before_init', $custom_js_path.'/test.js', 'js', 'file','test');
 
 if( is_wp_error( $hook ) ) {
   echo $hook->get_error_message();
@@ -231,19 +239,21 @@ This will be visible in the admin under Froala WYSIWYG settings and can be activ
 
 ```php
 
-// CustomJSFolderPath is a constant defined on plugin activation will return
+// FroalaCustomJSFolderPath is a constant defined on plugin activation will return
 // the path to the Custom JS folder e.g: /froala/custom/js    
-// froala_before_init custom hook that integrates the new plugin and registers the new script
+// froala_new_plugin, custom hook that integrates the new plugin and registers the new script
 // The hook takes 2 params, 1'st the path to the plugin and 2'nd the name of the plugin.
 // The if statement check if there are any erros on registering the new plugin
 
-$custom_plugin_path = plugins_url(CustomJSFolderPath);
+$custom_plugin_path = plugins_url(FroalaCustomJSFolderPath);
 $new_plugin = apply_filters('froala_before_init', $custom_plugin_path . '/test.js', 'test');
 
 if( is_wp_error( $new_plugin ) ) {
 	echo $new_plugin->get_error_message();
 }
 
+After calling the hook inside the admin pannel under Froala WYSIWYG settings there will be a new plugin in the list
+called "test".
 
 ```
 Add the above code to your functions file inside your theme to see how it works. For an easier understanding 
@@ -252,6 +262,8 @@ the plugin will come with a dummy file placed inside "froala/custom/js/". This w
 You can delete this file at any time it's just for demo purposes.
 
 After adding a new plugin, it needs to be activated from the admin panel.
+
+
 
 ## License
 
