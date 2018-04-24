@@ -310,7 +310,7 @@ class Froala_Admin {
 
 
 	    if (isset($this->custom_scripts_status) && $this->custom_scripts_status == 'before') {
-		    $this->forala_set_custom_script();
+		    $this->froala_set_custom_script();
         }
 
 		$this->active_plugins = get_option( $this->option_name .'_plugin_list');
@@ -335,15 +335,19 @@ class Froala_Admin {
 			$editor_id ='#content';
 		}
 
+		$licence_key = get_option('froala_fr_licence' );
+
 		echo "\t\t" . '<script> jQuery(document).ready(function(){
-						 jQuery(\''.$editor_id.'\').froalaEditor({\'imageUploadURL\':\''.$path.'\',
-                                                                  \'imageManagerLoadURL\':\''.$path.'\',
-                                                                  \'imageUploadParams\': {\'action\' : \'froala_upload_files\'},
-                                                                  \'imageManagerLoadParams\':{\'action\' : \'froala_image_manager\'}});
+						 jQuery(\''.$editor_id.'\').froalaEditor({
+							 					\'key\':\''.$licence_key.'\',
+							 					\'imageUploadURL\':\''.$path.'\',
+                        \'imageManagerLoadURL\':\''.$path.'\',
+                        \'imageUploadParams\': {\'action\' : \'froala_upload_files\'},
+                        \'imageManagerLoadParams\':{\'action\' : \'froala_image_manager\'}});
 						}); </script>' . "\n";
 
 		if (isset($this->custom_scripts_status) && $this->custom_scripts_status == 'after') {
-			$this->forala_set_custom_script();
+			$this->froala_set_custom_script();
 		}
 		return $settings;
 	}
@@ -509,7 +513,7 @@ class Froala_Admin {
 	/** Callback function that inserts inline|file scripts
 	 *
 	 */
-	public function forala_set_custom_script() {
+	public function froala_set_custom_script() {
 
 		if (isset($this->custom_scripts)) {
 
