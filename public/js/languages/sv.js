@@ -1,5 +1,5 @@
 /*!
- * froala_editor v2.8.1 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.8.5 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2018 Froala Labs
  */
@@ -121,7 +121,7 @@ $.FE.LANGUAGE['sv'] = {
     "Display": "Visa",
     "Inline": "I linje",
     "Break Text": "Bryt text",
-    "Alternate Text": "Alternativ text",
+    "Alternative Text": "Alternativ text",
     "Change Size": "\u00c4ndra storlek",
     "Width": "Bredd",
     "Height": "H\u00f6jd",
