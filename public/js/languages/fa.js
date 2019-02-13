@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.8.5 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2018 Froala Labs
+ * Copyright 2014-2019 Froala Labs
  */
 
 (function (factory) {
@@ -89,7 +89,22 @@ $.FE.LANGUAGE['fa'] = {
 
     // Lists
     "Ordered List": "\u0644\u06cc\u0633\u062a \u0634\u0645\u0627\u0631\u0647 \u0627\u06cc",
+    "Default": "به طور پیش فرض",
+    "Lower Alpha": "آلفای پایین",
+    "Lower Greek": "قرن پایین تر",
+    "Lower Roman": "رومی پایین تر",
+    "Upper Alpha": "آلفای بالا",
+    "Upper Roman": "رومانی بالا",
+
     "Unordered List": "\u0644\u06cc\u0633\u062a \u062f\u0627\u06cc\u0631\u0647 \u0627\u06cc",
+    "Circle": "دایره",
+    "Disc": "دیسک",
+    "Square": "مربع",
+
+    // Line height
+    "Line Height": "ارتفاع خط",
+    "Single": "تنها",
+    "Double": "دو برابر",
 
     // Indent
     "Decrease Indent": "\u06a9\u0627\u0647\u0634 \u062a\u0648 \u0631\u0641\u062a\u06af\u06cc",
@@ -243,6 +258,9 @@ $.FE.LANGUAGE['fa'] = {
 
     // Clear formatting
     "Clear Formatting": "\u062d\u0630\u0641 \u0642\u0627\u0644\u0628 \u0628\u0646\u062f\u06cc",
+
+    // Save
+    "Save": "\u0635\u0631\u0641\u0647 \u062c\u0648\u06cc\u06cc",
 
     // Undo, redo
     "Undo": "\u0628\u0627\u0637\u0644 \u06a9\u0631\u062f\u0646",

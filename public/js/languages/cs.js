@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.8.5 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2018 Froala Labs
+ * Copyright 2014-2019 Froala Labs
  */
 
 (function (factory) {
@@ -89,7 +89,22 @@ $.FE.LANGUAGE['cs'] = {
 
     // Lists
     "Ordered List": "\u010c\u00edslovan\u00fd seznam",
+    "Default": "Výchozí",
+    "Lower Alpha": "Nižší alfa",
+    "Lower Greek": "Nižší řečtina",
+    "Lower Roman": "Nižší římský",
+    "Upper Alpha": "Horní alfa",
+    "Upper Roman": "Horní římský",
+
     "Unordered List": "Ne\u010d\u00edslovan\u00fd seznam",
+    "Circle": "Kruh",
+    "Disc": "Disk",
+    "Square": "Náměstí",
+
+    // Line height
+    "Line Height": "Výška řádku",
+    "Single": "Singl",
+    "Double": "Dvojnásobek",
 
     // Indent
     "Decrease Indent": "Zmen\u0161it odsazen\u00ed",
@@ -243,6 +258,9 @@ $.FE.LANGUAGE['cs'] = {
 
     // Clear formatting
     "Clear Formatting": "Vymazat form\u00e1tov\u00e1n\u00ed",
+
+    // Save
+    "Save": "\u0055\u006c\u006f\u017e\u0069\u0074",
 
     // Undo, redo
     "Undo": "Zp\u011bt",

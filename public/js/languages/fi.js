@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.8.5 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2018 Froala Labs
+ * Copyright 2014-2019 Froala Labs
  */
 
 (function (factory) {
@@ -89,7 +89,22 @@ $.FE.LANGUAGE['fi'] = {
 
     // Lists
     "Ordered List": "J\u00e4rjestetty lista",
+    "Default": "Oletusarvo",
+    "Lower Alpha": "Alempi alfa",
+    "Lower Greek": "Alempi kreikka",
+    "Lower Roman": "Alempi roomalainen",
+    "Upper Alpha": "Ylempi alfa",
+    "Upper Roman": "Ylempi roomalainen",
+
     "Unordered List": "J\u00e4rjest\u00e4m\u00e4t\u00f6n lista",
+    "Circle": "Ympyrä",
+    "Disc": "Levy",
+    "Square": "Neliö-",
+
+    // Line height
+    "Line Height": "Viivankorkeus",
+    "Single": "Yksittäinen",
+    "Double": "Kaksinkertainen",
 
     // Indent
     "Decrease Indent": "Sisenn\u00e4",
@@ -243,6 +258,9 @@ $.FE.LANGUAGE['fi'] = {
 
     // Clear formatting
     "Clear Formatting": "Poista muotoilu",
+
+    // Save
+    "Save": "Tallentaa",
 
     // Undo, redo
     "Undo": "Peru",

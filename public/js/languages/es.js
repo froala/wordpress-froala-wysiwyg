@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.8.5 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2018 Froala Labs
+ * Copyright 2014-2019 Froala Labs
  */
 
 (function (factory) {
@@ -89,7 +89,22 @@ $.FE.LANGUAGE['es'] = {
 
     // Lists
     "Ordered List": "Lista ordenada",
+    "Default": "Defecto",
+    "Lower Alpha": "Alfa inferior",
+    "Lower Greek": "Griego inferior",
+    "Lower Roman": "Baja romana",
+    "Upper Alpha": "Alfa superior",
+    "Upper Roman": "Romano superior",
+
     "Unordered List": "Lista desordenada",
+    "Circle": "Circulo",
+    "Disc": "Dto",
+    "Square": "Cuadrado",
+
+    // Line height
+    "Line Height": "Altura de la línea",
+    "Single": "Soltero",
+    "Double": "Doble",
 
     // Indent
     "Decrease Indent": "Reducir sangr\u00eda",
@@ -243,6 +258,9 @@ $.FE.LANGUAGE['es'] = {
 
     // Clear formatting
     "Clear Formatting": "Quitar el formato",
+
+    // Save
+    "Save": "Salvar",
 
     // Undo, redo
     "Undo": "Deshacer",

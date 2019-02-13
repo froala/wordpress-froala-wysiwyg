@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.8.5 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2018 Froala Labs
+ * Copyright 2014-2019 Froala Labs
  */
 
 (function (factory) {
@@ -90,7 +90,22 @@ $.FE.LANGUAGE['sk'] = {
 
     // Lists
     "Ordered List": "\u010c\u00edslovan\u00fd zoznam",
+    "Default": "Štandardné",
+    "Lower Alpha": "Nižšia alfa",
+    "Lower Greek": "Nižšie grécke",
+    "Lower Roman": "Nižší roman",
+    "Upper Alpha": "Horná alfa",
+    "Upper Roman": "Horný román",
+
     "Unordered List": "Ne\u010d\u00edslovan\u00fd zoznam",
+    "Circle": "Kružnice",
+    "Disc": "Kotúč",
+    "Square": "Námestie",
+
+    // Line height
+    "Line Height": "Výška riadku",
+    "Single": "Jednoposteľová",
+    "Double": "Dvojitý",
 
     // Indent
     "Decrease Indent": "Zmen\u0161i\u0165 odsadenie",
@@ -244,6 +259,9 @@ $.FE.LANGUAGE['sk'] = {
 
     // Clear formatting
     "Clear Formatting": "Vymaza\u0165 formatovanie",
+
+    // Save
+    "Save": "\u0055\u006c\u006f\u017e\u0069\u0165",
 
     // Undo, redo
     "Undo": "Sp\u00e4\u0165",

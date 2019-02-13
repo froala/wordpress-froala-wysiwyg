@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.8.5 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2018 Froala Labs
+ * Copyright 2014-2019 Froala Labs
  */
 
 .clearfix::after {
@@ -110,6 +110,14 @@
   -moz-box-shadow: none;
   box-shadow: none;
 }
+@media (min-width: 992px) {
+  .red-theme .fr-box.fr-document .fr-wrapper .fr-element {
+    margin: auto;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+}
 .red-theme .fr-sticky-on.fr-sticky-ios {
   left: 0;
   right: 0;
@@ -197,7 +205,7 @@
 .red-theme.fr-popup .fr-color-hex-layer .fr-input-line {
   padding: 8px 0 0;
 }
-.red-theme.fr-popup .fr-color-hex-layer .fr-action-buttons button {
+.red-theme.fr-popup .fr-color-hex-layer .fr-action-buttons button.fr-command {
   background-color: #ffca28;
   border-radius: 2px;
   -moz-border-radius: 2px;
@@ -206,7 +214,7 @@
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
-.red-theme.fr-popup .fr-color-hex-layer .fr-action-buttons button:hover {
+.red-theme.fr-popup .fr-color-hex-layer .fr-action-buttons button.fr-command:hover {
   background-color: #f4b800;
 }
 .red-theme.fr-popup .fr-color-set {
@@ -376,13 +384,15 @@
 .red-theme.fr-popup .fr-image-progress-bar-layer > div.fr-loader.fr-indeterminate span {
   top: 0;
 }
-.red-theme.fr-modal-head .fr-modal-head-line i.fr-modal-more {
+.red-theme.fr-modal-head .fr-modal-head-line i.fr-modal-more,
+.red-theme.fr-modal-head .fr-modal-head-line svg.fr-modal-more {
   -webkit-transition: padding 0.2s ease 0s, width 0.2s ease 0s, opacity 0.2s ease 0s;
   -moz-transition: padding 0.2s ease 0s, width 0.2s ease 0s, opacity 0.2s ease 0s;
   -ms-transition: padding 0.2s ease 0s, width 0.2s ease 0s, opacity 0.2s ease 0s;
   -o-transition: padding 0.2s ease 0s, width 0.2s ease 0s, opacity 0.2s ease 0s;
 }
-.red-theme.fr-modal-head .fr-modal-head-line i.fr-modal-more.fr-not-available {
+.red-theme.fr-modal-head .fr-modal-head-line i.fr-modal-more.fr-not-available,
+.red-theme.fr-modal-head .fr-modal-head-line svg.fr-modal-more.fr-not-available {
   opacity: 0;
   width: 0;
   padding: 12px 0;
@@ -693,6 +703,9 @@
 .red-theme .fr-view .fr-text-bordered {
   padding: 10px 0;
 }
+.red-theme .fr-view .fr-class-highlighted {
+  background-color: #ffff00;
+}
 .red-theme .fr-view .fr-img-caption .fr-img-wrap {
   margin: auto;
 }
@@ -710,6 +723,23 @@
 }
 .red-theme.fr-box .fr-embedly-resizer {
   border: solid 1px #ffca28;
+}
+.red-theme.fr-modal .fr-modal-wrapper .fr-modal-body .fr-font-awesome-modal .fr-font-awesome-title {
+  border-bottom: solid 1px #f0f0f0;
+}
+.red-theme .tui-image-editor-container {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+}
+.red-theme .tui-editor-cancel-btn {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+}
+.red-theme .tui-editor-save-btn {
+  color: #ffffff;
 }
 .red-theme .examples-variante > a {
   font-size: 14px;
@@ -866,13 +896,17 @@
   border-top-color: #edc9c9;
 }
 .red-theme.fr-desktop .fr-command:hover,
-.red-theme.fr-desktop .fr-command:focus {
+.red-theme.fr-desktop .fr-command:focus,
+.red-theme.fr-desktop .fr-command.fr-btn-hover,
+.red-theme.fr-desktop .fr-command.fr-expanded {
   outline: 0;
   color: #ffffff;
   background: #c65a59;
 }
 .red-theme.fr-desktop .fr-command:hover::after,
-.red-theme.fr-desktop .fr-command:focus::after {
+.red-theme.fr-desktop .fr-command:focus::after,
+.red-theme.fr-desktop .fr-command.fr-btn-hover::after,
+.red-theme.fr-desktop .fr-command.fr-expanded::after {
   border-top-color: #ffffff !important;
 }
 .red-theme.fr-desktop .fr-command.fr-selected {
@@ -880,7 +914,9 @@
   background: #d48382;
 }
 .red-theme.fr-desktop .fr-command.fr-active:hover,
-.red-theme.fr-desktop .fr-command.fr-active:focus {
+.red-theme.fr-desktop .fr-command.fr-active:focus,
+.red-theme.fr-desktop .fr-command.fr-active.fr-btn-hover,
+.red-theme.fr-desktop .fr-command.fr-active.fr-expanded {
   color: #ffca28;
   background: #c65a59;
 }
@@ -891,6 +927,15 @@
 .red-theme.fr-toolbar.fr-mobile .fr-command.fr-blink,
 .red-theme.fr-popup.fr-mobile .fr-command.fr-blink {
   background: transparent;
+}
+.red-theme .fr-command.fr-btn.fr-options {
+  width: 16px;
+  margin-left: -5px;
+}
+.red-theme .fr-command.fr-btn.fr-options.fr-btn-hover,
+.red-theme .fr-command.fr-btn.fr-options:hover,
+.red-theme .fr-command.fr-btn.fr-options:focus {
+  border-left: solid 1px #fafafa;
 }
 .red-theme .fr-command.fr-btn + .fr-dropdown-menu {
   right: auto;

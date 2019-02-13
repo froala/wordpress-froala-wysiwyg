@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.8.5 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2018 Froala Labs
+ * Copyright 2014-2019 Froala Labs
  */
 
 (function (factory) {
@@ -89,7 +89,22 @@ $.FE.LANGUAGE['pl'] = {
 
     // Lists
     "Ordered List": "Uporz\u0105dkowana lista",
+    "Default": "Domyślna",
+    "Lower Alpha": "Niższy alfa",
+    "Lower Greek": "Niższy grecki",
+    "Lower Roman": "Niższe rzymskie",
+    "Upper Alpha": "Górna alfa",
+    "Upper Roman": "Górny rzymski",
+
     "Unordered List": "Lista nieuporz\u0105dkowana",
+    "Circle": "Okrąg",
+    "Disc": "Dysk",
+    "Square": "Plac",
+
+    // Line height
+    "Line Height": "Wysokość linii",
+    "Single": "Pojedynczy",
+    "Double": "Podwójnie",
 
     // Indent
     "Decrease Indent": "Zmniejsz wci\u0119cie",
@@ -243,6 +258,9 @@ $.FE.LANGUAGE['pl'] = {
 
     // Clear formatting
     "Clear Formatting": "Usu\u0144 formatowanie",
+
+    // Save
+    "Save": "\u005a\u0061\u0070\u0069\u0073\u0061\u0107",
 
     // Undo, redo
     "Undo": "Cofnij",

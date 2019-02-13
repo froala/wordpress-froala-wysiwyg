@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.8.5 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2018 Froala Labs
+ * Copyright 2014-2019 Froala Labs
  */
 
 (function (factory) {
@@ -89,7 +89,22 @@ $.FE.LANGUAGE['sv'] = {
 
     // Lists
     "Ordered List": "Ordnad lista",
+    "Default": "Standard",
+    "Lower Alpha": "Lägre alfa",
+    "Lower Greek": "Lägre grekiska",
+    "Lower Roman": "Lägre roman",
+    "Upper Alpha": "Övre alfa",
+    "Upper Roman": "Övre roman",
+
     "Unordered List": "Oordnad lista",
+    "Circle": "Cirkel",
+    "Disc": "Skiva",
+    "Square": "Fyrkant",
+
+    // Line height
+    "Line Height": "Radavstånd",
+    "Single": "Enda",
+    "Double": "Dubbel",
 
     // Indent
     "Decrease Indent": "Minska indrag",
@@ -243,6 +258,9 @@ $.FE.LANGUAGE['sv'] = {
 
     // Clear formatting
     "Clear Formatting": "Ta bort formatering",
+
+    // Save
+    "Save": "Spara",
 
     // Undo, redo
     "Undo": "\u00c5ngra",

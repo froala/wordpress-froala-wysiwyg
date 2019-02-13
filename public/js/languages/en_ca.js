@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.8.5 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2018 Froala Labs
+ * Copyright 2014-2019 Froala Labs
  */
 
 (function (factory) {
@@ -83,13 +83,28 @@ $.FE.LANGUAGE['en_ca'] = {
     "Align": "Align",
     "Align Left": "Align Left",
     "Align Center": "Align Centre",
-    "Align Right": "Alight Right",
+    "Align Right": "Align Right",
     "Align Justify": "Align Justify",
     "None": "None",
 
     // Lists
     "Ordered List": "Ordered List",
+    "Default": "",
+    "Lower Alpha": "Lower Alpha",
+    "Lower Greek": "Lower Greek",
+    "Lower Roman": "Lower Roman",
+    "Upper Alpha": "Upper Alpha",
+    "Upper Roman": "Upper Roman",
+
     "Unordered List": "Unordered List",
+    "Circle": "Circle",
+    "Disc": "Disc",
+    "Square": "Square",
+
+    // Line height
+    "Line Height": "Line Height",
+    "Single": "Single",
+    "Double": "Double",
 
     // Indent
     "Decrease Indent": "Decrease Indent",
@@ -186,7 +201,10 @@ $.FE.LANGUAGE['en_ca'] = {
     "Insert Horizontal Line": "Insert Horizontal Line",
 
     // Clear formatting
-    "Clear Formatting": "Cell Formatting",
+    "Clear Formatting": "Clear Formatting",
+
+    // Save
+    "Save": "Save",
 
     // Undo, redo
     "Undo": "Undo",
