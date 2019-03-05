@@ -406,7 +406,7 @@ class Froala_Admin {
 
 			for ($i = 0; $i < count($active_plugins); $i++) {
 
-				if (in_array($this->plugin_list[$i]['name'],$active_plugins)) {
+				if (isset($this->plugin_list[$i]['name']) && in_array($this->plugin_list[$i]['name'],$active_plugins)) {
 					array_push( $custom_plugins, $this->plugin_list[$i]);
 					unset($this->active_plugins[$i]);
 				}
