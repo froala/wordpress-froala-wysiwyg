@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.8.5 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2018 Froala Labs
+ * Copyright 2014-2019 Froala Labs
  */
 
 (function (factory) {
@@ -89,7 +89,22 @@ $.FE.LANGUAGE['uk'] = {
 
     // Lists
     "Ordered List": "\u041d\u0443\u043c\u0435\u0440\u043e\u0432\u0430\u043d\u0438\u0439 \u0441\u043f\u0438\u0441\u043e\u043a",
+    "Default": "За замовчуванням",
+    "Lower Alpha": "Нижня альфа",
+    "Lower Greek": "Нижній грецький",
+    "Lower Roman": "Нижній римський",
+    "Upper Alpha": "Верхня альфа",
+    "Upper Roman": "Верхній римський",
+
     "Unordered List": "\u041c\u0430\u0440\u043a\u043e\u0432\u0430\u043d\u0438\u0439 \u0441\u043f\u0438\u0441\u043e\u043a",
+    "Circle": "Коло",
+    "Disc": "Диск",
+    "Square": "Площа",
+
+    // Line height
+    "Line Height": "Висота рядка",
+    "Single": "Одномісний",
+    "Double": "Подвійний",
 
     // Indent
     "Decrease Indent": "\u0417\u043c\u0435\u043d\u0448\u0438\u0442\u0438 \u0432\u0456\u0434\u0441\u0442\u0443\u043f",
@@ -243,6 +258,9 @@ $.FE.LANGUAGE['uk'] = {
 
     // Clear formatting
     "Clear Formatting": "\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u0438 \u0444\u043e\u0440\u043c\u0430\u0442\u0443\u0432\u0430\u043d\u043d\u044f",
+
+    // Save
+    "Save": "\u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438",
 
     // Undo, redo
     "Undo": "\u0421\u043a\u0430\u0441\u0443\u0432\u0430\u0442\u0438",

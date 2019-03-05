@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.8.5 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2018 Froala Labs
+ * Copyright 2014-2019 Froala Labs
  */
 
 (function (factory) {
@@ -89,7 +89,22 @@ $.FE.LANGUAGE['ro'] = {
 
     // Lists
     "Ordered List": "List\u0103 ordonat\u0103",
+    "Default": "Mod implicit",
+    "Lower Alpha": "Inferior alfa",
+    "Lower Greek": "Inferior grecesc",
+    "Lower Roman": "Inferior roman",
+    "Upper Alpha": "Alfa superioară",
+    "Upper Roman": "Superior roman",
+
     "Unordered List": "List\u0103 neordonat\u0103",
+    "Circle": "Cerc",
+    "Disc": "Disc",
+    "Square": "Pătrat",
+
+    // Line height
+    "Line Height": "Inaltimea liniei",
+    "Single": "Singur",
+    "Double": "Dubla",
 
     // Indent
     "Decrease Indent": "De-indenteaz\u0103",
@@ -112,7 +127,6 @@ $.FE.LANGUAGE['ro'] = {
     "or click": "sau f\u0103 click",
     "Manage Images": "Gestionare imagini",
     "Loading": "Se \u00eencarc\u0103",
-    "Deleting": "",
     "Deleting": "Se \u0219terge",
     "Tags": "Etichete",
     "Are you sure? Image will be deleted.": "Sunte\u021bi sigur? Imaginea va fi \u015ftears\u0103.",
@@ -244,6 +258,9 @@ $.FE.LANGUAGE['ro'] = {
 
     // Clear formatting
     "Clear Formatting": "Elimina\u021bi formatarea",
+
+    // Save
+    "Save": "\u0053\u0061\u006c\u0076\u0061\u021b\u0069",
 
     // Undo, redo
     "Undo": "Reexecut\u0103",
