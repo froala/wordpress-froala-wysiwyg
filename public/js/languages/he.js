@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.8.5 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2018 Froala Labs
+ * Copyright 2014-2019 Froala Labs
  */
 
 (function (factory) {
@@ -89,7 +89,22 @@ $.FE.LANGUAGE['he'] = {
 
     // Lists
     "Ordered List": "\u05d4\u05d5\u05e1\u05e4\u05ea \u05e8\u05e9\u05d9\u05de\u05d4 \u05de\u05de\u05d5\u05e1\u05e4\u05e8\u05ea",
+    "Default": "ברירת המחדל",
+    "Lower Alpha": "אלפא נמוך יותר",
+    "Lower Greek": "נמוך יוונית",
+    "Lower Roman": "התחתון הרומית",
+    "Upper Alpha": "אלפא העליון",
+    "Upper Roman": "הרומאי העליון",
+
     "Unordered List": "\u05d4\u05d5\u05e1\u05e4\u05ea \u05e8\u05e9\u05d9\u05de\u05d4",
+    "Circle": "מעגל",
+    "Disc": "דיסק",
+    "Square": "כיכר",
+
+    // Line height
+    "Line Height": "גובה קו",
+    "Single": "יחיד",
+    "Double": "כפול",
 
     // Indent
     "Decrease Indent": "\u05d4\u05e7\u05d8\u05e0\u05ea \u05db\u05e0\u05d9\u05e1\u05d4",
@@ -243,6 +258,9 @@ $.FE.LANGUAGE['he'] = {
 
     // Clear formatting
     "Clear Formatting": "\u05dc\u05d4\u05e1\u05d9\u05e8 \u05e2\u05d9\u05e6\u05d5\u05d1",
+
+    // Save
+    "Save": "\u05dc\u05d4\u05e6\u05d9\u05dc",
 
     // Undo, redo
     "Undo": "\u05d1\u05d9\u05d8\u05d5\u05dc",

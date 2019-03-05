@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.8.5 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2018 Froala Labs
+ * Copyright 2014-2019 Froala Labs
  */
 
 (function (factory) {
@@ -89,7 +89,22 @@ $.FE.LANGUAGE['et'] = {
 
     // Lists
     "Ordered List": "Tellitud nimekirja",
+    "Default": "Vaikimisi",
+    "Lower Alpha": "Alumine alfa",
+    "Lower Greek": "Alumine kreeklane",
+    "Lower Roman": "Madalam roomlane",
+    "Upper Alpha": "Ülemine alfa",
+    "Upper Roman": "Ülemine rooma",
+
     "Unordered List": "Tavalise nimekirja",
+    "Circle": "Ringi",
+    "Disc": "Plaat",
+    "Square": "Ruut",
+
+    // Line height
+    "Line Height": "Reakõrgus",
+    "Single": "Üksik",
+    "Double": "Topelt",
 
     // Indent
     "Decrease Indent": "V\u00e4henemine taane",
@@ -243,6 +258,9 @@ $.FE.LANGUAGE['et'] = {
 
     // Clear formatting
     "Clear Formatting": "Eemalda formaatimine",
+
+    // Save
+    "Save": "Salvesta",
 
     // Undo, redo
     "Undo": "V\u00f5ta tagasi",

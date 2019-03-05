@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.8.5 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2018 Froala Labs
+ * Copyright 2014-2019 Froala Labs
  */
 
 (function (factory) {
@@ -89,7 +89,22 @@ $.FE.LANGUAGE['ja'] = {
 
     // Lists
     "Ordered List": "\u6bb5\u843d\u756a\u53f7",
+    "Default": "デフォルト",
+    "Lower Alpha": "下アルファ",
+    "Lower Greek": "下ギリシャ",
+    "Lower Roman": "下ローマ",
+    "Upper Alpha": "アッパーアルファ",
+    "Upper Roman": "アッパーローマン",
+
     "Unordered List": "\u7b87\u6761\u66f8\u304d",
+    "Circle": "サークル",
+    "Disc": "ディスク",
+    "Square": "平方",
+
+    // Line height
+    "Line Height": "行の高さ",
+    "Single": "シングル",
+    "Double": "ダブル",
 
     // Indent
     "Decrease Indent": "\u30a4\u30f3\u30c7\u30f3\u30c8\u3092\u6e1b\u3089\u3059",
@@ -243,6 +258,9 @@ $.FE.LANGUAGE['ja'] = {
 
     // Clear formatting
     "Clear Formatting": "\u66f8\u5f0f\u306e\u30af\u30ea\u30a2",
+
+    // Save
+    "Save": "\u30bb\u30fc\u30d6",
 
     // Undo, redo
     "Undo": "\u5143\u306b\u623b\u3059",

@@ -239,14 +239,14 @@ This will be visible in the admin under Froala WYSIWYG settings and can be activ
 
 ```php
 
-// FroalaCustomJSFolderPath is a constant defined on plugin activation will return
+// FroalaEditorCustomJSFolderPath is a constant defined on plugin activation will return
 // the path to the Custom JS folder e.g: /froala/custom/js    
 // froala_new_plugin, custom hook that integrates the new plugin and registers the new script
 // The hook takes 2 params, 1'st the path to the plugin and 2'nd the name of the plugin.
 // The if statement check if there are any erros on registering the new plugin
 
-$custom_plugin_path = plugins_url(FroalaCustomJSFolderPath);
-$new_plugin = apply_filters('froala_before_init', $custom_plugin_path . '/test.js', 'test');
+$custom_plugin_path = plugins_url(FroalaEditorCustomJSFolderPath);
+$new_plugin = apply_filters('froala_new_plugin', $custom_plugin_path . '/test.js', 'test');
 
 if( is_wp_error( $new_plugin ) ) {
 	echo $new_plugin->get_error_message();
@@ -256,13 +256,21 @@ After calling the hook inside the admin pannel under Froala WYSIWYG settings the
 called "test".
 
 ```
-Add the above code to your functions file inside your theme to see how it works. For an easier understanding 
-the plugin will come with a dummy file placed inside "froala/custom/js/". This will help if you copy/paste the above code inside your functions file.
+Add the above code to froala.php file to add plugin inside admin panel.After adding a new plugin, it needs to be activated from the admin panel. For an easier understanding the plugin will come with a dummy file placed inside "froala/custom/js/". You can delete this file at any time it's just for demo purposes.
+
+For checking out how plugin works without adding it to admin panel,use the following code inside functions file in your theme:
+
+```php
+$custom_plugin_path = plugins_url(FroalaEditorCustomJSFolderPath);
+$new_plugin = apply_filters('froala_before_public_init', $custom_plugin_path . '/test.js','js','file', 'test');
+
+if( is_wp_error( $new_plugin ) ) {
+  echo $new_plugin->get_error_message();
+}
+
+```
+This will help if you copy/paste the above code inside your functions file.
  
-You can delete this file at any time it's just for demo purposes.
-
-After adding a new plugin, it needs to be activated from the admin panel.
-
 
 
 ## License
