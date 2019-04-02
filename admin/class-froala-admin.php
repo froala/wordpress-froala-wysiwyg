@@ -337,14 +337,14 @@ class Froala_Admin {
 
 		$licence_key = get_option('froala_fr_licence' );
 
-		echo "\t\t" . '<script> jQuery(document).ready(function(){
-						 jQuery(\''.$editor_id.'\').froalaEditor({
-							 					\'key\':\''.$licence_key.'\',
-							 					\'imageUploadURL\':\''.$path.'\',
-                        \'imageManagerLoadURL\':\''.$path.'\',
-                        \'imageUploadParams\': {\'action\' : \'froala_upload_files\'},
-                        \'imageManagerLoadParams\':{\'action\' : \'froala_image_manager\'}});
-						}); </script>' . "\n";
+		echo "\t\t" . '<script>document.addEventListener("DOMContentLoaded",function(){
+			new FroalaEditor(\''.$editor_id.'\',{
+									\'key\':\''.$licence_key.'\',
+									\'imageUploadURL\':\''.$path.'\',
+		   \'imageManagerLoadURL\':\''.$path.'\',
+		   \'imageUploadParams\': {\'action\' : \'froala_upload_files\'},
+		   \'imageManagerLoadParams\':{\'action\' : \'froala_image_manager\'}});
+		   }); </script>' . "\n";
 
 		if (isset($this->custom_scripts_status) && $this->custom_scripts_status == 'after') {
 			$this->froala_set_custom_script();
