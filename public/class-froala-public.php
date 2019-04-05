@@ -148,9 +148,9 @@ class Froala_Editor {
 				$editor_options = '{\'key\':\''.$licence_key.'\'}';
 			}
 
-			$content = "\t\t" . '<script> jQuery(window).on(\'load\', function(e){
-						 jQuery(\''.$element_selector.'\').froalaEditor('.$editor_options.');
-						}); </script>' . "\n";
+			$content = "\t\t" . '<script>function initFroalaEditor(){ new FroalaEditor(\''.$element_selector.'\','.$editor_options.');}
+			window.onload = initFroalaEditor;
+			    </script>' . "\n";
 
 			$this->froala_enque_editor_script($content);
 			$filter = $this->froala_get_filters_for('froala_after_public_init');
@@ -182,13 +182,12 @@ class Froala_Editor {
 		wp_register_style('froala_editor_css',plugin_dir_url( __FILE__ ) . 'css/froala_editor.css');
 		wp_register_style('froala_style_css',plugin_dir_url( __FILE__ ) . 'css/froala_style.css');
 		wp_register_style('froala_public_css',plugin_dir_url( __FILE__ ) . 'css/froala-public.css');
-		wp_register_style('font_asm','https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-
+		
 
 		wp_enqueue_style('froala_editor_css');
 		wp_enqueue_style('froala_style_css');
 		wp_enqueue_style('froala_public_css');
-		wp_enqueue_style('font_asm');
+		
 	}
 
 	/**
@@ -204,7 +203,7 @@ class Froala_Editor {
 		 * class.
 		 */
 
-		wp_register_script('froala_editor',plugins_url('public/js/froala_editor.min.js',dirname( __FILE__ )),array('jquery','editor-init'), true);
+		wp_register_script('froala_editor',plugins_url('public/js/froala_editor.min.js',dirname( __FILE__ )), true);
 		wp_enqueue_script('froala_editor');
 
 	}
@@ -310,7 +309,7 @@ class Froala_Editor {
 	 */
 	public function froala_enque_editor_script ($content = null) {
 
-		wp_enqueue_script( 'editor-init', plugins_url('public/js/plugins/editor-init.js',dirname( __FILE__ )),array('jquery'), '1.0' );
+		wp_enqueue_script( 'editor-init', plugins_url('public/js/plugins/editor-init.js',dirname( __FILE__ )));
 		wp_add_inline_script( 'editor-init', $content );
 	}
 
