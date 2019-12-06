@@ -70,7 +70,7 @@ class Froala_Admin {
 		$this->version = $version;
 
 		if ( !get_option( $this->option_name .'_plugin_list') ) {
-			update_option( $this->option_name .'_plugin_list', array('align','char_counter'));
+		update_option( $this->option_name .'_plugin_list', array('align','char_counter'));
 		}
 	}
 
@@ -95,7 +95,7 @@ class Froala_Admin {
 
 		wp_register_style('froala_editor_css',plugin_dir_url( __FILE__ ) . 'css/froala_editor.css');
 		wp_register_style('froala_style_css',plugin_dir_url( __FILE__ ) . 'css/froala_style.css');
-		wp_register_style('froala_admin_css',plugin_dir_url( __FILE__ ) . 'css/froala-admin.css');
+		wp_register_style('froala_admin_css',plugin_dir_url( __FILE__ ) . 'css/froala_editor.pkgd.css');
 		wp_register_style('font_asm','https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 
@@ -152,11 +152,12 @@ class Froala_Admin {
 		 * class.
 		 */
 
-		wp_register_script('froala_admin',plugin_dir_url( __FILE__ ) . 'js/froala-admin.js');
-		wp_register_script('froala_editor',plugin_dir_url( __FILE__ ) . 'js/froala_editor.min.js');
 
-		wp_enqueue_script('froala_admin');
-		wp_enqueue_script('froala_editor');
+		wp_register_script('froala_editor',plugin_dir_url( __FILE__ ) . 'js/froala_editor.min.js');
+		wp_register_script('froala_editor_pkgd',plugin_dir_url( __FILE__ ) . 'js/froala_editor.pkgd.min.js');;
+
+    	wp_enqueue_script('froala_editor');
+		wp_enqueue_script('froala_editor_pkgd');
 	}
 
 	/**
@@ -337,14 +338,14 @@ class Froala_Admin {
 
 		$licence_key = get_option('froala_fr_licence' );
 
-		echo "\t\t" . '<script> jQuery(document).ready(function(){
-						 jQuery(\''.$editor_id.'\').froalaEditor({
-							 					\'key\':\''.$licence_key.'\',
-							 					\'imageUploadURL\':\''.$path.'\',
-                        \'imageManagerLoadURL\':\''.$path.'\',
-                        \'imageUploadParams\': {\'action\' : \'froala_upload_files\'},
-                        \'imageManagerLoadParams\':{\'action\' : \'froala_image_manager\'}});
-						}); </script>' . "\n";
+		echo "\t\t" . '<script>document.addEventListener("DOMContentLoaded",function(){
+			new FroalaEditor(\''.$editor_id.'\',{
+									\'key\':\''.$licence_key.'\',
+									\'imageUploadURL\':\''.$path.'\',
+		   \'imageManagerLoadURL\':\''.$path.'\',
+		   \'imageUploadParams\': {\'action\' : \'froala_upload_files\'},
+		   \'imageManagerLoadParams\':{\'action\' : \'froala_image_manager\'}});
+		   }); </script>' . "\n";
 
 		if (isset($this->custom_scripts_status) && $this->custom_scripts_status == 'after') {
 			$this->froala_set_custom_script();
