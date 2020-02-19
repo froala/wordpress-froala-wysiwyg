@@ -1,0 +1,47 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+#wp-word-count {
+    display:none;
+}
+.fr-admin-dropdown {
+    min-width: 150px;
+    min-height: 200px;
+}
+.toplevel_page_froala .wp-menu-image.dashicons-before.dashicons-admin-generic:before {
+    content: url(https://www.froala.com/assets/favicons/favicon-16x16-8a4c4f110e9a3cbc831bd81a122f7520.png);
+    padding: 5px 0;
+}
+
+#fr_admin_dropdown_ul{
+
+    width:760px;
+    margin-bottom:20px;
+    overflow:hidden;
+}
+#fr_admin_dropdown_li{
+
+    line-height:1.5em;
+    border-bottom:1px solid #ccc;
+    float:left;
+    display:inline;
+}
+.double li  { width:50%;}
+.triple li  { width:33.333%; }
+.quad li    { width:25%; }
+.six li     { width:16.666%; }
+
+.froala_fr_licence {
+    min-width: 250px;
+}
+div.fr-modal-body div.fr-image-list div.fr-image-container .fr-delete-img {
+    display: none !important;
+}
+
+div.fr-modal-body div.fr-image-list div.fr-image-container .fr-insert-img {
+    -webkit-transform: translateY(-50%) translateX(-50%) !important;
+    -moz-transform: translateY(-50%) translateX(-50%) !important;
+    -ms-transform: translateY(-50%) translateX(-50%) !important;
+    -o-transform: translateY(-50%) translateX(-50%) !important;
+}

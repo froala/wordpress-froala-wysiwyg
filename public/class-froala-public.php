@@ -181,8 +181,7 @@ class Froala_Editor {
 
 		wp_register_style('froala_editor_css',plugin_dir_url( __FILE__ ) . 'css/froala_editor.css');
 		wp_register_style('froala_style_css',plugin_dir_url( __FILE__ ) . 'css/froala_style.css');
-		// wp_register_style('froala_public_css',plugin_dir_url( __FILE__ ) . 'css/froala-public.css');
-		
+		wp_register_style('froala_public_css',plugin_dir_url( __FILE__ ) . 'css/froala-public.css');		
 
 		wp_enqueue_style('froala_editor_css');
 		wp_enqueue_style('froala_style_css');
