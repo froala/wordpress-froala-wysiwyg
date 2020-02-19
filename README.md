@@ -24,6 +24,32 @@ when installing new plugins.
 Go to your plugins page inside the admin area of your WordPress installation and activate the plugin.
 **The plugin will replace the default editor**.
 
+#### Third Party Plugins :
+
+```php
+wp_register_style('embedly_css',plugin_dir_url( __FILE__ ) . 'css/third_party/embedly.css');
+wp_register_style('image_tui_css',plugin_dir_url( __FILE__ ) . 'css/third_party/image_tui.css');
+wp_register_style('spell_checker_css',plugin_dir_url( __FILE__ ) .'css/third_party/spell_checker.css');
+wp_enqueue_style('embedly_css');
+wp_enqueue_style('image_tui_css');
+wp_enqueue_style('spell_checker_css');
+wp_register_script('embedly',plugin_dir_url( __FILE__ ) . 'js/third_party/embedly.min.js');
+wp_register_script('image_tui',plugin_dir_url( __FILE__ ) . 'js/third_party/image_tui.min.js');
+wp_register_script('font_awesome',plugin_dir_url( __FILE__ ) . 'js/third_party/font_awesome.min.js');
+wp_register_script('spell_checker',plugin_dir_url( __FILE__ ) . 'js/third_party/spell_checker.min.js');
+wp_enqueue_script('embedly');
+wp_enqueue_script('image_tui');
+wp_enqueue_script('font_awesome');
+wp_enqueue_script('spell_checker');
+array_push($this->plugin_list,			
+			array('name'=>'embedly'),			
+			array('name'=>'font_awesome')			
+			array('name'=>'image_tui'),			
+			array('name'=>'spell_checker'),
+			array('name'=>'video'));
+		?>
+```
+
 
 ## Usage
 
