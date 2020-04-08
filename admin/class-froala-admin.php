@@ -113,7 +113,9 @@ class Froala_Admin {
 		wp_register_style('special_characters_css',plugin_dir_url( __FILE__ ) . 'css/plugins/special_characters.css');
 		wp_register_style('table_css',plugin_dir_url( __FILE__ ) . 'css/plugins/table.css');
 		wp_register_style('video_css',plugin_dir_url( __FILE__ ) . 'css/plugins/video.css');
-
+		wp_register_style('code_view_css',plugin_dir_url( __FILE__ ) . 'css/plugins/code_view.min.css');
+		
+		
 		wp_enqueue_style('froala_editor_css');
 		wp_enqueue_style('froala_style_css');
 		wp_enqueue_style('froala_admin_css');
@@ -133,6 +135,7 @@ class Froala_Admin {
 		wp_enqueue_style('special_characters_css');
 		wp_enqueue_style('table_css');
 		wp_enqueue_style('video_css');
+		wp_enqueue_style('code_view_css');
 	}
 
 	/**
@@ -151,6 +154,15 @@ class Froala_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+
+		// Include codemirror's JS and CSS. 
+		// The Code View plugin won't work without it.
+		wp_register_style( 'codemirror-css', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css' );
+		wp_enqueue_style( 'codemirror-css' );
+
+		wp_enqueue_script('codemirror-js', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js');
+
+		wp_enqueue_script('codemirror-xml-js', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js');
 
 		wp_register_script('froala_admin',plugin_dir_url( __FILE__ ) . 'js/froala-admin.js');
 		wp_register_script('froala_editor',plugin_dir_url( __FILE__ ) . 'js/froala_editor.min.js');
