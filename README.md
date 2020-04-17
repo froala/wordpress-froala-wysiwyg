@@ -32,7 +32,8 @@ The plugin can be used under the admin area as soon as it is active.
 The plugin has a settings page that will be available after you activate the plugin. Under the settings page there will 
 be an input for the licence key and a dropdown with all the available plugins that can be activated/deactivated.
 
-To add any additional plugin from the [Available Plugins](https://froala.com/wysiwyg-editor/docs/plugins), then you have to include those in `class-froala-public.php`
+
+Include plugins in file `class-froala-public.php` from [Available Plugin List](https://froala.com/wysiwyg-editor/docs/plugins)
 
 ```php
 $js_array_list = [
@@ -94,7 +95,8 @@ $css_array_list = [
   '../third_party/image_tui.min.css'
 ];
 ```
-and update
+
+and update in the file `class-froala-admin.php` with corresponding to plugin added above
 
 ```php
 array_push($this->plugin_list,
@@ -182,7 +184,7 @@ wp_enqueue_style('font_awesome_css');
 wp_enqueue_style('spell_checker_css');
 wp_enqueue_style('image_tui_css');
 ```
-in the file `class-froala-admin.php`
+
 
 To use the Froala Editor on the front-end part of the website, the plugin must be initialized from themes folder.
 
