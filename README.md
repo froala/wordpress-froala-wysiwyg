@@ -35,6 +35,44 @@ be an input for the licence key and a dropdown with all the available plugins th
 To add any additional plugin from the [Available Plugins](https://froala.com/wysiwyg-editor/docs/plugins), then you have to include those in `class-froala-public.php`
 
 ```php
+$js_array_list = [
+  'align.min.js',
+  'char_counter.min.js',
+  'code_beautifier.min.js',
+  'code_view.min.js',
+  'colors.min.js',
+  'draggable.min.js',
+  'emoticons.min.js',
+  'entities.min.js',
+  'file.min.js',
+  'font_family.min.js',
+  'font_size.min.js',
+  'forms.min.js',
+  'fullscreen.min.js',
+  'help.min.js',
+  'image.min.js',
+  'image_manager.min.js',
+  'inline_style.min.js',
+  'line_breaker.min.js',
+  'link.min.js',
+  'lists.min.js',
+  'paragraph_format.min.js',
+  'paragraph_style.min.js',
+  'print.min.js',
+  'quick_insert.min.js',
+  'quote.min.js',
+  'save.min.js',
+  'special_characters.min.js',
+  'url.min.js',
+  'video.min.js',
+  'word_paste.min.js',
+  '../third_party/font_awesome.min.js',
+  '../third_party/spell_checker.min.js',
+  '../third_party/image_tui.min.js'
+];
+```
+
+```php
 $css_array_list = [
   'char_counter.css',
   'code_view.css',
