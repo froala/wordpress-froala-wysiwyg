@@ -32,6 +32,160 @@ The plugin can be used under the admin area as soon as it is active.
 The plugin has a settings page that will be available after you activate the plugin. Under the settings page there will 
 be an input for the licence key and a dropdown with all the available plugins that can be activated/deactivated.
 
+
+Include plugins in file `class-froala-public.php` from [Available Plugin List](https://froala.com/wysiwyg-editor/docs/plugins)
+
+```php
+$js_array_list = [
+  'align.min.js',
+  'char_counter.min.js',
+  'code_beautifier.min.js',
+  'code_view.min.js',
+  'colors.min.js',
+  'draggable.min.js',
+  'emoticons.min.js',
+  'entities.min.js',
+  'file.min.js',
+  'font_family.min.js',
+  'font_size.min.js',
+  'forms.min.js',
+  'fullscreen.min.js',
+  'help.min.js',
+  'image.min.js',
+  'image_manager.min.js',
+  'inline_style.min.js',
+  'line_breaker.min.js',
+  'link.min.js',
+  'lists.min.js',
+  'paragraph_format.min.js',
+  'paragraph_style.min.js',
+  'print.min.js',
+  'quick_insert.min.js',
+  'quote.min.js',
+  'save.min.js',
+  'special_characters.min.js',
+  'url.min.js',
+  'video.min.js',
+  'word_paste.min.js',
+  '../third_party/font_awesome.min.js',
+  '../third_party/spell_checker.min.js',
+  '../third_party/image_tui.min.js'
+];
+```
+
+```php
+$css_array_list = [
+  'char_counter.css',
+  'code_view.css',
+  'colors.css',
+  'draggable.css',
+  'emoticons.css',
+  'file.css',
+  'fullscreen.css',
+  'help.css',
+  'image.css',
+  'image_manager.css',
+  'line_breaker.css',
+  'quick_insert.css',
+  'special_characters.css',
+  'table.css',
+  'video.css',
+  '../third_party/font_awesome.min.css',
+  '../third_party/spell_checker.min.css',
+  '../third_party/image_tui.min.css'
+];
+```
+
+and update in the file `class-froala-admin.php` with corresponding to plugin added above
+
+```php
+array_push($this->plugin_list,
+array('name'=>'align'),
+array('name'=>'char_counter' ),
+array('name'=>'code_beautifier'),
+array('name'=>'code_view'),
+array('name'=>'colors'),
+array('name'=>'draggable'),
+array('name'=>'emoticons'),
+array('name'=>'entities'),
+array('name'=>'file'),
+array('name'=>'font_family'),
+array('name'=>'font_size'),
+array('name'=>'forms'),
+array('name'=>'fullscreen'),
+array('name'=>'help'),
+array('name'=>'image'),
+array('name'=>'image_manager'),
+array('name'=>'inline_style'),
+array('name'=>'line_breaker'),
+array('name'=>'link'),
+array('name'=>'lists'),
+array('name'=>'paragraph_format'),
+array('name'=>'paragraph_style'),
+array('name'=>'print'),
+array('name'=>'quick_insert'),
+array('name'=>'quote'),
+array('name'=>'save'),
+array('name'=>'special_characters'),
+array('name'=>'table'),
+array('name'=>'url'),
+array('name'=>'video'),
+array('name'=>'../third_party/font_awesome'),
+array('name'=>'../third_party/spell_checker'),
+array('name'=>'../third_party/image_tui'));
+```
+
+```php
+wp_register_style('froala_editor_css',plugin_dir_url( __FILE__ ) . 'css/froala_editor.css');
+wp_register_style('froala_style_css',plugin_dir_url( __FILE__ ) . 'css/froala_style.css');
+wp_register_style('froala_admin_css',plugin_dir_url( __FILE__ ) . 'css/froala-admin.css');
+wp_register_style('font_asm','https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+
+wp_register_style('char_counter_css',plugin_dir_url( __FILE__ ) . 'css/plugins/char_counter.css');
+wp_register_style('colors_css',plugin_dir_url( __FILE__ ) . 'css/plugins/colors.css');
+wp_register_style('draggable_css',plugin_dir_url( __FILE__ ) . 'css/plugins/draggable.css');
+wp_register_style('emoticons_css',plugin_dir_url( __FILE__ ) . 'css/plugins/emoticons.css');
+wp_register_style('file_css',plugin_dir_url( __FILE__ ) . 'css/plugins/file.css');
+wp_register_style('fullscreen_css',plugin_dir_url( __FILE__ ) . 'css/plugins/fullscreen.css');
+wp_register_style('help_css',plugin_dir_url( __FILE__ ) . 'css/plugins/help.css');
+wp_register_style('image_css',plugin_dir_url( __FILE__ ) . 'css/plugins/image.css');
+wp_register_style('image_manager_css',plugin_dir_url( __FILE__ ) . 'css/plugins/image_manager.css');
+wp_register_style('line_breaker_css',plugin_dir_url( __FILE__ ) . 'css/plugins/line_breaker.css');
+wp_register_style('quick_insert_css',plugin_dir_url( __FILE__ ) . 'css/plugins/quick_insert.css');
+wp_register_style('special_characters_css',plugin_dir_url( __FILE__ ) . 'css/plugins/special_characters.css');
+wp_register_style('table_css',plugin_dir_url( __FILE__ ) . 'css/plugins/table.css');
+wp_register_style('video_css',plugin_dir_url( __FILE__ ) . 'css/plugins/video.css');
+
+wp_register_style('font_awesome_css',plugin_dir_url( __FILE__ ) . 'css/third_party/font_awesome.min.css');
+wp_register_style('spell_checker_css',plugin_dir_url( __FILE__ ) . 'css/third_party/spell_checker.min.css');
+wp_register_style('image_tui_css',plugin_dir_url( __FILE__ ) . 'css/third_party/image_tui.min.css');
+
+wp_enqueue_style('froala_editor_css');
+wp_enqueue_style('froala_style_css');
+wp_enqueue_style('froala_admin_css');
+wp_enqueue_style('font_asm');
+
+wp_enqueue_style('char_counter_css');
+wp_enqueue_style('colors_css');
+wp_enqueue_style('draggable_css');
+wp_enqueue_style('emoticons_css');
+wp_enqueue_style('file_css');
+wp_enqueue_style('fullscreen_css');
+wp_enqueue_style('help_css');
+wp_enqueue_style('image_css');
+wp_enqueue_style('image_manager_css');
+wp_enqueue_style('line_breaker_css');
+wp_enqueue_style('quick_insert_css');
+wp_enqueue_style('special_characters_css');
+wp_enqueue_style('table_css');
+wp_enqueue_style('video_css');
+wp_enqueue_style('font_awesome_css');
+wp_enqueue_style('spell_checker_css');
+wp_enqueue_style('image_tui_css');
+```
+
+
 To use the Froala Editor on the front-end part of the website, the plugin must be initialized from themes folder.
 
 The activate function accepts 2 parameters but the editor can be init using just one. The second param can be an array or object of options
