@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.7 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2019 Froala Labs
+ * Copyright 2014-2020 Froala Labs
  */
 
 .clearfix::after {
@@ -152,9 +152,11 @@ iframe.fr-iframe {
   left: 0;
   right: 0;
   overflow: hidden;
+  pointer-events: none;
 }
 .fr-wrapper.show-placeholder .fr-placeholder {
   display: block;
+  position: relative;
 }
 .fr-wrapper ::-moz-selection {
   background: #b5d6fd;
@@ -197,10 +199,10 @@ iframe.fr-iframe {
 }
 @media (min-width: 992px) {
   .fr-box.fr-document {
-    min-width: 21cm;
+    min-width: calc(21cm + 30px + 30px);
   }
   .fr-box.fr-document .fr-wrapper {
-    text-align: center;
+    text-align: left;
     padding: 30px;
     min-width: 21cm;
     background: #EFEFEF;
@@ -215,7 +217,9 @@ iframe.fr-iframe {
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 1px 1px rgba(0, 0, 0, 0.16);
     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 1px 1px rgba(0, 0, 0, 0.16);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 1px 1px rgba(0, 0, 0, 0.16);
-    overflow: visible;
+    /* https://github.com/froala-labs/froala-editor-js-2/issues/1531 */
+    /* Removed overflow: visible; */
+    z-index: auto;
   }
   .fr-box.fr-document .fr-wrapper .fr-element hr {
     margin-left: -2cm;
@@ -224,6 +228,9 @@ iframe.fr-iframe {
     height: 1cm;
     outline: none;
     border: none;
+  }
+  .fr-box.fr-document .fr-wrapper .fr-element img {
+    z-index: 1;
   }
 }
 .fr-tooltip {
@@ -739,7 +746,7 @@ body.prevent-scroll.fr-mobile {
 .fr-modal .fr-modal-wrapper div.fr-modal-body {
   height: 100%;
   min-height: 150px;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-bottom: 10px;
 }
 .fr-modal .fr-modal-wrapper div.fr-modal-body:focus {
@@ -1876,6 +1883,13 @@ body.fr-fullscreen {
 .fr-box.fr-fullscreen .fr-toolbar.fr-bottom {
   bottom: 0 !important;
 }
+.fr-fullscreen-wrapper {
+  z-index: 2147483640!important;
+  width: 100%!important;
+  margin: 0!important;
+  padding: 0!important;
+  overflow: visible!important;
+}
 
 .clearfix::after {
   clear: both;
@@ -1942,6 +1956,7 @@ body.fr-fullscreen {
 }
 .fr-element img {
   cursor: pointer;
+  padding: 0 1px;
 }
 .fr-image-resizer {
   position: absolute;
@@ -1956,7 +1971,6 @@ body.fr-fullscreen {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  z-index: 2;
 }
 .fr-image-resizer.fr-active {
   display: block;

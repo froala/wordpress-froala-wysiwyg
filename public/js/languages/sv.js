@@ -1,7 +1,7 @@
 /*!
- * froala_editor v2.9.3 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v2.9.7 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
- * Copyright 2014-2019 Froala Labs
+ * Copyright 2014-2020 Froala Labs
  */
 
 (function (factory) {
@@ -131,7 +131,7 @@ $.FE.LANGUAGE['sv'] = {
     "Tags": "Etiketter",
     "Are you sure? Image will be deleted.": "\u00c4r du s\u00e4ker? Bild kommer att raderas.",
     "Replace": "Ers\u00e4tt",
-    "Uploading": "Laddar up",
+    "Uploading": "Laddar upp",
     "Loading image": "Laddar bild",
     "Display": "Visa",
     "Inline": "I linje",
@@ -163,7 +163,7 @@ $.FE.LANGUAGE['sv'] = {
     "Insert row below": "Infoga rad efter",
     "Delete row": "Ta bort rad",
     "Column": "Kolumn",
-    "Insert column before": "Infoga kollumn f\u00f6re",
+    "Insert column before": "Infoga kolumn f\u00f6re",
     "Insert column after": "Infoga kolumn efter",
     "Delete column": "Ta bort kolumn",
     "Cell": "Cell",
