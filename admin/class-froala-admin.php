@@ -281,7 +281,6 @@ class Froala_Admin {
 			array('name'=>'special_characters'),
 			array('name'=>'table'),
 			array('name'=>'url'),
-			array('name'=>'video'),
 			array('name'=>'files_manager'),
 			array('name'=>'video'));
 		?>
