@@ -346,8 +346,8 @@ class Froala_Admin {
 		   \'imageManagerLoadURL\':\''.$path.'\',
 		   \'imageUploadParams\': {\'action\' : \'froala_upload_files\'},
 		   \'imageManagerLoadParams\':{\'action\' : \'froala_image_manager\'}});
-		   }); </script>' . "\n";
-											  
+		    }); </script>' . "\n";
+
 		if (isset($this->custom_scripts_status) && $this->custom_scripts_status == 'after') {
 			$this->froala_set_custom_script();
 		}
