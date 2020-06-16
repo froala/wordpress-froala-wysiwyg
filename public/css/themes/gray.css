@@ -562,7 +562,7 @@
       border: solid 2px #0097A7; }
     .gray-theme .fr-checkbox-disabled input:checked:active + span {
       background-color: #EcF5Ff; }
-.gray-theme .tooltip .tooltiptext {
+.gray-theme .fr-files-manager-tooltip .tooltiptext {
   font-weight: 100; }
 .gray-theme .fr-file-view-modal {
   left: 0;

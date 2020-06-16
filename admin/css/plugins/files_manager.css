@@ -665,7 +665,7 @@ button[data-cmd="insertAll"] {
 .fr-display-block {
   display: block; }
 
-.tooltip {
+.fr-files-manager-tooltip {
   position: relative; }
 
 .padding-top-15 {
@@ -673,7 +673,7 @@ button[data-cmd="insertAll"] {
   padding-bottom: 0px !important; }
 
 /* Tooltip text */
-.tooltip .tooltiptext {
+.fr-files-manager-tooltip .tooltiptext {
   visibility: hidden;
   width: max-content;
   max-width: 250px;
@@ -693,7 +693,7 @@ button[data-cmd="insertAll"] {
   z-index: 2147483647; }
 
 /* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
+.fr-files-manager-tooltip:hover .tooltiptext {
   visibility: visible; }
 
 .fr-file-details {
