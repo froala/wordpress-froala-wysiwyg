@@ -2500,7 +2500,31 @@ button[data-cmd="insertAll"] {
   margin-left: 2px;
   margin-right: 2px; }
 
+.fr-file-action-icons {
+  margin-right: 5px;
+  margin-left: 5px !important;
+  color: #999;
+  height: 25px !important;
+  padding: 5px !important; }
+
+@media screen and (max-width: 700px) {
+  .fr-files-manager-tooltip .tooltiptext {
+    max-width: 250px;
+    visibility: hidden;
+    word-break: break-word;
+    word-wrap: break-word;
+    top: 90%;
+    left: 0%;
+    font-size: 8px; } }
 @media screen and (max-width: 500px) {
+  .fr-files-manager-tooltip .tooltiptext {
+    max-width: 100px;
+    visibility: hidden;
+    word-break: break-word;
+    word-wrap: break-word;
+    top: 90%;
+    left: 0%; }
+
   .fr-file-item-description {
     width: 130px; }
 
@@ -2509,14 +2533,16 @@ button[data-cmd="insertAll"] {
 
   .progress-circle {
     font-size: 6px; } }
-.fr-file-action-icons {
-  margin-right: 5px;
-  margin-left: 5px !important;
-  color: #999;
-  height: 25px !important;
-  padding: 5px !important; }
-
 @media screen and (max-width: 320px) {
+  .fr-files-manager-tooltip .tooltiptext {
+    max-width: 100px;
+    visibility: hidden;
+    word-break: break-word;
+    word-wrap: break-word;
+    top: 90%;
+    left: -50%;
+    font-size: 8px; }
+
   .dot {
     width: 20px;
     margin-left: 0px;
