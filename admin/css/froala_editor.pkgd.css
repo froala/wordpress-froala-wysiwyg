@@ -1928,6 +1928,7 @@ textarea.fr-code {
   padding: 11.5px 0; }
 
 .fr-popup .fr-upload-progress-layer {
+  border-radius: 0;
   box-sizing: border-box;
   padding-left: 20px;
   padding-top: 15px;
@@ -2479,6 +2480,9 @@ button[data-cmd="insertAll"] {
   font-size: 10px; }
 
 .fr-file-date {
+  word-break: break-word;
+  word-wrap: break-word;
+  max-width: 110px;
   color: #444;
   padding-top: 2px;
   padding-bottom: 2px; }
@@ -2488,7 +2492,39 @@ button[data-cmd="insertAll"] {
   padding-top: 2px;
   padding-bottom: 2px; }
 
+.dot {
+  width: 20px;
+  height: 20px;
+  background-image: radial-gradient(circle, grey 1px, transparent 2px);
+  background-size: 100% 33.33%;
+  margin-left: 2px;
+  margin-right: 2px; }
+
+.fr-file-action-icons {
+  margin-right: 5px;
+  margin-left: 5px !important;
+  color: #999;
+  height: 25px !important;
+  padding: 5px !important; }
+
+@media screen and (max-width: 700px) {
+  .fr-files-manager-tooltip .tooltiptext {
+    max-width: 250px;
+    visibility: hidden;
+    word-break: break-word;
+    word-wrap: break-word;
+    top: 90%;
+    left: 0%;
+    font-size: 8px; } }
 @media screen and (max-width: 500px) {
+  .fr-files-manager-tooltip .tooltiptext {
+    max-width: 100px;
+    visibility: hidden;
+    word-break: break-word;
+    word-wrap: break-word;
+    top: 90%;
+    left: 0%; }
+
   .fr-file-item-description {
     width: 130px; }
 
@@ -2498,8 +2534,22 @@ button[data-cmd="insertAll"] {
   .progress-circle {
     font-size: 6px; } }
 @media screen and (max-width: 320px) {
+  .fr-files-manager-tooltip .tooltiptext {
+    max-width: 100px;
+    visibility: hidden;
+    word-break: break-word;
+    word-wrap: break-word;
+    top: 90%;
+    left: -50%;
+    font-size: 8px; }
+
+  .dot {
+    width: 20px;
+    margin-left: 0px;
+    margin-right: 3px; }
+
   .fr-file-item-description {
-    width: 100px; }
+    width: 80px; }
 
   .fr-file-details {
     display: flex;
@@ -2507,7 +2557,10 @@ button[data-cmd="insertAll"] {
     font-size: 9px; }
 
   .fr-file-name {
-    font-size: 10px; } }
+    font-size: 10px; }
+
+  .fr-file-action-icons {
+    padding: 0px !important; } }
 @media screen and (min-width: 501px) {
   .progress-circle {
     font-size: 9px; } }
@@ -2573,13 +2626,6 @@ button[data-cmd="insertAll"] {
   display: flex;
   align-items: center;
   justify-content: space-around; }
-
-.fr-file-action-icons {
-  margin-right: 5px;
-  margin-left: 5px !important;
-  color: #999;
-  height: 25px !important;
-  padding: 5px !important; }
 
 .fr-file-item-autoplay-checkbox {
   align-items: center;
@@ -2963,6 +3009,9 @@ button[data-cmd="insertAll"] {
 .align-autoplay {
   align-items: flex-end;
   margin-right: 7px; }
+
+.fr-hovered-over-file {
+  background-color: #F0F0F0; }
 
 .thumbnail-padding {
   padding-right: 4px; }

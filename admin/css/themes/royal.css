@@ -422,6 +422,7 @@
 .royal-theme .fr-by-url-padding {
   padding: 11.5px 0; }
 .royal-theme.fr-popup .fr-upload-progress-layer {
+  border-radius: 0;
   overflow-y: auto; }
 .royal-theme.fr-popup .fr-files-upload-layer {
   border: dashed 2px #bdbdbd;
@@ -586,6 +587,8 @@
   background-color: #4CAF50; }
 .royal-theme .progress-circle {
   padding: 0; }
+.royal-theme .fr-hovered-over-file {
+  background-color: #F0F0F0; }
 .royal-theme.fr-box.fr-fullscreen {
   top: 0;
   left: 0;
