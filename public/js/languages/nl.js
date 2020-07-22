@@ -1,5 +1,5 @@
 /*!
- * froala_editor v3.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v3.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2020 Froala Labs
  */
@@ -66,7 +66,7 @@
       'Ordered List': 'Geordende lijst',
       'Unordered List': 'Ongeordende lijst',
       'Default': 'Standaard',
-      'Lower alpha': 'Kleine letters',
+      'Lower Alpha': 'Kleine letters',
       'Lower Greek': 'Kleine Griekse letters',
       'Lower Roman': 'Kleine Romeinse cijfers',
       'Upper Alpha': 'Grote letters',

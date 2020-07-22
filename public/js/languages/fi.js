@@ -1,5 +1,5 @@
 /*!
- * froala_editor v3.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v3.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2020 Froala Labs
  */
@@ -88,7 +88,7 @@
       'Replace': 'Vaihda',
       'Uploading': 'Lataaminen',
       'Loading image': 'Lastaus kuva',
-      'Display': "N\xE4ytt\xE4",
+      'Display': 'N\xE4ytt\xF6',
       'Inline': 'Linjassa',
       'Break Text': 'Rikkoa teksti',
       'Alternative Text': 'Vaihtoehtoinen teksti',
