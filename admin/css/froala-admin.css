@@ -45,3 +45,7 @@ div.fr-modal-body div.fr-image-list div.fr-image-container .fr-insert-img {
     -ms-transform: translateY(-50%) translateX(-50%) !important;
     -o-transform: translateY(-50%) translateX(-50%) !important;
 }
+
+.fr-dropdown-list h2 a {
+    text-decoration: none !important;
+}

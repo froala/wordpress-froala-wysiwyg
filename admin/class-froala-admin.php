@@ -114,7 +114,10 @@ class Froala_Admin {
 		wp_register_style('table_css',plugin_dir_url( __FILE__ ) . 'css/plugins/table.css');
 		wp_register_style('video_css',plugin_dir_url( __FILE__ ) . 'css/plugins/video.css');
 		wp_register_style('files_manager_css',plugin_dir_url( __FILE__ ) .'css/plugins/files_manager.css');
-		wp_enqueue_style('froala_editor_css');
+        wp_register_style('code_view_css',plugin_dir_url( __FILE__ ) . 'css/plugins/code_view.min.css');
+        wp_register_style('codemirror-css', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css');
+
+        wp_enqueue_style('froala_editor_css');
 		wp_enqueue_style('froala_style_css');
 		wp_enqueue_style('froala_admin_css');
 		wp_enqueue_style('font_asm');
@@ -134,7 +137,9 @@ class Froala_Admin {
 		wp_enqueue_style('table_css');
 		wp_enqueue_style('video_css');
 		wp_enqueue_style('files_manager_css');
-	}
+        wp_enqueue_style('code_view_css');
+        wp_enqueue_style( 'codemirror-css' );
+    }
 
 	/**
 	 * Register the JavaScript for the admin area.
@@ -155,10 +160,12 @@ class Froala_Admin {
 
 		wp_register_script('froala_admin',plugin_dir_url( __FILE__ ) . 'js/froala-admin.js');
 		wp_register_script('froala_editor',plugin_dir_url( __FILE__ ) . 'js/froala_editor.min.js');
-        
+
 		wp_enqueue_script('froala_admin');
 		wp_enqueue_script('froala_editor');
-	}
+        wp_enqueue_script('codemirror-js', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js');
+        wp_enqueue_script('codemirror-xml-js', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js');
+    }
 
 	/**
 	 * Add an options page
