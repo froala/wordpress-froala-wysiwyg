@@ -138,7 +138,7 @@ class Froala_Admin {
 		wp_enqueue_style('video_css');
 		wp_enqueue_style('files_manager_css');
         wp_enqueue_style('code_view_css');
-        wp_enqueue_style( 'codemirror-css' );
+        wp_enqueue_style('codemirror-css');
     }
 
 	/**
@@ -147,7 +147,6 @@ class Froala_Admin {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-
 		/**
 		 * An instance of this class should be passed to the run() function
 		 * defined in Froala_Loader as all of the hooks are defined
