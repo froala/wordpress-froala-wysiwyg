@@ -161,9 +161,11 @@ class Froala_Admin {
 
 		wp_register_script('froala_admin',plugin_dir_url( __FILE__ ) . 'js/froala-admin.js');
 		wp_register_script('froala_editor',plugin_dir_url( __FILE__ ) . 'js/froala_editor.min.js');
+        wp_register_script('image-tui-js',plugin_dir_url( __FILE__ ) . 'js/third_party/image_tui.min.js');
 
 		wp_enqueue_script('froala_admin');
 		wp_enqueue_script('froala_editor');
+        wp_enqueue_script('image-tui-js');
         wp_enqueue_script('codemirror-js', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js');
         wp_enqueue_script('codemirror-xml-js', 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js');
     }
