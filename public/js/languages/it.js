@@ -1,5 +1,5 @@
 /*!
- * froala_editor v3.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v3.2.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2020 Froala Labs
  */
@@ -264,7 +264,8 @@
       'Clean': 'Pulisci',
       'Word Paste Detected': "\xC8 stato rilevato un incolla da Word",
       // Character Counter
-      'Characters': 'Personaggi',
+      'Characters': 'Caratteri',
+      'Words': 'Parole',
       // More Buttons
       'More Text': 'Altro testo',
       'More Paragraph': 'Altro paragrafo',

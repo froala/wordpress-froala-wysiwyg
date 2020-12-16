@@ -1,5 +1,5 @@
 /*!
- * froala_editor v3.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v3.2.3 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2020 Froala Labs
  */
@@ -86,7 +86,7 @@
       'Tags': 'Etiquetas',
       'Are you sure? Image will be deleted.': "Voc\xEA tem certeza? Imagem ser\xE1 apagada.",
       'Replace': 'Substituir',
-      'Uploading': 'Carregando imagem',
+      'Uploading': 'Carregando',
       'Loading image': 'Carregando imagem',
       'Display': 'Exibir',
       'Inline': 'Em linha',
