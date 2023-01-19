@@ -16,12 +16,12 @@ COPY . /var/www/html/wp-content/plugins/froala
 
 RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword} https://nexus.tools.froala-infra.com/repository/Froala-npm/${PackageName}/-/${PackageName}-${PackageVersion}.tgz \
     && tar -zxvf ${PackageName}-${PackageVersion}.tgz \
-    # && /bin/cp -rf  package/css/* /var/www/html/wp-content/plugins/froala/public/css/ \
-    # && /bin/cp -rf  package/js/* /var/www/html/wp-content/plugins/froala/public/js/ \
-    # && rm -rf /var/www/html/wp-content/plugins/froala/admin/css/* \
-    # && rm -rf /var/www/html/wp-content/plugins/froala/admin/js/* \
-    # && /bin/cp -rf  package/css/* /var/www/html/wp-content/plugins/froala/admin/css/ \
-    # && /bin/cp -rf  package/js/* /var/www/html/wp-content/plugins/froala/admin/js/ \
+    && /bin/cp -rf  package/css/* /var/www/html/wp-content/plugins/froala/public/css/ \
+    && /bin/cp -rf  package/js/* /var/www/html/wp-content/plugins/froala/public/js/ \
+    && rm -rf /var/www/html/wp-content/plugins/froala/admin/css/* \
+    && rm -rf /var/www/html/wp-content/plugins/froala/admin/js/* \
+    && /bin/cp -rf  package/css/* /var/www/html/wp-content/plugins/froala/admin/css/ \
+    && /bin/cp -rf  package/js/* /var/www/html/wp-content/plugins/froala/admin/js/ \
     && chown -R www-data:www-data /var/www/html/wp-content/plugins \
     && /bin/cp -r package / 
  
@@ -29,6 +29,7 @@ RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword}
     && chmod +x wp-cli.phar \
     && cp -p wp-cli.phar /usr/local/bin/wp \
     && cd /var/www/html/ \
+
     && echo "wp-cli installed..."
 
 
