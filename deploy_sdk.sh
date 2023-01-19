@@ -143,7 +143,7 @@ ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_S
 
 echo "\n If no error above (cp related errors) then froala plugin is consuming the unpublished core library \n" 
 
-  sleep 30
+  sleep 120
   RET_CODE=`curl -k -s -o /tmp/notimportant.txt -w "%{http_code}" https://${DEPLOYMENT_URL}`
   echo "validation code: $RET_CODE for  https://${DEPLOYMENT_URL}"
   if [ $RET_CODE -ne 200 ]; then 
