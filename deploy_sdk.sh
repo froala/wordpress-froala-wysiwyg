@@ -87,6 +87,7 @@ function generate_container_name(){
         CONTAINER_NAME="${LW_REPO_NAME}-${AO_IDENTIFIER}-${CT_INDEX}"
         SERVICE_NAME="${LW_REPO_NAME}-${LW_SHORT_TRAVIS_BRANCH}" 
         DB_CONTAINER_NAME="${DB_SERVICE_NAME}"
+        DB_SERVICE_NAME="${DB_SERVICE_NAME}-${CT_INDEX}"
     else
         echo "Multiple deployments detected. Setting the container name (old and new)"
         CT_INDEX=${CT_HIGHER_INDEX} && CT_INDEX=$((CT_INDEX+1))
@@ -94,6 +95,7 @@ function generate_container_name(){
         CONTAINER_NAME="${LW_REPO_NAME}-${AO_IDENTIFIER}-${CT_INDEX}"
         SERVICE_NAME="${LW_REPO_NAME}-${LW_SHORT_TRAVIS_BRANCH}-${CT_INDEX}"
         DB_CONTAINER_NAME="${DB_SERVICE_NAME}"
+        DB_SERVICE_NAME="${DB_SERVICE_NAME}-${CT_INDEX}"
         echo "New index: ${CT_INDEX}"
     fi
 }
