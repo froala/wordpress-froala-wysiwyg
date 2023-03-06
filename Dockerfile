@@ -10,9 +10,9 @@ ARG NexusPassword
 RUN apt-get update -y
 RUN apt-get install -y --no-install-recommends wget unzip
 
-RUN mkdir -p /var/www/html/wp-content/plugins/froala
+RUN mkdir /var/www/html/wp-content/plugins/froala
 
-COPY . /var/www/html/wp-content/plugins/froala
+COPY . .
 
 RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword} https://nexus.tools.froala-infra.com/repository/Froala-npm/${PackageName}/-/${PackageName}-${PackageVersion}.tgz \
     && tar -zxvf ${PackageName}-${PackageVersion}.tgz \
@@ -22,7 +22,8 @@ RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword}
     && rm -rf /var/www/html/wp-content/plugins/froala/admin/js/* \
     && /bin/cp -rf  package/css/* /var/www/html/wp-content/plugins/froala/admin/css/ \
     && /bin/cp -rf  package/js/* /var/www/html/wp-content/plugins/froala/admin/js/ \
-    && chown -R www-data:www-data /var/www/html/wp-content/plugins \
+    && chmod -R 777 /var/www/html/wp-content/plugins/froala \
+    && chown -R www-data:www-data /var/www/html/wp-content/plugins/froala \
     && /bin/cp -r package / 
  
  RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
