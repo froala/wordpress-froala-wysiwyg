@@ -27,13 +27,11 @@ RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword}
 #    && rm -rf package/ ${PackageName}-${PackageVersion}.tgz 
  
  RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
-  #  && php wp-cli.phar --path='/var/www/html' --info \
+    && php wp-cli.phar --path='/var/www/html' --info \
     && chmod +x wp-cli.phar \
     && cp -p wp-cli.phar /usr/local/bin/wp \
     && cd /var/www/html/ \
- #   && wp plugin list --allow-root --path='/var/www/html' \
+    && wp plugin list --allow-root --path='/var/www/html' \
     && echo "wp-cli installed..."
-
-RUN USER -i -- wp core install
 
 EXPOSE 80
