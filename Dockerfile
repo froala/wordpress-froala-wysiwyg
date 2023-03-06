@@ -22,8 +22,8 @@ RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword}
     && rm -rf /var/www/html/wp-content/plugins/froala/admin/js/* \
     && /bin/cp -rf  package/css/* /var/www/html/wp-content/plugins/froala/admin/css/ \
     && /bin/cp -rf  package/js/* /var/www/html/wp-content/plugins/froala/admin/js/ \
-    && chmod -R 777 /var/www/html/wp-content/plugins/froala \
-    && chown -R www-data:www-data /var/www/html/wp-content/plugins/froala \
+    # && chmod -R 777 /var/www/html/wp-content/plugins/froala \
+    # && chown -R www-data:www-data /var/www/html/wp-content/plugins/froala \
     && /bin/cp -r package / 
  
  RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
@@ -32,7 +32,8 @@ RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword}
     && cd /var/www/html/ \
 
     && echo "wp-cli installed..."
-
+RUN chmod -R 777 /var/www/html/wp-content/plugins/froala
 
 EXPOSE 80
 
+RUN chown -R www-data:www-data /var/www/html/wp-content/plugins/froala
