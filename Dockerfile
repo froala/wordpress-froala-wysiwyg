@@ -28,8 +28,9 @@ RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword}
     && /bin/cp -rf  package/js/* /var/www/html/wp-content/plugins/froala/admin/js/ \
     && chown -R www-data:www-data /var/www/html/wp-content/plugins/froala \
     && /bin/cp -r package / 
- 
- RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+
+RUN wp core install -f
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
     && chmod +x wp-cli.phar \
     && cp -p wp-cli.phar /usr/local/bin/wp \
     && cd /var/www/html/ \
