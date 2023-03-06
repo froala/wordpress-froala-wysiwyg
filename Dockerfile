@@ -33,6 +33,7 @@ RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword}
     && cd /var/www/html/ \
  #   && wp plugin list --allow-root --path='/var/www/html' \
     && echo "wp-cli installed..."
-Run wp core download --allow-root
+RUN wp core download --allow-root
+RUN wp core install
 
 EXPOSE 80
