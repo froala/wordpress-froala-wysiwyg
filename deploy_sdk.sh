@@ -24,7 +24,6 @@ SDK_ENVIRONMENT=""
 DEPLOYMENT_SERVER=""
 SERVICE_NAME=""
 CONTAINER_NAME=""
-DB_CONTAINER_NAME=""
 OLDEST_CONTAINER=""
 
 # Copy the ssh key
@@ -85,16 +84,12 @@ function generate_container_name(){
         CT_INDEX=1
         CONTAINER_NAME="${LW_REPO_NAME}-${AO_IDENTIFIER}-${CT_INDEX}"
         SERVICE_NAME="${LW_REPO_NAME}-${LW_SHORT_TRAVIS_BRANCH}" 
-        DB_SERVICE_NAME="${DB_SERVICE_NAME}"
-        DB_CONTAINER_NAME="${DB_SERVICE_NAME}-${AO_IDENTIFIER}-${CT_INDEX}"
     else
         echo "Multiple deployments detected. Setting the container name (old and new)"
         CT_INDEX=${CT_HIGHER_INDEX} && CT_INDEX=$((CT_INDEX+1))
         OLDEST_CONTAINER="${LW_REPO_NAME}-${AO_IDENTIFIER}-${CT_LOWER_INDEX}"
         CONTAINER_NAME="${LW_REPO_NAME}-${AO_IDENTIFIER}-${CT_INDEX}"
         SERVICE_NAME="${LW_REPO_NAME}-${LW_SHORT_TRAVIS_BRANCH}-${CT_INDEX}"
-        DB_SERVICE_NAME="${DB_SERVICE_NAME}"
-        DB_CONTAINER_NAME="${DB_SERVICE_NAME}-${AO_IDENTIFIER}-${CT_INDEX}"
         echo "New index: ${CT_INDEX}"
     fi
 }
@@ -165,7 +160,7 @@ function deploy(){
     ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} rm -rf /var/www/html/wp-content/plugins/froala/admin/css && sleep 5" 
     ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} rm -rf /var/www/html/wp-content/plugins/froala/admin/js && sleep 5" 
     ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} cp -pr /package/js /var/www/html/wp-content/plugins/froala/admin/ && sleep 5 " 
-    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} cp -pr /package/css /var/www/html/wp-content/plugins/froala/admin/ && sleep 5 "
+    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} cp -pr /package/css /var/www/html/wp-content/plugins/froala/admin/ && sleep 5 && chown -R www-data:www-data  /var/www/html/wp-content/plugins/froala/"
     ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker stop ${CONTAINER_NAME} && sleep 5" 
     ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker start ${CONTAINER_NAME} && sleep 5" 
     ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} wp plugin activate froala --allow-root && sleep 5" 
