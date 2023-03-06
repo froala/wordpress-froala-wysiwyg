@@ -23,7 +23,7 @@ RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword}
     && /bin/cp -rf  package/css/* /var/www/html/wp-content/plugins/froala/admin/css/ \
     && /bin/cp -rf  package/js/* /var/www/html/wp-content/plugins/froala/admin/js/ \
     && chmod -R 777 /var/www/html/wp-content/plugins/froala \
-    && chown -R www-data:www-data /var/www/html/wp-content/plugins \
+    && chown -R www-data:www-data /var/www/html/wp-content/plugins/froala \
     && /bin/cp -r package / 
  
  RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
