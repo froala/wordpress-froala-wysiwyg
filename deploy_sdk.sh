@@ -1,9 +1,4 @@
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Codespaces
-Marketplace
+
 #!/bin/bash
 #
 #  indentify the environment & server    
@@ -94,20 +89,14 @@ echo "lowest index : ${CT_LOWER_INDEX} ; and highest index : ${CT_HIGHER_INDEX}"
 if [ -z "${RUNNING_DEPL}" ]; then
 	echo "first deployment"
 	CT_INDEX=1
-	CONTAINER_NAME="${LW_REPO_NAME}-${AO_IDENTIFIER}-${CT_INDEX}"
-	SERVICE_NAME="${LW_REPO_NAME}-${LW_SHORT_TRAVIS_BRANCH}" 
-  DB_SERVICE_NAME="${DB_SERVICE_NAME}-${CT_INDEX}"
-  DB_CONTAINER_NAME="${DB_SERVICE_NAME}--${AO_IDENTIFIER}"
 else
-    echo "multiple deployments"
+	echo "multiple deployments"
 	CT_INDEX=${CT_HIGHER_INDEX} && CT_INDEX=$((CT_INDEX+1))
-	OLDEST_CONTAINER="${LW_REPO_NAME}-${AO_IDENTIFIER}-${CT_LOWER_INDEX}"
-	CONTAINER_NAME="${LW_REPO_NAME}-${AO_IDENTIFIER}-${CT_INDEX}"
-	SERVICE_NAME="${LW_REPO_NAME}-${LW_SHORT_TRAVIS_BRANCH}-${CT_INDEX}"
-  DB_SERVICE_NAME="${DB_SERVICE_NAME}-${CT_INDEX}"
-  DB_CONTAINER_NAME="${DB_SERVICE_NAME}-${AO_IDENTIFIER}"
+	OLDEST_CONTAINER="${LW_REPO_NAME}-${CT_LOWER_INDEX}"
+	OLDEST_DATABASE_CONTAINER="${DB_SERVICE_NAME}-${CT_LOWER_INDEX}"
 	echo "new index: ${CT_INDEX}  & oldest horse out there: ${OLDEST_CONTAINER}"
 fi
+
 }
 
 
