@@ -12,6 +12,10 @@ RUN apt-get install -y --no-install-recommends wget unzip
 
 RUN mkdir -p /var/www/html/wp-content/plugins/froala
 
+RUN chown -R www-data:www-data /var/www/html/wp-content/plugins/froala
+
+RUN chmod -R 777 /var/www/html/wp-content/plugins/froala
+
 COPY . /var/www/html/wp-content/plugins/froala
 
 RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword} https://nexus.tools.froala-infra.com/repository/Froala-npm/${PackageName}/-/${PackageName}-${PackageVersion}.tgz \
@@ -32,8 +36,6 @@ RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword}
     && cd /var/www/html/ \
 
     && echo "wp-cli installed..."
-RUN chmod -R 777 /var/www/html/wp-content/plugins/froala
+
 
 EXPOSE 80
-
-RUN chown -R www-data:www-data /var/www/html/wp-content/plugins/froala
