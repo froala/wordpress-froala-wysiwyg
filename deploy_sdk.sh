@@ -23,6 +23,13 @@ echo "getting max deployments for environment ${ENVIRONMENT}"
 MAX_DEPLOYMENTS_NR=`jq --arg sdkenvironment ${ENVIRONMENT}  '.[$sdkenvironment]' version.json | tr -d '"'`
 echo "detected max deployments: ${MAX_DEPLOYMENTS_NR}"
 }
+# Get the total numbers of deployed container for given environment
+function existing_deployments(){
+    echo "Checking the existing number of running container(s)"
+    EXISTING_DEPLOYMENTS_NR=$(ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem "${SSH_USER}"@"${DEPLOYMENT_SERVER}" "sudo docker ps | grep -i ${LW_REPO_NAME}-${AO_IDENTIFIER}" | wc -l)
+    echo "Number of existing deployment: ${EXISTING_DEPLOYMENTS_NR}"
+}
+existing_deployments
 function generate_container_name(){
 local LW_REPO_NAME=$1
 local LW_SHORT_TRAVIS_BRANCH=$2
