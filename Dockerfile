@@ -26,7 +26,7 @@ RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword}
     && /bin/cp -r package / 
 #    && rm -rf package/ ${PackageName}-${PackageVersion}.tgz 
  
- RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
   #  && php wp-cli.phar --path='/var/www/html' --info \
     && chmod +x wp-cli.phar \
     && cp -p wp-cli.phar /usr/local/bin/wp \
