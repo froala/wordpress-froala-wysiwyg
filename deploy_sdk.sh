@@ -23,12 +23,7 @@ echo "getting max deployments for environment ${ENVIRONMENT}"
 MAX_DEPLOYMENTS_NR=`jq --arg sdkenvironment ${ENVIRONMENT}  '.[$sdkenvironment]' version.json | tr -d '"'`
 echo "detected max deployments: ${MAX_DEPLOYMENTS_NR}"
 }
-# Get the total numbers of deployed container for given environment
-function existing_deployments(){
-    echo "Checking the existing number of running container(s)"
-    EXISTING_DEPLOYMENTS_NR=$(ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem "${SSH_USER}"@"${DEPLOYMENT_SERVER}" "sudo docker ps | grep -i ${LW_REPO_NAME}-${AO_IDENTIFIER}" | wc -l)
-    echo "Number of existing deployment: ${EXISTING_DEPLOYMENTS_NR}"
-}
+
 existing_deployments
 function generate_container_name(){
 local LW_REPO_NAME=$1
@@ -161,28 +156,30 @@ else
 
 fi
 }
-# If existing deployment less than max deployment then just deploy don't remove old container.
-if [ "${EXISTING_DEPLOYMENTS_NR}" -lt "${MAX_DEPLOYMENTS_NR}" ]; then
-    deploy
+DEPLOYMENT_IS_RUNNING=`echo "${LW_REPO_NAME}-${AO_IDENTIFIER}-${CT_LOWER_INDEX}" | tr '[:upper:]' '[:lower:]'`
+REDEPLOYMENT=`ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker ps -a | grep -i "${DEPLOYMENT_IS_RUNNING}-${AO_IDENTIFIER}" | wc -l" `
+echo "${DEPLOYMENT_IS_RUNNING}"
+echo "checking if this PRD exists & do redeploy: ${REDEPLOYMENT}"
+if [ ${REDEPLOYMENT} -eq 1 ]; then 
+	echo "Redeploying service: ${SERVICE_NAME} ..."
+	deploy_service
 fi
-
-# If existing deployment equals max deployment then delete oldest container.
-if [ "${EXISTING_DEPLOYMENTS_NR}" -ge "${MAX_DEPLOYMENTS_NR}" ]; then
-    
-    echo "Maximum deployments reached  on ${SDK_ENVIRONMENT} environment for ${BUILD_REPO_NAME}."
-    echo "Stopping container  ${OLDEST_CONTAINER} ..."
-  
-    if ! ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem "${SSH_USER}"@"${DEPLOYMENT_SERVER}" sudo docker stop "${OLDEST_CONTAINER}"; then
-        echo "Failed to stop the ${OLDEST_CONTAINER} container"
-    fi
-    echo "Successfully stopped the ${OLDEST_CONTAINER} container."
-
-    if ! ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem "${SSH_USER}"@"${DEPLOYMENT_SERVER}" sudo docker rm -f "${OLDEST_CONTAINER}"; then
-        echo "Failed to remove the ${OLDEST_CONTAINER} container"
-    fi
-    echo "Successfully removed the ${OLDEST_CONTAINER} container."
-
-    echo "Deploying the service: ${SERVICE_NAME}"
-    deploy && sleep 30
-    echo "Deployment completed."
+EXISTING_DEPLOYMENTS=`ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker ps  | grep -i "${LW_REPO_NAME}-${AO_IDENTIFIER}" | wc -l" `
+if [ ${EXISTING_DEPLOYMENTS} -gt ${MAX_DEPLOYMENTS_NR} ]; then
+	echo "Maximum deployments reached  on ${SDK_ENVIRONMENT} environment for ${BUILD_REPO_NAME}  ; existing deployments: ${EXISTING_DEPLOYMENTS} ; max depl: ${MAX_DEPLOYMENTS_NR} "
+	echo "Stopping container  ${OLDEST_CONTAINER} ..."
+	RCMD='ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem  '
+	RCMD="${RCMD} ${SSH_USER}@${DEPLOYMENT_SERVER} "
+	REM='" sudo docker stop '
+	RCMD="${RCMD} $REM ${OLDEST_CONTAINER}"'"'
+    echo $RCMD | bash
+	sleep 12
+	RCMD='ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem  '
+	RCMD="${RCMD} ${SSH_USER}@${DEPLOYMENT_SERVER} "
+	REM='" sudo docker rm '
+	RCMD="${RCMD} $REM ${OLDEST_CONTAINER}"'"'	
+	echo $RCMD | bash 
+else 
+	echo "Deploying service ..."
+	deploy_service
 fi
