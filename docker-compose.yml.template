@@ -14,6 +14,7 @@ services:
       MYSQL_USER: MysqlUser
       MYSQL_PASSWORD: MysqlPassword
       MYSQL_TCP_PORT: MysqlTcpPort
+  ServiceName:
     image: ImageName
     container_name: ContainerName
     pull_policy: always
