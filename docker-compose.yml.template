@@ -5,7 +5,7 @@ services:
     container_name: MysqlContainerName
     volumes:
       - db_data:/var/lib/mysql
-    restart: unless-stopped
+    restart: always
     networks:
       - db_word_network_wp
     environment:
@@ -25,7 +25,7 @@ services:
       caddy_0: UrlName
       caddy_0.reverse_proxy: "{{upstreams PortNum}}"
       caddy_0.tls.ca: https://acme-staging-v02.api.letsencrypt.org/directory
-    restart: unless-stopped
+    restart: always
     environment:
       WORDPRESS_DB_HOST: WordPressDbHost
       WORDPRESS_DB_USER: MysqlUser
