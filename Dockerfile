@@ -11,7 +11,7 @@ RUN apt-get install -y --no-install-recommends wget unzip
 
 WORKDIR /var/www/html/wp-content/plugins/froala
 #RUN mkdir -p /var/www/html/wp-content/plugins/froala
-#RUN chown -R www-data:www-data /var/www/html/wp-content/plugins/froala
+RUN /bin/chown -R www-data:www-data /var/www/html/wp-content/plugins/froala
 
 COPY . .
 
@@ -36,3 +36,4 @@ RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword}
 
 
 EXPOSE 80
+
