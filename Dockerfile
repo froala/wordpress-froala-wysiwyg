@@ -11,6 +11,8 @@ RUN apt-get install -y --no-install-recommends wget unzip
 
 RUN mkdir -p /var/www/html/wp-content/plugins/froala
 
+RUN chown -R www-data:www-data /var/www/html/wp-content/plugins/froala
+
 COPY . /var/www/html/wp-content/plugins/froala
 
 RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword} https://nexus.tools.froala-infra.com/repository/Froala-npm/${PackageName}/-/${PackageName}-${PackageVersion}.tgz \
