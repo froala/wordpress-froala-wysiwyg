@@ -31,6 +31,9 @@ RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword}
     && php wp-cli.phar --info \
     && chmod +x wp-cli.phar \
     && mv wp-cli.phar /usr/local/bin/wp \
+    && wp core download \
+    && wp config set \
+    && wp core install \
     && cd /var/www/html/ \
     && echo "wp-cli installed..."
 
