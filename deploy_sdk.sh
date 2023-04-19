@@ -97,7 +97,6 @@ fi
 
 }
 
-
 echo " Container port: ${CONTAINER_SERVICE_PORTNO}"
 
 export BRANCH_NAME=`echo "${TRAVIS_BRANCH}" | tr '[:upper:]' '[:lower:]'`
