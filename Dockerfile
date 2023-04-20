@@ -34,6 +34,8 @@ RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword}
     && cd /var/www/html/ \
     && echo "wp-cli installed..."
 
+RUN /usr/local/bin/wp core install
+
 
 EXPOSE 80
 
