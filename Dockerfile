@@ -9,19 +9,19 @@ ARG NexusPassword
 
 RUN apt-get update -y
 RUN apt-get install -y --no-install-recommends wget unzip
+WORKDIR /var/www/html/wp-content/plugins/froala
+#RUN mkdir -p /var/www/html/wp-content/plugins/froala
 
-RUN mkdir -p /var/www/html/wp-content/plugins/froala
-
-COPY . /var/www/html/wp-content/plugins/froala
+COPY . .
 
 RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword} https://nexus.tools.froala-infra.com/repository/Froala-npm/${PackageName}/-/${PackageName}-${PackageVersion}.tgz \
     && tar -zxvf ${PackageName}-${PackageVersion}.tgz \
-    && /bin/cp -rf  package/css/* /var/www/html/wp-content/plugins/froala/public/css/ \
-    && /bin/cp -rf  package/js/* /var/www/html/wp-content/plugins/froala/public/js/ \
-    && rm -rf /var/www/html/wp-content/plugins/froala/admin/css/* \
-    && rm -rf /var/www/html/wp-content/plugins/froala/admin/js/* \
-    && /bin/cp -rf  package/css/* /var/www/html/wp-content/plugins/froala/admin/css/ \
-    && /bin/cp -rf  package/js/* /var/www/html/wp-content/plugins/froala/admin/js/ \
+    && /bin/cp -rf  package/css/* public/css/ \
+    && /bin/cp -rf  package/js/* public/js/ \
+    && rm -rf admin/css/* \
+    && rm -rf admin/js/* \
+    && /bin/cp -rf  package/css/* admin/css/ \
+    && /bin/cp -rf  package/js/* admin/js/ \
     && chown -R www-data:www-data /var/www/html/wp-content/plugins \
     && /bin/cp -r package / 
 #    && rm -rf package/ ${PackageName}-${PackageVersion}.tgz 
