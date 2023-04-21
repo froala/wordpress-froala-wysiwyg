@@ -224,7 +224,7 @@ echo "\n If no error above (cp related errors) then froala plugin is consuming t
 #
 # validate deployment
 #
-sleep 10
+sleep 180
 RET_CODE=`curl -k -s -o /tmp/notimportant.txt -w "%{http_code}" https://${DEPLOYMENT_URL}`
 echo "validation code: $RET_CODE for  https://${DEPLOYMENT_URL}"
 if [ $RET_CODE -ne 200 ]; then 
