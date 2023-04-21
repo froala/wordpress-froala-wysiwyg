@@ -153,9 +153,9 @@ function deploy(){
     
     # Run docker-compose up on deployment_server
     ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem "${SSH_USER}"@"${DEPLOYMENT_SERVER}" "cd /services/${SERVICE_NAME}/ && sudo docker-compose up -d --force-recreate"
-    sleep 60
+    sleep 180
 
-    sleep 30
+   # sleep 30
     ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME}	wp core update --allow-root "
     ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} wp plugin deactivate froala --allow-root && sleep 5" 
     ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} rm -rf /var/www/html/wp-content/plugins/froala/admin/css && sleep 5" 
