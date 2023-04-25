@@ -1,6 +1,6 @@
 FROM wordpress:latest
 
-LABEL maintainer="Ganga@celestialsys.com"
+LABEL maintainer="froala_git_travis_bot@idera.com"
 
 ARG PackageName
 ARG PackageVersion
