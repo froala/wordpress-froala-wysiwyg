@@ -7,7 +7,7 @@
 #
 if [ ${TRAVIS_PULL_REQUEST} != "false" ];  then echo "Not deploying on a pull request !!!" && exit 0; fi
 
- 
+
 PACKAGE_VERSION=`jq '.version' version.json | tr -d '"'`
 export IMAGE_NAME=`echo "froala-${BUILD_REPO_NAME}_${TRAVIS_BRANCH}:${PACKAGE_VERSION}" | tr '[:upper:]' '[:lower:]'`
 DEPLOYMENT_IS_RUNNING=`echo "${BUILD_REPO_NAME}_${TRAVIS_BRANCH}" | tr '[:upper:]' '[:lower:]'`
