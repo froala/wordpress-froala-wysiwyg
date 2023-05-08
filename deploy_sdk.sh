@@ -25,72 +25,65 @@ echo "${SSH_KEY}"  | base64 --decode > /tmp/sshkey.pem
 chmod 400 /tmp/sshkey.pem
 export MAX_DEPLOYMENTS_NR=0
 function get_max_deployments_per_env(){
-
-local ENVIRONMENT=$1
-echo "getting max deployments for environment ${ENVIRONMENT}"
-MAX_DEPLOYMENTS_NR=`jq --arg sdkenvironment ${ENVIRONMENT}  '.[$sdkenvironment]' version.json | tr -d '"'`
-echo "detected max deployments: ${MAX_DEPLOYMENTS_NR}"
+	local ENVIRONMENT=$1
+	echo "getting max deployments for environment ${ENVIRONMENT}"
+	MAX_DEPLOYMENTS_NR=`jq --arg sdkenvironment ${ENVIRONMENT}  '.[$sdkenvironment]' version.json | tr -d '"'`
+	echo "detected max deployments: ${MAX_DEPLOYMENTS_NR}"
 }
 
 
 function generate_container_name(){
-local LW_REPO_NAME=$1
-local LW_SHORT_TRAVIS_BRANCH=$2
-local SDK_ENVIRONMENT=$3
-local DEPLOYMENT_SERVER=$4
-echo "searching for ${LW_REPO_NAME} depl..."
-sleep 1
-
-RUNNING_DEPL=`ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker ps | grep -i ${LW_REPO_NAME}"`
-
-echo "running depl var: ${RUNNING_DEPL}"
-echo "looking for ${LW_REPO_NAME} deployments"
-
-echo "getting indexes for oldest and latest deployed container"
-DEPL='ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem '
-DEPL="${DEPL}  ${SSH_USER}@${DEPLOYMENT_SERVER} "
-REL=' " sudo docker ps | grep -i ' 
-DEPL="${DEPL} ${REL} "
-DEPL="${DEPL} ${LW_REPO_NAME} "
-REL='"'
-DEPL="${DEPL} ${REL} "
-
-echo "show docker containers ssh cmd:  $DEPL"
-echo   ${DEPL}  | bash > file.txt
-echo "running conatiners: "
-cat file.txt
-CT_LOWER_INDEX=`cat file.txt | awk -F'-' '{print $NF }' | sort -nk1 | head -1`
-CT_HIGHER_INDEX=`cat file.txt | awk -F'-' '{print $NF }' | sort -nk1 | tail -1`
-
-echo "lowest index : ${CT_LOWER_INDEX} ; and highest index : ${CT_HIGHER_INDEX}"
-
-if [ -z "${RUNNING_DEPL}" ]; then
-	echo "first deployment"
-	CT_INDEX=1
-else
-	echo "multiple deployments"
-	CT_INDEX=${CT_HIGHER_INDEX} && CT_INDEX=$((CT_INDEX+1))
-	OLDEST_CONTAINER="${LW_REPO_NAME}-${CT_LOWER_INDEX}"
-	OLDEST_DATABASE_CONTAINER="${DB_SERVICE_NAME}-${CT_LOWER_INDEX}"
-	echo "new index: ${CT_INDEX}  & oldest horse out there: ${OLDEST_CONTAINER}"
-fi
-
+	local LW_REPO_NAME=$1
+	local LW_SHORT_TRAVIS_BRANCH=$2
+	local SDK_ENVIRONMENT=$3
+	local DEPLOYMENT_SERVER=$4
+	echo "searching for ${LW_REPO_NAME} depl..."
+	sleep 1
+	RUNNING_DEPL=`ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker ps | grep -i ${LW_REPO_NAME}"`
+	echo "running depl var: ${RUNNING_DEPL}"
+	echo "looking for ${LW_REPO_NAME} deployments"
+	echo "getting indexes for oldest and latest deployed container"
+	DEPL='ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem '
+	DEPL="${DEPL}  ${SSH_USER}@${DEPLOYMENT_SERVER} "
+	REL=' " sudo docker ps | grep -i ' 
+	DEPL="${DEPL} ${REL} "
+	DEPL="${DEPL} ${LW_REPO_NAME}-${AO_IDENTIFIER} "
+	REL='"'
+	DEPL="${DEPL} ${REL} "
+	echo "show docker containers ssh cmd:  $DEPL"
+	echo   ${DEPL}  | bash > file.txt
+	echo "running conatiners: "
+	cat file.txt
+	CT_LOWER_INDEX=`cat file.txt | awk -F'-' '{print $NF }' | sort -nk1 | head -1`
+	CT_HIGHER_INDEX=`cat file.txt | awk -F'-' '{print $NF }' | sort -nk1 | tail -1`
+	echo "lowest index : ${CT_LOWER_INDEX} ; and highest index : ${CT_HIGHER_INDEX}"
+	if [ -z "${RUNNING_DEPL}" ]; then
+		echo "first deployment"
+		CT_INDEX=1
+		CONTAINER_NAME="${LW_REPO_NAME}-${AO_IDENTIFIER}-${CT_INDEX}"
+		SERVICE_NAME="${LW_REPO_NAME}-${LW_SHORT_TRAVIS_BRANCH}" 
+	else
+		echo "multiple deployments"
+		CT_INDEX=${CT_HIGHER_INDEX} && CT_INDEX=$((CT_INDEX+1))
+		OLDEST_CONTAINER="${LW_REPO_NAME}-${AO_IDENTIFIER}-${CT_LOWER_INDEX}"
+		CONTAINER_NAME="${LW_REPO_NAME}-${AO_IDENTIFIER}-${CT_INDEX}"
+		SERVICE_NAME="${LW_REPO_NAME}-${LW_SHORT_TRAVIS_BRANCH}-${CT_INDEX}"
+		echo "new index: ${CT_INDEX}  & oldest horse out there: ${OLDEST_CONTAINER}"
+	fi
 }
 
 echo " Container port: ${CONTAINER_SERVICE_PORTNO}"
-
 export BRANCH_NAME=`echo "${TRAVIS_BRANCH}" | tr '[:upper:]' '[:lower:]'`
-
 case "${BRANCH_NAME}" in
-        dev*) SDK_ENVIRONMENT="dev" && DEPLOYMENT_SERVER=${FROALA_SRV_DEV}  ;;
+    dev*) SDK_ENVIRONMENT="dev" && DEPLOYMENT_SERVER=${FROALA_SRV_DEV}  ;;
 	ao-dev*) SDK_ENVIRONMENT="dev" && DEPLOYMENT_SERVER=${FROALA_SRV_DEV} ;;
-        qa*) SDK_ENVIRONMENT="qa" && DEPLOYMENT_SERVER=${FROALA_SRV_QA}  ;;
+    qa*) SDK_ENVIRONMENT="qa" && DEPLOYMENT_SERVER=${FROALA_SRV_QA}  ;;
 	qe*) SDK_ENVIRONMENT="qe" && DEPLOYMENT_SERVER=${FROALA_SRV_QE} ;;
 	rc*) SDK_ENVIRONMENT="stg" && DEPLOYMENT_SERVER=${FROALA_SRV_STAGING}  ;;
 	release-master*) SDK_ENVIRONMENT="stg" && DEPLOYMENT_SERVER=${FROALA_SRV_STAGING}  ;;
 	ft*) echo "Building only on feature branch ${TRAVIS_BRANCH}... will not deploy..."  && exit 0;;
 	bf*) echo "Building only on bugfix branch ${TRAVIS_BRANCH}... will not deploy..."  && exit 0;;
-        *) echo "Not a deployment branch" && exit -1;;
+    *) echo "Not a deployment branch" && exit -1;;
 esac
 
 get_max_deployments_per_env $SDK_ENVIRONMENT 
@@ -148,41 +141,38 @@ SHORT_SERVICE_NAME="${SERVICE_NAME:0:$LW_REPO_NAME_LENGTH}"
 echo "short service name: ${SHORT_SERVICE_NAME}"
 
 function deploy_service(){
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} "if [ -d /services/${SERVICE_NAME} ];  then sudo docker-compose -f /services/${SERVICE_NAME}/docker-compose.yml down; fi"
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} "if [ -d /services/${SERVICE_NAME} ];  then rm -rf /services/${SERVICE_NAME}; fi && mkdir /services/${SERVICE_NAME}"
-scp  -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem docker-compose.yml ${SSH_USER}@${DEPLOYMENT_SERVER}:/services/${SERVICE_NAME}/docker-compose.yml
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " cd /services/${SERVICE_NAME}/ && sudo docker-compose pull"
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " cd /services/${SERVICE_NAME}/ && sudo docker-compose up -d"
-sleep 10 && ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker ps -a | grep -i ${SERVICE_NAME}" 
+    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} "if [ -d /services/${SERVICE_NAME} ];  then sudo docker-compose -f /services/${SERVICE_NAME}/docker-compose.yml down; fi"
+    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} "if [ -d /services/${SERVICE_NAME} ];  then rm -rf /services/${SERVICE_NAME}; fi && mkdir /services/${SERVICE_NAME}"
+    scp  -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem docker-compose.yml ${SSH_USER}@${DEPLOYMENT_SERVER}:/services/${SERVICE_NAME}/docker-compose.yml
+    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " cd /services/${SERVICE_NAME}/ && sudo docker-compose pull"
+    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " cd /services/${SERVICE_NAME}/ && sudo docker-compose up -d"
+    sleep 10 && ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker ps -a | grep -i ${SERVICE_NAME}" 
+    echo "Docker-compose is in : /services/${SERVICE_NAME} "
 
-echo "Docker-compose is in : /services/${SERVICE_NAME} "
+    sleep 30
+    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} wp core update --allow-root "
+    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} wp core install --allow-root --url=https://${DEPLOYMENT_URL} --admin_user=${WORD_USER} --admin_email=${WORD_EMAIL} --admin_password=${WORD_PASS} --title=${WORD_TITLE} "
+    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} wp plugin deactivate froala --allow-root && sleep 5" 
+    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} rm -rf /var/www/html/wp-content/plugins/froala/admin/css && sleep 5" 
+    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} rm -rf /var/www/html/wp-content/plugins/froala/admin/js && sleep 5" 
+    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} cp -pr /package/js /var/www/html/wp-content/plugins/froala/admin/ && sleep 5 " 
+    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} cp -pr /package/css /var/www/html/wp-content/plugins/froala/admin/ && sleep 5 && chown -R www-data:www-data  /var/www/html/wp-content/plugins/froala/ "
+    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker stop ${CONTAINER_NAME} && sleep 5" 
+    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker start ${CONTAINER_NAME} && sleep 5" 
+    ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} wp plugin activate froala --allow-root && sleep 5" 
 
-sleep 30
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} wp core update --allow-root "
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} wp core install --allow-root --url=https://${DEPLOYMENT_URL} --admin_user=${WORD_USER} --admin_email=${WORD_EMAIL} --admin_password=${WORD_PASS} --title=${WORD_TITLE} "
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} wp plugin deactivate froala --allow-root && sleep 5" 
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} rm -rf /var/www/html/wp-content/plugins/froala/admin/css && sleep 5" 
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} rm -rf /var/www/html/wp-content/plugins/froala/admin/js && sleep 5" 
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} cp -pr /package/js /var/www/html/wp-content/plugins/froala/admin/ && sleep 5 " 
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} cp -pr /package/css /var/www/html/wp-content/plugins/froala/admin/ && sleep 5 && chown -R www-data:www-data  /var/www/html/wp-content/plugins/froala/ "
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker stop ${CONTAINER_NAME} && sleep 5" 
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker start ${CONTAINER_NAME} && sleep 5" 
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} wp plugin activate froala --allow-root && sleep 5" 
-
-echo "\n If no error above (cp related errors) then froala plugin is consuming the unpublished core library \n" 
-
-sleep 10
-RET_CODE=`curl -k -s -o /tmp/notimportant.txt -w "%{http_code}" https://${DEPLOYMENT_URL}`
-echo "validation code: $RET_CODE for  https://${DEPLOYMENT_URL}"
-if [ $RET_CODE -ne 200 ]; then 
+    echo "\n If no error above (cp related errors) then froala plugin is consuming the unpublished core library \n" 
+    sleep 10
+    RET_CODE=`curl -k -s -o /tmp/notimportant.txt -w "%{http_code}" https://${DEPLOYMENT_URL}`
+    echo "validation code: $RET_CODE for  https://${DEPLOYMENT_URL}"
+    if [ $RET_CODE -ne 200 ]; then 
 	echo "Deployment validation failed!!! Please check pipeline logs." 
 	exit -1 
-else 
+    else 
 	echo " Service available at URL: https://${DEPLOYMENT_URL}/wp-admin/"
 	exit 0
-fi
-
-
+	
+    fi
 }  
 
 REDEPLOYMENT=`ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker ps -a | grep -i "${DEPLOYMENT_IS_RUNNING}" | wc -l" `
