@@ -32,5 +32,7 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
     && cd /var/www/html/ \
     && echo "wp-cli installed..."
 
+RUN apt update && apt install -y sendmail sendmail-cf mailutils    
+
 
 EXPOSE 80
