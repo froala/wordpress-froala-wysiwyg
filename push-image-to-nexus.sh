@@ -23,7 +23,7 @@ PACKAGE_NAME=`jq '.name' version.json | tr -d '"'`
 PACKAGE_VERSION=`jq '.version' version.json | tr -d '"'`
 echo "Package name : ${PACKAGE_NAME}"
 
-docker build -t  ${IMAGE_NAME}:${SHORT_COMMIT} --build-arg WORD_USER=${WORD_USER} --build-arg WORD_EMAIL=${WORD_EMAIL} --build-arg WORD_TITLE=${WORD_TITLE} --build-arg WORD_PASS=${WORD_PASS} --build-arg PackageName=${PACKAGE_NAME} --build-arg PackageVersion=${PACKAGE_VERSION} --build-arg NexusUser=${NEXUS_USER} --build-arg NexusPassword=${NEXUS_USER_PWD} .
+docker build -t  ${IMAGE_NAME}:${SHORT_COMMIT} --build-arg WORD_USER=${WORD_USER} --build-arg WORD_EMAIL=${WORD_EMAIL} --build-arg WORD_TITLE=${WORD_TITLE} --build-arg WORD_PASS=${user_pass} --build-arg PackageName=${PACKAGE_NAME} --build-arg PackageVersion=${PACKAGE_VERSION} --build-arg NexusUser=${NEXUS_USER} --build-arg NexusPassword=${NEXUS_USER_PWD} .
 sleep 3
 docker image ls 
 echo "uploading to nexus ${PACKAGE_NAME}, if not a new PR"

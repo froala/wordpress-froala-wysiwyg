@@ -7,7 +7,7 @@ ARG PackageVersion
 ARG NexusUser
 ARG NexusPassword
 ARG WORD_USER
-ARG WORD_PASS
+ARG user_pass
 ARG WORD_EMAIL
 ARG WORD_TITLE
 
