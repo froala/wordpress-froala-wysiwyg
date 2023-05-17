@@ -37,7 +37,8 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
     && echo "wp-cli installed..."
 
 RUN apt update && apt install -y sendmail sendmail-cf mailutils    
-
+RUN wp core download
+RUN wp core update --alow-root
 RUN wp core install --allow-root --url=https://${DEPLOYMENT_URL} --admin_user=${WORD_USER} --admin_email=${WORD_EMAIL} --admin_password=${WORD_PASS} --title=${WORD_TITLE}
 
 EXPOSE 80
