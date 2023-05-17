@@ -6,10 +6,6 @@ ARG PackageName
 ARG PackageVersion
 ARG NexusUser
 ARG NexusPassword
-# ARG WORD_USER
-# ARG WORD_PASS
-# ARG WORD_EMAIL
-# ARG WORD_TITLE
 
 RUN apt-get update -y
 RUN apt-get install -y --no-install-recommends wget unzip
