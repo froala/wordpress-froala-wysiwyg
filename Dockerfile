@@ -6,10 +6,10 @@ ARG PackageName
 ARG PackageVersion
 ARG NexusUser
 ARG NexusPassword
-ARG WORD_USER
-ARG WORD_PASS
-ARG WORD_EMAIL
-ARG WORD_TITLE
+# ARG WORD_USER
+# ARG WORD_PASS
+# ARG WORD_EMAIL
+# ARG WORD_TITLE
 
 RUN apt-get update -y
 RUN apt-get install -y --no-install-recommends wget unzip
@@ -35,9 +35,5 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
     && cp -p wp-cli.phar /usr/local/bin/wp \
     && cd /var/www/html/ \
     && echo "wp-cli installed..."
-
-RUN apt update && apt install -y sendmail sendmail-cf mailutils    
-RUN wp core update --alow-root
-RUN wp core install --allow-root --url=https://${DEPLOYMENT_URL} --admin_user=${WORD_USER} --admin_email=${WORD_EMAIL} --admin_password=${WORD_PASS} --title=${WORD_TITLE}
 
 EXPOSE 80
