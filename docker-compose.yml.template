@@ -3,8 +3,8 @@ services:
   DbWordSName:
     image: mysql:5.7
     container_name: MysqlContainerName
-    volumes:
-      - db_data:/var/lib/mysql
+    #volumes:
+    #  - db_data:/var/lib/mysql
     restart: unless-stopped
     networks:
       - db_word_network_wp
@@ -38,6 +38,6 @@ networks:
     external: true
   db_word_network_wp:
     external: false
-volumes:
-  db_data:
+#volumes:
+#  db_data:
 
