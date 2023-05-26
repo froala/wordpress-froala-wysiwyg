@@ -208,14 +208,14 @@ echo "Docker-compose is in : /services/${SERVICE_NAME} "
 # workaround for froala plugin to consume unpublished core library : deactivate plugin & replace files 
 #
 sleep 30
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} wp plugin deactivate froala --allow-root && sleep 5" 
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} rm -rf /var/www/html/wp-content/plugins/froala/admin/css && sleep 5" 
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} rm -rf /var/www/html/wp-content/plugins/froala/admin/js && sleep 5" 
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} cp -pr /package/js /var/www/html/wp-content/plugins/froala/admin/ && sleep 5 " 
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} cp -pr /package/css /var/www/html/wp-content/plugins/froala/admin/ && sleep 5 && chown -R www-data:www-data  /var/www/html/wp-content/plugins/froala/ "
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker stop ${CONTAINER_NAME} && sleep 5" 
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker start ${CONTAINER_NAME} && sleep 5" 
-ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} wp plugin activate froala --allow-root && sleep 5" 
+# ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} wp plugin deactivate froala --allow-root && sleep 5" 
+# ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} rm -rf /var/www/html/wp-content/plugins/froala/admin/css && sleep 5" 
+# ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} rm -rf /var/www/html/wp-content/plugins/froala/admin/js && sleep 5" 
+# ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} cp -pr /package/js /var/www/html/wp-content/plugins/froala/admin/ && sleep 5 " 
+# ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} cp -pr /package/css /var/www/html/wp-content/plugins/froala/admin/ && sleep 5 && chown -R www-data:www-data  /var/www/html/wp-content/plugins/froala/ "
+# ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker stop ${CONTAINER_NAME} && sleep 5" 
+# ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker start ${CONTAINER_NAME} && sleep 5" 
+# ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem ${SSH_USER}@${DEPLOYMENT_SERVER} " sudo docker exec ${CONTAINER_NAME} wp plugin activate froala --allow-root && sleep 5" 
 
 echo "\n If no error above (cp related errors) then froala plugin is consuming the unpublished core library \n" 
 
@@ -225,7 +225,7 @@ echo "\n If no error above (cp related errors) then froala plugin is consuming t
 #
 # validate deployment
 #
-sleep 10
+sleep 120
 RET_CODE=`curl -k -s -o /tmp/notimportant.txt -w "%{http_code}" https://${DEPLOYMENT_URL}`
 echo "validation code: $RET_CODE for  https://${DEPLOYMENT_URL}"
 if [ $RET_CODE -ne 200 ]; then 
