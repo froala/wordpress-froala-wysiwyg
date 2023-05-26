@@ -139,7 +139,7 @@ echo " deployment URL: https://${DEPLOYMENT_URL}"
 #DEPLOYMENT_URL="${BUILD_REPO_NAME}-${TRAVIS_BRANCH}.${SDK_ENVIRONMENT}.${BASE_DOMAIN}"
 #echo " deployment URL: https://${DEPLOYMENT_URL}"
 
-#############
+############
 # creating docker-compose file...
 #
 cp docker-compose.yml.template docker-compose.yml
