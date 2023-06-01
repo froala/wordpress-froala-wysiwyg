@@ -93,7 +93,7 @@ class Froala_Admin {
 
 		/*   REGISTER ALL CSS FOR SITE */
 
-		wp_register_style('froala_editor_css',plugin_dir_url( __FILE__ ) . 'css/froala_editor.css');
+		wp_register_style('froala_editor_css',plugin_dir_url( __FILE__ ) . 'css/froala_editor.pkgd.min.css');
 		wp_register_style('froala_style_css',plugin_dir_url( __FILE__ ) . 'css/froala_style.css');
 		wp_register_style('froala_admin_css',plugin_dir_url( __FILE__ ) . 'css/froala-admin.css');
 		wp_register_style('font_asm','https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
@@ -156,7 +156,7 @@ class Froala_Admin {
 		 */
 
 		wp_register_script('froala_admin',plugin_dir_url( __FILE__ ) . 'js/froala-admin.js');
-		wp_register_script('froala_editor',plugin_dir_url( __FILE__ ) . 'js/froala_editor.min.js');
+		wp_register_script('froala_editor',plugin_dir_url( __FILE__ ) . 'js/froala_editor.pkgd.min.js');
 		
 		wp_register_script('froala_markdown',plugin_dir_url( __FILE__ ) . 'js/plugins/markdown.min.js');
 		wp_register_script('froala_track_changes',plugin_dir_url( __FILE__ ) . 'js/plugins/track_changes.min.js');
