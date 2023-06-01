@@ -159,7 +159,7 @@ function deploy(){
 
     RET_CODE=$(curl -k -s -o /tmp/notimportant.txt -w "%{http_code}" https://"${DEPLOYMENT_URL}")
     echo "validation code: $RET_CODE for  https://${DEPLOYMENT_URL}"
-    if [ "${RET_CODE}" -ne 200 ]; then 
+    if [ "${RET_CODE}" -ne 302 ]; then 
         echo "Deployment validation failed!!! Please check pipeline logs." 
         exit 1 
     else 
