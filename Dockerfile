@@ -15,6 +15,7 @@ RUN /bin/mkdir -p /var/www/html/wp-content/plugins/froala
 COPY . /var/www/html/wp-content/plugins/froala
 
 RUN wget --no-check-certificate --user ${NexusUser}  --password ${NexusPassword} https://nexus.tools.froala-infra.com/repository/Froala-npm/${PackageName}/-/${PackageName}-${PackageVersion}.tgz \
+    && sleep 5 \
     && tar -zxvf ${PackageName}-${PackageVersion}.tgz \
     && /bin/cp -rf  package/css/* /var/www/html/wp-content/plugins/froala/public/css/ \
     && /bin/cp -rf  package/js/* /var/www/html/wp-content/plugins/froala/public/js/ \
