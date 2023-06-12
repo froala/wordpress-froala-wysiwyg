@@ -187,12 +187,12 @@ if [ "${EXISTING_DEPLOYMENTS_NR}" -ge "${MAX_DEPLOYMENTS_NR}" ]; then
     echo "Maximum deployments reached  on ${SDK_ENVIRONMENT} environment for ${BUILD_REPO_NAME}."
     echo "Stopping container  ${OLDEST_CONTAINER} ..."
   
-    if ! ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem "${SSH_USER}"@"${DEPLOYMENT_SERVER}" sudo docker stop "${OLDEST_CONTAINER}"; then
+    if ! ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem "${SSH_USER}"@"${DEPLOYMENT_SERVER}" "sudo docker ps --format '{{.Names}}' | grep -iw '${OLDEST_CONTAINER}' | xargs -r sudo docker stop"; then
         echo "Failed to stop the ${OLDEST_CONTAINER} container"
     else
       echo "Successfully stopped the ${OLDEST_CONTAINER} container."
       echo "Removing the ${OLDEST_CONTAINER} container..."
-      if ! ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem "${SSH_USER}"@"${DEPLOYMENT_SERVER}" sudo docker rm -f "${OLDEST_CONTAINER}"; then
+      if ! ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem "${SSH_USER}"@"${DEPLOYMENT_SERVER}" "sudo docker ps --format '{{.Names}}' | grep -iw '${OLDEST_CONTAINER}' | xargs -r sudo docker rm -f"; then
           echo "Failed to remove the ${OLDEST_CONTAINER} container"
       else
           echo "Successfully removed the ${OLDEST_CONTAINER} container."
