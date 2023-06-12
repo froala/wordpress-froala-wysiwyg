@@ -44,7 +44,7 @@ case "${BRANCH_NAME}" in
     bf*) echo "Building only on bugfix branch ${TRAVIS_BRANCH}... will not deploy..." && exit 0;;
     *) echo "Not a deployment branch" && exit 1;;
 esac
-
+echo "${SDK_ENVIRONMENT}"
 # Set the short branch name
 if [ "${BRANCH_LENGHT}" -lt 18 ]; then 
     SHORT_TRAVIS_BRANCH="${TRAVIS_BRANCH}"
@@ -75,6 +75,7 @@ function generate_container_name(){
     DEPL=$(ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem "${SSH_USER}"@"${DEPLOYMENT_SERVER}" sudo docker ps | grep -i "${LW_REPO_NAME}"-"${AO_IDENTIFIER}")
     echo "Containers running for ${AO_IDENTIFIER}:  ${DEPL}"
     echo "${DEPL}" > file.txt
+    echo "${DEPL}"
 
     echo "Getting indexes of oldest and latest deployed containers for ${AO_IDENTIFIER}"
     CT_LOWER_INDEX=$(awk -F'-' '{print $NF }' < file.txt | sort -nk1 | head -1)
