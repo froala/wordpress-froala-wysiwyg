@@ -181,6 +181,7 @@ if [ "${EXISTING_DEPLOYMENTS_NR}" -lt "${MAX_DEPLOYMENTS_NR}" ]; then
 fi
 
 # If existing deployment equals max deployment then delete oldest container.
+shopt -s nocasematch
 if [ "${EXISTING_DEPLOYMENTS_NR}" -ge "${MAX_DEPLOYMENTS_NR}" ]; then
     
     echo "Maximum deployments reached  on ${SDK_ENVIRONMENT} environment for ${BUILD_REPO_NAME}."
@@ -197,7 +198,7 @@ if [ "${EXISTING_DEPLOYMENTS_NR}" -ge "${MAX_DEPLOYMENTS_NR}" ]; then
           echo "Successfully removed the ${OLDEST_CONTAINER} container."
       fi
     fi
-    echo "Successfully removed the ${OLDEST_CONTAINER} container."
+    
 
     echo "Deploying the service: ${SERVICE_NAME}"
     deploy && sleep 30
