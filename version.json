@@ -5,6 +5,6 @@
         "comment-2": "Please specify the maximum allowed deployments per environment",
         "dev": "1",
         "qa": "2",
-        "qe": "2",
+        "qe": "1",
         "stg": "1"
 }
