@@ -73,13 +73,16 @@ existing_deployments
 function generate_container_name(){
 
     DEPL=$(ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem "${SSH_USER}"@"${DEPLOYMENT_SERVER}" sudo docker ps | grep -i "${LW_REPO_NAME}"-"${AO_IDENTIFIER}")
+    
     echo "Containers running for ${AO_IDENTIFIER}:  ${DEPL}"
     echo "${DEPL}" > file.txt
-    echo "${DEPL}"
+    cat file.txt
+    echo "--------------------------"
+    
 
     echo "Getting indexes of oldest and latest deployed containers for ${AO_IDENTIFIER}"
-    CT_LOWER_INDEX=$(awk -F'-' '{print $NF }' < file.txt | sort -nk1 | head -1)
-    CT_HIGHER_INDEX=$(awk -F'-' '{print $NF }' < file.txt | sort -nk1 | tail -1)
+    CT_LOWER_INDEX=$(awk -F'-' '!/^$/ {print $NF}' < file.txt | sort -nk1 | head -1)
+    CT_HIGHER_INDEX=$(awk -F'-' '!/^$/ {print $NF}' < file.txt | sort -nk1 | tail -1)
     echo "Lowest index : ${CT_LOWER_INDEX} ; and Highest index : ${CT_HIGHER_INDEX}"	
 
     if [ -z "${DEPL}" ]; then
