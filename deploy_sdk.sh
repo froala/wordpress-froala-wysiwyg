@@ -72,14 +72,11 @@ existing_deployments
 # Get the old container name, no of deployments, and generate the new index and container name
 function generate_container_name(){
 
-    DEPL=$(ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem "${SSH_USER}"@"${DEPLOYMENT_SERVER}" sudo docker ps | grep -i "${LW_REPO_NAME}"-"${AO_IDENTIFIER}")
+    DEPL=$(ssh -o "StrictHostKeyChecking no" -i  /tmp/sshkey.pem "${SSH_USER}"@"${DEPLOYMENT_SERVER}" sudo docker ps | grep -iw "${LW_REPO_NAME}"-"${AO_IDENTIFIER}")
     
     echo "Containers running for ${AO_IDENTIFIER}:  ${DEPL}"
     echo "${DEPL}" > file.txt
-    cat file.txt
-    echo "--------------------------"
     
-
     echo "Getting indexes of oldest and latest deployed containers for ${AO_IDENTIFIER}"
     CT_LOWER_INDEX=$(awk -F'-' '!/^$/ {print $NF}' < file.txt | sort -nk1 | head -1)
     CT_HIGHER_INDEX=$(awk -F'-' '!/^$/ {print $NF}' < file.txt | sort -nk1 | tail -1)
