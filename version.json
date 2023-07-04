@@ -4,7 +4,7 @@
         "version": "4.0.17",
         "comment-2": "Please specify the maximum allowed deployments per environment",
         "dev": "1",
-        "qa": "1",
+        "qa": "2",
         "qe": "2",
         "stg": "1"
 }
