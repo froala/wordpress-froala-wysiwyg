@@ -247,6 +247,7 @@ class Froala_Editor {
 			'quote.min.js',
 			'save.min.js',
 			'special_characters.min.js',
+			'table.min.js',
 			'url.min.js',
 			'video.min.js',
 			'word_paste.min.js'
