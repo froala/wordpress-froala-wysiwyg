@@ -259,7 +259,7 @@ class Froala_Editor {
 			'trim_video.min.js',
 			'url.min.js',
 			'video.min.js',
-			'word_counters.min.js',
+			'word_counter.min.js',
 			'word_paste.min.js'
 		];
 
