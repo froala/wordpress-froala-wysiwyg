@@ -115,11 +115,13 @@ class Froala_Admin {
 		wp_register_style('video_css',plugin_dir_url( __FILE__ ) . 'css/plugins/video.css');
 		wp_register_style('markdown_css',plugin_dir_url( __FILE__ ) . 'css/plugins/markdown.css');
 		wp_register_style('files_manager_css',plugin_dir_url( __FILE__ ) .'css/plugins/files_manager.css');
+		wp_register_style('code_view_css',plugin_dir_url( __FILE__ ) .'css/plugins/code_view.css');
 		wp_enqueue_style('froala_editor_css');
 		wp_enqueue_style('froala_style_css');
 		wp_enqueue_style('froala_admin_css');
 		wp_enqueue_style('font_asm');
 
+		wp_enqueue_style('code_view_css');
 		wp_enqueue_style('char_counter_css');
 		wp_enqueue_style('colors_css');
 		wp_enqueue_style('draggable_css');
@@ -270,7 +272,7 @@ class Froala_Admin {
 			array('name'=>'emoticons'),
 			array('name'=>'entities'),
 			array('name'=>'file'),
-			array('name'=>'file_manager'),
+			array('name'=>'files_manager'),
 			array('name'=>'filestack'),
 			array('name'=>'font_family'),
 			array('name'=>'font_size'),
