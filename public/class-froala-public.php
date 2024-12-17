@@ -304,7 +304,8 @@ class Froala_Editor {
 			'table.css',
 			'video.css',
 			'files_manager.css',
-			'markdown.css'
+			'markdown.css',
+			'filestack.css',
 		];
 
 		$path = plugin_dir_url( __FILE__ ) . 'css/plugins/'.$name.$suffix;
