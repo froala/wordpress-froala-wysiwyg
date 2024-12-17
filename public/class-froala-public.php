@@ -231,7 +231,7 @@ class Froala_Editor {
 			'emoticons.min.js',
 			'entities.min.js',
 			'file.min.js',
-			'file_manager.min.js',
+			'files_manager.min.js',
 			'filestack.min.js',
 			'font_family.min.js',
 			'font_size.min.js',
@@ -302,7 +302,9 @@ class Froala_Editor {
 			'quick_insert.css',
 			'special_characters.css',
 			'table.css',
-			'video.css'
+			'video.css',
+			'files_manager.css',
+			'markdown.css'
 		];
 
 		$path = plugin_dir_url( __FILE__ ) . 'css/plugins/'.$name.$suffix;
