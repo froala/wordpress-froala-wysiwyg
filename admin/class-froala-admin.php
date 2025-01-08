@@ -115,16 +115,20 @@ class Froala_Admin {
 		wp_register_style('video_css',plugin_dir_url( __FILE__ ) . 'css/plugins/video.css');
 		wp_register_style('markdown_css',plugin_dir_url( __FILE__ ) . 'css/plugins/markdown.css');
 		wp_register_style('files_manager_css',plugin_dir_url( __FILE__ ) .'css/plugins/files_manager.css');
+		wp_register_style('code_view_css',plugin_dir_url( __FILE__ ) .'css/plugins/code_view.css');
+		wp_register_style('filestack_css',plugin_dir_url( __FILE__ ) .'css/plugins/filestack.css');
 		wp_enqueue_style('froala_editor_css');
 		wp_enqueue_style('froala_style_css');
 		wp_enqueue_style('froala_admin_css');
 		wp_enqueue_style('font_asm');
 
+		wp_enqueue_style('code_view_css');
 		wp_enqueue_style('char_counter_css');
 		wp_enqueue_style('colors_css');
 		wp_enqueue_style('draggable_css');
 		wp_enqueue_style('emoticons_css');
 		wp_enqueue_style('file_css');
+		wp_enqueue_style('filestack_css');
 		wp_enqueue_style('fullscreen_css');
 		wp_enqueue_style('help_css');
 		wp_enqueue_style('image_css');
@@ -266,9 +270,12 @@ class Froala_Admin {
 			array('name'=>'code_view'),
 			array('name'=>'colors'),
 			array('name'=>'draggable'),
+			array('name'=>'edit_in_popup'),
 			array('name'=>'emoticons'),
 			array('name'=>'entities'),
 			array('name'=>'file'),
+			array('name'=>'files_manager'),
+			array('name'=>'filestack'),
 			array('name'=>'font_family'),
 			array('name'=>'font_size'),
 			array('name'=>'forms'),
@@ -276,6 +283,7 @@ class Froala_Admin {
 			array('name'=>'help'),
 			array('name'=>'image'),
 			array('name'=>'image_manager'),
+			array('name'=>'inline_class'),
 			array('name'=>'inline_style'),
 			array('name'=>'line_breaker'),
 			array('name'=>'link'),
@@ -288,10 +296,13 @@ class Froala_Admin {
 			array('name'=>'save'),
 			array('name'=>'special_characters'),
 			array('name'=>'table'),
+			array('name'=>'trim_video'),
 			array('name'=>'url'),
 			array('name'=>'files_manager'),
 			array('name'=>'markdown'),
 			array('name'=>'track_changes'),
+			array('name'=>'word_counter'),
+			array('name'=>'word_paste'),
 			array('name'=>'video'));
 		?>
 
