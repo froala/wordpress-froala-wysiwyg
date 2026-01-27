@@ -1,0 +1,96 @@
+name: Sync Version – WordPress
+
+on:
+  repository_dispatch:
+    types: [version_update]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      # --------------------------------------------
+      # Checkout repository
+      # --------------------------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT }}
+          fetch-depth: 0
+
+      # --------------------------------------------
+      # Load & validate version
+      # --------------------------------------------
+      - name: Load & validate version
+        run: |
+          VERSION="${{ github.event.client_payload.version }}"
+          VERSION="${VERSION//,/\.}"
+
+          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "Invalid version: $VERSION"
+            exit 1
+          fi
+
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "Dispatching version $VERSION"
+
+      # --------------------------------------------
+      # Prepare release branch
+      # --------------------------------------------
+      - name: Prepare release branch
+        run: |
+          BRANCH="release-v${VERSION}"
+          echo "BRANCH=$BRANCH" >> $GITHUB_ENV
+
+          git fetch origin
+
+          if git ls-remote --heads origin "$BRANCH" | grep -q "$BRANCH"; then
+            git checkout "$BRANCH"
+            git pull origin "$BRANCH"
+          else
+            git checkout -b "$BRANCH"
+          fi
+
+      # --------------------------------------------
+      # Update JS/CSS versions
+      # --------------------------------------------
+      - name: Update JS/CSS versions
+        run: |
+          find ./public -type f -name "*.js" \
+            -exec sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${VERSION}/g" {} \;
+
+          find ./public -type f -name "*.css" \
+            -exec sed -i "s/[0-9]\+\.[0-9]\+\.[0-9]\+/${VERSION}/g" {} \;
+
+      # --------------------------------------------
+      # Commit & push
+      # --------------------------------------------
+      - name: Commit & push
+        run: |
+          git config user.name "froala-travis-bot"
+          git config user.email "froala_git_travis_bot@idera.com"
+          
+          git add public
+          git commit -m "chore: release WordPress plugin v${VERSION}" || echo "Nothing to commit"
+          git push origin "$BRANCH"
+
+      # --------------------------------------------
+      # Create Pull Request (YAML-SAFE)
+      # --------------------------------------------
+      - name: Create Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
+          RELEASE_NOTES: ${{ github.event.client_payload.release_notes }}
+        run: |
+          PR_BODY=$(printf "release: yes\n\n## Release Notes (from primary repo)\n\n%s\n" "$RELEASE_NOTES")
+
+          gh pr create \
+            --base master \
+            --head "$BRANCH" \
+            --title "Release v${VERSION}" \
+            --body "$PR_BODY" \
+            || echo "Pull request already exists"
