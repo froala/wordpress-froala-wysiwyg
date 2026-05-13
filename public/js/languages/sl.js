@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -101,6 +101,7 @@
       'Something went wrong. Please try again.': 'Nekaj je šlo narobe. Prosimo, poskusite ponovno.',
       'Image Caption': 'Opis slike',
       'Advanced Edit': 'Napredno urejanje',
+      'Advanced Edit (File-Robot)': 'Napredno urejanje',
       // Video
       'Insert Video': 'Vstavi video posnetek',
       'Embedded Code': 'Vdelana koda',

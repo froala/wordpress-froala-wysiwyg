@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -108,6 +108,7 @@
       'Something went wrong. Please try again.': 'Κάτι πήγε στραβά. Προσπαθήστε ξανά.',
       'Image Caption': 'Λεζάντα εικόνας',
       'Advanced Edit': 'Προχωρημένη επεξεργασία',
+      'Advanced Edit (File-Robot)': 'Προχωρημένη επεξεργασία',
       'Rounded': 'Κυκλικός',
       'Bordered': 'Πλαίσιο',
       'Shadow': 'Σκια',

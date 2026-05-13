@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -105,6 +105,7 @@
       'Something went wrong. Please try again.': "Jotain meni pieleen. Yrit\xE4 uudelleen.",
       'Image Caption': 'Kuva-otsikko',
       'Advanced Edit': 'Edistynyt muokkaus',
+      'Advanced Edit (File-Robot)': 'Edistynyt muokkaus',
       // Video
       'Insert Video': "Lis\xE4\xE4 video",
       'Embedded Code': 'Upotettu koodi',

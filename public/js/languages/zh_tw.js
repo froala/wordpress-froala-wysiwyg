@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -105,6 +105,7 @@
       'Something went wrong. Please try again.': '發生錯誤，請重試。',
       'Image Caption': '圖片標題',
       'Advanced Edit': '高級編輯',
+      'Advanced Edit (File-Robot)': '高級編輯',
       // Video
       'Insert Video': '插入影片',
       'Embedded Code': '嵌入式代码',

@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -105,6 +105,7 @@
       'Something went wrong. Please try again.': 'Ada yang salah. Silakan coba lagi.',
       'Image Caption': 'Keterangan gambar',
       'Advanced Edit': 'Edit lanjutan',
+      'Advanced Edit (File-Robot)': 'Edit lanjutan',
       // Video
       'Insert Video': 'Memasukkan video',
       'Embedded Code': 'Kode tertanam',

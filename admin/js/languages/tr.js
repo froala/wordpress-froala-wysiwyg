@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -105,6 +105,7 @@
       'Something went wrong. Please try again.': "Bir \u015Feyler yanl\u0131\u015F gitti. L\xFCtfen tekrar deneyin.",
       'Image Caption': 'Resim yazısı',
       'Advanced Edit': 'Ileri düzey düzenleme',
+      'Advanced Edit (File-Robot)': 'Ileri düzey düzenleme',
       // Video
       'Insert Video': 'Video ekle',
       'Embedded Code': "G\xF6m\xFCl\xFC kod",

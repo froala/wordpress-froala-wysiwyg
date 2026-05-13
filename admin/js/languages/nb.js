@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -105,6 +105,7 @@
       'Something went wrong. Please try again.': "Noe gikk galt. V\xE6r s\xE5 snill, pr\xF8v p\xE5 nytt.",
       'Image Caption': 'Bilde bildetekst',
       'Advanced Edit': 'Avansert redigering',
+      'Advanced Edit (File-Robot)': 'Avansert redigering',
       // Video
       'Insert Video': 'Sett inn video',
       'Embedded Code': 'Embedded kode',

@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -358,6 +358,7 @@
       'Double': 'Dû',
       'Image Caption': 'Sernavê wêne',
       'Advanced Edit': 'Sererastkirina pêşkeftî',
+      'Advanced Edit (File-Robot)': 'Sererastkirina pêşkeftî',
       'Paste in a video URL': 'URL-a vîdyoyê binivîse',
       'Drop video': 'Vîdyo bavêje vir',
       'Your browser does not support HTML5 video.': 'Geroka te HTML5 video piştgirî nake.',

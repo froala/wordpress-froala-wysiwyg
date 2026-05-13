@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -125,6 +125,7 @@
       'Something went wrong. Please try again.': "\u05DE\u05E9\u05D4\u05D5 \u05D4\u05E9\u05EA\u05D1\u05E9. \u05D1\u05D1\u05E7\u05E9\u05D4 \u05E0\u05E1\u05D4 \u05E9\u05D5\u05D1.",
       'Image Caption': 'כיתוב תמונה',
       'Advanced Edit': 'עריכה מתקדמת',
+      'Advanced Edit (File-Robot)': 'עריכה מתקדמת',
       // Video
       'Insert Video': "\u05D4\u05D5\u05E1\u05E4\u05EA \u05D5\u05D9\u05D3\u05D9\u05D0\u05D5",
       'Embedded Code': "\u05E7\u05D5\u05D3 \u05DE\u05D5\u05D8\u05D1\u05E2",

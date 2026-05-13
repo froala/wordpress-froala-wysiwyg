@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -104,6 +104,7 @@
       'Something went wrong. Please try again.': "Ne\u0161to je po\u0161lo po zlu. Molimo vas da poku\u0161ate ponovo.",
       'Image Caption': 'Caption slika',
       'Advanced Edit': 'Napredna izmjena',
+      'Advanced Edit (File-Robot)': 'Napredna izmjena',
       // Video
       'Insert Video': 'Umetni video',
       'Embedded Code': 'Embedded kod',

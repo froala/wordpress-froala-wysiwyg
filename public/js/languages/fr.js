@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -127,6 +127,7 @@
       'Something went wrong. Please try again.': "Quelque chose a mal tourn\xE9. Veuillez r\xE9essayer.",
       'Image Caption': "L\xE9gende de l'image",
       'Advanced Edit': "\xC9dition avanc\xE9e",
+      'Advanced Edit (File-Robot)': "\xC9dition avanc\xE9e",
       // Video
       'Insert Video': "Ins\xE9rer une vid\xE9o",
       'Embedded Code': "Code int\xE9gr\xE9",

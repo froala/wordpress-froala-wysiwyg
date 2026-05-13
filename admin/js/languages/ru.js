@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -118,6 +118,7 @@
       'Something went wrong. Please try again.': "\u0427\u0442\u043E-\u0442\u043E \u043F\u043E\u0448\u043B\u043E \u043D\u0435 \u0442\u0430\u043A. \u041F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430, \u043F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0435\u0449\u0435 \u0440\u0430\u0437.",
       'Image Caption': 'Подпись к изображению',
       'Advanced Edit': 'Расширенное редактирование',
+      'Advanced Edit (File-Robot)': 'Расширенное редактирование',
       // Video
       'Insert Video': "\u0412\u0441\u0442\u0430\u0432\u0438\u0442\u044C \u0432\u0438\u0434\u0435\u043E",
       'Embedded Code': "HTML-\u043A\u043E\u0434 \u0434\u043B\u044F \u0432\u0441\u0442\u0430\u0432\u043A\u0438",

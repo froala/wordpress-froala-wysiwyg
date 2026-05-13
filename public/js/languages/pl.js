@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -122,6 +122,7 @@
       'Something went wrong. Please try again.': "Co\u015B posz\u0142o nie tak. Prosz\u0119 spr\xF3buj ponownie.",
       'Image Caption': 'Podpis obrazu',
       'Advanced Edit': 'Zaawansowana edycja',
+      'Advanced Edit (File-Robot)': 'Zaawansowana edycja',
       // Video
       'Insert Video': 'Wstaw wideo',
       'Embedded Code': 'Kod osadzone',

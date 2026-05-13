@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -105,6 +105,7 @@
       'Something went wrong. Please try again.': 'Something went wrong. Please try again.',
       'Image Caption': 'Image Caption',
       'Advanced Edit': 'Advanced Edit',
+      'Advanced Edit (File-Robot)': 'Advanced Edit',
       // Video
       'Insert Video': 'Insert Video',
       'Embedded Code': 'Embedded Code',

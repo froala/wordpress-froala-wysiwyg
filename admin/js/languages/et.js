@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -105,6 +105,7 @@
       'Something went wrong. Please try again.': "Midagi l\xE4ks valesti. Palun proovi uuesti.",
       'Image Caption': 'Pildi pealkiri',
       'Advanced Edit': 'Täiustatud redigeerimine',
+      'Advanced Edit (File-Robot)': 'Täiustatud redigeerimine',
       // Video
       'Insert Video': 'Lisa video',
       'Embedded Code': 'Varjatud koodi',

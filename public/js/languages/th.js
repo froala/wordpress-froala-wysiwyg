@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -105,6 +105,7 @@
       'Something went wrong. Please try again.': "\u0E1A\u0E32\u0E07\u0E2D\u0E22\u0E48\u0E32\u0E07\u0E1C\u0E34\u0E14\u0E1B\u0E01\u0E15\u0E34. \u0E01\u0E23\u0E38\u0E13\u0E32\u0E25\u0E2D\u0E07\u0E2D\u0E35\u0E01\u0E04\u0E23\u0E31\u0E49\u0E07.",
       'Image Caption': 'คำบรรยายภาพ',
       'Advanced Edit': 'แก้ไขขั้นสูง',
+      'Advanced Edit (File-Robot)': 'แก้ไขขั้นสูง',
       // Video
       'Insert Video': "\u0E41\u0E17\u0E23\u0E01\u0E27\u0E34\u0E14\u0E35\u0E42\u0E2D",
       'Embedded Code': "\u0E23\u0E2B\u0E31\u0E2A\u0E2A\u0E21\u0E2D\u0E07\u0E01\u0E25\u0E1D\u0E31\u0E07\u0E15\u0E31\u0E27",

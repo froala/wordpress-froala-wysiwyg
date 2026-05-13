@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -105,6 +105,7 @@
       'Something went wrong. Please try again.': "N\xE5got gick fel. Var god f\xF6rs\xF6k igen.",
       'Image Caption': 'Bildtext',
       'Advanced Edit': 'Avancerad redigering',
+      'Advanced Edit (File-Robot)': 'Avancerad redigering',
       // Video
       'Insert Video': 'Infoga video',
       'Embedded Code': "Inb\xE4ddad kod",

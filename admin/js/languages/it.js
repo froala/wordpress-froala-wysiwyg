@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -120,6 +120,7 @@
       'Something went wrong. Please try again.': 'Qualcosa non ha funzionato. Riprova, per favore.',
       'Image Caption': 'Didascalia',
       'Advanced Edit': 'Avanzato',
+      'Advanced Edit (File-Robot)': 'Avanzato',
       // Video
       'Insert Video': 'Inserisci Video',
       'Embedded Code': 'Codice Incorporato',

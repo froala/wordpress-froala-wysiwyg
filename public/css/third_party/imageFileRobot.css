@@ -1,0 +1,37 @@
+/*!
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * License https://froala.com/wysiwyg-editor/terms/
+ * Copyright 2014-2026 Froala Labs
+ */
+
+#filerobotContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  display: none; }
+  #filerobotContainer.active {
+    display: block; }
+  #filerobotContainer #filerobot-editor {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1000000; }
+    #filerobotContainer #filerobot-editor .FIE_root,
+    #filerobotContainer #filerobot-editor .FIE_editor-wrapper {
+      width: 100%;
+      height: 100%; }
+
+.froala-filerobot-editor .FIE_topbar {
+  background-color: #1976d2; }
+.froala-filerobot-editor .FIE_topbar-save-button {
+  background-color: #4caf50; }
+  .froala-filerobot-editor .FIE_topbar-save-button:hover {
+    background-color: #45a049; }
+.froala-filerobot-editor .FIE_topbar-close-button:hover {
+  background-color: rgba(255, 255, 255, 0.1); }

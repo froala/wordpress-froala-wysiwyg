@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -105,6 +105,7 @@
       'Something went wrong. Please try again.': "Ceva n-a mers bine. V\u0103 rug\u0103m s\u0103 \xEEncerca\u021Bi din nou.",
       'Image Caption': 'Captura imaginii',
       'Advanced Edit': 'Editare avansată',
+      'Advanced Edit (File-Robot)': 'Editare avansată',
       // Video
       'Insert Video': 'Inserare video',
       'Embedded Code': 'Cod embedded',

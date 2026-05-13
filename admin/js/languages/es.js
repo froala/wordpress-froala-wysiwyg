@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -125,6 +125,7 @@
       'Something went wrong. Please try again.': "Algo sali\xF3 mal. Por favor, vuelva a intentarlo.",
       'Image Caption': 'Captura de imagen',
       'Advanced Edit': 'Edición avanzada',
+      'Advanced Edit (File-Robot)': 'Edición avanzada',
       // Video
       'Insert Video': 'Insertar video',
       'Embedded Code': "C\xF3digo incrustado",

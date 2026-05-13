@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.1.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -118,6 +118,7 @@
       'Something went wrong. Please try again.': ".\u062D\u062F\u062B \u062E\u0637\u0623 \u0645\u0627. \u062D\u0627\u0648\u0644 \u0645\u0631\u0629 \u0627\u062E\u0631\u0649",
       'Image Caption': 'تعليق على الصورة',
       'Advanced Edit': 'تعديل متقدم',
+      'Advanced Edit (File-Robot)': 'تعديل متقدم',
       // Video
       'Insert Video': "\u0625\u062F\u0631\u0627\u062C \u0641\u064A\u062F\u064A\u0648",
       'Embedded Code': "\u0627\u0644\u062A\u0639\u0644\u064A\u0645\u0627\u062A \u0627\u0644\u0628\u0631\u0645\u062C\u064A\u0629 \u0627\u0644\u0645\u0636\u0645\u0646\u0629",
