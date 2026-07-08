@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Indonesian
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['id'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': 'Ketik sesuatu',
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': 'Jenis Huruf',
       'Font Size': 'Ukuran leter',
+      'Enter font size': 'Masukkan ukuran font',
+      'Custom Font Size': 'Ukuran Font Kustom',
+      'Custom': 'Kustom',
+      'Please enter a valid number': 'Silakan masukkan nomor yang valid',
+      'Value must be between': 'Nilai harus di antara',
+      'and': 'dan',
+      'Apply': 'Terapkan',
       // Colors
       'Colors': 'Warna',
       'Color': 'Warna',
@@ -331,6 +358,7 @@
       // Export to Word
       'Export to Word': 'Ekspor ke Word',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Pastikan semua pustaka dependen yang diperlukan tersedia agar plugin dapat berfungsi.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Pastikan bahwa semua konfigurasi yang diperlukan dan perpustakaan yang bergantung tersedia untuk plugin berfungsi seperti yang diharapkan.',
       // Import_from_word
       'Import from Word': 'Impor dari Word',
       'Please upload a valid file': 'Harap unggah berkas yang valid.',
@@ -410,8 +438,63 @@
       'to': 'ke',
       'in your configuration to provide consent.': 'dalam konfigurasi Anda untuk memberikan persetujuan.',
       'You can review the terms here:': 'Anda dapat meninjau persyaratan di sini:',
-      'View AI Supplemental Terms': 'Lihat Persyaratan Tambahan AI'
-    },
+      'View AI Supplemental Terms': 'Lihat Persyaratan Tambahan AI',
+      'Switch Mode': 'Ganti Mode',
+      'Editing': 'Mengedit',
+      'Edit document with real-time sync': 'Edit dokumen dengan sinkronisasi waktu nyata',
+      'Suggesting': 'Menyarankan',
+      'Add suggestions as Yjs-tracked changes': 'Tambahkan saran sebagai perubahan yang dilacak oleh Yjs',
+      'Viewing': 'Melihat',
+      'Read-only — no edits allowed': 'Hanya baca — pengeditan tidak diizinkan',
+      'Add Comment': 'Tambahkan Komentar',
+      'Version History': 'Riwayat Versi',
+      'Hide Comments': 'Sembunyikan Komentar',
+      'Open': 'Terbuka',
+      'Resolved': 'Terselesaikan',
+      'Show comments': 'Tampilkan komentar',
+      'No suggestions or comments yet.': 'Belum ada saran atau komentar.',
+      'No resolved suggestions or comments.': 'Tidak ada saran atau komentar yang telah diselesaikan.',
+      'View All': 'Lihat Semua',
+      'Open comment from': 'Buka komentar dari',
+      'more users': 'lebih banyak pengguna',
+      'Add': 'Tambah',
+      'Add Space': 'Tambah Spasi',
+      'Add Paragraph': 'Tambah Paragraf',
+      'Add Link': 'Tambahkan Tautan',
+      'with': 'dengan',
+      'Format': 'Format',
+      'Removed': 'Dihapus',
+      'Accept': 'Terima',
+      'Reject': 'Tolak',
+      'Accepted': 'Diterima',
+      'Rejected': 'Ditolak',
+      'Menu': 'Menu',
+      'Edit': 'Edit',
+      'Re-open': 'Buka Kembali',
+      'Resolve': 'Selesaikan',
+      'Reply': 'Balas',
+      'View All Replies': 'Lihat Semua Balasan',
+      'View Less': 'Lihat Lebih Sedikit',
+      'comment or tag with @': 'beri komentar atau tandai dengan @',
+      'Comment': 'Komentar',
+      'Saving...': 'Menyimpan...',
+      'Saved': 'Tersimpan',
+      'Auto Save': 'Simpan Otomatis',
+      'Last saved': 'Terakhir disimpan',
+      'Click to save a version now': 'Klik untuk menyimpan versi sekarang',
+      'just now': 'baru saja',
+      's ago': 'dtk lalu',
+      'm ago': 'mnt lalu',
+      'h ago': 'jam lalu',
+      'd ago': 'hari lalu',
+      'Add to Version History': 'Tambahkan ke Riwayat Versi',
+      'Rename Version': 'Ganti Nama Versi',
+      'Name this version': 'Beri nama versi ini',
+      'Edit description': 'Edit deskripsi',
+      'Title': 'Judul',
+      'Title is required.': 'Judul wajib diisi.',
+      'Description (optional)': 'Deskripsi (opsional)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Simpan'), 'Restore version', 'Pulihkan versi'), 'Current content will be replaced.', 'Konten saat ini akan diganti.'), 'Delete version', 'Hapus versi'), "Back", 'Kembali'), 'Total Edits', 'Total Edit'), 'Previous version', 'Versi sebelumnya'), 'Next version', 'Versi berikutnya'), 'of', 'dari'), 'Compare With', 'Bandingkan Dengan'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'RIWAYAT VERSI'), 'All', 'Semua'), 'Named Versions', 'Versi Bernama'), 'No content.', 'Tidak ada konten.'), "More", 'Lainnya'), 'Current Version', 'Versi Saat Ini'), 'Compare', 'Bandingkan'), 'Anonymous', 'Anonim'), 'Untitled', 'Tanpa Judul'), 'See more', 'Lihat lebih banyak'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Pulihkan'), 'Rename', 'Ganti Nama'), 'Delete description', 'Hapus deskripsi'), 'Edits', 'Edit'), 'Previous change', 'Perubahan sebelumnya'), 'Next change', 'Perubahan berikutnya'), 'Exit Comparison', 'Keluar dari Perbandingan'), 'Select Version to Compare With', 'Pilih Versi untuk Dibandingkan'), 'Show', 'Tampilkan'), 'COMPARE WITH', 'BANDINGKAN DENGAN'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Tidak ada versi lain.'), 'No content to compare.', 'Tidak ada konten untuk dibandingkan.'), 'Comparing', 'Membandingkan'), 'against', 'dengan'), 'Exit comparison', 'Keluar dari perbandingan'), 'Save this version', 'Simpan versi ini'), 'View version history', 'Lihat riwayat versi'), 'Check for updates', 'Periksa pembaruan'), 'Modification', 'Modifikasi'), 'Suggestion', 'Saran'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Kuliah'), 'Show Open', 'Tampilkan yang terbuka'), 'Add Horizontal Line', 'Tambahkan Garis Horizontal'), 'Add Emoticon', 'Tambahkan Emotikon'), 'Add Icon', 'Tambahkan Ikon'), 'Add Special Character', 'Tambahkan Karakter Khusus'), 'Add Image', 'Tambahkan Gambar'), 'Add Table', 'Tambahkan Tabel'), 'Add Video', 'Tambahkan Video'), 'Add File', 'Tambahkan File'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Tambahkan Cuplikan Kode'), 'Add Anchor', 'Tambahkan Jangkar'), 'Add Page Break', 'Tambahkan Pemisah Halaman'), 'Version Control', 'Kontrol Versi'), 'Delete Table', 'Hapus Tabel'), 'Remove Table Header', 'Hapus Header Tabel'), 'Remove Table Footer', 'Hapus Footer Tabel'), 'Delete Row', 'Hapus Baris'), 'Delete Column', 'Hapus Kolom'), 'Add Table Header', 'Tambahkan Header Tabel'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Tambahkan Footer Tabel'), 'Insert Row Above', 'Sisipkan Baris di Atas'), 'Insert Row Below', 'Sisipkan Baris di Bawah'), 'Insert Column Before', 'Sisipkan Kolom Sebelum'), 'Insert Column After', 'Sisipkan Kolom Sesudah'), 'Table Align', 'Perataan Tabel'), "Table Style", 'Gaya Tabel'), 'Table Cell', 'Sel Tabel'), 'Merge Cells', 'Gabungkan Sel'), 'Split Cell Vertically', 'Pisahkan Sel Secara Vertikal'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Pisahkan Sel Secara Horizontal'), 'Cell Operation', 'Operasi Sel'), 'Remove Cell Style', 'Hapus Gaya Sel'), 'Added', 'Ditambahkan'), 'Formatted', 'Diformat'), 'Changed', 'Diubah'), 'left', 'kiri'), 'right', 'kanan'), 'center', 'tengah'), 'top', 'atas'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'tengah'), 'bottom', 'bawah'), 'Deleted', 'Dihapus'), 'justify', 'rata kanan-kiri'), 'See less', 'Lihat lebih sedikit')),
     direction: 'ltr'
   };
 

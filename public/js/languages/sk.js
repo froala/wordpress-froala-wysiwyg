@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Slovak
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['sk'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': 'Napíšte hocičo',
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': 'Typ písma',
       'Font Size': 'Veľkosť písma',
+      'Enter font size': 'Zadajte veľkosť písma',
+      'Custom Font Size': 'Vlastná veľkosť písma',
+      'Custom': 'Vlastné',
+      'Please enter a valid number': 'Zadajte platné číslo',
+      'Value must be between': 'Hodnota musí byť medzi',
+      'and': 'a',
+      'Apply': 'Použiť',
       // Colors
       'Colors': 'Farby',
       'Color': 'Farba',
@@ -337,6 +364,7 @@
       // Export to Word
       'Export to Word': 'Exportovať do Wordu',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Uistite sa, že sú k dispozícii všetky požadované závislé knižnice, aby doplnok fungoval.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Uistite sa, že sú dostupné všetky požadované konfigurácie a závislé knižnice, aby plugin fungoval podľa očakávania.',
       // Import_from_word
       'Import from Word': 'Importovať z Wordu',
       'Please upload a valid file': 'Nahrajte platný súbor.',
@@ -409,8 +437,63 @@
       'to': 'na',
       'in your configuration to provide consent.': 'vo svojej konfigurácii na vyjadrenie súhlasu.',
       'You can review the terms here:': 'Podmienky si môžete prezrieť tu:',
-      'View AI Supplemental Terms': 'Zobraziť Doplnkové podmienky AI'
-    },
+      'View AI Supplemental Terms': 'Zobraziť Doplnkové podmienky AI',
+      'Switch Mode': 'Prepnúť režim',
+      'Editing': 'Úpravy',
+      'Edit document with real-time sync': 'Upraviť dokument so synchronizáciou v reálnom čase',
+      'Suggesting': 'Návrhy',
+      'Add suggestions as Yjs-tracked changes': 'Pridať návrhy ako zmeny sledované pomocou Yjs',
+      'Viewing': 'Zobrazenie',
+      'Read-only — no edits allowed': 'Len na čítanie — úpravy nie sú povolené',
+      'Add Comment': 'Pridať komentár',
+      'Version History': 'História verzií',
+      'Hide Comments': 'Skryť komentáre',
+      'Open': 'Otvorené',
+      'Resolved': 'Vyriešené',
+      'Show comments': 'Zobraziť komentáre',
+      'No suggestions or comments yet.': 'Zatiaľ nie sú žiadne návrhy ani komentáre.',
+      'No resolved suggestions or comments.': 'Nie sú žiadne vyriešené návrhy ani komentáre.',
+      'View All': 'Zobraziť všetko',
+      'Open comment from': 'Otvoriť komentár od',
+      'more users': 'ďalší používatelia',
+      'Add': 'Pridať',
+      'Add Space': 'Pridať medzeru',
+      'Add Paragraph': 'Pridať odsek',
+      'Add Link': 'Pridať odkaz',
+      'with': 'za',
+      'Format': 'Formát',
+      'Removed': 'Odstránené',
+      'Accept': 'Prijať',
+      'Reject': 'Odmietnuť',
+      'Accepted': 'Prijaté',
+      'Rejected': 'Odmietnuté',
+      'Menu': 'Menu',
+      'Edit': 'Upraviť',
+      'Re-open': 'Znovu otvoriť',
+      'Resolve': 'Vyriešiť',
+      'Reply': 'Odpovedať',
+      'View All Replies': 'Zobraziť všetky odpovede',
+      'View Less': 'Zobraziť menej',
+      'comment or tag with @': 'Komentovať alebo označiť pomocou @',
+      'Comment': 'Komentár',
+      'Saving...': 'Ukladanie...',
+      'Saved': 'Uložené',
+      'Auto Save': 'Automatické ukladanie',
+      'Last saved': 'Naposledy uložené',
+      'Click to save a version now': 'Kliknite pre uloženie verzie',
+      'just now': 'práve teraz',
+      's ago': 's pred',
+      'm ago': 'min pred',
+      'h ago': 'h pred',
+      'd ago': 'd pred',
+      'Add to Version History': 'Pridať do histórie verzií',
+      'Rename Version': 'Premenovať verziu',
+      'Name this version': 'Pomenujte túto verziu',
+      'Edit description': 'Upraviť popis',
+      'Title': 'Názov',
+      'Title is required.': 'Názov je povinný.',
+      'Description (optional)': 'Popis (voliteľné)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Uložiť'), 'Restore version', 'Obnoviť verziu'), 'Current content will be replaced.', 'Aktuálny obsah bude nahradený.'), 'Delete version', 'Odstrániť verziu'), "Back", 'Späť'), 'Total Edits', 'Celkový počet úprav'), 'Previous version', 'Predchádzajúca verzia'), 'Next version', 'Nasledujúca verzia'), 'of', 'z'), 'Compare With', 'Porovnať s'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'HISTÓRIA VERZIÍ'), 'All', 'Všetko'), 'Named Versions', 'Pomenované verzie'), 'No content.', 'Žiadny obsah.'), "More", 'Viac'), 'Current Version', 'Aktuálna verzia'), 'Compare', 'Porovnať'), 'Anonymous', 'Anonymný'), 'Untitled', 'Bez názvu'), 'See more', 'Zobraziť viac'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Obnoviť'), 'Rename', 'Premenovať'), 'Delete description', 'Odstrániť popis'), 'Edits', 'Úpravy'), 'Previous change', 'Predchádzajúca zmena'), 'Next change', 'Nasledujúca zmena'), 'Exit Comparison', 'Ukončiť porovnanie'), 'Select Version to Compare With', 'Vyberte verziu na porovnanie'), 'Show', 'Zobraziť'), 'COMPARE WITH', 'POROVNAŤ S'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Nie sú dostupné ďalšie verzie.'), 'No content to compare.', 'Žiadny obsah na porovnanie.'), 'Comparing', 'Porovnávanie'), 'against', 's'), 'Exit comparison', 'Ukončiť porovnanie'), 'Save this version', 'Uložiť túto verziu'), 'View version history', 'Zobraziť históriu verzií'), 'Check for updates', 'Skontrolovať aktualizácie'), 'Modification', 'Úprava'), 'Suggestion', 'Návrh'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Prednáška'), 'Show Open', 'Zobraziť otvorené'), 'Add Horizontal Line', 'Pridať vodorovnú čiaru'), 'Add Emoticon', 'Pridať emotikon'), 'Add Icon', 'Pridať ikonu'), 'Add Special Character', 'Pridať špeciálny znak'), 'Add Image', 'Pridať obrázok'), 'Add Table', 'Pridať tabuľku'), 'Add Video', 'Pridať video'), 'Add File', 'Pridať súbor'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Pridať úryvok kódu'), 'Add Anchor', 'Pridať kotvu'), 'Add Page Break', 'Pridať zalomenie strany'), 'Version Control', 'Správa verzií'), 'Delete Table', 'Odstrániť tabuľku'), 'Remove Table Header', 'Odstrániť hlavičku tabuľky'), 'Remove Table Footer', 'Odstrániť pätu tabuľky'), 'Delete Row', 'Odstrániť riadok'), 'Delete Column', 'Odstrániť stĺpec'), 'Add Table Header', 'Pridať hlavičku tabuľky'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Pridať pätu tabuľky'), 'Insert Row Above', 'Vložiť riadok nad'), 'Insert Row Below', 'Vložiť riadok pod'), 'Insert Column Before', 'Vložiť stĺpec pred'), 'Insert Column After', 'Vložiť stĺpec za'), 'Table Align', 'Zarovnanie tabuľky'), "Table Style", 'Štýl tabuľky'), 'Table Cell', 'Bunka tabuľky'), 'Merge Cells', 'Zlúčiť bunky'), 'Split Cell Vertically', 'Rozdeliť bunku zvislo'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Rozdeliť bunku vodorovne'), 'Cell Operation', 'Operácia bunky'), 'Remove Cell Style', 'Odstrániť štýl bunky'), 'Added', 'Pridané'), 'Formatted', 'Formátované'), 'Changed', 'Zmenené'), 'left', 'vľavo'), 'right', 'vpravo'), 'center', 'na stred'), 'top', 'hore'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'stred'), 'bottom', 'dole'), 'Deleted', 'Odstránené'), 'justify', 'do bloku'), 'See less', 'Zobraziť menej')),
     direction: 'ltr'
   };
 

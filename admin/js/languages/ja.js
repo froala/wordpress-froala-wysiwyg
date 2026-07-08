@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Japanese
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['ja'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': "\u3053\u3053\u306B\u5165\u529B\u3057\u307E\u3059",
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': "\u30D5\u30A9\u30F3\u30C8",
       'Font Size': "\u30D5\u30A9\u30F3\u30C8\u30B5\u30A4\u30BA",
+      'Enter font size': 'フォントサイズを入力',
+      'Custom Font Size': 'カスタムフォントサイズ',
+      'Custom': 'カスタム',
+      'Please enter a valid number': '有効な数字を入力してください',
+      'Value must be between': '値は次の間でなければなりません:',
+      'and': 'から',
+      'Apply': '適用',
       // Colors
       'Colors': "\u8272",
       'Color': '色',
@@ -335,6 +362,7 @@
       //export to word
       'Export to Word': 'Wordにエクスポート',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'プラグインが機能するために必要なすべての依存ライブラリが利用可能であることを確認してください。',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'プラグインが期待通りに機能するために、必要なすべての構成と依存ライブラリが利用可能であることを確認してください。',
       // Import_from_word
       'Import from Word': 'Wordからインポート',
       'Please upload a valid file': '有効なファイルをアップロードしてください。',
@@ -411,8 +439,63 @@
       'to': 'に',
       'in your configuration to provide consent.': 'を設定して同意を提供してください。',
       'You can review the terms here:': 'こちらで規約を確認できます：',
-      'View AI Supplemental Terms': 'AI補足規約を表示'
-    },
+      'View AI Supplemental Terms': 'AI補足規約を表示',
+      'Switch Mode': 'モードを切り替え',
+      'Editing': '編集',
+      'Edit document with real-time sync': 'リアルタイム同期でドキュメントを編集',
+      'Suggesting': '提案',
+      'Add suggestions as Yjs-tracked changes': '提案をYjs追跡変更として追加',
+      'Viewing': '閲覧',
+      'Read-only — no edits allowed': '閲覧専用 — 編集はできません',
+      'Add Comment': 'コメントを追加',
+      'Version History': 'バージョン履歴',
+      'Hide Comments': 'コメントを非表示',
+      'Open': '未解決',
+      'Resolved': '解決済み',
+      'Show comments': 'コメントを表示',
+      'No suggestions or comments yet.': '提案やコメントはまだありません。',
+      'No resolved suggestions or comments.': '解決済みの提案やコメントはありません。',
+      'View All': 'すべて表示',
+      'Open comment from': 'コメントを開く',
+      'more users': '他のユーザー',
+      'Add': '追加',
+      'Add Space': 'スペースを追加',
+      'Add Paragraph': '段落を追加',
+      'Add Link': 'リンクを追加',
+      'with': '置換後',
+      'Format': '書式',
+      'Removed': '削除済み',
+      'Accept': '承認',
+      'Reject': '却下',
+      'Accepted': '承認済み',
+      'Rejected': '却下済み',
+      'Menu': 'メニュー',
+      'Edit': '編集',
+      'Re-open': '再度開く',
+      'Resolve': '解決済みにする',
+      'Reply': '返信',
+      'View All Replies': 'すべての返信を表示',
+      'View Less': '表示を減らす',
+      'comment or tag with @': '@でコメントまたはメンション',
+      'Comment': 'コメント',
+      'Saving...': '保存中...',
+      'Saved': '保存済み',
+      'Auto Save': '自動保存',
+      'Last saved': '最終保存',
+      'Click to save a version now': 'クリックして今すぐバージョンを保存',
+      'just now': 'たった今',
+      's ago': '秒前',
+      'm ago': '分前',
+      'h ago': '時間前',
+      'd ago': '日前',
+      'Add to Version History': 'バージョン履歴に追加',
+      'Rename Version': 'バージョン名を変更',
+      'Name this version': 'このバージョンに名前を付ける',
+      'Edit description': '説明を編集',
+      'Title': 'タイトル',
+      'Title is required.': 'タイトルは必須です。',
+      'Description (optional)': '説明（任意）'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", '保存'), 'Restore version', 'バージョンを復元'), 'Current content will be replaced.', '現在の内容は置き換えられます。'), 'Delete version', 'バージョンを削除'), "Back", '戻る'), 'Total Edits', '総編集数'), 'Previous version', '前のバージョン'), 'Next version', '次のバージョン'), 'of', '/'), 'Compare With', '比較対象'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'バージョン履歴'), 'All', 'すべて'), 'Named Versions', '名前付きバージョン'), 'No content.', 'コンテンツがありません。'), "More", 'もっと見る'), 'Current Version', '現在のバージョン'), 'Compare', '比較'), 'Anonymous', '匿名'), 'Untitled', '無題'), 'See more', 'さらに表示'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', '復元'), 'Rename', '名前変更'), 'Delete description', '説明を削除'), 'Edits', '編集'), 'Previous change', '前の変更'), 'Next change', '次の変更'), 'Exit Comparison', '比較を終了'), 'Select Version to Compare With', '比較するバージョンを選択'), 'Show', '表示'), 'COMPARE WITH', '比較対象'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', '他のバージョンはありません。'), 'No content to compare.', '比較するコンテンツがありません。'), 'Comparing', '比較中'), 'against', '対象'), 'Exit comparison', '比較を終了'), 'Save this version', 'このバージョンを保存'), 'View version history', 'バージョン履歴を表示'), 'Check for updates', '更新を確認'), 'Modification', '変更'), 'Suggestion', '提案'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', '講義'), 'Show Open', '未解決を表示'), 'Add Horizontal Line', '水平線を追加'), 'Add Emoticon', '絵文字を追加'), 'Add Icon', 'アイコンを追加'), 'Add Special Character', '特殊文字を追加'), 'Add Image', '画像を追加'), 'Add Table', '表を追加'), 'Add Video', '動画を追加'), 'Add File', 'ファイルを追加'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'コードスニペットを追加'), 'Add Anchor', 'アンカーを追加'), 'Add Page Break', '改ページを追加'), 'Version Control', 'バージョン管理'), 'Delete Table', '表を削除'), 'Remove Table Header', '表のヘッダーを削除'), 'Remove Table Footer', '表のフッターを削除'), 'Delete Row', '行を削除'), 'Delete Column', '列を削除'), 'Add Table Header', '表のヘッダーを追加'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', '表のフッターを追加'), 'Insert Row Above', '上に行を挿入'), 'Insert Row Below', '下に行を挿入'), 'Insert Column Before', '前に列を挿入'), 'Insert Column After', '後に列を挿入'), 'Table Align', '表の配置'), "Table Style", '表のスタイル'), 'Table Cell', '表のセル'), 'Merge Cells', 'セルを結合'), 'Split Cell Vertically', 'セルを縦に分割'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'セルを横に分割'), 'Cell Operation', 'セル操作'), 'Remove Cell Style', 'セルのスタイルを削除'), 'Added', '追加'), 'Formatted', '書式設定'), 'Changed', '変更'), 'left', '左'), 'right', '右'), 'center', '中央'), 'top', '上'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', '中央'), 'bottom', '下'), 'Deleted', '削除'), 'justify', '両端揃え'), 'See less', '表示を減らす')),
     direction: 'ltr'
   };
 

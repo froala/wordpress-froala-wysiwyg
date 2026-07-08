@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -55,7 +55,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  color: #333333; }
+  color: #222222; }
 .fr-find-replace-layer .fr-body .fr-close-btn:hover {
   color: #CCCCCC; }
 .fr-find-replace-layer .fr-body .fr-toggle-advanced-options {
@@ -70,7 +70,7 @@
   transition: background-color 0.3s ease;
   width: 100%;
   background: none;
-  color: #333333; }
+  color: #222222; }
 .fr-find-replace-layer .fr-body input {
   padding: 8px;
   font-size: 14px;
@@ -212,6 +212,7 @@
 .fr-find-replace-layer .fr-body .fr-disabled svg.fr-arrow-button {
   fill: #a9a9a9; }
 .fr-find-replace-layer .fr-body .fr-arrow-button {
+  fill: #222222;
   width: 12px;
   height: 12px; }
 .fr-find-replace-layer .fr-body .fr-btn-active-popup {

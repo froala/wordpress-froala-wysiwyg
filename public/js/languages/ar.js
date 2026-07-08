@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Arabic
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['ar'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': "\u0627\u0643\u062A\u0628 \u0634\u064A\u0626\u0627",
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': "\u0639\u0627\u0626\u0644\u0629 \u0627\u0644\u062E\u0637",
       'Font Size': "\u062D\u062C\u0645 \u0627\u0644\u062E\u0637",
+      'Enter font size': 'أدخل حجم الخط',
+      'Custom Font Size': 'حجم خط مخصص',
+      'Custom': 'مخصص',
+      'Please enter a valid number': 'رجاءً أدخل رقماً صالحاً',
+      'Value must be between': 'يجب أن تكون القيمة بين',
+      'and': 'و',
+      'Apply': 'تطبيق',
       // Colors
       'Colors': "\u0627\u0644\u0623\u0644\u0648\u0627\u0646",
       'Color': 'لون',
@@ -344,6 +371,7 @@
       //Export to Word
       'Export to Word': 'تصدير إلى كلمة',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'تأكد من توفر جميع المكتبات التابعة المطلوبة لعمل المكون الإضافي.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'تأكد من توفر جميع التكوينات المطلوبة والمكتبات التابعة لعمل المكون الإضافي كما هو متوقع.',
       // import from Word
       'Import from Word': 'الاستيراد من وورد',
       'Please upload a valid file': 'الرجاء تحميل ملف صالح.',
@@ -411,8 +439,63 @@
       'to': 'إلى',
       'in your configuration to provide consent.': 'في التكوين الخاص بك لتوفير الموافقة.',
       'You can review the terms here:': 'يمكنك مراجعة الشروط هنا:',
-      'View AI Supplemental Terms': 'عرض الشروط التكميلية للذكاء الاصطناعي'
-    },
+      'View AI Supplemental Terms': 'عرض الشروط التكميلية للذكاء الاصطناعي',
+      'Switch Mode': 'تبديل الوضع',
+      'Editing': 'تحرير',
+      'Edit document with real-time sync': 'تحرير المستند مع المزامنة الفورية',
+      'Suggesting': 'اقتراح',
+      'Add suggestions as Yjs-tracked changes': 'إضافة الاقتراحات كتغييرات متعقبة بواسطة Yjs',
+      'Viewing': 'عرض',
+      'Read-only — no edits allowed': 'للقراءة فقط — لا يُسمح بالتعديل',
+      'Add Comment': 'إضافة تعليق',
+      'Version History': 'سجل الإصدارات',
+      'Hide Comments': 'إخفاء التعليقات',
+      'Open': 'مفتوح',
+      'Resolved': 'تم الحل',
+      'Show comments': 'إظهار التعليقات',
+      'No suggestions or comments yet.': 'لا توجد اقتراحات أو تعليقات حتى الآن.',
+      'No resolved suggestions or comments.': 'لا توجد اقتراحات أو تعليقات تم حلها.',
+      'View All': 'عرض الكل',
+      'Open comment from': 'فتح تعليق من',
+      'more users': 'مستخدمون آخرون',
+      'Add': 'إضافة',
+      'Add Space': 'إضافة مسافة',
+      'Add Paragraph': 'إضافة فقرة',
+      'Add Link': 'إضافة رابط',
+      'with': 'بـ',
+      'Format': 'تنسيق',
+      'Removed': 'تمت الإزالة',
+      'Accept': 'قبول',
+      'Reject': 'رفض',
+      'Accepted': 'تم القبول',
+      'Rejected': 'تم الرفض',
+      'Menu': 'القائمة',
+      'Edit': 'تعديل',
+      'Re-open': 'إعادة فتح',
+      'Resolve': 'حل',
+      'Reply': 'رد',
+      'View All Replies': 'عرض جميع الردود',
+      'View Less': 'عرض أقل',
+      'comment or tag with @': 'علّق أو أشر باستخدام @',
+      'Comment': 'تعليق',
+      'Saving...': 'جارٍ الحفظ...',
+      'Saved': 'تم الحفظ',
+      'Auto Save': 'حفظ تلقائي',
+      'Last saved': 'آخر حفظ',
+      'Click to save a version now': 'انقر لحفظ إصدار الآن',
+      'just now': 'الآن',
+      's ago': 'ث منذ',
+      'm ago': 'د منذ',
+      'h ago': 'س منذ',
+      'd ago': 'ي منذ',
+      'Add to Version History': 'إضافة إلى سجل الإصدارات',
+      'Rename Version': 'إعادة تسمية الإصدار',
+      'Name this version': 'تسمية هذا الإصدار',
+      'Edit description': 'تعديل الوصف',
+      'Title': 'العنوان',
+      'Title is required.': 'العنوان مطلوب.',
+      'Description (optional)': 'الوصف (اختياري)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'حفظ'), 'Restore version', 'استعادة الإصدار'), 'Current content will be replaced.', 'سيتم استبدال المحتوى الحالي.'), 'Delete version', 'حذف الإصدار'), "Back", 'رجوع'), 'Total Edits', 'إجمالي التعديلات'), 'Previous version', 'الإصدار السابق'), 'Next version', 'الإصدار التالي'), 'of', 'من'), 'Compare With', 'مقارنة مع'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'سجل الإصدارات'), 'All', 'الكل'), 'Named Versions', 'الإصدارات المسماة'), 'No content.', 'لا يوجد محتوى.'), "More", 'المزيد'), 'Current Version', 'الإصدار الحالي'), 'Compare', 'مقارنة'), 'Anonymous', 'مجهول'), 'Untitled', 'بدون عنوان'), 'See more', 'عرض المزيد'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'استعادة'), 'Rename', 'إعادة تسمية'), 'Delete description', 'حذف الوصف'), 'Edits', 'التعديلات'), 'Previous change', 'التغيير السابق'), 'Next change', 'التغيير التالي'), 'Exit Comparison', 'إنهاء المقارنة'), 'Select Version to Compare With', 'اختر إصدارًا للمقارنة معه'), 'Show', 'إظهار'), 'COMPARE WITH', 'مقارنة مع'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'لا توجد إصدارات أخرى.'), 'No content to compare.', 'لا يوجد محتوى للمقارنة.'), 'Comparing', 'مقارنة'), 'against', 'مقابل'), 'Exit comparison', 'إنهاء المقارنة'), 'Save this version', 'احفظ هذه النسخة'), 'View version history', 'عرض سجل الإصدارات'), 'Check for updates', 'التحقق من التحديثات'), 'Modification', 'تعديل'), 'Suggestion', 'اقتراح'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'محاضرة'), 'Show Open', 'إظهار المفتوحة'), 'Add Horizontal Line', 'إضافة خط أفقي'), 'Add Emoticon', 'إضافة رمز تعبيري'), 'Add Icon', 'إضافة أيقونة'), 'Add Special Character', 'إضافة حرف خاص'), 'Add Image', 'إضافة صورة'), 'Add Table', 'إضافة جدول'), 'Add Video', 'إضافة فيديو'), 'Add File', 'إضافة ملف'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'إضافة مقتطف برمجي'), 'Add Anchor', 'إضافة مرساة'), 'Add Page Break', 'إضافة فاصل صفحة'), 'Version Control', 'إدارة الإصدارات'), 'Delete Table', 'حذف الجدول'), 'Remove Table Header', 'إزالة رأس الجدول'), 'Remove Table Footer', 'إزالة تذييل الجدول'), 'Delete Row', 'حذف الصف'), 'Delete Column', 'حذف العمود'), 'Add Table Header', 'إضافة رأس الجدول'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'إضافة تذييل الجدول'), 'Insert Row Above', 'إدراج صف أعلاه'), 'Insert Row Below', 'إدراج صف أدناه'), 'Insert Column Before', 'إدراج عمود قبل'), 'Insert Column After', 'إدراج عمود بعد'), 'Table Align', 'محاذاة الجدول'), "Table Style", 'نمط الجدول'), 'Table Cell', 'خلية الجدول'), 'Merge Cells', 'دمج الخلايا'), 'Split Cell Vertically', 'تقسيم الخلية عمودياً'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'تقسيم الخلية أفقياً'), 'Cell Operation', 'عملية الخلية'), 'Remove Cell Style', 'إزالة نمط الخلية'), 'Added', 'تمت الإضافة'), 'Formatted', 'تم التنسيق'), 'Changed', 'تم التغيير'), 'left', 'يسار'), 'right', 'يمين'), 'center', 'وسط'), 'top', 'أعلى'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'منتصف'), 'bottom', 'أسفل'), 'Deleted', 'تم الحذف'), 'justify', 'ضبط'), 'See less', 'عرض أقل')),
     direction: 'rtl'
   };
 

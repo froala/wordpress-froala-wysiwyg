@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Dutch
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['nl'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': 'Typ iets',
       // Basic formatting
@@ -40,6 +60,13 @@
       'Text Color': 'Tekstkleur',
       'Background Color': 'Achtergrondkleur',
       'Line Height': 'Lijnhoogte',
+      'Enter font size': 'Lettergrootte invoeren',
+      'Custom Font Size': 'Aangepaste lettergrootte',
+      'Custom': 'Aangepast',
+      'Please enter a valid number': 'Voer een geldig getal in',
+      'Value must be between': 'Waarde moet liggen tussen',
+      'and': 'en',
+      'Apply': 'Toepassen',
       // Colors
       'Colors': 'Kleuren',
       'Color': 'Kleur',
@@ -345,6 +372,7 @@
       // Export to Word
       'Export to Word': 'Exporteren naar Word',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Zorg ervoor dat alle vereiste afhankelijke bibliotheken beschikbaar zijn voor het functioneren van de plug-in.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Zorg ervoor dat alle vereiste configuraties en afhankelijke bibliotheken beschikbaar zijn zodat de plug-in naar verwachting werkt.',
       // Import_from_word
       'Import from Word': 'Importeren uit Word',
       'Please upload a valid file': 'Upload een geldig bestand.',
@@ -410,8 +438,63 @@
       'to': 'op',
       'in your configuration to provide consent.': 'in uw configuratie om toestemming te verlenen.',
       'You can review the terms here:': 'U kunt de voorwaarden hier bekijken:',
-      'View AI Supplemental Terms': 'Aanvullende AI-voorwaarden bekijken'
-    },
+      'View AI Supplemental Terms': 'Aanvullende AI-voorwaarden bekijken',
+      'Switch Mode': 'Modus wisselen',
+      'Editing': 'Bewerken',
+      'Edit document with real-time sync': 'Document bewerken met realtime synchronisatie',
+      'Suggesting': 'Suggesties',
+      'Add suggestions as Yjs-tracked changes': 'Suggesties toevoegen als door Yjs bijgehouden wijzigingen',
+      'Viewing': 'Weergave',
+      'Read-only — no edits allowed': 'Alleen-lezen — bewerken niet toegestaan',
+      'Add Comment': 'Opmerking toevoegen',
+      'Version History': 'Versiegeschiedenis',
+      'Hide Comments': 'Opmerkingen verbergen',
+      'Open': 'Open',
+      'Resolved': 'Opgelost',
+      'Show comments': 'Opmerkingen tonen',
+      'No suggestions or comments yet.': 'Nog geen suggesties of opmerkingen.',
+      'No resolved suggestions or comments.': 'Geen opgeloste suggesties of opmerkingen.',
+      'View All': 'Alles bekijken',
+      'Open comment from': 'Opmerking openen van',
+      'more users': 'meer gebruikers',
+      'Add': 'Toevoegen',
+      'Add Space': 'Spatie toevoegen',
+      'Add Paragraph': 'Alinea toevoegen',
+      'Add Link': 'Link toevoegen',
+      'with': 'door',
+      'Format': 'Opmaak',
+      'Removed': 'Verwijderd',
+      'Accept': 'Accepteren',
+      'Reject': 'Afwijzen',
+      'Accepted': 'Geaccepteerd',
+      'Rejected': 'Afgewezen',
+      'Menu': 'Menu',
+      'Edit': 'Bewerken',
+      'Re-open': 'Opnieuw openen',
+      'Resolve': 'Oplossen',
+      'Reply': 'Beantwoorden',
+      'View All Replies': 'Alle antwoorden bekijken',
+      'View Less': 'Minder weergeven',
+      'comment or tag with @': 'Reageer of tag met @',
+      'Comment': 'Opmerking',
+      'Saving...': 'Opslaan...',
+      'Saved': 'Opgeslagen',
+      'Auto Save': 'Automatisch opslaan',
+      'Last saved': 'Laatst opgeslagen',
+      'Click to save a version now': 'Klik om nu een versie op te slaan',
+      'just now': 'zojuist',
+      's ago': 's geleden',
+      'm ago': 'min geleden',
+      'h ago': 'u geleden',
+      'd ago': 'd geleden',
+      'Add to Version History': 'Toevoegen aan versiegeschiedenis',
+      'Rename Version': 'Versie hernoemen',
+      'Name this version': 'Geef deze versie een naam',
+      'Edit description': 'Beschrijving bewerken',
+      'Title': 'Titel',
+      'Title is required.': 'Titel is verplicht.',
+      'Description (optional)': 'Beschrijving (optioneel)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Opslaan'), 'Restore version', 'Versie herstellen'), 'Current content will be replaced.', 'De huidige inhoud wordt vervangen.'), 'Delete version', 'Versie verwijderen'), "Back", 'Terug'), 'Total Edits', 'Totaal aantal bewerkingen'), 'Previous version', 'Vorige versie'), 'Next version', 'Volgende versie'), 'of', 'van'), 'Compare With', 'Vergelijken met'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'VERSIEGESCHIEDENIS'), 'All', 'Alles'), 'Named Versions', 'Benoemde versies'), 'No content.', 'Geen inhoud.'), "More", 'Meer'), 'Current Version', 'Huidige versie'), 'Compare', 'Vergelijken'), 'Anonymous', 'Anoniem'), 'Untitled', 'Naamloos'), 'See more', 'Meer bekijken'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Herstellen'), 'Rename', 'Hernoemen'), 'Delete description', 'Beschrijving verwijderen'), 'Edits', 'Bewerkingen'), 'Previous change', 'Vorige wijziging'), 'Next change', 'Volgende wijziging'), 'Exit Comparison', 'Vergelijking afsluiten'), 'Select Version to Compare With', 'Selecteer een versie om mee te vergelijken'), 'Show', 'Tonen'), 'COMPARE WITH', 'VERGELIJKEN MET'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Geen andere versies.'), 'No content to compare.', 'Geen inhoud om te vergelijken.'), 'Comparing', 'Vergelijken'), 'against', 'met'), 'Exit comparison', 'Vergelijking afsluiten'), 'Save this version', 'Sla deze versie op'), 'View version history', 'Versiegeschiedenis bekijken'), 'Check for updates', 'Controleren op updates'), 'Modification', 'Wijziging'), 'Suggestion', 'Suggestie'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'College'), 'Show Open', 'Openstaande tonen'), 'Add Horizontal Line', 'Horizontale lijn toevoegen'), 'Add Emoticon', 'Emoticon toevoegen'), 'Add Icon', 'Pictogram toevoegen'), 'Add Special Character', 'Speciaal teken toevoegen'), 'Add Image', 'Afbeelding toevoegen'), 'Add Table', 'Tabel toevoegen'), 'Add Video', 'Video toevoegen'), 'Add File', 'Bestand toevoegen'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Codefragment toevoegen'), 'Add Anchor', 'Anker toevoegen'), 'Add Page Break', 'Pagina-einde toevoegen'), 'Version Control', 'Versiebeheer'), 'Delete Table', 'Tabel verwijderen'), 'Remove Table Header', 'Tabelkop verwijderen'), 'Remove Table Footer', 'Tabelvoet verwijderen'), 'Delete Row', 'Rij verwijderen'), 'Delete Column', 'Kolom verwijderen'), 'Add Table Header', 'Tabelkop toevoegen'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Tabelvoet toevoegen'), 'Insert Row Above', 'Rij boven invoegen'), 'Insert Row Below', 'Rij onder invoegen'), 'Insert Column Before', 'Kolom ervoor invoegen'), 'Insert Column After', 'Kolom erna invoegen'), 'Table Align', 'Tabel uitlijnen'), "Table Style", 'Tabelstijl'), 'Table Cell', 'Tabelcel'), 'Merge Cells', 'Cellen samenvoegen'), 'Split Cell Vertically', 'Cel verticaal splitsen'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Cel horizontaal splitsen'), 'Cell Operation', 'Celbewerking'), 'Remove Cell Style', 'Celstijl verwijderen'), 'Added', 'Toegevoegd'), 'Formatted', 'Opgemaakt'), 'Changed', 'Gewijzigd'), 'left', 'links'), 'right', 'rechts'), 'center', 'midden'), 'top', 'boven'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'midden'), 'bottom', 'onder'), 'Deleted', 'Verwijderd'), 'justify', 'uitvullen'), 'See less', 'Minder weergeven')),
     direction: 'ltr'
   };
 

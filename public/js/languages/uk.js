@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Ukrainian
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['uk'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': "\u041D\u0430\u043F\u0438\u0448\u0456\u0442\u044C \u0431\u0443\u0434\u044C-\u0449\u043E",
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': "\u0428\u0440\u0438\u0444\u0442",
       'Font Size': "\u0420\u043E\u0437\u043C\u0456\u0440 \u0448\u0440\u0438\u0444\u0442\u0443",
+      'Enter font size': 'Введіть розмір шрифту',
+      'Custom Font Size': 'Власний розмір шрифту',
+      'Custom': 'Власний',
+      'Please enter a valid number': 'Будь ласка, введіть коректне число',
+      'Value must be between': 'Значення має бути між',
+      'and': 'та',
+      'Apply': 'Застосувати',
       // Colors
       'Colors': "\u043A\u043E\u043B\u044C\u043E\u0440\u0438",
       'Color': 'Колір',
@@ -331,6 +358,7 @@
       //export to word
       'Export to Word': 'Експорт у Word',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Переконайтеся, що всі необхідні залежні бібліотеки доступні для роботи плагіна.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Переконайтесь, що всі необхідні конфігурації та залежні бібліотеки доступні, щоб плагін працював як очікується.',
       // Import_from_word
       'Import from Word': 'Імпорт із Word',
       'Please upload a valid file': 'Будь ласка, завантажте дійсний файл.',
@@ -410,8 +438,63 @@
       'to': 'у значення',
       'in your configuration to provide consent.': 'у вашій конфігурації для надання згоди.',
       'You can review the terms here:': 'Ви можете ознайомитися з умовами тут:',
-      'View AI Supplemental Terms': 'Переглянути Додаткові умови використання ШІ'
-    },
+      'View AI Supplemental Terms': 'Переглянути Додаткові умови використання ШІ',
+      'Switch Mode': 'Перемкнути режим',
+      'Editing': 'Редагування',
+      'Edit document with real-time sync': 'Редагувати документ із синхронізацією в реальному часі',
+      'Suggesting': 'Пропозиції',
+      'Add suggestions as Yjs-tracked changes': 'Додати пропозиції як зміни, що відстежуються Yjs',
+      'Viewing': 'Перегляд',
+      'Read-only — no edits allowed': 'Лише для читання — редагування заборонено',
+      'Add Comment': 'Додати коментар',
+      'Version History': 'Історія версій',
+      'Hide Comments': 'Приховати коментарі',
+      'Open': 'Відкриті',
+      'Resolved': 'Вирішені',
+      'Show comments': 'Показати коментарі',
+      'No suggestions or comments yet.': 'Поки що немає пропозицій або коментарів.',
+      'No resolved suggestions or comments.': 'Немає вирішених пропозицій або коментарів.',
+      'View All': 'Показати все',
+      'Open comment from': 'Відкрити коментар від',
+      'more users': 'інші користувачі',
+      'Add': 'Додати',
+      'Add Space': 'Додати пробіл',
+      'Add Paragraph': 'Додати абзац',
+      'Add Link': 'Додати посилання',
+      'with': 'на',
+      'Format': 'Форматування',
+      'Removed': 'Видалено',
+      'Accept': 'Прийняти',
+      'Reject': 'Відхилити',
+      'Accepted': 'Прийнято',
+      'Rejected': 'Відхилено',
+      'Menu': 'Меню',
+      'Edit': 'Редагувати',
+      'Re-open': 'Відкрити знову',
+      'Resolve': 'Позначити як вирішене',
+      'Reply': 'Відповісти',
+      'View All Replies': 'Показати всі відповіді',
+      'View Less': 'Показати менше',
+      'comment or tag with @': 'Коментувати або позначати через @',
+      'Comment': 'Коментар',
+      'Saving...': 'Збереження...',
+      'Saved': 'Збережено',
+      'Auto Save': 'Автозбереження',
+      'Last saved': 'Останнє збереження',
+      'Click to save a version now': 'Натисніть, щоб зберегти версію зараз',
+      'just now': 'щойно',
+      's ago': 'с тому',
+      'm ago': 'хв тому',
+      'h ago': 'год тому',
+      'd ago': 'д тому',
+      'Add to Version History': 'Додати до історії версій',
+      'Rename Version': 'Перейменувати версію',
+      'Name this version': 'Назвати цю версію',
+      'Edit description': 'Редагувати опис',
+      'Title': 'Заголовок',
+      'Title is required.': 'Заголовок є обов’язковим.',
+      'Description (optional)': 'Опис (необов’язково)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Зберегти'), 'Restore version', 'Відновити версію'), 'Current content will be replaced.', 'Поточний вміст буде замінено.'), 'Delete version', 'Видалити версію'), "Back", 'Назад'), 'Total Edits', 'Усього змін'), 'Previous version', 'Попередня версія'), 'Next version', 'Наступна версія'), 'of', 'з'), 'Compare With', 'Порівняти з'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'ІСТОРІЯ ВЕРСІЙ'), 'All', 'Усі'), 'Named Versions', 'Іменовані версії'), 'No content.', 'Немає вмісту.'), "More", 'Більше'), 'Current Version', 'Поточна версія'), 'Compare', 'Порівняти'), 'Anonymous', 'Анонім'), 'Untitled', 'Без назви'), 'See more', 'Показати більше'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Відновити'), 'Rename', 'Перейменувати'), 'Delete description', 'Видалити опис'), 'Edits', 'Зміни'), 'Previous change', 'Попередня зміна'), 'Next change', 'Наступна зміна'), 'Exit Comparison', 'Вийти з порівняння'), 'Select Version to Compare With', 'Виберіть версію для порівняння'), 'Show', 'Показати'), 'COMPARE WITH', 'ПОРІВНЯТИ З'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Немає інших версій.'), 'No content to compare.', 'Немає вмісту для порівняння.'), 'Comparing', 'Порівняння'), 'against', 'з'), 'Exit comparison', 'Вийти з порівняння'), 'Save this version', 'Зберегти цю версію'), 'View version history', 'Переглянути історію версій'), 'Check for updates', 'Перевірити оновлення'), 'Modification', 'Зміна'), 'Suggestion', 'Пропозиція'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Лекція'), 'Show Open', 'Показати відкриті'), 'Add Horizontal Line', 'Додати горизонтальну лінію'), 'Add Emoticon', 'Додати емотикон'), 'Add Icon', 'Додати піктограму'), 'Add Special Character', 'Додати спеціальний символ'), 'Add Image', 'Додати зображення'), 'Add Table', 'Додати таблицю'), 'Add Video', 'Додати відео'), 'Add File', 'Додати файл'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Додати фрагмент коду'), 'Add Anchor', 'Додати якір'), 'Add Page Break', 'Додати розрив сторінки'), 'Version Control', 'Керування версіями'), 'Delete Table', 'Видалити таблицю'), 'Remove Table Header', 'Видалити заголовок таблиці'), 'Remove Table Footer', 'Видалити нижній колонтитул таблиці'), 'Delete Row', 'Видалити рядок'), 'Delete Column', 'Видалити стовпець'), 'Add Table Header', 'Додати заголовок таблиці'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Додати нижній колонтитул таблиці'), 'Insert Row Above', 'Вставити рядок вище'), 'Insert Row Below', 'Вставити рядок нижче'), 'Insert Column Before', 'Вставити стовпець перед'), 'Insert Column After', 'Вставити стовпець після'), 'Table Align', 'Вирівнювання таблиці'), "Table Style", 'Стиль таблиці'), 'Table Cell', 'Комірка таблиці'), 'Merge Cells', 'Об’єднати комірки'), 'Split Cell Vertically', 'Розділити комірку вертикально'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Розділити комірку горизонтально'), 'Cell Operation', 'Операція з коміркою'), 'Remove Cell Style', 'Видалити стиль комірки'), 'Added', 'Додано'), 'Formatted', 'Відформатовано'), 'Changed', 'Змінено'), 'left', 'ліворуч'), 'right', 'праворуч'), 'center', 'по центру'), 'top', 'зверху'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'посередині'), 'bottom', 'знизу'), 'Deleted', 'Видалено'), 'justify', 'по ширині'), 'See less', 'Показати менше')),
     direction: 'ltr'
   };
 

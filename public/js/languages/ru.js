@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Russian
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['ru'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': "\u041D\u0430\u043F\u0438\u0448\u0438\u0442\u0435 \u0447\u0442\u043E-\u043D\u0438\u0431\u0443\u0434\u044C",
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': "\u0428\u0440\u0438\u0444\u0442",
       'Font Size': "\u0420\u0430\u0437\u043C\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430",
+      'Enter font size': 'Введите размер шрифта',
+      'Custom Font Size': 'Пользовательский размер шрифта',
+      'Custom': 'Пользовательский',
+      'Please enter a valid number': 'Пожалуйста, введите корректное число',
+      'Value must be between': 'Значение должно быть между',
+      'and': 'и',
+      'Apply': 'Применить',
       // Colors
       'Colors': "\u0426\u0432\u0435\u0442\u0430",
       'Color': 'Цвет',
@@ -344,6 +371,7 @@
       //Export to Word
       'Export to Word': 'Экспорт в Word',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Убедитесь, что все необходимые зависимые библиотеки доступны для работы плагина.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Убедитесь, что все требуемые конфигурации и зависимые библиотеки доступны, чтобы плагин работал должным образом.',
       // Import_from_word
       'Import from Word': 'Импорт из Word',
       'Please upload a valid file': 'Пожалуйста, загрузите действительный файл.',
@@ -411,8 +439,63 @@
       'to': 'в значение',
       'in your configuration to provide consent.': 'в вашей конфигурации для предоставления согласия.',
       'You can review the terms here:': 'Вы можете ознакомиться с условиями здесь:',
-      'View AI Supplemental Terms': 'Просмотреть Дополнительные условия использования ИИ'
-    },
+      'View AI Supplemental Terms': 'Просмотреть Дополнительные условия использования ИИ',
+      'Switch Mode': 'Переключить режим',
+      'Editing': 'Редактирование',
+      'Edit document with real-time sync': 'Редактировать документ с синхронизацией в реальном времени',
+      'Suggesting': 'Предложения',
+      'Add suggestions as Yjs-tracked changes': 'Добавить предложения как изменения, отслеживаемые Yjs',
+      'Viewing': 'Просмотр',
+      'Read-only — no edits allowed': 'Только чтение — редактирование запрещено',
+      'Add Comment': 'Добавить комментарий',
+      'Version History': 'История версий',
+      'Hide Comments': 'Скрыть комментарии',
+      'Open': 'Открытые',
+      'Resolved': 'Решённые',
+      'Show comments': 'Показать комментарии',
+      'No suggestions or comments yet.': 'Пока нет предложений или комментариев.',
+      'No resolved suggestions or comments.': 'Нет решённых предложений или комментариев.',
+      'View All': 'Показать все',
+      'Open comment from': 'Открыть комментарий от',
+      'more users': 'ещё пользователей',
+      'Add': 'Добавить',
+      'Add Space': 'Добавить пробел',
+      'Add Paragraph': 'Добавить абзац',
+      'Add Link': 'Добавить ссылку',
+      'with': 'на',
+      'Format': 'Форматирование',
+      'Removed': 'Удалено',
+      'Accept': 'Принять',
+      'Reject': 'Отклонить',
+      'Accepted': 'Принято',
+      'Rejected': 'Отклонено',
+      'Menu': 'Меню',
+      'Edit': 'Редактировать',
+      'Re-open': 'Открыть снова',
+      'Resolve': 'Решить',
+      'Reply': 'Ответить',
+      'View All Replies': 'Показать все ответы',
+      'View Less': 'Показать меньше',
+      'comment or tag with @': 'Комментировать или отметить с помощью @',
+      'Comment': 'Комментарий',
+      'Saving...': 'Сохранение...',
+      'Saved': 'Сохранено',
+      'Auto Save': 'Автосохранение',
+      'Last saved': 'Последнее сохранение',
+      'Click to save a version now': 'Нажмите, чтобы сохранить версию сейчас',
+      'just now': 'только что',
+      's ago': 'с назад',
+      'm ago': 'мин назад',
+      'h ago': 'ч назад',
+      'd ago': 'д назад',
+      'Add to Version History': 'Добавить в историю версий',
+      'Rename Version': 'Переименовать версию',
+      'Name this version': 'Назвать эту версию',
+      'Edit description': 'Изменить описание',
+      'Title': 'Заголовок',
+      'Title is required.': 'Требуется заголовок.',
+      'Description (optional)': 'Описание (необязательно)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Сохранить'), 'Restore version', 'Восстановить версию'), 'Current content will be replaced.', 'Текущее содержимое будет заменено.'), 'Delete version', 'Удалить версию'), "Back", 'Назад'), 'Total Edits', 'Всего изменений'), 'Previous version', 'Предыдущая версия'), 'Next version', 'Следующая версия'), 'of', 'из'), 'Compare With', 'Сравнить с'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'ИСТОРИЯ ВЕРСИЙ'), 'All', 'Все'), 'Named Versions', 'Именованные версии'), 'No content.', 'Нет содержимого.'), "More", 'Ещё'), 'Current Version', 'Текущая версия'), 'Compare', 'Сравнить'), 'Anonymous', 'Аноним'), 'Untitled', 'Без названия'), 'See more', 'Показать больше'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Восстановить'), 'Rename', 'Переименовать'), 'Delete description', 'Удалить описание'), 'Edits', 'Изменения'), 'Previous change', 'Предыдущее изменение'), 'Next change', 'Следующее изменение'), 'Exit Comparison', 'Выйти из сравнения'), 'Select Version to Compare With', 'Выберите версию для сравнения'), 'Show', 'Показать'), 'COMPARE WITH', 'СРАВНИТЬ С'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Нет других версий.'), 'No content to compare.', 'Нет содержимого для сравнения.'), 'Comparing', 'Сравнение'), 'against', 'с'), 'Exit comparison', 'Выйти из сравнения'), 'Save this version', 'Сохранить эту версию'), 'View version history', 'Просмотр истории версий'), 'Check for updates', 'Проверить обновления'), 'Modification', 'Изменение'), 'Suggestion', 'Предложение'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Лекция'), 'Show Open', 'Показать открытые'), 'Add Horizontal Line', 'Добавить горизонтальную линию'), 'Add Emoticon', 'Добавить смайлик'), 'Add Icon', 'Добавить значок'), 'Add Special Character', 'Добавить специальный символ'), 'Add Image', 'Добавить изображение'), 'Add Table', 'Добавить таблицу'), 'Add Video', 'Добавить видео'), 'Add File', 'Добавить файл'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Добавить фрагмент кода'), 'Add Anchor', 'Добавить якорь'), 'Add Page Break', 'Добавить разрыв страницы'), 'Version Control', 'Контроль версий'), 'Delete Table', 'Удалить таблицу'), 'Remove Table Header', 'Удалить заголовок таблицы'), 'Remove Table Footer', 'Удалить нижний колонтитул таблицы'), 'Delete Row', 'Удалить строку'), 'Delete Column', 'Удалить столбец'), 'Add Table Header', 'Добавить заголовок таблицы'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Добавить нижний колонтитул таблицы'), 'Insert Row Above', 'Вставить строку выше'), 'Insert Row Below', 'Вставить строку ниже'), 'Insert Column Before', 'Вставить столбец перед'), 'Insert Column After', 'Вставить столбец после'), 'Table Align', 'Выравнивание таблицы'), "Table Style", 'Стиль таблицы'), 'Table Cell', 'Ячейка таблицы'), 'Merge Cells', 'Объединить ячейки'), 'Split Cell Vertically', 'Разделить ячейку по вертикали'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Разделить ячейку по горизонтали'), 'Cell Operation', 'Операция с ячейкой'), 'Remove Cell Style', 'Удалить стиль ячейки'), 'Added', 'Добавлено'), 'Formatted', 'Отформатировано'), 'Changed', 'Изменено'), 'left', 'слева'), 'right', 'справа'), 'center', 'по центру'), 'top', 'сверху'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'по середине'), 'bottom', 'снизу'), 'Deleted', 'Удалено'), 'justify', 'по ширине'), 'See less', 'Показать меньше')),
     direction: 'ltr'
   };
 

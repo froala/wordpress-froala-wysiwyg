@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Persian
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['fa'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': "\u0686\u06CC\u0632\u06CC \u0628\u0646\u0648\u06CC\u0633\u06CC\u062F",
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': "\u0642\u0644\u0645",
       'Font Size': "\u0627\u0646\u062F\u0627\u0632\u0647 \u0642\u0644\u0645",
+      'Enter font size': 'اندازه قلم را وارد کنید',
+      'Custom Font Size': 'اندازه قلم سفارشی',
+      'Custom': 'سفارشی',
+      'Please enter a valid number': 'لطفاً یک عدد معتبر وارد کنید',
+      'Value must be between': 'مقدار باید بین',
+      'and': 'و',
+      'Apply': 'اعمال',
       // Colors
       'Colors': "\u0631\u0646\u06AF",
       'Color': 'رنگ',
@@ -331,6 +358,7 @@
       // export to word
       'Export to Word': 'خروجی به Word',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'اطمینان حاصل کنید که تمام کتابخانه‌های وابسته مورد نیاز برای کارکرد افزونه در دسترس باشند.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'اطمینان حاصل کنید که تمام پیکربندی‌های مورد نیاز و کتابخانه‌های وابسته برای کار صحیح افزونه در دسترس هستند.',
       // Import_from_word
       'Import from Word': 'وارد کردن از ورد',
       'Please upload a valid file': 'لطفا یک فایل معتبر بارگذاری کنید.',
@@ -410,8 +438,63 @@
       'to': 'به',
       'in your configuration to provide consent.': 'در پیکربندی خود برای ارائه رضایت.',
       'You can review the terms here:': 'می‌توانید شرایط را اینجا مرور کنید:',
-      'View AI Supplemental Terms': 'مشاهده شرایط تکمیلی هوش مصنوعی'
-    },
+      'View AI Supplemental Terms': 'مشاهده شرایط تکمیلی هوش مصنوعی',
+      'Switch Mode': 'تغییر حالت',
+      'Editing': 'ویرایش',
+      'Edit document with real-time sync': 'ویرایش سند با همگام‌سازی بلادرنگ',
+      'Suggesting': 'پیشنهاد دادن',
+      'Add suggestions as Yjs-tracked changes': 'افزودن پیشنهادها به‌عنوان تغییرات ردیابی‌شده توسط Yjs',
+      'Viewing': 'مشاهده',
+      'Read-only — no edits allowed': 'فقط خواندنی — ویرایش مجاز نیست',
+      'Add Comment': 'افزودن نظر',
+      'Version History': 'تاریخچه نسخه‌ها',
+      'Hide Comments': 'پنهان کردن نظرات',
+      'Open': 'باز',
+      'Resolved': 'حل‌شده',
+      'Show comments': 'نمایش نظرات',
+      'No suggestions or comments yet.': 'هنوز هیچ پیشنهاد یا نظری وجود ندارد.',
+      'No resolved suggestions or comments.': 'هیچ پیشنهاد یا نظر حل‌شده‌ای وجود ندارد.',
+      'View All': 'نمایش همه',
+      'Open comment from': 'باز کردن نظر از',
+      'more users': 'کاربران بیشتر',
+      'Add': 'افزودن',
+      'Add Space': 'افزودن فاصله',
+      'Add Paragraph': 'افزودن پاراگراف',
+      'Add Link': 'افزودن پیوند',
+      'with': 'با',
+      'Format': 'قالب‌بندی',
+      'Removed': 'حذف‌شده',
+      'Accept': 'پذیرفتن',
+      'Reject': 'رد کردن',
+      'Accepted': 'پذیرفته شد',
+      'Rejected': 'رد شد',
+      'Menu': 'منو',
+      'Edit': 'ویرایش',
+      'Re-open': 'بازگشایی مجدد',
+      'Resolve': 'حل کردن',
+      'Reply': 'پاسخ',
+      'View All Replies': 'نمایش همه پاسخ‌ها',
+      'View Less': 'نمایش کمتر',
+      'comment or tag with @': 'نظر بدهید یا با @ برچسب بزنید',
+      'Comment': 'نظر',
+      'Saving...': 'در حال ذخیره...',
+      'Saved': 'ذخیره شد',
+      'Auto Save': 'ذخیره خودکار',
+      'Last saved': 'آخرین ذخیره',
+      'Click to save a version now': 'برای ذخیره نسخه اکنون کلیک کنید',
+      'just now': 'همین الان',
+      's ago': 'ثانیه پیش',
+      'm ago': 'دقیقه پیش',
+      'h ago': 'ساعت پیش',
+      'd ago': 'روز پیش',
+      'Add to Version History': 'افزودن به تاریخچه نسخه‌ها',
+      'Rename Version': 'تغییر نام نسخه',
+      'Name this version': 'نام‌گذاری این نسخه',
+      'Edit description': 'ویرایش توضیحات',
+      'Title': 'عنوان',
+      'Title is required.': 'عنوان الزامی است.',
+      'Description (optional)': 'توضیحات (اختیاری)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'ذخیره'), 'Restore version', 'بازیابی نسخه'), 'Current content will be replaced.', 'محتوای فعلی جایگزین خواهد شد.'), 'Delete version', 'حذف نسخه'), "Back", 'بازگشت'), 'Total Edits', 'مجموع ویرایش‌ها'), 'Previous version', 'نسخه قبلی'), 'Next version', 'نسخه بعدی'), 'of', 'از'), 'Compare With', 'مقایسه با'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'تاریخچه نسخه‌ها'), 'All', 'همه'), 'Named Versions', 'نسخه‌های نام‌گذاری‌شده'), 'No content.', 'محتوایی وجود ندارد.'), "More", 'بیشتر'), 'Current Version', 'نسخه فعلی'), 'Compare', 'مقایسه'), 'Anonymous', 'ناشناس'), 'Untitled', 'بدون عنوان'), 'See more', 'مشاهده بیشتر'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'بازیابی'), 'Rename', 'تغییر نام'), 'Delete description', 'حذف توضیحات'), 'Edits', 'ویرایش‌ها'), 'Previous change', 'تغییر قبلی'), 'Next change', 'تغییر بعدی'), 'Exit Comparison', 'خروج از مقایسه'), 'Select Version to Compare With', 'انتخاب نسخه برای مقایسه'), 'Show', 'نمایش'), 'COMPARE WITH', 'مقایسه با'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'نسخه دیگری وجود ندارد.'), 'No content to compare.', 'محتوایی برای مقایسه وجود ندارد.'), 'Comparing', 'در حال مقایسه'), 'against', 'در برابر'), 'Exit comparison', 'خروج از مقایسه'), 'Save this version', 'ذخیره این نسخه'), 'View version history', 'مشاهده تاریخچه نسخه‌ها'), 'Check for updates', 'بررسی به‌روزرسانی‌ها'), 'Modification', 'تغییر'), 'Suggestion', 'پیشنهاد'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'سخنرانی'), 'Show Open', 'نمایش موارد باز'), 'Add Horizontal Line', 'افزودن خط افقی'), 'Add Emoticon', 'افزودن شکلک'), 'Add Icon', 'افزودن آیکون'), 'Add Special Character', 'افزودن نویسه ویژه'), 'Add Image', 'افزودن تصویر'), 'Add Table', 'افزودن جدول'), 'Add Video', 'افزودن ویدئو'), 'Add File', 'افزودن فایل'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'افزودن قطعه کد'), 'Add Anchor', 'افزودن لنگر'), 'Add Page Break', 'افزودن شکست صفحه'), 'Version Control', 'مدیریت نسخه‌ها'), 'Delete Table', 'حذف جدول'), 'Remove Table Header', 'حذف سرصفحه جدول'), 'Remove Table Footer', 'حذف پاصفحه جدول'), 'Delete Row', 'حذف سطر'), 'Delete Column', 'حذف ستون'), 'Add Table Header', 'افزودن سرصفحه جدول'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'افزودن پاصفحه جدول'), 'Insert Row Above', 'درج سطر در بالا'), 'Insert Row Below', 'درج سطر در پایین'), 'Insert Column Before', 'درج ستون قبل'), 'Insert Column After', 'درج ستون بعد'), 'Table Align', 'تراز جدول'), "Table Style", 'سبک جدول'), 'Table Cell', 'سلول جدول'), 'Merge Cells', 'ادغام سلول‌ها'), 'Split Cell Vertically', 'تقسیم عمودی سلول'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'تقسیم افقی سلول'), 'Cell Operation', 'عملیات سلول'), 'Remove Cell Style', 'حذف سبک سلول'), 'Added', 'اضافه شد'), 'Formatted', 'قالب‌بندی شد'), 'Changed', 'تغییر کرد'), 'left', 'چپ'), 'right', 'راست'), 'center', 'وسط'), 'top', 'بالا'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'میانه'), 'bottom', 'پایین'), 'Deleted', 'حذف شد'), 'justify', 'تراز کامل'), 'See less', 'نمایش کمتر')),
     direction: 'rtl'
   };
 

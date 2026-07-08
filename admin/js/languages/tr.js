@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Turkish
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['tr'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': "Bir \u015Fey yaz\u0131n",
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': "Yaz\u0131tipi Ailesi",
       'Font Size': "Yaz\u0131tipi B\xFCy\xFCkl\xFC\u011F\xFC",
+      'Enter font size': 'Yazı tipi boyutunu girin',
+      'Custom Font Size': 'Özel Yazı Tipi Boyutu',
+      'Custom': 'Özel',
+      'Please enter a valid number': 'Lütfen geçerli bir sayı girin',
+      'Value must be between': 'Değer şunların arasında olmalıdır:',
+      'and': 've',
+      'Apply': 'Uygula',
       // Colors
       'Colors': 'Renkler',
       'Color': 'Renk',
@@ -331,6 +358,7 @@
       // Export to Word
       'Export to Word': 'Word\'e Aktar',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Eklentinin çalışması için gereken tüm bağımlı kitaplıkların mevcut olduğundan emin olun.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Eklentinin beklendiği gibi çalışması için tüm gerekli konfigürasyonlar ve bağımlı kütüphanelerin kullanılabilir olduğundan emin olun.',
       // Import_from_word
       'Import from Word': 'Word\'den İçe Aktar',
       'Please upload a valid file': 'Lütfen geçerli bir dosya yükleyin.',
@@ -410,8 +438,63 @@
       'to': 'olarak',
       'in your configuration to provide consent.': 'yapılandırmanızda onay sağlamak için.',
       'You can review the terms here:': 'Şartları buradan inceleyebilirsiniz:',
-      'View AI Supplemental Terms': 'Yapay Zeka Ek Şartlarını Görüntüle'
-    },
+      'View AI Supplemental Terms': 'Yapay Zeka Ek Şartlarını Görüntüle',
+      'Switch Mode': 'Mod Değiştir',
+      'Editing': 'Düzenleme',
+      'Edit document with real-time sync': 'Belgeyi gerçek zamanlı senkronizasyonla düzenle',
+      'Suggesting': 'Öneri',
+      'Add suggestions as Yjs-tracked changes': 'Önerileri Yjs tarafından izlenen değişiklikler olarak ekle',
+      'Viewing': 'Görüntüleme',
+      'Read-only — no edits allowed': 'Salt okunur — düzenlemeye izin verilmez',
+      'Add Comment': 'Yorum Ekle',
+      'Version History': 'Sürüm Geçmişi',
+      'Hide Comments': 'Yorumları Gizle',
+      'Open': 'Açık',
+      'Resolved': 'Çözüldü',
+      'Show comments': 'Yorumları göster',
+      'No suggestions or comments yet.': 'Henüz öneri veya yorum yok.',
+      'No resolved suggestions or comments.': 'Çözülmüş öneri veya yorum yok.',
+      'View All': 'Tümünü Gör',
+      'Open comment from': 'Şuradan gelen yorumu aç',
+      'more users': 'daha fazla kullanıcı',
+      'Add': 'Ekle',
+      'Add Space': 'Boşluk Ekle',
+      'Add Paragraph': 'Paragraf Ekle',
+      'Add Link': 'Bağlantı Ekle',
+      'with': 'ile',
+      'Format': 'Biçimlendir',
+      'Removed': 'Kaldırıldı',
+      'Accept': 'Kabul Et',
+      'Reject': 'Reddet',
+      'Accepted': 'Kabul Edildi',
+      'Rejected': 'Reddedildi',
+      'Menu': 'Menü',
+      'Edit': 'Düzenle',
+      'Re-open': 'Yeniden Aç',
+      'Resolve': 'Çöz',
+      'Reply': 'Yanıtla',
+      'View All Replies': 'Tüm Yanıtları Gör',
+      'View Less': 'Daha Az Göster',
+      'comment or tag with @': '@ ile yorum yap veya etiketle',
+      'Comment': 'Yorum',
+      'Saving...': 'Kaydediliyor...',
+      'Saved': 'Kaydedildi',
+      'Auto Save': 'Otomatik Kaydet',
+      'Last saved': 'Son kaydedilen',
+      'Click to save a version now': 'Şimdi bir sürüm kaydetmek için tıklayın',
+      'just now': 'az önce',
+      's ago': 'sn önce',
+      'm ago': 'dk önce',
+      'h ago': 'sa önce',
+      'd ago': 'g önce',
+      'Add to Version History': 'Sürüm Geçmişine Ekle',
+      'Rename Version': 'Sürümü Yeniden Adlandır',
+      'Name this version': 'Bu sürümü adlandır',
+      'Edit description': 'Açıklamayı düzenle',
+      'Title': 'Başlık',
+      'Title is required.': 'Başlık gereklidir.',
+      'Description (optional)': 'Açıklama (isteğe bağlı)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Kaydet'), 'Restore version', 'Sürümü geri yükle'), 'Current content will be replaced.', 'Mevcut içerik değiştirilecektir.'), 'Delete version', 'Sürümü sil'), "Back", 'Geri'), 'Total Edits', 'Toplam Düzenleme'), 'Previous version', 'Önceki sürüm'), 'Next version', 'Sonraki sürüm'), 'of', '/'), 'Compare With', 'Şununla Karşılaştır'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'SÜRÜM GEÇMİŞİ'), 'All', 'Tümü'), 'Named Versions', 'Adlandırılmış Sürümler'), 'No content.', 'İçerik yok.'), "More", 'Daha Fazla'), 'Current Version', 'Geçerli Sürüm'), 'Compare', 'Karşılaştır'), 'Anonymous', 'Anonim'), 'Untitled', 'Başlıksız'), 'See more', 'Daha fazla göster'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Geri Yükle'), 'Rename', 'Yeniden Adlandır'), 'Delete description', 'Açıklamayı sil'), 'Edits', 'Düzenlemeler'), 'Previous change', 'Önceki değişiklik'), 'Next change', 'Sonraki değişiklik'), 'Exit Comparison', 'Karşılaştırmadan Çık'), 'Select Version to Compare With', 'Karşılaştırılacak Sürümü Seç'), 'Show', 'Göster'), 'COMPARE WITH', 'ŞUNUNLA KARŞILAŞTIR'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Başka sürüm yok.'), 'No content to compare.', 'Karşılaştırılacak içerik yok.'), 'Comparing', 'Karşılaştırılıyor'), 'against', 'ile'), 'Exit comparison', 'Karşılaştırmadan çık'), 'Save this version', 'Bu sürümü kaydet'), 'View version history', 'Sürüm geçmişini görüntüle'), 'Check for updates', 'Güncellemeleri kontrol et'), 'Modification', 'Değişiklik'), 'Suggestion', 'Öneri'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Ders'), 'Show Open', 'Açıkları Göster'), 'Add Horizontal Line', 'Yatay Çizgi Ekle'), 'Add Emoticon', 'İfade Ekle'), 'Add Icon', 'Simge Ekle'), 'Add Special Character', 'Özel Karakter Ekle'), 'Add Image', 'Resim Ekle'), 'Add Table', 'Tablo Ekle'), 'Add Video', 'Video Ekle'), 'Add File', 'Dosya Ekle'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Kod Parçası Ekle'), 'Add Anchor', 'Bağlantı Noktası Ekle'), 'Add Page Break', 'Sayfa Sonu Ekle'), 'Version Control', 'Sürüm Kontrolü'), 'Delete Table', 'Tabloyu Sil'), 'Remove Table Header', 'Tablo Başlığını Kaldır'), 'Remove Table Footer', 'Tablo Alt Bilgisini Kaldır'), 'Delete Row', 'Satırı Sil'), 'Delete Column', 'Sütunu Sil'), 'Add Table Header', 'Tablo Başlığı Ekle'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Tablo Alt Bilgisi Ekle'), 'Insert Row Above', 'Üstüne Satır Ekle'), 'Insert Row Below', 'Altına Satır Ekle'), 'Insert Column Before', 'Önüne Sütun Ekle'), 'Insert Column After', 'Arkasına Sütun Ekle'), 'Table Align', 'Tablo Hizalama'), "Table Style", 'Tablo Stili'), 'Table Cell', 'Tablo Hücresi'), 'Merge Cells', 'Hücreleri Birleştir'), 'Split Cell Vertically', 'Hücreyi Dikey Böl'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Hücreyi Yatay Böl'), 'Cell Operation', 'Hücre İşlemi'), 'Remove Cell Style', 'Hücre Stilini Kaldır'), 'Added', 'Eklendi'), 'Formatted', 'Biçimlendirildi'), 'Changed', 'Değiştirildi'), 'left', 'sol'), 'right', 'sağ'), 'center', 'orta'), 'top', 'üst'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'orta'), 'bottom', 'alt'), 'Deleted', 'Silindi'), 'justify', 'iki yana yasla'), 'See less', 'Daha az göster')),
     direction: 'ltr'
   };
 

@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Danish
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['da'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': 'Skriv her',
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': 'Skrifttype',
       'Font Size': 'Skriftstørrelse',
+      'Enter font size': 'Indtast skriftstørrelse',
+      'Custom Font Size': 'Brugerdefineret skriftstørrelse',
+      'Custom': 'Brugerdefineret',
+      'Please enter a valid number': 'Indtast venligst et gyldigt nummer',
+      'Value must be between': 'Værdien skal være mellem',
+      'and': 'og',
+      'Apply': 'Anvend',
       // Colors
       'Colors': 'Farver',
       'Color': 'Farve',
@@ -329,6 +356,7 @@
       //Export to Word
       'Export to Word': 'Eksporter til Word',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Sørg for, at alle nødvendige afhængige biblioteker er tilgængelige, for at pluginnet kan fungere.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Sørg for, at alle påkrævede konfigurationer og afhængige biblioteker er tilgængelige, så pluginnet fungerer som forventet.',
       // Import_from_word
       'Import from Word': 'Importér fra Word',
       'Please upload a valid file': 'Upload venligst en gyldig fil.',
@@ -409,8 +437,63 @@
       'to': 'til',
       'in your configuration to provide consent.': 'i din konfiguration for at give samtykke.',
       'You can review the terms here:': 'Du kan gennemse vilkårene her:',
-      'View AI Supplemental Terms': 'Se supplerende AI-vilkår'
-    },
+      'View AI Supplemental Terms': 'Se supplerende AI-vilkår',
+      'Switch Mode': 'Skift tilstand',
+      'Editing': 'Redigering',
+      'Edit document with real-time sync': 'Rediger dokument med synkronisering i realtid',
+      'Suggesting': 'Forslag',
+      'Add suggestions as Yjs-tracked changes': 'Tilføj forslag som Yjs-sporede ændringer',
+      'Viewing': 'Visning',
+      'Read-only — no edits allowed': 'Skrivebeskyttet — redigering er ikke tilladt',
+      'Add Comment': 'Tilføj kommentar',
+      'Version History': 'Versionshistorik',
+      'Hide Comments': 'Skjul kommentarer',
+      'Open': 'Åben',
+      'Resolved': 'Løst',
+      'Show comments': 'Vis kommentarer',
+      'No suggestions or comments yet.': 'Der er endnu ingen forslag eller kommentarer.',
+      'No resolved suggestions or comments.': 'Der er ingen løste forslag eller kommentarer.',
+      'View All': 'Vis alle',
+      'Open comment from': 'Åbn kommentar fra',
+      'more users': 'flere brugere',
+      'Add': 'Tilføj',
+      'Add Space': 'Tilføj mellemrum',
+      'Add Paragraph': 'Tilføj afsnit',
+      'Add Link': 'Tilføj link',
+      'with': 'med',
+      'Format': 'Formatér',
+      'Removed': 'Fjernet',
+      'Accept': 'Accepter',
+      'Reject': 'Afvis',
+      'Accepted': 'Accepteret',
+      'Rejected': 'Afvist',
+      'Menu': 'Menu',
+      'Edit': 'Rediger',
+      'Re-open': 'Genåbn',
+      'Resolve': 'Løs',
+      'Reply': 'Svar',
+      'View All Replies': 'Vis alle svar',
+      'View Less': 'Vis mindre',
+      'comment or tag with @': 'Kommentér eller tag med @',
+      'Comment': 'Kommentar',
+      'Saving...': 'Gemmer...',
+      'Saved': 'Gemt',
+      'Auto Save': 'Automatisk gem',
+      'Last saved': 'Sidst gemt',
+      'Click to save a version now': 'Klik for at gemme en version nu',
+      'just now': 'lige nu',
+      's ago': 'sek siden',
+      'm ago': 'min siden',
+      'h ago': 't siden',
+      'd ago': 'd siden',
+      'Add to Version History': 'Tilføj til versionshistorik',
+      'Rename Version': 'Omdøb version',
+      'Name this version': 'Navngiv denne version',
+      'Edit description': 'Rediger beskrivelse',
+      'Title': 'Titel',
+      'Title is required.': 'Titel er påkrævet.',
+      'Description (optional)': 'Beskrivelse (valgfri)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Gem'), 'Restore version', 'Gendan version'), 'Current content will be replaced.', 'Det aktuelle indhold vil blive erstattet.'), 'Delete version', 'Slet version'), "Back", 'Tilbage'), 'Total Edits', 'Samlet antal redigeringer'), 'Previous version', 'Forrige version'), 'Next version', 'Næste version'), 'of', 'af'), 'Compare With', 'Sammenlign med'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'VERSIONSHISTORIK'), 'All', 'Alle'), 'Named Versions', 'Navngivne versioner'), 'No content.', 'Intet indhold.'), "More", 'Mere'), 'Current Version', 'Aktuel version'), 'Compare', 'Sammenlign'), 'Anonymous', 'Anonym'), 'Untitled', 'Uden titel'), 'See more', 'Se mere'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Gendan'), 'Rename', 'Omdøb'), 'Delete description', 'Slet beskrivelse'), 'Edits', 'Redigeringer'), 'Previous change', 'Forrige ændring'), 'Next change', 'Næste ændring'), 'Exit Comparison', 'Afslut sammenligning'), 'Select Version to Compare With', 'Vælg version til sammenligning'), 'Show', 'Vis'), 'COMPARE WITH', 'SAMMENLIGN MED'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Ingen andre versioner.'), 'No content to compare.', 'Intet indhold at sammenligne.'), 'Comparing', 'Sammenligner'), 'against', 'med'), 'Exit comparison', 'Afslut sammenligning'), 'Save this version', 'Gem denne version'), 'View version history', 'Se versionshistorik'), 'Check for updates', 'Tjek for opdateringer'), 'Modification', 'Ændring'), 'Suggestion', 'Forslag'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Forelæsning'), 'Show Open', 'Vis åbne'), 'Add Horizontal Line', 'Tilføj vandret linje'), 'Add Emoticon', 'Tilføj humørikon'), 'Add Icon', 'Tilføj ikon'), 'Add Special Character', 'Tilføj specialtegn'), 'Add Image', 'Tilføj billede'), 'Add Table', 'Tilføj tabel'), 'Add Video', 'Tilføj video'), 'Add File', 'Tilføj fil'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Tilføj kodestump'), 'Add Anchor', 'Tilføj anker'), 'Add Page Break', 'Tilføj sideskift'), 'Version Control', 'Versionsstyring'), 'Delete Table', 'Slet tabel'), 'Remove Table Header', 'Fjern tabelhoved'), 'Remove Table Footer', 'Fjern tabelfod'), 'Delete Row', 'Slet række'), 'Delete Column', 'Slet kolonne'), 'Add Table Header', 'Tilføj tabelhoved'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Tilføj tabelfod'), 'Insert Row Above', 'Indsæt række over'), 'Insert Row Below', 'Indsæt række under'), 'Insert Column Before', 'Indsæt kolonne før'), 'Insert Column After', 'Indsæt kolonne efter'), 'Table Align', 'Juster tabel'), "Table Style", 'Tabelstil'), 'Table Cell', 'Tabelcelle'), 'Merge Cells', 'Flet celler'), 'Split Cell Vertically', 'Opdel celle lodret'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Opdel celle vandret'), 'Cell Operation', 'Cellehandling'), 'Remove Cell Style', 'Fjern cellestil'), 'Added', 'Tilføjet'), 'Formatted', 'Formateret'), 'Changed', 'Ændret'), 'left', 'venstre'), 'right', 'højre'), 'center', 'midten'), 'top', 'top'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'midte'), 'bottom', 'bund'), 'Deleted', 'Slettet'), 'justify', 'justeret'), 'See less', 'Vis mindre')),
     direction: 'ltr'
   };
 

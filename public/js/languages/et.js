@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Estonian
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['et'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': 'Kirjuta midagi',
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': 'Fondi perekond',
       'Font Size': 'Fondi suurus',
+      'Enter font size': 'Sisesta fondi suurus',
+      'Custom Font Size': 'Kohandatud fondi suurus',
+      'Custom': 'Kohandatud',
+      'Please enter a valid number': 'Palun sisesta kehtiv number',
+      'Value must be between': 'Väärtus peab olema vahemikus',
+      'and': 'ja',
+      'Apply': 'Rakenda',
       // Colors
       'Colors': "V\xE4rvid",
       'Color': 'Värv',
@@ -331,6 +358,7 @@
       // Export to Word
       'Export to Word': 'Ekspordi sõnasse',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Veenduge, et kõik vajalikud sõltuvad teegid oleksid pistikprogrammi töötamiseks saadaval.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Veenduge, et kõik nõutavad konfiguratsioonid ja sõltuvad teegid on saadaval, et plugin töötaks ootuspäraselt.',
       // Import_from_word
       'Import from Word': 'Impordi Wordist',
       'Please upload a valid file': 'Palun laadi üles kehtiv fail.',
@@ -410,8 +438,63 @@
       'to': 'väärtusele',
       'in your configuration to provide consent.': 'oma konfiguratsioonis nõusoleku andmiseks.',
       'You can review the terms here:': 'Saate tingimused siin üle vaadata:',
-      'View AI Supplemental Terms': 'Vaata AI täiendavaid tingimusi'
-    },
+      'View AI Supplemental Terms': 'Vaata AI täiendavaid tingimusi',
+      'Switch Mode': 'Vaheta režiimi',
+      'Editing': 'Redigeerimine',
+      'Edit document with real-time sync': 'Redigeeri dokumenti reaalajas sünkroonimisega',
+      'Suggesting': 'Soovitamine',
+      'Add suggestions as Yjs-tracked changes': 'Lisa soovitused Yjs-i jälgitavate muudatustena',
+      'Viewing': 'Vaatamine',
+      'Read-only — no edits allowed': 'Ainult lugemiseks — muudatused pole lubatud',
+      'Add Comment': 'Lisa kommentaar',
+      'Version History': 'Versiooniajalugu',
+      'Hide Comments': 'Peida kommentaarid',
+      'Open': 'Avatud',
+      'Resolved': 'Lahendatud',
+      'Show comments': 'Näita kommentaare',
+      'No suggestions or comments yet.': 'Soovitusi ega kommentaare pole veel.',
+      'No resolved suggestions or comments.': 'Lahendatud soovitusi ega kommentaare pole.',
+      'View All': 'Vaata kõiki',
+      'Open comment from': 'Ava kommentaar kasutajalt',
+      'more users': 'rohkem kasutajaid',
+      'Add': 'Lisa',
+      'Add Space': 'Lisa tühik',
+      'Add Paragraph': 'Lisa lõik',
+      'Add Link': 'Lisa link',
+      'with': 'asemel',
+      'Format': 'Vorminda',
+      'Removed': 'Eemaldatud',
+      'Accept': 'Nõustu',
+      'Reject': 'Lükka tagasi',
+      'Accepted': 'Nõustutud',
+      'Rejected': 'Tagasi lükatud',
+      'Menu': 'Menüü',
+      'Edit': 'Redigeeri',
+      'Re-open': 'Ava uuesti',
+      'Resolve': 'Märgi lahendatuks',
+      'Reply': 'Vasta',
+      'View All Replies': 'Vaata kõiki vastuseid',
+      'View Less': 'Näita vähem',
+      'comment or tag with @': 'Kommenteeri või märgista @ abil',
+      'Comment': 'Kommentaar',
+      'Saving...': 'Salvestamine...',
+      'Saved': 'Salvestatud',
+      'Auto Save': 'Automaatne salvestamine',
+      'Last saved': 'Viimati salvestatud',
+      'Click to save a version now': 'Klõpsa versiooni salvestamiseks',
+      'just now': 'just praegu',
+      's ago': 's tagasi',
+      'm ago': 'min tagasi',
+      'h ago': 'h tagasi',
+      'd ago': 'p tagasi',
+      'Add to Version History': 'Lisa versiooniajalukku',
+      'Rename Version': 'Nimeta versioon ümber',
+      'Name this version': 'Pane sellele versioonile nimi',
+      'Edit description': 'Muuda kirjeldust',
+      'Title': 'Pealkiri',
+      'Title is required.': 'Pealkiri on kohustuslik.',
+      'Description (optional)': 'Kirjeldus (valikuline)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Salvesta'), 'Restore version', 'Taasta versioon'), 'Current content will be replaced.', 'Praegune sisu asendatakse.'), 'Delete version', 'Kustuta versioon'), "Back", 'Tagasi'), 'Total Edits', 'Muudatusi kokku'), 'Previous version', 'Eelmine versioon'), 'Next version', 'Järgmine versioon'), 'of', '/'), 'Compare With', 'Võrdle'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'VERSIOONIAJALUGU'), 'All', 'Kõik'), 'Named Versions', 'Nimega versioonid'), 'No content.', 'Sisu puudub.'), "More", 'Rohkem'), 'Current Version', 'Praegune versioon'), 'Compare', 'Võrdle'), 'Anonymous', 'Anonüümne'), 'Untitled', 'Pealkirjata'), 'See more', 'Vaata rohkem'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Taasta'), 'Rename', 'Nimeta ümber'), 'Delete description', 'Kustuta kirjeldus'), 'Edits', 'Muudatused'), 'Previous change', 'Eelmine muudatus'), 'Next change', 'Järgmine muudatus'), 'Exit Comparison', 'Välju võrdlusest'), 'Select Version to Compare With', 'Vali versioon võrdlemiseks'), 'Show', 'Näita'), 'COMPARE WITH', 'VÕRDLE'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Teisi versioone pole.'), 'No content to compare.', 'Võrdlemiseks puudub sisu.'), 'Comparing', 'Võrdlemine'), 'against', 'vastu'), 'Exit comparison', 'Välju võrdlusest'), 'Save this version', 'Salvesta see versioon'), 'View version history', 'Vaata versiooniajalugu'), 'Check for updates', 'Kontrolli värskendusi'), 'Modification', 'Muudatus'), 'Suggestion', 'Soovitus'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Loeng'), 'Show Open', 'Näita avatud'), 'Add Horizontal Line', 'Lisa horisontaaljoon'), 'Add Emoticon', 'Lisa emotikon'), 'Add Icon', 'Lisa ikoon'), 'Add Special Character', 'Lisa erimärk'), 'Add Image', 'Lisa pilt'), 'Add Table', 'Lisa tabel'), 'Add Video', 'Lisa video'), 'Add File', 'Lisa fail'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Lisa koodilõik'), 'Add Anchor', 'Lisa ankur'), 'Add Page Break', 'Lisa leheküljepiir'), 'Version Control', 'Versioonihaldus'), 'Delete Table', 'Kustuta tabel'), 'Remove Table Header', 'Eemalda tabeli päis'), 'Remove Table Footer', 'Eemalda tabeli jalus'), 'Delete Row', 'Kustuta rida'), 'Delete Column', 'Kustuta veerg'), 'Add Table Header', 'Lisa tabeli päis'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Lisa tabeli jalus'), 'Insert Row Above', 'Lisa rida üles'), 'Insert Row Below', 'Lisa rida alla'), 'Insert Column Before', 'Lisa veerg enne'), 'Insert Column After', 'Lisa veerg pärast'), 'Table Align', 'Tabeli joondus'), "Table Style", 'Tabeli stiil'), 'Table Cell', 'Tabeli lahter'), 'Merge Cells', 'Ühenda lahtrid'), 'Split Cell Vertically', 'Jaga lahter vertikaalselt'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Jaga lahter horisontaalselt'), 'Cell Operation', 'Lahtri toiming'), 'Remove Cell Style', 'Eemalda lahtri stiil'), 'Added', 'Lisatud'), 'Formatted', 'Vormindatud'), 'Changed', 'Muudetud'), 'left', 'vasak'), 'right', 'parem'), 'center', 'keskel'), 'top', 'üleval'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'keskel'), 'bottom', 'all'), 'Deleted', 'Kustutatud'), 'justify', 'rööpjoondus'), 'See less', 'Näita vähem')),
     direction: 'ltr'
   };
 

@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Serbian (Latin)
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['sr'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': "Ukucajte ne\u0161tp",
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': 'Odaberi font',
       'Font Size': "Veli\u010Dina fontova",
+      'Enter font size': 'Unesite veličinu fonta',
+      'Custom Font Size': 'Prilagođena veličina fonta',
+      'Custom': 'Prilagođeno',
+      'Please enter a valid number': 'Molimo unesite ispravan broj',
+      'Value must be between': 'Vrednost mora biti između',
+      'and': 'i',
+      'Apply': 'Primeni',
       // Colors
       'Colors': 'Boje',
       'Color': 'Boja',
@@ -331,6 +358,7 @@
       // Export to Word
       'Export to Word': 'Izvezi u Word',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Obezbedite da su sve potrebne zavisne biblioteke dostupne da bi dodatak radio.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Osigurajte da su dostupne sve potrebne konfiguracije i zavisne biblioteke za rad dodatka kako se očekuje.',
       // Import_from_word
       'Import from Word': 'Uvoz iz Worda',
       'Please upload a valid file': 'Molimo Vas da otpremite važeću datoteku.',
@@ -410,8 +438,63 @@
       'to': 'на',
       'in your configuration to provide consent.': 'у својој конфигурацији да бисте дали сагласност.',
       'You can review the terms here:': 'Услове можете прегледати овде:',
-      'View AI Supplemental Terms': 'Прикажите Допунске услове за АИ'
-    },
+      'View AI Supplemental Terms': 'Прикажите Допунске услове за АИ',
+      'Switch Mode': 'Promeni režim',
+      'Editing': 'Uređivanje',
+      'Edit document with real-time sync': 'Uredi dokument uz sinhronizaciju u realnom vremenu',
+      'Suggesting': 'Predlozi',
+      'Add suggestions as Yjs-tracked changes': 'Dodaj predloge kao izmene praćene pomoću Yjs-a',
+      'Viewing': 'Pregled',
+      'Read-only — no edits allowed': 'Samo za čitanje — uređivanje nije dozvoljeno',
+      'Add Comment': 'Dodaj komentar',
+      'Version History': 'Istorija verzija',
+      'Hide Comments': 'Sakrij komentare',
+      'Open': 'Otvoreno',
+      'Resolved': 'Rešeno',
+      'Show comments': 'Prikaži komentare',
+      'No suggestions or comments yet.': 'Još nema predloga ni komentara.',
+      'No resolved suggestions or comments.': 'Nema rešenih predloga ni komentara.',
+      'View All': 'Prikaži sve',
+      'Open comment from': 'Otvori komentar od',
+      'more users': 'više korisnika',
+      'Add': 'Dodaj',
+      'Add Space': 'Dodaj razmak',
+      'Add Paragraph': 'Dodaj pasus',
+      'Add Link': 'Dodaj link',
+      'with': 'sa',
+      'Format': 'Format',
+      'Removed': 'Uklonjeno',
+      'Accept': 'Prihvati',
+      'Reject': 'Odbij',
+      'Accepted': 'Prihvaćeno',
+      'Rejected': 'Odbijeno',
+      'Menu': 'Meni',
+      'Edit': 'Uredi',
+      'Re-open': 'Ponovo otvori',
+      'Resolve': 'Reši',
+      'Reply': 'Odgovori',
+      'View All Replies': 'Prikaži sve odgovore',
+      'View Less': 'Prikaži manje',
+      'comment or tag with @': 'Komentariši ili označi pomoću @',
+      'Comment': 'Komentar',
+      'Saving...': 'Čuvanje...',
+      'Saved': 'Sačuvano',
+      'Auto Save': 'Automatsko čuvanje',
+      'Last saved': 'Poslednje sačuvano',
+      'Click to save a version now': 'Kliknite da sada sačuvate verziju',
+      'just now': 'upravo sada',
+      's ago': 's pre',
+      'm ago': 'min pre',
+      'h ago': 'h pre',
+      'd ago': 'd pre',
+      'Add to Version History': 'Dodaj u istoriju verzija',
+      'Rename Version': 'Preimenuj verziju',
+      'Name this version': 'Imenuj ovu verziju',
+      'Edit description': 'Uredi opis',
+      'Title': 'Naslov',
+      'Title is required.': 'Naslov je obavezan.',
+      'Description (optional)': 'Opis (opciono)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Sačuvaj'), 'Restore version', 'Vrati verziju'), 'Current content will be replaced.', 'Trenutni sadržaj će biti zamenjen.'), 'Delete version', 'Obriši verziju'), "Back", 'Nazad'), 'Total Edits', 'Ukupno izmena'), 'Previous version', 'Prethodna verzija'), 'Next version', 'Sledeća verzija'), 'of', 'od'), 'Compare With', 'Uporedi sa'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'ISTORIJA VERZIJA'), 'All', 'Sve'), 'Named Versions', 'Imenovane verzije'), 'No content.', 'Nema sadržaja.'), "More", 'Više'), 'Current Version', 'Trenutna verzija'), 'Compare', 'Uporedi'), 'Anonymous', 'Anonimno'), 'Untitled', 'Bez naslova'), 'See more', 'Prikaži više'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Vrati'), 'Rename', 'Preimenuj'), 'Delete description', 'Obriši opis'), 'Edits', 'Izmene'), 'Previous change', 'Prethodna izmena'), 'Next change', 'Sledeća izmena'), 'Exit Comparison', 'Izađi iz poređenja'), 'Select Version to Compare With', 'Izaberite verziju za poređenje'), 'Show', 'Prikaži'), 'COMPARE WITH', 'UPOREDI SA'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Nema drugih verzija.'), 'No content to compare.', 'Nema sadržaja za poređenje.'), 'Comparing', 'Poređenje'), 'against', 'sa'), 'Exit comparison', 'Izađi iz poređenja'), 'Save this version', 'Sačuvaj ovu verziju'), 'View version history', 'Prikaži istoriju verzija'), 'Check for updates', 'Proveri ažuriranja'), 'Modification', 'Izmena'), 'Suggestion', 'Predlog'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Predavanje'), 'Show Open', 'Prikaži otvorene'), 'Add Horizontal Line', 'Dodaj horizontalnu liniju'), 'Add Emoticon', 'Dodaj emotikon'), 'Add Icon', 'Dodaj ikonu'), 'Add Special Character', 'Dodaj specijalni znak'), 'Add Image', 'Dodaj sliku'), 'Add Table', 'Dodaj tabelu'), 'Add Video', 'Dodaj video'), 'Add File', 'Dodaj datoteku'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Dodaj isečak koda'), 'Add Anchor', 'Dodaj sidro'), 'Add Page Break', 'Dodaj prelom stranice'), 'Version Control', 'Kontrola verzija'), 'Delete Table', 'Obriši tabelu'), 'Remove Table Header', 'Ukloni zaglavlje tabele'), 'Remove Table Footer', 'Ukloni podnožje tabele'), 'Delete Row', 'Obriši red'), 'Delete Column', 'Obriši kolonu'), 'Add Table Header', 'Dodaj zaglavlje tabele'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Dodaj podnožje tabele'), 'Insert Row Above', 'Umetni red iznad'), 'Insert Row Below', 'Umetni red ispod'), 'Insert Column Before', 'Umetni kolonu pre'), 'Insert Column After', 'Umetni kolonu posle'), 'Table Align', 'Poravnanje tabele'), "Table Style", 'Stil tabele'), 'Table Cell', 'Ćelija tabele'), 'Merge Cells', 'Spoji ćelije'), 'Split Cell Vertically', 'Podeli ćeliju vertikalno'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Podeli ćeliju horizontalno'), 'Cell Operation', 'Operacija ćelije'), 'Remove Cell Style', 'Ukloni stil ćelije'), 'Added', 'Dodato'), 'Formatted', 'Formatirano'), 'Changed', 'Promenjeno'), 'left', 'levo'), 'right', 'desno'), 'center', 'centar'), 'top', 'gore'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'sredina'), 'bottom', 'dole'), 'Deleted', 'Obrisano'), 'justify', 'obostrano poravnanje'), 'See less', 'Prikaži manje')),
     direction: 'ltr'
   };
 

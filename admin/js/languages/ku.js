@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -37,6 +37,13 @@
       // Font
       'Font Family': 'فۆنتی خێزان',
       'Font Size': 'قەبارەی فۆنت',
+      'Enter font size': 'قەبارەی فۆنت بنووسە',
+      'Custom Font Size': 'قەبارەی فۆنتی ڕاسپێردراو',
+      'Custom': 'ڕاسپێردراو',
+      'Please enter a valid number': 'تکایە ژمارەیەکی دروست بنووسە',
+      'Value must be between': 'دەبێت بەهاکە لە نێوان',
+      'and': 'و',
+      'Apply': 'جێبەجێکردن',
       // Colors
       'Colors': 'ڕەنگەکان',
       'Color': 'لون',
@@ -323,6 +330,7 @@
       // Export to Word
       'Export to Word': 'تصدير إلى وورد',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'دڵنیابە لە بەردەستبوونی هەموو کتێبخانە پێویستە وابەستەکان بۆ کارکردنی پڵاگینەکە.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Mirov ku were, ku hemû pêwiste û kitêbên serbilî yên ji bo karbidestûna hemû plugîn wekî tê hêvîkirin.',
       // import from Word
       'Import from Word': 'هاوردە کردن لە وۆرد',
       'Please upload a valid file': 'تکایە فایلێکی دروست باربکە.',

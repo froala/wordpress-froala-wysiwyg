@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Greek
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['el'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': 'Εισάγετε κείμενο',
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': 'Γραμματοσειρά',
       'Font Size': 'Μέγεθος',
+      'Enter font size': 'Εισαγάγετε μέγεθος γραμματοσειράς',
+      'Custom Font Size': 'Προσαρμοσμένο μέγεθος γραμματοσειράς',
+      'Custom': 'Προσαρμοσμένο',
+      'Please enter a valid number': 'Παρακαλώ εισαγάγετε έναν έγκυρο αριθμό',
+      'Value must be between': 'Η τιμή πρέπει να είναι μεταξύ',
+      'and': 'και',
+      'Apply': 'Εφαρμογή',
       // Colors
       'Colors': 'Χρώματα',
       'Color': 'Χρώμα',
@@ -335,6 +362,7 @@
       // Export to Word
       'Export to Word': 'Εξαγωγή σε Word',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Βεβαιωθείτε ότι όλες οι απαιτούμενες εξαρτώμενες βιβλιοθήκες είναι διαθέσιμες για να λειτουργήσει το πρόσθετο.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Βεβαιωθείτε ότι όλες οι απαιτούμενες διαμορφώσεις και εξαρτώμενες βιβλιοθήκες είναι διαθέσιμες για τη σωστή λειτουργία του προσθέτου.',
       // Import_from_word
       'Import from Word': 'Εισαγωγή από το Word',
       'Please upload a valid file': 'Παρακαλούμε ανεβάστε ένα έγκυρο αρχείο.',
@@ -410,8 +438,63 @@
       'to': 'σε',
       'in your configuration to provide consent.': 'στη διαμόρφωσή σας για να παράσχετε συγκατάθεση.',
       'You can review the terms here:': 'Μπορείτε να εξετάσετε τους όρους εδώ:',
-      'View AI Supplemental Terms': 'Δείτε τους Συμπληρωματικούς Όρους AI'
-    },
+      'View AI Supplemental Terms': 'Δείτε τους Συμπληρωματικούς Όρους AI',
+      'Switch Mode': 'Αλλαγή λειτουργίας',
+      'Editing': 'Επεξεργασία',
+      'Edit document with real-time sync': 'Επεξεργασία εγγράφου με συγχρονισμό σε πραγματικό χρόνο',
+      'Suggesting': 'Προτάσεις',
+      'Add suggestions as Yjs-tracked changes': 'Προσθήκη προτάσεων ως αλλαγές που παρακολουθούνται από το Yjs',
+      'Viewing': 'Προβολή',
+      'Read-only — no edits allowed': 'Μόνο για ανάγνωση — δεν επιτρέπονται αλλαγές',
+      'Add Comment': 'Προσθήκη σχολίου',
+      'Version History': 'Ιστορικό εκδόσεων',
+      'Hide Comments': 'Απόκρυψη σχολίων',
+      'Open': 'Ανοιχτό',
+      'Resolved': 'Επιλυμένο',
+      'Show comments': 'Εμφάνιση σχολίων',
+      'No suggestions or comments yet.': 'Δεν υπάρχουν ακόμη προτάσεις ή σχόλια.',
+      'No resolved suggestions or comments.': 'Δεν υπάρχουν επιλυμένες προτάσεις ή σχόλια.',
+      'View All': 'Προβολή όλων',
+      'Open comment from': 'Άνοιγμα σχολίου από',
+      'more users': 'περισσότερους χρήστες',
+      'Add': 'Προσθήκη',
+      'Add Space': 'Προσθήκη κενού',
+      'Add Paragraph': 'Προσθήκη παραγράφου',
+      'Add Link': 'Προσθήκη συνδέσμου',
+      'with': 'με',
+      'Format': 'Μορφοποίηση',
+      'Removed': 'Αφαιρέθηκε',
+      'Accept': 'Αποδοχή',
+      'Reject': 'Απόρριψη',
+      'Accepted': 'Έγινε αποδεκτό',
+      'Rejected': 'Απορρίφθηκε',
+      'Menu': 'Μενού',
+      'Edit': 'Επεξεργασία',
+      'Re-open': 'Επαναφορά σε ανοιχτό',
+      'Resolve': 'Επίλυση',
+      'Reply': 'Απάντηση',
+      'View All Replies': 'Προβολή όλων των απαντήσεων',
+      'View Less': 'Προβολή λιγότερων',
+      'comment or tag with @': 'Σχολιάστε ή κάντε επισήμανση με @',
+      'Comment': 'Σχόλιο',
+      'Saving...': 'Αποθήκευση...',
+      'Saved': 'Αποθηκεύτηκε',
+      'Auto Save': 'Αυτόματη αποθήκευση',
+      'Last saved': 'Τελευταία αποθήκευση',
+      'Click to save a version now': 'Κάντε κλικ για αποθήκευση έκδοσης τώρα',
+      'just now': 'μόλις τώρα',
+      's ago': 'δ πριν',
+      'm ago': 'λ πριν',
+      'h ago': 'ώ πριν',
+      'd ago': 'η πριν',
+      'Add to Version History': 'Προσθήκη στο ιστορικό εκδόσεων',
+      'Rename Version': 'Μετονομασία έκδοσης',
+      'Name this version': 'Ονομασία αυτής της έκδοσης',
+      'Edit description': 'Επεξεργασία περιγραφής',
+      'Title': 'Τίτλος',
+      'Title is required.': 'Ο τίτλος είναι υποχρεωτικός.',
+      'Description (optional)': 'Περιγραφή (προαιρετικό)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Αποθήκευση'), 'Restore version', 'Επαναφορά έκδοσης'), 'Current content will be replaced.', 'Το τρέχον περιεχόμενο θα αντικατασταθεί.'), 'Delete version', 'Διαγραφή έκδοσης'), "Back", 'Πίσω'), 'Total Edits', 'Συνολικές επεξεργασίες'), 'Previous version', 'Προηγούμενη έκδοση'), 'Next version', 'Επόμενη έκδοση'), 'of', 'από'), 'Compare With', 'Σύγκριση με'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'ΙΣΤΟΡΙΚΟ ΕΚΔΟΣΕΩΝ'), 'All', 'Όλα'), 'Named Versions', 'Ονομασμένες εκδόσεις'), 'No content.', 'Δεν υπάρχει περιεχόμενο.'), "More", 'Περισσότερα'), 'Current Version', 'Τρέχουσα έκδοση'), 'Compare', 'Σύγκριση'), 'Anonymous', 'Ανώνυμος'), 'Untitled', 'Χωρίς τίτλο'), 'See more', 'Δείτε περισσότερα'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Επαναφορά'), 'Rename', 'Μετονομασία'), 'Delete description', 'Διαγραφή περιγραφής'), 'Edits', 'Επεξεργασίες'), 'Previous change', 'Προηγούμενη αλλαγή'), 'Next change', 'Επόμενη αλλαγή'), 'Exit Comparison', 'Έξοδος από τη σύγκριση'), 'Select Version to Compare With', 'Επιλέξτε έκδοση για σύγκριση'), 'Show', 'Εμφάνιση'), 'COMPARE WITH', 'ΣΥΓΚΡΙΣΗ ΜΕ'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Δεν υπάρχουν άλλες εκδόσεις.'), 'No content to compare.', 'Δεν υπάρχει περιεχόμενο για σύγκριση.'), 'Comparing', 'Σύγκριση'), 'against', 'με'), 'Exit comparison', 'Έξοδος από τη σύγκριση'), 'Save this version', 'Αποθήκευση αυτής της έκδοσης'), 'View version history', 'Προβολή ιστορικού εκδόσεων'), 'Check for updates', 'Έλεγχος για ενημερώσεις'), 'Modification', 'Τροποποίηση'), 'Suggestion', 'Πρόταση'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Διάλεξη'), 'Show Open', 'Εμφάνιση ανοιχτών'), 'Add Horizontal Line', 'Προσθήκη οριζόντιας γραμμής'), 'Add Emoticon', 'Προσθήκη emoticon'), 'Add Icon', 'Προσθήκη εικονιδίου'), 'Add Special Character', 'Προσθήκη ειδικού χαρακτήρα'), 'Add Image', 'Προσθήκη εικόνας'), 'Add Table', 'Προσθήκη πίνακα'), 'Add Video', 'Προσθήκη βίντεο'), 'Add File', 'Προσθήκη αρχείου'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Προσθήκη αποσπάσματος κώδικα'), 'Add Anchor', 'Προσθήκη άγκυρας'), 'Add Page Break', 'Προσθήκη αλλαγής σελίδας'), 'Version Control', 'Έλεγχος εκδόσεων'), 'Delete Table', 'Διαγραφή πίνακα'), 'Remove Table Header', 'Κατάργηση κεφαλίδας πίνακα'), 'Remove Table Footer', 'Κατάργηση υποσέλιδου πίνακα'), 'Delete Row', 'Διαγραφή γραμμής'), 'Delete Column', 'Διαγραφή στήλης'), 'Add Table Header', 'Προσθήκη κεφαλίδας πίνακα'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Προσθήκη υποσέλιδου πίνακα'), 'Insert Row Above', 'Εισαγωγή γραμμής επάνω'), 'Insert Row Below', 'Εισαγωγή γραμμής κάτω'), 'Insert Column Before', 'Εισαγωγή στήλης πριν'), 'Insert Column After', 'Εισαγωγή στήλης μετά'), 'Table Align', 'Στοίχιση πίνακα'), "Table Style", 'Στυλ πίνακα'), 'Table Cell', 'Κελί πίνακα'), 'Merge Cells', 'Συγχώνευση κελιών'), 'Split Cell Vertically', 'Διαίρεση κελιού κάθετα'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Διαίρεση κελιού οριζόντια'), 'Cell Operation', 'Λειτουργία κελιού'), 'Remove Cell Style', 'Κατάργηση στυλ κελιού'), 'Added', 'Προστέθηκε'), 'Formatted', 'Μορφοποιήθηκε'), 'Changed', 'Άλλαξε'), 'left', 'αριστερά'), 'right', 'δεξιά'), 'center', 'κέντρο'), 'top', 'επάνω'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'μέση'), 'bottom', 'κάτω'), 'Deleted', 'Διαγράφηκε'), 'justify', 'πλήρης στοίχιση'), 'See less', 'Δείτε λιγότερα')),
     direction: 'ltr'
   };
 

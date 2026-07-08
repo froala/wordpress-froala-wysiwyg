@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Korean
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['ko'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': "\uB0B4\uC6A9\uC744 \uC785\uB825\uD558\uC138\uC694",
       // Missing translations
@@ -57,6 +77,13 @@
       // Font
       'Font Family': "\uAE00\uAF34",
       'Font Size': "\uD3F0\uD2B8 \uD06C\uAE30",
+      'Enter font size': '글꼴 크기 입력',
+      'Custom Font Size': '사용자 지정 글꼴 크기',
+      'Custom': '사용자 지정',
+      'Please enter a valid number': '올바른 숫자를 입력하십시오',
+      'Value must be between': '값은 다음 사이여야 합니다:',
+      'and': '및',
+      'Apply': '적용',
       // Colors
       'Colors': "\uC0C9\uC0C1",
       'Color': '색상',
@@ -348,6 +375,7 @@
       //Export to Word
       'Export to Word': '워드로 내보내기',
       'Ensure that all required dependent libraries are available for the plugin to work.': '플러그인이 작동하려면 필요한 모든 종속 라이브러리가 사용 가능한지 확인하십시오.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': '플러그인이 예상대로 작동하도록 필요한 모든 구성과 종속 라이브러리를 사용할 수 있는지 확인하세요.',
       // Import_from_word
       'Import from Word': 'Word에서 가져오기',
       'Please upload a valid file': '유효한 파일을 업로드하십시오.',
@@ -411,8 +439,63 @@
       'to': '으로',
       'in your configuration to provide consent.': '를 설정하여 동의를 제공하세요.',
       'You can review the terms here:': '여기서 약관을 검토할 수 있습니다:',
-      'View AI Supplemental Terms': 'AI 보충 약관 보기'
-    },
+      'View AI Supplemental Terms': 'AI 보충 약관 보기',
+      'Switch Mode': '모드 전환',
+      'Editing': '편집',
+      'Edit document with real-time sync': '실시간 동기화로 문서 편집',
+      'Suggesting': '제안',
+      'Add suggestions as Yjs-tracked changes': '제안을 Yjs 추적 변경 사항으로 추가',
+      'Viewing': '보기',
+      'Read-only — no edits allowed': '읽기 전용 — 편집할 수 없음',
+      'Add Comment': '댓글 추가',
+      'Version History': '버전 기록',
+      'Hide Comments': '댓글 숨기기',
+      'Open': '열림',
+      'Resolved': '해결됨',
+      'Show comments': '댓글 표시',
+      'No suggestions or comments yet.': '아직 제안이나 댓글이 없습니다.',
+      'No resolved suggestions or comments.': '해결된 제안이나 댓글이 없습니다.',
+      'View All': '모두 보기',
+      'Open comment from': '댓글 열기',
+      'more users': '추가 사용자',
+      'Add': '추가',
+      'Add Space': '공백 추가',
+      'Add Paragraph': '문단 추가',
+      'Add Link': '링크 추가',
+      'with': '다음으로',
+      'Format': '서식',
+      'Removed': '제거됨',
+      'Accept': '수락',
+      'Reject': '거부',
+      'Accepted': '수락됨',
+      'Rejected': '거부됨',
+      'Menu': '메뉴',
+      'Edit': '편집',
+      'Re-open': '다시 열기',
+      'Resolve': '해결',
+      'Reply': '답글',
+      'View All Replies': '모든 답글 보기',
+      'View Less': '간단히 보기',
+      'comment or tag with @': '@로 댓글 작성 또는 태그',
+      'Comment': '댓글',
+      'Saving...': '저장 중...',
+      'Saved': '저장됨',
+      'Auto Save': '자동 저장',
+      'Last saved': '마지막 저장',
+      'Click to save a version now': '지금 버전을 저장하려면 클릭',
+      'just now': '방금 전',
+      's ago': '초 전',
+      'm ago': '분 전',
+      'h ago': '시간 전',
+      'd ago': '일 전',
+      'Add to Version History': '버전 기록에 추가',
+      'Rename Version': '버전 이름 변경',
+      'Name this version': '이 버전에 이름 지정',
+      'Edit description': '설명 편집',
+      'Title': '제목',
+      'Title is required.': '제목은 필수입니다.',
+      'Description (optional)': '설명 (선택 사항)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", '저장'), 'Restore version', '버전 복원'), 'Current content will be replaced.', '현재 콘텐츠가 대체됩니다.'), 'Delete version', '버전 삭제'), "Back", '뒤로'), 'Total Edits', '총 편집 수'), 'Previous version', '이전 버전'), 'Next version', '다음 버전'), 'of', '/'), 'Compare With', '비교 대상'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', '버전 기록'), 'All', '전체'), 'Named Versions', '이름 있는 버전'), 'No content.', '콘텐츠 없음.'), "More", '더 보기'), 'Current Version', '현재 버전'), 'Compare', '비교'), 'Anonymous', '익명'), 'Untitled', '제목 없음'), 'See more', '더 보기'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', '복원'), 'Rename', '이름 변경'), 'Delete description', '설명 삭제'), 'Edits', '편집'), 'Previous change', '이전 변경 사항'), 'Next change', '다음 변경 사항'), 'Exit Comparison', '비교 종료'), 'Select Version to Compare With', '비교할 버전 선택'), 'Show', '표시'), 'COMPARE WITH', '비교 대상'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', '다른 버전이 없습니다.'), 'No content to compare.', '비교할 콘텐츠가 없습니다.'), 'Comparing', '비교 중'), 'against', '대상'), 'Exit comparison', '비교 종료'), 'Save this version', '이 버전 저장'), 'View version history', '버전 기록 보기'), 'Check for updates', '업데이트 확인'), 'Modification', '수정'), 'Suggestion', '제안'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', '강의'), 'Show Open', '열린 항목 표시'), 'Add Horizontal Line', '가로줄 추가'), 'Add Emoticon', '이모티콘 추가'), 'Add Icon', '아이콘 추가'), 'Add Special Character', '특수 문자 추가'), 'Add Image', '이미지 추가'), 'Add Table', '표 추가'), 'Add Video', '동영상 추가'), 'Add File', '파일 추가'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', '코드 조각 추가'), 'Add Anchor', '앵커 추가'), 'Add Page Break', '페이지 나누기 추가'), 'Version Control', '버전 관리'), 'Delete Table', '표 삭제'), 'Remove Table Header', '표 머리글 제거'), 'Remove Table Footer', '표 바닥글 제거'), 'Delete Row', '행 삭제'), 'Delete Column', '열 삭제'), 'Add Table Header', '표 머리글 추가'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', '표 바닥글 추가'), 'Insert Row Above', '위에 행 삽입'), 'Insert Row Below', '아래에 행 삽입'), 'Insert Column Before', '앞에 열 삽입'), 'Insert Column After', '뒤에 열 삽입'), 'Table Align', '표 정렬'), "Table Style", '표 스타일'), 'Table Cell', '표 셀'), 'Merge Cells', '셀 병합'), 'Split Cell Vertically', '셀 세로 분할'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', '셀 가로 분할'), 'Cell Operation', '셀 작업'), 'Remove Cell Style', '셀 스타일 제거'), 'Added', '추가됨'), 'Formatted', '서식 지정됨'), 'Changed', '변경됨'), 'left', '왼쪽'), 'right', '오른쪽'), 'center', '가운데'), 'top', '위'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', '중간'), 'bottom', '아래'), 'Deleted', '삭제됨'), 'justify', '양쪽 맞춤'), 'See less', '간단히 보기')),
     direction: 'ltr'
   };
 

@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,8 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
+
+  var _translation;
   FE.LANGUAGE['vi'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': "Vi\u1EBFt \u0111i\u1EC1u g\xEC \u0111\xF3...",
       // Basic formatting
@@ -33,6 +57,13 @@
       // Font
       'Font Family': "Ph\xF4ng ch\u1EEF",
       'Font Size': "C\u1EE1 ch\u1EEF",
+      'Enter font size': 'Nhập kích thước phông chữ',
+      'Custom Font Size': 'Kích thước phông chữ tùy chỉnh',
+      'Custom': 'Tùy chỉnh',
+      'Please enter a valid number': 'Vui lòng nhập một số hợp lệ',
+      'Value must be between': 'Giá trị phải nằm trong khoảng từ',
+      'and': 'đến',
+      'Apply': 'Áp dụng',
       // Colors
       'Colors': "M\xE0u s\u1EAFc",
       'Color': 'Màu sắc',
@@ -271,6 +302,7 @@
       // Export to Word
       'Export to Word': 'Xuất ra Word',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Đảm bảo rằng tất cả các thư viện phụ thuộc cần thiết đều có sẵn để plugin hoạt động.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Hãy đảm bảo rằng tất cả các cấu hình cần thiết và thư viện phụ thuộc có sẵn để plugin hoạt động như mong đợi.',
       // Import_from_word
       'Import from Word': 'Nhập từ Word',
       'Please upload a valid file': 'Vui lòng tải lên một tập tin hợp lệ.',
@@ -406,8 +438,63 @@
       'to': 'thành',
       'in your configuration to provide consent.': 'trong cấu hình của bạn để cung cấp sự đồng ý.',
       'You can review the terms here:': 'Bạn có thể xem xét các điều khoản tại đây:',
-      'View AI Supplemental Terms': 'Xem Điều khoản Bổ sung AI'
-    },
+      'View AI Supplemental Terms': 'Xem Điều khoản Bổ sung AI',
+      'Switch Mode': 'Chuyển chế độ',
+      'Editing': 'Chỉnh sửa',
+      'Edit document with real-time sync': 'Chỉnh sửa tài liệu với đồng bộ hóa thời gian thực',
+      'Suggesting': 'Đề xuất',
+      'Add suggestions as Yjs-tracked changes': 'Thêm đề xuất dưới dạng thay đổi được theo dõi bởi Yjs',
+      'Viewing': 'Xem',
+      'Read-only — no edits allowed': 'Chỉ đọc — không được phép chỉnh sửa',
+      'Add Comment': 'Thêm bình luận',
+      'Version History': 'Lịch sử phiên bản',
+      'Hide Comments': 'Ẩn bình luận',
+      'Open': 'Mở',
+      'Resolved': 'Đã giải quyết',
+      'Show comments': 'Hiển thị bình luận',
+      'No suggestions or comments yet.': 'Chưa có đề xuất hoặc bình luận nào.',
+      'No resolved suggestions or comments.': 'Không có đề xuất hoặc bình luận nào đã được giải quyết.',
+      'View All': 'Xem tất cả',
+      'Open comment from': 'Mở bình luận từ',
+      'more users': 'nhiều người dùng hơn',
+      'Add': 'Thêm',
+      'Add Space': 'Thêm khoảng trắng',
+      'Add Paragraph': 'Thêm đoạn văn',
+      'Add Link': 'Thêm liên kết',
+      'with': 'bằng',
+      'Format': 'Định dạng',
+      'Removed': 'Đã xóa',
+      'Accept': 'Chấp nhận',
+      'Reject': 'Từ chối',
+      'Accepted': 'Đã chấp nhận',
+      'Rejected': 'Đã từ chối',
+      'Menu': 'Menu',
+      'Edit': 'Chỉnh sửa',
+      'Re-open': 'Mở lại',
+      'Resolve': 'Giải quyết',
+      'Reply': 'Trả lời',
+      'View All Replies': 'Xem tất cả phản hồi',
+      'View Less': 'Thu gọn',
+      'comment or tag with @': 'Bình luận hoặc gắn thẻ bằng @',
+      'Comment': 'Bình luận',
+      'Saving...': 'Đang lưu...',
+      'Saved': 'Đã lưu',
+      'Auto Save': 'Tự động lưu',
+      'Last saved': 'Lần lưu cuối',
+      'Click to save a version now': 'Nhấp để lưu phiên bản ngay bây giờ',
+      'just now': 'vừa xong',
+      's ago': 'giây trước',
+      'm ago': 'phút trước',
+      'h ago': 'giờ trước',
+      'd ago': 'ngày trước',
+      'Add to Version History': 'Thêm vào lịch sử phiên bản',
+      'Rename Version': 'Đổi tên phiên bản',
+      'Name this version': 'Đặt tên cho phiên bản này',
+      'Edit description': 'Chỉnh sửa mô tả',
+      'Title': 'Tiêu đề',
+      'Title is required.': 'Tiêu đề là bắt buộc.',
+      'Description (optional)': 'Mô tả (tùy chọn)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Lưu'), 'Restore version', 'Khôi phục phiên bản'), 'Current content will be replaced.', 'Nội dung hiện tại sẽ được thay thế.'), 'Delete version', 'Xóa phiên bản'), "Back", 'Quay lại'), 'Total Edits', 'Tổng số chỉnh sửa'), 'Previous version', 'Phiên bản trước'), 'Next version', 'Phiên bản tiếp theo'), 'of', 'của'), 'Compare With', 'So sánh với'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'LỊCH SỬ PHIÊN BẢN'), 'All', 'Tất cả'), 'Named Versions', 'Phiên bản được đặt tên'), 'No content.', 'Không có nội dung.'), "More", 'Thêm'), 'Current Version', 'Phiên bản hiện tại'), 'Compare', 'So sánh'), 'Anonymous', 'Ẩn danh'), 'Untitled', 'Không có tiêu đề'), 'See more', 'Xem thêm'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Khôi phục'), 'Rename', 'Đổi tên'), 'Delete description', 'Xóa mô tả'), 'Edits', 'Chỉnh sửa'), 'Previous change', 'Thay đổi trước'), 'Next change', 'Thay đổi tiếp theo'), 'Exit Comparison', 'Thoát so sánh'), 'Select Version to Compare With', 'Chọn phiên bản để so sánh'), 'Show', 'Hiển thị'), 'COMPARE WITH', 'SO SÁNH VỚI'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Không có phiên bản nào khác.'), 'No content to compare.', 'Không có nội dung để so sánh.'), 'Comparing', 'Đang so sánh'), 'against', 'với'), 'Exit comparison', 'Thoát so sánh'), 'Save this version', 'Lưu phiên bản này'), 'View version history', 'Xem lịch sử phiên bản'), 'Check for updates', 'Kiểm tra cập nhật'), 'Modification', 'Chỉnh sửa'), 'Suggestion', 'Gợi ý'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Bài giảng'), 'Show Open', 'Hiển thị mục đang mở'), 'Add Horizontal Line', 'Thêm đường ngang'), 'Add Emoticon', 'Thêm biểu tượng cảm xúc'), 'Add Icon', 'Thêm biểu tượng'), 'Add Special Character', 'Thêm ký tự đặc biệt'), 'Add Image', 'Thêm hình ảnh'), 'Add Table', 'Thêm bảng'), 'Add Video', 'Thêm video'), 'Add File', 'Thêm tệp'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Thêm đoạn mã'), 'Add Anchor', 'Thêm neo'), 'Add Page Break', 'Thêm ngắt trang'), 'Version Control', 'Kiểm soát phiên bản'), 'Delete Table', 'Xóa bảng'), 'Remove Table Header', 'Xóa tiêu đề bảng'), 'Remove Table Footer', 'Xóa chân bảng'), 'Delete Row', 'Xóa hàng'), 'Delete Column', 'Xóa cột'), 'Add Table Header', 'Thêm tiêu đề bảng'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Thêm chân bảng'), 'Insert Row Above', 'Chèn hàng phía trên'), 'Insert Row Below', 'Chèn hàng phía dưới'), 'Insert Column Before', 'Chèn cột phía trước'), 'Insert Column After', 'Chèn cột phía sau'), 'Table Align', 'Căn chỉnh bảng'), "Table Style", 'Kiểu bảng'), 'Table Cell', 'Ô bảng'), 'Merge Cells', 'Gộp ô'), 'Split Cell Vertically', 'Tách ô theo chiều dọc'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Tách ô theo chiều ngang'), 'Cell Operation', 'Thao tác ô'), 'Remove Cell Style', 'Xóa kiểu ô'), 'Added', 'Đã thêm'), 'Formatted', 'Đã định dạng'), 'Changed', 'Đã thay đổi'), 'left', 'trái'), 'right', 'phải'), 'center', 'giữa'), 'top', 'trên'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'giữa'), 'bottom', 'dưới'), 'Deleted', 'Đã xóa'), 'justify', 'căn đều'), 'See less', 'Xem ít hơn')),
     direction: 'ltr'
   };
 

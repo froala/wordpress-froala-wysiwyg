@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Spanish
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['es'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': 'Escriba algo',
       // Missing translations
@@ -56,6 +76,13 @@
       // Font
       'Font Family': 'Familia de fuentes',
       'Font Size': "Tama\xF1o de fuente",
+      'Enter font size': 'Introducir tamaño de fuente',
+      'Custom Font Size': 'Tamaño de fuente personalizado',
+      'Custom': 'Personalizado',
+      'Please enter a valid number': 'Por favor, introduce un número válido',
+      'Value must be between': 'El valor debe estar entre',
+      'and': 'y',
+      'Apply': 'Aplicar',
       // Colors
       'Colors': 'Colores',
       'Color': 'Color',
@@ -342,6 +369,7 @@
       // Export to Word
       'Export to Word': 'Exportar a Word',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Asegúrese de que todas las librerías dependientes requeridas estén disponibles para que el plugin funcione.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Asegúrese de que todas las configuraciones requeridas y las bibliotecas dependientes estén disponibles para que el complemento funcione como se espera.',
       // Import_from_word
       'Import from Word': 'Importar de Word',
       'Please upload a valid file': 'Por favor, suba un archivo válido.',
@@ -408,8 +436,63 @@
       'to': 'a',
       'in your configuration to provide consent.': 'en su configuración para dar su consentimiento.',
       'You can review the terms here:': 'Puede revisar los términos aquí:',
-      'View AI Supplemental Terms': 'Ver los Términos Complementarios de IA'
-    },
+      'View AI Supplemental Terms': 'Ver los Términos Complementarios de IA',
+      'Switch Mode': 'Cambiar modo',
+      'Editing': 'Edición',
+      'Edit document with real-time sync': 'Editar documento con sincronización en tiempo real',
+      'Suggesting': 'Sugerencias',
+      'Add suggestions as Yjs-tracked changes': 'Agregar sugerencias como cambios rastreados por Yjs',
+      'Viewing': 'Visualización',
+      'Read-only — no edits allowed': 'Solo lectura — no se permiten ediciones',
+      'Add Comment': 'Agregar comentario',
+      'Version History': 'Historial de versiones',
+      'Hide Comments': 'Ocultar comentarios',
+      'Open': 'Abierto',
+      'Resolved': 'Resuelto',
+      'Show comments': 'Mostrar comentarios',
+      'No suggestions or comments yet.': 'Todavía no hay sugerencias ni comentarios.',
+      'No resolved suggestions or comments.': 'No hay sugerencias ni comentarios resueltos.',
+      'View All': 'Ver todo',
+      'Open comment from': 'Abrir comentario de',
+      'more users': 'más usuarios',
+      'Add': 'Agregar',
+      'Add Space': 'Agregar espacio',
+      'Add Paragraph': 'Agregar párrafo',
+      'Add Link': 'Agregar enlace',
+      'with': 'por',
+      'Format': 'Formato',
+      'Removed': 'Eliminado',
+      'Accept': 'Aceptar',
+      'Reject': 'Rechazar',
+      'Accepted': 'Aceptado',
+      'Rejected': 'Rechazado',
+      'Menu': 'Menú',
+      'Edit': 'Editar',
+      'Re-open': 'Reabrir',
+      'Resolve': 'Resolver',
+      'Reply': 'Responder',
+      'View All Replies': 'Ver todas las respuestas',
+      'View Less': 'Ver menos',
+      'comment or tag with @': 'Comentar o etiquetar con @',
+      'Comment': 'Comentario',
+      'Saving...': 'Guardando...',
+      'Saved': 'Guardado',
+      'Auto Save': 'Guardado automático',
+      'Last saved': 'Último guardado',
+      'Click to save a version now': 'Haz clic para guardar una versión ahora',
+      'just now': 'ahora mismo',
+      's ago': 's atrás',
+      'm ago': 'min atrás',
+      'h ago': 'h atrás',
+      'd ago': 'd atrás',
+      'Add to Version History': 'Agregar al historial de versiones',
+      'Rename Version': 'Renombrar versión',
+      'Name this version': 'Nombrar esta versión',
+      'Edit description': 'Editar descripción',
+      'Title': 'Título',
+      'Title is required.': 'El título es obligatorio.',
+      'Description (optional)': 'Descripción (opcional)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Guardar'), 'Restore version', 'Restaurar versión'), 'Current content will be replaced.', 'El contenido actual será reemplazado.'), 'Delete version', 'Eliminar versión'), "Back", 'Atrás'), 'Total Edits', 'Total de ediciones'), 'Previous version', 'Versión anterior'), 'Next version', 'Versión siguiente'), 'of', 'de'), 'Compare With', 'Comparar con'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'HISTORIAL DE VERSIONES'), 'All', 'Todos'), 'Named Versions', 'Versiones con nombre'), 'No content.', 'Sin contenido.'), "More", 'Más'), 'Current Version', 'Versión actual'), 'Compare', 'Comparar'), 'Anonymous', 'Anónimo'), 'Untitled', 'Sin título'), 'See more', 'Ver más'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Restaurar'), 'Rename', 'Renombrar'), 'Delete description', 'Eliminar descripción'), 'Edits', 'Ediciones'), 'Previous change', 'Cambio anterior'), 'Next change', 'Cambio siguiente'), 'Exit Comparison', 'Salir de la comparación'), 'Select Version to Compare With', 'Selecciona una versión para comparar'), 'Show', 'Mostrar'), 'COMPARE WITH', 'COMPARAR CON'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'No hay otras versiones.'), 'No content to compare.', 'No hay contenido para comparar.'), 'Comparing', 'Comparando'), 'against', 'con'), 'Exit comparison', 'Salir de la comparación'), 'Save this version', 'Guardar esta versión'), 'View version history', 'Ver historial de versiones'), 'Check for updates', 'Buscar actualizaciones'), 'Modification', 'Modificación'), 'Suggestion', 'Sugerencia'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Conferencia'), 'Show Open', 'Mostrar abiertas'), 'Add Horizontal Line', 'Agregar línea horizontal'), 'Add Emoticon', 'Agregar emoticono'), 'Add Icon', 'Agregar icono'), 'Add Special Character', 'Agregar carácter especial'), 'Add Image', 'Agregar imagen'), 'Add Table', 'Agregar tabla'), 'Add Video', 'Agregar vídeo'), 'Add File', 'Agregar archivo'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Agregar fragmento de código'), 'Add Anchor', 'Agregar ancla'), 'Add Page Break', 'Agregar salto de página'), 'Version Control', 'Control de versiones'), 'Delete Table', 'Eliminar tabla'), 'Remove Table Header', 'Eliminar encabezado de tabla'), 'Remove Table Footer', 'Eliminar pie de tabla'), 'Delete Row', 'Eliminar fila'), 'Delete Column', 'Eliminar columna'), 'Add Table Header', 'Agregar encabezado de tabla'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Agregar pie de tabla'), 'Insert Row Above', 'Insertar fila arriba'), 'Insert Row Below', 'Insertar fila abajo'), 'Insert Column Before', 'Insertar columna antes'), 'Insert Column After', 'Insertar columna después'), 'Table Align', 'Alineación de tabla'), "Table Style", 'Estilo de tabla'), 'Table Cell', 'Celda de tabla'), 'Merge Cells', 'Combinar celdas'), 'Split Cell Vertically', 'Dividir celda verticalmente'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Dividir celda horizontalmente'), 'Cell Operation', 'Operación de celda'), 'Remove Cell Style', 'Eliminar estilo de celda'), 'Added', 'Añadido'), 'Formatted', 'Formateado'), 'Changed', 'Modificado'), 'left', 'izquierda'), 'right', 'derecha'), 'center', 'centro'), 'top', 'arriba'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'medio'), 'bottom', 'abajo'), 'Deleted', 'Eliminado'), 'justify', 'justificar'), 'See less', 'Ver menos')),
     direction: 'ltr'
   };
 

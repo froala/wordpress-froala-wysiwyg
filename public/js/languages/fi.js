@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Finnish
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['fi'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': 'Kirjoita jotain',
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': 'Fontti',
       'Font Size': 'Fonttikoko',
+      'Enter font size': 'Syötä fonttikoko',
+      'Custom Font Size': 'Mukautettu fonttikoko',
+      'Custom': 'Mukautettu',
+      'Please enter a valid number': 'Syötä voimassa oleva numero',
+      'Value must be between': 'Arvon on oltava välillä',
+      'and': 'ja',
+      'Apply': 'Käytä',
       // Colors
       'Colors': "V\xE4rit",
       'Color': 'Väri',
@@ -331,6 +358,7 @@
       // Export to Word
       'Export to Word': 'Vie Wordiin',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Varmista, että kaikki tarvittavat riippuvaiset kirjastot ovat käytettävissä liitännäisen toimimiseksi.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Varmista, että kaikki vaaditut konfiguraatiot ja riippuvat kirjastot ovat käytettävissä laajennuksen odotettavaksi toimimiseksi.',
       // Import_from_word
       'Import from Word': 'Tuo Wordista',
       'Please upload a valid file': 'Lataa kelvollinen tiedosto.',
@@ -410,8 +438,63 @@
       'to': 'arvoon',
       'in your configuration to provide consent.': 'määrityksissäsi antaaksesi suostumuksesi.',
       'You can review the terms here:': 'Voit tarkastella ehtoja täältä:',
-      'View AI Supplemental Terms': 'Näytä tekoälyn täydentävät ehdot'
-    },
+      'View AI Supplemental Terms': 'Näytä tekoälyn täydentävät ehdot',
+      'Switch Mode': 'Vaihda tilaa',
+      'Editing': 'Muokkaus',
+      'Edit document with real-time sync': 'Muokkaa asiakirjaa reaaliaikaisella synkronoinnilla',
+      'Suggesting': 'Ehdotukset',
+      'Add suggestions as Yjs-tracked changes': 'Lisää ehdotukset Yjs-seurattuina muutoksina',
+      'Viewing': 'Katselu',
+      'Read-only — no edits allowed': 'Vain luku — muokkaukset eivät ole sallittuja',
+      'Add Comment': 'Lisää kommentti',
+      'Version History': 'Versiohistoria',
+      'Hide Comments': 'Piilota kommentit',
+      'Open': 'Avoin',
+      'Resolved': 'Ratkaistu',
+      'Show comments': 'Näytä kommentit',
+      'No suggestions or comments yet.': 'Ei vielä ehdotuksia tai kommentteja.',
+      'No resolved suggestions or comments.': 'Ei ratkaistuja ehdotuksia tai kommentteja.',
+      'View All': 'Näytä kaikki',
+      'Open comment from': 'Avaa kommentti käyttäjältä',
+      'more users': 'lisää käyttäjiä',
+      'Add': 'Lisää',
+      'Add Space': 'Lisää välilyönti',
+      'Add Paragraph': 'Lisää kappale',
+      'Add Link': 'Lisää linkki',
+      'with': 'tekstillä',
+      'Format': 'Muotoilu',
+      'Removed': 'Poistettu',
+      'Accept': 'Hyväksy',
+      'Reject': 'Hylkää',
+      'Accepted': 'Hyväksytty',
+      'Rejected': 'Hylätty',
+      'Menu': 'Valikko',
+      'Edit': 'Muokkaa',
+      'Re-open': 'Avaa uudelleen',
+      'Resolve': 'Merkitse ratkaistuksi',
+      'Reply': 'Vastaa',
+      'View All Replies': 'Näytä kaikki vastaukset',
+      'View Less': 'Näytä vähemmän',
+      'comment or tag with @': 'Kommentoi tai merkitse @-merkillä',
+      'Comment': 'Kommentti',
+      'Saving...': 'Tallennetaan...',
+      'Saved': 'Tallennettu',
+      'Auto Save': 'Automaattinen tallennus',
+      'Last saved': 'Viimeksi tallennettu',
+      'Click to save a version now': 'Tallenna versio nyt napsauttamalla',
+      'just now': 'juuri nyt',
+      's ago': 's sitten',
+      'm ago': 'min sitten',
+      'h ago': 'h sitten',
+      'd ago': 'pv sitten',
+      'Add to Version History': 'Lisää versiohistoriaan',
+      'Rename Version': 'Nimeä versio uudelleen',
+      'Name this version': 'Anna tälle versiolle nimi',
+      'Edit description': 'Muokkaa kuvausta',
+      'Title': 'Otsikko',
+      'Title is required.': 'Otsikko on pakollinen.',
+      'Description (optional)': 'Kuvaus (valinnainen)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Tallenna'), 'Restore version', 'Palauta versio'), 'Current content will be replaced.', 'Nykyinen sisältö korvataan.'), 'Delete version', 'Poista versio'), "Back", 'Takaisin'), 'Total Edits', 'Muokkauksia yhteensä'), 'Previous version', 'Edellinen versio'), 'Next version', 'Seuraava versio'), 'of', '/'), 'Compare With', 'Vertaa versioon'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'VERSIOHISTORIA'), 'All', 'Kaikki'), 'Named Versions', 'Nimetyt versiot'), 'No content.', 'Ei sisältöä.'), "More", 'Lisää'), 'Current Version', 'Nykyinen versio'), 'Compare', 'Vertaa'), 'Anonymous', 'Anonyymi'), 'Untitled', 'Nimetön'), 'See more', 'Näytä lisää'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Palauta'), 'Rename', 'Nimeä uudelleen'), 'Delete description', 'Poista kuvaus'), 'Edits', 'Muokkaukset'), 'Previous change', 'Edellinen muutos'), 'Next change', 'Seuraava muutos'), 'Exit Comparison', 'Poistu vertailusta'), 'Select Version to Compare With', 'Valitse vertailtava versio'), 'Show', 'Näytä'), 'COMPARE WITH', 'VERTAA VERSIOON'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Muita versioita ei ole.'), 'No content to compare.', 'Ei sisältöä vertailtavaksi.'), 'Comparing', 'Verrataan'), 'against', 'vastaan'), 'Exit comparison', 'Poistu vertailusta'), 'Save this version', 'Tallenna tämä versio'), 'View version history', 'Näytä versiohistoria'), 'Check for updates', 'Tarkista päivitykset'), 'Modification', 'Muokkaus'), 'Suggestion', 'Ehdotus'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Luento'), 'Show Open', 'Näytä avoimet'), 'Add Horizontal Line', 'Lisää vaakaviiva'), 'Add Emoticon', 'Lisää hymiö'), 'Add Icon', 'Lisää kuvake'), 'Add Special Character', 'Lisää erikoismerkki'), 'Add Image', 'Lisää kuva'), 'Add Table', 'Lisää taulukko'), 'Add Video', 'Lisää video'), 'Add File', 'Lisää tiedosto'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Lisää koodikatkelma'), 'Add Anchor', 'Lisää ankkuri'), 'Add Page Break', 'Lisää sivunvaihto'), 'Version Control', 'Versionhallinta'), 'Delete Table', 'Poista taulukko'), 'Remove Table Header', 'Poista taulukon otsikko'), 'Remove Table Footer', 'Poista taulukon alatunniste'), 'Delete Row', 'Poista rivi'), 'Delete Column', 'Poista sarake'), 'Add Table Header', 'Lisää taulukon otsikko'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Lisää taulukon alatunniste'), 'Insert Row Above', 'Lisää rivi yläpuolelle'), 'Insert Row Below', 'Lisää rivi alapuolelle'), 'Insert Column Before', 'Lisää sarake ennen'), 'Insert Column After', 'Lisää sarake jälkeen'), 'Table Align', 'Taulukon tasaus'), "Table Style", 'Taulukon tyyli'), 'Table Cell', 'Taulukon solu'), 'Merge Cells', 'Yhdistä solut'), 'Split Cell Vertically', 'Jaa solu pystysuunnassa'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Jaa solu vaakasuunnassa'), 'Cell Operation', 'Solutoiminto'), 'Remove Cell Style', 'Poista solun tyyli'), 'Added', 'Lisätty'), 'Formatted', 'Muotoiltu'), 'Changed', 'Muutettu'), 'left', 'vasen'), 'right', 'oikea'), 'center', 'keskellä'), 'top', 'ylhäällä'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'keskellä'), 'bottom', 'alhaalla'), 'Deleted', 'Poistettu'), 'justify', 'tasattu'), 'See less', 'Näytä vähemmän')),
     direction: 'ltr'
   };
 

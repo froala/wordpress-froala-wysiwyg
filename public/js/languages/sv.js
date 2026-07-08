@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Swedish
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['sv'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': "Ange n\xE5got",
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': 'Teckensnitt',
       'Font Size': 'Teckenstorlek',
+      'Enter font size': 'Ange teckenstorlek',
+      'Custom Font Size': 'Anpassad teckenstorlek',
+      'Custom': 'Anpassad',
+      'Please enter a valid number': 'Ange ett giltigt nummer',
+      'Value must be between': 'Värdet måste vara mellan',
+      'and': 'och',
+      'Apply': 'Verkställ',
       // Colors
       'Colors': "F\xE4rger",
       'Color': 'Färg',
@@ -331,6 +358,7 @@
       // Export to Word
       'Export to Word': 'Exportera till Word',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Se till att alla nödvändiga beroende bibliotek är tillgängliga för att tillägget ska fungera.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Se till att alla nödvändiga konfigurationer och beroende bibliotek är tillgängliga för att plugin-programmet ska fungera som förväntat.',
       // Import_from_word
       'Import from Word': 'Importera från Word',
       'Please upload a valid file': 'Vänligen ladda upp en giltig fil.',
@@ -410,8 +438,63 @@
       'to': 'till',
       'in your configuration to provide consent.': 'i din konfiguration för att ge samtycke.',
       'You can review the terms here:': 'Du kan granska villkoren här:',
-      'View AI Supplemental Terms': 'Visa kompletterande AI-villkor'
-    },
+      'View AI Supplemental Terms': 'Visa kompletterande AI-villkor',
+      'Switch Mode': 'Byt läge',
+      'Editing': 'Redigering',
+      'Edit document with real-time sync': 'Redigera dokument med synkronisering i realtid',
+      'Suggesting': 'Förslag',
+      'Add suggestions as Yjs-tracked changes': 'Lägg till förslag som Yjs-spårade ändringar',
+      'Viewing': 'Visning',
+      'Read-only — no edits allowed': 'Skrivskyddad — inga redigeringar tillåtna',
+      'Add Comment': 'Lägg till kommentar',
+      'Version History': 'Versionshistorik',
+      'Hide Comments': 'Dölj kommentarer',
+      'Open': 'Öppen',
+      'Resolved': 'Löst',
+      'Show comments': 'Visa kommentarer',
+      'No suggestions or comments yet.': 'Inga förslag eller kommentarer ännu.',
+      'No resolved suggestions or comments.': 'Inga lösta förslag eller kommentarer.',
+      'View All': 'Visa alla',
+      'Open comment from': 'Öppna kommentar från',
+      'more users': 'fler användare',
+      'Add': 'Lägg till',
+      'Add Space': 'Lägg till mellanslag',
+      'Add Paragraph': 'Lägg till stycke',
+      'Add Link': 'Lägg till länk',
+      'with': 'med',
+      'Format': 'Formatera',
+      'Removed': 'Borttagen',
+      'Accept': 'Acceptera',
+      'Reject': 'Avvisa',
+      'Accepted': 'Accepterad',
+      'Rejected': 'Avvisad',
+      'Menu': 'Meny',
+      'Edit': 'Redigera',
+      'Re-open': 'Öppna igen',
+      'Resolve': 'Lös',
+      'Reply': 'Svara',
+      'View All Replies': 'Visa alla svar',
+      'View Less': 'Visa mindre',
+      'comment or tag with @': 'Kommentera eller tagga med @',
+      'Comment': 'Kommentar',
+      'Saving...': 'Sparar...',
+      'Saved': 'Sparad',
+      'Auto Save': 'Autospara',
+      'Last saved': 'Senast sparad',
+      'Click to save a version now': 'Klicka för att spara en version nu',
+      'just now': 'just nu',
+      's ago': 's sedan',
+      'm ago': 'min sedan',
+      'h ago': 'tim sedan',
+      'd ago': 'd sedan',
+      'Add to Version History': 'Lägg till i versionshistorik',
+      'Rename Version': 'Byt namn på version',
+      'Name this version': 'Namnge denna version',
+      'Edit description': 'Redigera beskrivning',
+      'Title': 'Titel',
+      'Title is required.': 'Titel krävs.',
+      'Description (optional)': 'Beskrivning (valfritt)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Spara'), 'Restore version', 'Återställ version'), 'Current content will be replaced.', 'Nuvarande innehåll kommer att ersättas.'), 'Delete version', 'Ta bort version'), "Back", 'Tillbaka'), 'Total Edits', 'Totalt antal redigeringar'), 'Previous version', 'Föregående version'), 'Next version', 'Nästa version'), 'of', 'av'), 'Compare With', 'Jämför med'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'VERSIONSHISTORIK'), 'All', 'Alla'), 'Named Versions', 'Namngivna versioner'), 'No content.', 'Inget innehåll.'), "More", 'Mer'), 'Current Version', 'Nuvarande version'), 'Compare', 'Jämför'), 'Anonymous', 'Anonym'), 'Untitled', 'Namnlös'), 'See more', 'Visa mer'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Återställ'), 'Rename', 'Byt namn'), 'Delete description', 'Ta bort beskrivning'), 'Edits', 'Redigeringar'), 'Previous change', 'Föregående ändring'), 'Next change', 'Nästa ändring'), 'Exit Comparison', 'Avsluta jämförelse'), 'Select Version to Compare With', 'Välj version att jämföra med'), 'Show', 'Visa'), 'COMPARE WITH', 'JÄMFÖR MED'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Inga andra versioner.'), 'No content to compare.', 'Inget innehåll att jämföra.'), 'Comparing', 'Jämför'), 'against', 'med'), 'Exit comparison', 'Avsluta jämförelse'), 'Save this version', 'Spara denna version'), 'View version history', 'Visa versionshistorik'), 'Check for updates', 'Sök efter uppdateringar'), 'Modification', 'Ändring'), 'Suggestion', 'Förslag'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Föreläsning'), 'Show Open', 'Visa öppna'), 'Add Horizontal Line', 'Lägg till horisontell linje'), 'Add Emoticon', 'Lägg till emotikon'), 'Add Icon', 'Lägg till ikon'), 'Add Special Character', 'Lägg till specialtecken'), 'Add Image', 'Lägg till bild'), 'Add Table', 'Lägg till tabell'), 'Add Video', 'Lägg till video'), 'Add File', 'Lägg till fil'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Lägg till kodavsnitt'), 'Add Anchor', 'Lägg till ankare'), 'Add Page Break', 'Lägg till sidbrytning'), 'Version Control', 'Versionshantering'), 'Delete Table', 'Ta bort tabell'), 'Remove Table Header', 'Ta bort tabellhuvud'), 'Remove Table Footer', 'Ta bort tabellfot'), 'Delete Row', 'Ta bort rad'), 'Delete Column', 'Ta bort kolumn'), 'Add Table Header', 'Lägg till tabellhuvud'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Lägg till tabellfot'), 'Insert Row Above', 'Infoga rad ovanför'), 'Insert Row Below', 'Infoga rad nedanför'), 'Insert Column Before', 'Infoga kolumn före'), 'Insert Column After', 'Infoga kolumn efter'), 'Table Align', 'Tabelljustering'), "Table Style", 'Tabellstil'), 'Table Cell', 'Tabellcell'), 'Merge Cells', 'Sammanfoga celler'), 'Split Cell Vertically', 'Dela cell vertikalt'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Dela cell horisontellt'), 'Cell Operation', 'Cellåtgärd'), 'Remove Cell Style', 'Ta bort cellstil'), 'Added', 'Tillagt'), 'Formatted', 'Formaterat'), 'Changed', 'Ändrat'), 'left', 'vänster'), 'right', 'höger'), 'center', 'mitten'), 'top', 'överst'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'mitten'), 'bottom', 'nederst'), 'Deleted', 'Borttagen'), 'justify', 'marginaljustera'), 'See less', 'Visa mindre')),
     direction: 'ltr'
   };
 

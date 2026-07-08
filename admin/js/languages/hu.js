@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Hungarian
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['hu'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': 'Szöveg...',
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': 'Betűtípus',
       'Font Size': 'Betűméret',
+      'Enter font size': 'Betűméret megadása',
+      'Custom Font Size': 'Egyedi betűméret',
+      'Custom': 'Egyedi',
+      'Please enter a valid number': 'Kérjük, adjon meg egy érvényes számot',
+      'Value must be between': 'Az értéknek a következők között kell lennie:',
+      'and': 'és',
+      'Apply': 'Alkalmaz',
       // Colors
       'Colors': 'Színek',
       'Color': 'Szín',
@@ -337,6 +364,7 @@
       // Export to Word
       'Export to Word': 'Exportálás Word-be',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Győződjön meg arról, hogy a bővítmény működéséhez minden szükséges függő könyvtár elérhető.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Győződjön meg arról, hogy az összes szükséges konfiguráció és függő könyvtár elérhető a bővítmény megfelelő működéséhez.',
       // Import_from_word
       'Import from Word': 'Importálás Wordből',
       'Please upload a valid file': 'Kérem, töltsön fel egy érvényes fájlt.',
@@ -409,8 +437,63 @@
       'to': 'értékre',
       'in your configuration to provide consent.': 'a konfigurációjában a hozzájárulás megadásához.',
       'You can review the terms here:': 'A feltételeket itt tekintheti meg:',
-      'View AI Supplemental Terms': 'AI kiegészítő feltételek megtekintése'
-    },
+      'View AI Supplemental Terms': 'AI kiegészítő feltételek megtekintése',
+      'Switch Mode': 'Mód váltása',
+      'Editing': 'Szerkesztés',
+      'Edit document with real-time sync': 'Dokumentum szerkesztése valós idejű szinkronizálással',
+      'Suggesting': 'Javaslattétel',
+      'Add suggestions as Yjs-tracked changes': 'Javaslatok hozzáadása Yjs által követett módosításokként',
+      'Viewing': 'Megtekintés',
+      'Read-only — no edits allowed': 'Csak olvasható — a szerkesztés nem engedélyezett',
+      'Add Comment': 'Megjegyzés hozzáadása',
+      'Version History': 'Verzióelőzmények',
+      'Hide Comments': 'Megjegyzések elrejtése',
+      'Open': 'Nyitott',
+      'Resolved': 'Megoldott',
+      'Show comments': 'Megjegyzések megjelenítése',
+      'No suggestions or comments yet.': 'Még nincsenek javaslatok vagy megjegyzések.',
+      'No resolved suggestions or comments.': 'Nincsenek megoldott javaslatok vagy megjegyzések.',
+      'View All': 'Összes megjelenítése',
+      'Open comment from': 'Megjegyzés megnyitása ettől:',
+      'more users': 'további felhasználók',
+      'Add': 'Hozzáadás',
+      'Add Space': 'Szóköz hozzáadása',
+      'Add Paragraph': 'Bekezdés hozzáadása',
+      'Add Link': 'Hivatkozás hozzáadása',
+      'with': 'erre',
+      'Format': 'Formázás',
+      'Removed': 'Eltávolítva',
+      'Accept': 'Elfogadás',
+      'Reject': 'Elutasítás',
+      'Accepted': 'Elfogadva',
+      'Rejected': 'Elutasítva',
+      'Menu': 'Menü',
+      'Edit': 'Szerkesztés',
+      'Re-open': 'Újranyitás',
+      'Resolve': 'Megoldás',
+      'Reply': 'Válasz',
+      'View All Replies': 'Összes válasz megjelenítése',
+      'View Less': 'Kevesebb megjelenítése',
+      'comment or tag with @': '@ használatával megjegyzés vagy megjelölés',
+      'Comment': 'Megjegyzés',
+      'Saving...': 'Mentés...',
+      'Saved': 'Mentve',
+      'Auto Save': 'Automatikus mentés',
+      'Last saved': 'Utoljára mentve',
+      'Click to save a version now': 'Kattintson a verzió mentéséhez',
+      'just now': 'éppen most',
+      's ago': 'mp',
+      'm ago': 'p',
+      'h ago': 'ó',
+      'd ago': 'n',
+      'Add to Version History': 'Hozzáadás a verzióelőzményekhez',
+      'Rename Version': 'Verzió átnevezése',
+      'Name this version': 'Verzió elnevezése',
+      'Edit description': 'Leírás szerkesztése',
+      'Title': 'Cím',
+      'Title is required.': 'A cím megadása kötelező.',
+      'Description (optional)': 'Leírás (opcionális)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Mentés'), 'Restore version', 'Verzió visszaállítása'), 'Current content will be replaced.', 'A jelenlegi tartalom lecserélésre kerül.'), 'Delete version', 'Verzió törlése'), "Back", 'Vissza'), 'Total Edits', 'Összes módosítás'), 'Previous version', 'Előző verzió'), 'Next version', 'Következő verzió'), 'of', '/'), 'Compare With', 'Összehasonlítás ezzel'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'VERZIÓELŐZMÉNYEK'), 'All', 'Összes'), 'Named Versions', 'Elnevezett verziók'), 'No content.', 'Nincs tartalom.'), "More", 'Továbbiak'), 'Current Version', 'Jelenlegi verzió'), 'Compare', 'Összehasonlítás'), 'Anonymous', 'Névtelen'), 'Untitled', 'Névtelen'), 'See more', 'Továbbiak megtekintése'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Visszaállítás'), 'Rename', 'Átnevezés'), 'Delete description', 'Leírás törlése'), 'Edits', 'Módosítások'), 'Previous change', 'Előző módosítás'), 'Next change', 'Következő módosítás'), 'Exit Comparison', 'Kilépés az összehasonlításból'), 'Select Version to Compare With', 'Válasszon verziót az összehasonlításhoz'), 'Show', 'Megjelenítés'), 'COMPARE WITH', 'ÖSSZEHASONLÍTÁS EZZEL'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Nincsenek további verziók.'), 'No content to compare.', 'Nincs összehasonlítható tartalom.'), 'Comparing', 'Összehasonlítás'), 'against', 'ezzel'), 'Exit comparison', 'Kilépés az összehasonlításból'), 'Save this version', 'Ezen verzió mentése'), 'View version history', 'Verziótörténet megtekintése'), 'Check for updates', 'Frissítések keresése'), 'Modification', 'Módosítás'), 'Suggestion', 'Javaslat'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Előadás'), 'Show Open', 'Nyitottak megjelenítése'), 'Add Horizontal Line', 'Vízszintes vonal hozzáadása'), 'Add Emoticon', 'Hangulatjel hozzáadása'), 'Add Icon', 'Ikon hozzáadása'), 'Add Special Character', 'Speciális karakter hozzáadása'), 'Add Image', 'Kép hozzáadása'), 'Add Table', 'Táblázat hozzáadása'), 'Add Video', 'Videó hozzáadása'), 'Add File', 'Fájl hozzáadása'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Kódrészlet hozzáadása'), 'Add Anchor', 'Horgony hozzáadása'), 'Add Page Break', 'Oldaltörés hozzáadása'), 'Version Control', 'Verziókezelés'), 'Delete Table', 'Táblázat törlése'), 'Remove Table Header', 'Táblázat fejlécének eltávolítása'), 'Remove Table Footer', 'Táblázat láblécének eltávolítása'), 'Delete Row', 'Sor törlése'), 'Delete Column', 'Oszlop törlése'), 'Add Table Header', 'Táblázat fejléc hozzáadása'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Táblázat lábléc hozzáadása'), 'Insert Row Above', 'Sor beszúrása fölé'), 'Insert Row Below', 'Sor beszúrása alá'), 'Insert Column Before', 'Oszlop beszúrása elé'), 'Insert Column After', 'Oszlop beszúrása utána'), 'Table Align', 'Táblázat igazítása'), "Table Style", 'Táblázat stílusa'), 'Table Cell', 'Táblázat cella'), 'Merge Cells', 'Cellák egyesítése'), 'Split Cell Vertically', 'Cella függőleges felosztása'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Cella vízszintes felosztása'), 'Cell Operation', 'Cellaművelet'), 'Remove Cell Style', 'Cellastílus eltávolítása'), 'Added', 'Hozzáadva'), 'Formatted', 'Formázva'), 'Changed', 'Módosítva'), 'left', 'bal'), 'right', 'jobb'), 'center', 'közép'), 'top', 'felső'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'középső'), 'bottom', 'alsó'), 'Deleted', 'Törölve'), 'justify', 'sorkizárt'), 'See less', 'Kevesebb megjelenítése')),
     direction: 'ltr'
   };
 

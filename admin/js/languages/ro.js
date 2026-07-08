@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Romanian
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['ro'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': "Tasteaz\u0103 ceva",
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': 'Font',
       'Font Size': 'Dimensiune font',
+      'Enter font size': 'Introduceți dimensiunea fontului',
+      'Custom Font Size': 'Dimensiune personalizată font',
+      'Custom': 'Personalizat',
+      'Please enter a valid number': 'Vă rugăm să introduceți un număr valid',
+      'Value must be between': 'Valoarea trebuie să fie între',
+      'and': 'și',
+      'Apply': 'Aplică',
       // Colors
       'Colors': 'Culoare',
       'Color': 'Culoare',
@@ -329,6 +356,7 @@
       'Enter the anchor name without space': 'Introduceți numele ancorei fără spații',
       'Anchor name already exists.': 'Numele ancorei există deja.',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Asigurați-vă că toate bibliotecile dependente necesare sunt disponibile pentru ca pluginul să funcționeze.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Asigurați-vă că toate configurațiile necesare și bibliotecile dependente sunt disponibile pentru ca plugin-ul să funcționeze conform așteptărilor.',
       // Import_from_word
       'Import from Word': 'Import din Word',
       'Please upload a valid file': 'Vă rugăm să încărcați un fișier valid.',
@@ -409,8 +437,63 @@
       'to': 'la',
       'in your configuration to provide consent.': 'în configurația dvs. pentru a oferi consimțământul.',
       'You can review the terms here:': 'Puteți examina termenii aici:',
-      'View AI Supplemental Terms': 'Vizualizați Termenii Suplimentari AI'
-    },
+      'View AI Supplemental Terms': 'Vizualizați Termenii Suplimentari AI',
+      'Switch Mode': 'Schimbă modul',
+      'Editing': 'Editare',
+      'Edit document with real-time sync': 'Editează documentul cu sincronizare în timp real',
+      'Suggesting': 'Sugestii',
+      'Add suggestions as Yjs-tracked changes': 'Adaugă sugestii ca modificări urmărite de Yjs',
+      'Viewing': 'Vizualizare',
+      'Read-only — no edits allowed': 'Doar citire — editarea nu este permisă',
+      'Add Comment': 'Adaugă comentariu',
+      'Version History': 'Istoric versiuni',
+      'Hide Comments': 'Ascunde comentariile',
+      'Open': 'Deschis',
+      'Resolved': 'Rezolvat',
+      'Show comments': 'Afișează comentariile',
+      'No suggestions or comments yet.': 'Nu există încă sugestii sau comentarii.',
+      'No resolved suggestions or comments.': 'Nu există sugestii sau comentarii rezolvate.',
+      'View All': 'Vezi tot',
+      'Open comment from': 'Deschide comentariul de la',
+      'more users': 'mai mulți utilizatori',
+      'Add': 'Adaugă',
+      'Add Space': 'Adaugă spațiu',
+      'Add Paragraph': 'Adaugă paragraf',
+      'Add Link': 'Adaugă link',
+      'with': 'cu',
+      'Format': 'Formatare',
+      'Removed': 'Eliminat',
+      'Accept': 'Acceptă',
+      'Reject': 'Respinge',
+      'Accepted': 'Acceptat',
+      'Rejected': 'Respins',
+      'Menu': 'Meniu',
+      'Edit': 'Editează',
+      'Re-open': 'Redeschide',
+      'Resolve': 'Rezolvă',
+      'Reply': 'Răspunde',
+      'View All Replies': 'Vezi toate răspunsurile',
+      'View Less': 'Vezi mai puțin',
+      'comment or tag with @': 'Comentează sau etichetează cu @',
+      'Comment': 'Comentariu',
+      'Saving...': 'Se salvează...',
+      'Saved': 'Salvat',
+      'Auto Save': 'Salvare automată',
+      'Last saved': 'Ultima salvare',
+      'Click to save a version now': 'Faceți clic pentru a salva o versiune acum',
+      'just now': 'chiar acum',
+      's ago': 's în urmă',
+      'm ago': 'min în urmă',
+      'h ago': 'h în urmă',
+      'd ago': 'z în urmă',
+      'Add to Version History': 'Adaugă în istoricul versiunilor',
+      'Rename Version': 'Redenumește versiunea',
+      'Name this version': 'Denumește această versiune',
+      'Edit description': 'Editează descrierea',
+      'Title': 'Titlu',
+      'Title is required.': 'Titlul este obligatoriu.',
+      'Description (optional)': 'Descriere (opțional)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Salvează'), 'Restore version', 'Restaurează versiunea'), 'Current content will be replaced.', 'Conținutul curent va fi înlocuit.'), 'Delete version', 'Șterge versiunea'), "Back", 'Înapoi'), 'Total Edits', 'Total editări'), 'Previous version', 'Versiunea anterioară'), 'Next version', 'Versiunea următoare'), 'of', 'din'), 'Compare With', 'Compară cu'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'ISTORICUL VERSIUNILOR'), 'All', 'Toate'), 'Named Versions', 'Versiuni denumite'), 'No content.', 'Fără conținut.'), "More", 'Mai mult'), 'Current Version', 'Versiunea curentă'), 'Compare', 'Compară'), 'Anonymous', 'Anonim'), 'Untitled', 'Fără titlu'), 'See more', 'Vezi mai mult'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Restaurează'), 'Rename', 'Redenumește'), 'Delete description', 'Șterge descrierea'), 'Edits', 'Editări'), 'Previous change', 'Modificarea anterioară'), 'Next change', 'Modificarea următoare'), 'Exit Comparison', 'Ieși din comparație'), 'Select Version to Compare With', 'Selectează versiunea pentru comparație'), 'Show', 'Afișează'), 'COMPARE WITH', 'COMPARĂ CU'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Nu există alte versiuni.'), 'No content to compare.', 'Nu există conținut pentru comparație.'), 'Comparing', 'Comparare'), 'against', 'cu'), 'Exit comparison', 'Ieși din comparație'), 'Save this version', 'Salvează această versiune'), 'View version history', 'Vezi istoricul versiunilor'), 'Check for updates', 'Verifică actualizările'), 'Modification', 'Modificare'), 'Suggestion', 'Sugestie'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Curs'), 'Show Open', 'Afișează deschise'), 'Add Horizontal Line', 'Adaugă linie orizontală'), 'Add Emoticon', 'Adaugă emoticon'), 'Add Icon', 'Adaugă pictogramă'), 'Add Special Character', 'Adaugă caracter special'), 'Add Image', 'Adaugă imagine'), 'Add Table', 'Adaugă tabel'), 'Add Video', 'Adaugă videoclip'), 'Add File', 'Adaugă fișier'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Adaugă fragment de cod'), 'Add Anchor', 'Adaugă ancoră'), 'Add Page Break', 'Adaugă întrerupere de pagină'), 'Version Control', 'Controlul versiunilor'), 'Delete Table', 'Șterge tabelul'), 'Remove Table Header', 'Elimină antetul tabelului'), 'Remove Table Footer', 'Elimină subsolul tabelului'), 'Delete Row', 'Șterge rândul'), 'Delete Column', 'Șterge coloana'), 'Add Table Header', 'Adaugă antet tabel'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Adaugă subsol tabel'), 'Insert Row Above', 'Inserează rând deasupra'), 'Insert Row Below', 'Inserează rând dedesubt'), 'Insert Column Before', 'Inserează coloană înainte'), 'Insert Column After', 'Inserează coloană după'), 'Table Align', 'Aliniere tabel'), "Table Style", 'Stil tabel'), 'Table Cell', 'Celulă tabel'), 'Merge Cells', 'Îmbină celulele'), 'Split Cell Vertically', 'Împarte celula vertical'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Împarte celula orizontal'), 'Cell Operation', 'Operație celulă'), 'Remove Cell Style', 'Elimină stilul celulei'), 'Added', 'Adăugat'), 'Formatted', 'Formatat'), 'Changed', 'Modificat'), 'left', 'stânga'), 'right', 'dreapta'), 'center', 'centru'), 'top', 'sus'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'mijloc'), 'bottom', 'jos'), 'Deleted', 'Șters'), 'justify', 'aliniere justificată'), 'See less', 'Afișează mai puțin')),
     direction: 'ltr'
   };
 

@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Czech
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['cs'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': 'Napište něco',
       // Basic formatting
@@ -36,6 +56,13 @@
       // Font
       'Font Family': 'Typ písma',
       'Font Size': 'Velikost písma',
+      'Enter font size': 'Zadejte velikost písma',
+      'Custom Font Size': 'Vlastní velikost písma',
+      'Custom': 'Vlastní',
+      'Please enter a valid number': 'Zadejte prosím platné číslo',
+      'Value must be between': 'Hodnota musí být mezi',
+      'and': 'a',
+      'Apply': 'Použít',
       // Colors
       'Colors': 'Barvy',
       'Color': 'Barva',
@@ -337,6 +364,7 @@
       //Export to Word
       'Export to Word': 'Exportovat do Wordu',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'Zajistěte, aby byly k dispozici všechny požadované závislé knihovny pro funkčnost pluginu.',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'Ujistěte se, že jsou dostupné všechny požadované konfigurace a závislé knihovny pro správné fungování pluginu.',
       // Import_from_word
       'Import from Word': 'Importovat z Wordu',
       'Please upload a valid file': 'Nahrajte platný soubor.',
@@ -409,8 +437,63 @@
       'to': 'na',
       'in your configuration to provide consent.': 've své konfiguraci pro poskytnutí souhlasu.',
       'You can review the terms here:': 'Podmínky si můžete prohlédnout zde:',
-      'View AI Supplemental Terms': 'Zobrazit Doplňkové podmínky pro AI'
-    },
+      'View AI Supplemental Terms': 'Zobrazit Doplňkové podmínky pro AI',
+      'Switch Mode': 'Přepnout režim',
+      'Editing': 'Úpravy',
+      'Edit document with real-time sync': 'Upravit dokument se synchronizací v reálném čase',
+      'Suggesting': 'Návrhy',
+      'Add suggestions as Yjs-tracked changes': 'Přidat návrhy jako změny sledované pomocí Yjs',
+      'Viewing': 'Prohlížení',
+      'Read-only — no edits allowed': 'Pouze pro čtení — úpravy nejsou povoleny',
+      'Add Comment': 'Přidat komentář',
+      'Version History': 'Historie verzí',
+      'Hide Comments': 'Skrýt komentáře',
+      'Open': 'Otevřené',
+      'Resolved': 'Vyřešené',
+      'Show comments': 'Zobrazit komentáře',
+      'No suggestions or comments yet.': 'Zatím nejsou žádné návrhy ani komentáře.',
+      'No resolved suggestions or comments.': 'Nejsou žádné vyřešené návrhy ani komentáře.',
+      'View All': 'Zobrazit vše',
+      'Open comment from': 'Otevřít komentář od',
+      'more users': 'dalších uživatelů',
+      'Add': 'Přidat',
+      'Add Space': 'Přidat mezeru',
+      'Add Paragraph': 'Přidat odstavec',
+      'Add Link': 'Přidat odkaz',
+      'with': 'za',
+      'Format': 'Formátovat',
+      'Removed': 'Odstraněno',
+      'Accept': 'Přijmout',
+      'Reject': 'Odmítnout',
+      'Accepted': 'Přijato',
+      'Rejected': 'Odmítnuto',
+      'Menu': 'Nabídka',
+      'Edit': 'Upravit',
+      'Re-open': 'Znovu otevřít',
+      'Resolve': 'Vyřešit',
+      'Reply': 'Odpovědět',
+      'View All Replies': 'Zobrazit všechny odpovědi',
+      'View Less': 'Zobrazit méně',
+      'comment or tag with @': 'Komentovat nebo označit pomocí @',
+      'Comment': 'Komentář',
+      'Saving...': 'Ukládání...',
+      'Saved': 'Uloženo',
+      'Auto Save': 'Automatické ukládání',
+      'Last saved': 'Naposledy uloženo',
+      'Click to save a version now': 'Kliknutím nyní uložíte verzi',
+      'just now': 'právě teď',
+      's ago': 's před',
+      'm ago': 'min před',
+      'h ago': 'h před',
+      'd ago': 'd před',
+      'Add to Version History': 'Přidat do historie verzí',
+      'Rename Version': 'Přejmenovat verzi',
+      'Name this version': 'Pojmenovat tuto verzi',
+      'Edit description': 'Upravit popis',
+      'Title': 'Název',
+      'Title is required.': 'Název je povinný.',
+      'Description (optional)': 'Popis (volitelné)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'Uložit'), 'Restore version', 'Obnovit verzi'), 'Current content will be replaced.', 'Aktuální obsah bude nahrazen.'), 'Delete version', 'Smazat verzi'), "Back", 'Zpět'), 'Total Edits', 'Celkový počet úprav'), 'Previous version', 'Předchozí verze'), 'Next version', 'Další verze'), 'of', 'z'), 'Compare With', 'Porovnat s'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'HISTORIE VERZÍ'), 'All', 'Vše'), 'Named Versions', 'Pojmenované verze'), 'No content.', 'Žádný obsah.'), "More", 'Více'), 'Current Version', 'Aktuální verze'), 'Compare', 'Porovnat'), 'Anonymous', 'Anonymní'), 'Untitled', 'Bez názvu'), 'See more', 'Zobrazit více'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'Obnovit'), 'Rename', 'Přejmenovat'), 'Delete description', 'Smazat popis'), 'Edits', 'Úpravy'), 'Previous change', 'Předchozí změna'), 'Next change', 'Další změna'), 'Exit Comparison', 'Ukončit porovnání'), 'Select Version to Compare With', 'Vyberte verzi pro porovnání'), 'Show', 'Zobrazit'), 'COMPARE WITH', 'POROVNAT S'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'Žádné další verze.'), 'No content to compare.', 'Žádný obsah k porovnání.'), 'Comparing', 'Porovnávání'), 'against', 's'), 'Exit comparison', 'Ukončit porovnání'), 'Save this version', 'Uložit tuto verzi'), 'View version history', 'Zobrazit historii verzí'), 'Check for updates', 'Zkontrolovat aktualizace'), 'Modification', 'Úprava'), 'Suggestion', 'Návrh'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'Přednáška'), 'Show Open', 'Zobrazit otevřené'), 'Add Horizontal Line', 'Přidat vodorovnou čáru'), 'Add Emoticon', 'Přidat emotikon'), 'Add Icon', 'Přidat ikonu'), 'Add Special Character', 'Přidat speciální znak'), 'Add Image', 'Přidat obrázek'), 'Add Table', 'Přidat tabulku'), 'Add Video', 'Přidat video'), 'Add File', 'Přidat soubor'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'Přidat úryvek kódu'), 'Add Anchor', 'Přidat kotvu'), 'Add Page Break', 'Přidat konec stránky'), 'Version Control', 'Správa verzí'), 'Delete Table', 'Odstranit tabulku'), 'Remove Table Header', 'Odebrat záhlaví tabulky'), 'Remove Table Footer', 'Odebrat zápatí tabulky'), 'Delete Row', 'Odstranit řádek'), 'Delete Column', 'Odstranit sloupec'), 'Add Table Header', 'Přidat záhlaví tabulky'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'Přidat zápatí tabulky'), 'Insert Row Above', 'Vložit řádek nad'), 'Insert Row Below', 'Vložit řádek pod'), 'Insert Column Before', 'Vložit sloupec před'), 'Insert Column After', 'Vložit sloupec za'), 'Table Align', 'Zarovnání tabulky'), "Table Style", 'Styl tabulky'), 'Table Cell', 'Buňka tabulky'), 'Merge Cells', 'Sloučit buňky'), 'Split Cell Vertically', 'Rozdělit buňku svisle'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'Rozdělit buňku vodorovně'), 'Cell Operation', 'Operace s buňkou'), 'Remove Cell Style', 'Odebrat styl buňky'), 'Added', 'Přidáno'), 'Formatted', 'Formátováno'), 'Changed', 'Změněno'), 'left', 'vlevo'), 'right', 'vpravo'), 'center', 'na střed'), 'top', 'nahoře'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'uprostřed'), 'bottom', 'dole'), 'Deleted', 'Smazáno'), 'justify', 'do bloku'), 'See less', 'Zobrazit méně')),
     direction: 'ltr'
   };
 

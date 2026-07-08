@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Thai
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['th'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': "\u0E1E\u0E34\u0E21\u0E1E\u0E4C\u0E1A\u0E32\u0E07\u0E2A\u0E34\u0E48\u0E07\u0E1A\u0E32\u0E07\u0E2D\u0E22\u0E48\u0E32\u0E07",
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': "\u0E15\u0E23\u0E30\u0E01\u0E39\u0E25\u0E41\u0E1A\u0E1A\u0E2D\u0E31\u0E01\u0E29\u0E23",
       'Font Size': "\u0E02\u0E19\u0E32\u0E14\u0E41\u0E1A\u0E1A\u0E2D\u0E31\u0E01\u0E29\u0E23",
+      'Enter font size': 'กรอกขนาดตัวอักษร',
+      'Custom Font Size': 'ขนาดตัวอักษรที่กำหนดเอง',
+      'Custom': 'กำหนดเอง',
+      'Please enter a valid number': 'กรุณากรอกตัวเลขที่ถูกต้อง',
+      'Value must be between': 'ค่าต้องอยู่ระหว่าง',
+      'and': 'และ',
+      'Apply': 'นำไปใช้',
       // Colors
       'Colors': "\u0E2A\u0E35",
       'Color': 'สี',
@@ -331,6 +358,7 @@
       //Export to Word
       'Export to Word': 'ส่งออกเป็น Word',
       'Ensure that all required dependent libraries are available for the plugin to work.': 'ตรวจสอบให้แน่ใจว่ามีไลบรารีที่ต้องพึ่งพาทั้งหมดที่จำเป็นสำหรับการทำงานของปลั๊กอิน',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': 'ตรวจสอบว่าการกำหนดค่าที่จำเป็นทั้งหมดและไลบรารีที่ขึ้นต่อกันมีอยู่ให้ใช้งาน เพื่อให้ปลั๊กอินทำงานตามที่คาดไว้',
       // Import_from_word
       'Import from Word': 'นำเข้าจาก Word',
       'Please upload a valid file': 'โปรดอัปโหลดไฟล์ที่ถูกต้อง',
@@ -410,8 +438,63 @@
       'to': 'เป็น',
       'in your configuration to provide consent.': 'ในการกำหนดค่าของคุณเพื่อให้ความยินยอม',
       'You can review the terms here:': 'คุณสามารถตรวจสอบข้อกำหนดได้ที่นี่:',
-      'View AI Supplemental Terms': 'ดูข้อกำหนดเสริม AI'
-    },
+      'View AI Supplemental Terms': 'ดูข้อกำหนดเสริม AI',
+      'Switch Mode': 'สลับโหมด',
+      'Editing': 'แก้ไข',
+      'Edit document with real-time sync': 'แก้ไขเอกสารพร้อมการซิงค์แบบเรียลไทม์',
+      'Suggesting': 'เสนอแนะ',
+      'Add suggestions as Yjs-tracked changes': 'เพิ่มข้อเสนอแนะเป็นการเปลี่ยนแปลงที่ติดตามโดย Yjs',
+      'Viewing': 'ดู',
+      'Read-only — no edits allowed': 'อ่านอย่างเดียว — ไม่อนุญาตให้แก้ไข',
+      'Add Comment': 'เพิ่มความคิดเห็น',
+      'Version History': 'ประวัติเวอร์ชัน',
+      'Hide Comments': 'ซ่อนความคิดเห็น',
+      'Open': 'เปิดอยู่',
+      'Resolved': 'แก้ไขแล้ว',
+      'Show comments': 'แสดงความคิดเห็น',
+      'No suggestions or comments yet.': 'ยังไม่มีข้อเสนอแนะหรือความคิดเห็น',
+      'No resolved suggestions or comments.': 'ไม่มีข้อเสนอแนะหรือความคิดเห็นที่ได้รับการแก้ไขแล้ว',
+      'View All': 'ดูทั้งหมด',
+      'Open comment from': 'เปิดความคิดเห็นจาก',
+      'more users': 'ผู้ใช้อื่น ๆ',
+      'Add': 'เพิ่ม',
+      'Add Space': 'เพิ่มช่องว่าง',
+      'Add Paragraph': 'เพิ่มย่อหน้า',
+      'Add Link': 'เพิ่มลิงก์',
+      'with': 'ด้วย',
+      'Format': 'จัดรูปแบบ',
+      'Removed': 'ลบแล้ว',
+      'Accept': 'ยอมรับ',
+      'Reject': 'ปฏิเสธ',
+      'Accepted': 'ยอมรับแล้ว',
+      'Rejected': 'ปฏิเสธแล้ว',
+      'Menu': 'เมนู',
+      'Edit': 'แก้ไข',
+      'Re-open': 'เปิดอีกครั้ง',
+      'Resolve': 'แก้ไข',
+      'Reply': 'ตอบกลับ',
+      'View All Replies': 'ดูการตอบกลับทั้งหมด',
+      'View Less': 'ดูน้อยลง',
+      'comment or tag with @': 'แสดงความคิดเห็นหรือแท็กด้วย @',
+      'Comment': 'ความคิดเห็น',
+      'Saving...': 'กำลังบันทึก...',
+      'Saved': 'บันทึกแล้ว',
+      'Auto Save': 'บันทึกอัตโนมัติ',
+      'Last saved': 'บันทึกล่าสุด',
+      'Click to save a version now': 'คลิกเพื่อบันทึกเวอร์ชันตอนนี้',
+      'just now': 'เมื่อสักครู่',
+      's ago': 'วินาทีที่แล้ว',
+      'm ago': 'นาทีที่แล้ว',
+      'h ago': 'ชั่วโมงที่แล้ว',
+      'd ago': 'วันที่แล้ว',
+      'Add to Version History': 'เพิ่มไปยังประวัติเวอร์ชัน',
+      'Rename Version': 'เปลี่ยนชื่อเวอร์ชัน',
+      'Name this version': 'ตั้งชื่อเวอร์ชันนี้',
+      'Edit description': 'แก้ไขคำอธิบาย',
+      'Title': 'ชื่อเรื่อง',
+      'Title is required.': 'ต้องระบุชื่อเรื่อง',
+      'Description (optional)': 'คำอธิบาย (ไม่บังคับ)'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", 'บันทึก'), 'Restore version', 'กู้คืนเวอร์ชัน'), 'Current content will be replaced.', 'เนื้อหาปัจจุบันจะถูกแทนที่'), 'Delete version', 'ลบเวอร์ชัน'), "Back", 'ย้อนกลับ'), 'Total Edits', 'การแก้ไขทั้งหมด'), 'Previous version', 'เวอร์ชันก่อนหน้า'), 'Next version', 'เวอร์ชันถัดไป'), 'of', 'จาก'), 'Compare With', 'เปรียบเทียบกับ'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', 'ประวัติเวอร์ชัน'), 'All', 'ทั้งหมด'), 'Named Versions', 'เวอร์ชันที่ตั้งชื่อ'), 'No content.', 'ไม่มีเนื้อหา'), "More", 'เพิ่มเติม'), 'Current Version', 'เวอร์ชันปัจจุบัน'), 'Compare', 'เปรียบเทียบ'), 'Anonymous', 'ไม่ระบุชื่อ'), 'Untitled', 'ไม่มีชื่อ'), 'See more', 'ดูเพิ่มเติม'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', 'กู้คืน'), 'Rename', 'เปลี่ยนชื่อ'), 'Delete description', 'ลบคำอธิบาย'), 'Edits', 'การแก้ไข'), 'Previous change', 'การเปลี่ยนแปลงก่อนหน้า'), 'Next change', 'การเปลี่ยนแปลงถัดไป'), 'Exit Comparison', 'ออกจากการเปรียบเทียบ'), 'Select Version to Compare With', 'เลือกเวอร์ชันเพื่อเปรียบเทียบ'), 'Show', 'แสดง'), 'COMPARE WITH', 'เปรียบเทียบกับ'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', 'ไม่มีเวอร์ชันอื่น'), 'No content to compare.', 'ไม่มีเนื้อหาสำหรับเปรียบเทียบ'), 'Comparing', 'กำลังเปรียบเทียบ'), 'against', 'กับ'), 'Exit comparison', 'ออกจากการเปรียบเทียบ'), 'Save this version', 'บันทึกเวอร์ชันนี้'), 'View version history', 'ดูประวัติเวอร์ชัน'), 'Check for updates', 'ตรวจสอบการอัปเดต'), 'Modification', 'การแก้ไข'), 'Suggestion', 'ข้อเสนอแนะ'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', 'การบรรยาย'), 'Show Open', 'แสดงรายการที่เปิดอยู่'), 'Add Horizontal Line', 'เพิ่มเส้นแนวนอน'), 'Add Emoticon', 'เพิ่มอีโมติคอน'), 'Add Icon', 'เพิ่มไอคอน'), 'Add Special Character', 'เพิ่มอักขระพิเศษ'), 'Add Image', 'เพิ่มรูปภาพ'), 'Add Table', 'เพิ่มตาราง'), 'Add Video', 'เพิ่มวิดีโอ'), 'Add File', 'เพิ่มไฟล์'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', 'เพิ่มโค้ดตัวอย่าง'), 'Add Anchor', 'เพิ่มจุดยึด'), 'Add Page Break', 'เพิ่มตัวแบ่งหน้า'), 'Version Control', 'การควบคุมเวอร์ชัน'), 'Delete Table', 'ลบตาราง'), 'Remove Table Header', 'ลบส่วนหัวตาราง'), 'Remove Table Footer', 'ลบส่วนท้ายตาราง'), 'Delete Row', 'ลบแถว'), 'Delete Column', 'ลบคอลัมน์'), 'Add Table Header', 'เพิ่มส่วนหัวตาราง'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', 'เพิ่มส่วนท้ายตาราง'), 'Insert Row Above', 'แทรกแถวด้านบน'), 'Insert Row Below', 'แทรกแถวด้านล่าง'), 'Insert Column Before', 'แทรกคอลัมน์ก่อนหน้า'), 'Insert Column After', 'แทรกคอลัมน์ถัดไป'), 'Table Align', 'จัดแนวตาราง'), "Table Style", 'สไตล์ตาราง'), 'Table Cell', 'เซลล์ตาราง'), 'Merge Cells', 'รวมเซลล์'), 'Split Cell Vertically', 'แยกเซลล์ตามแนวตั้ง'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', 'แยกเซลล์ตามแนวนอน'), 'Cell Operation', 'การดำเนินการกับเซลล์'), 'Remove Cell Style', 'ลบสไตล์เซลล์'), 'Added', 'เพิ่มแล้ว'), 'Formatted', 'จัดรูปแบบแล้ว'), 'Changed', 'เปลี่ยนแปลงแล้ว'), 'left', 'ซ้าย'), 'right', 'ขวา'), 'center', 'กึ่งกลาง'), 'top', 'ด้านบน'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', 'ตรงกลาง'), 'bottom', 'ด้านล่าง'), 'Deleted', 'ลบแล้ว'), 'justify', 'จัดชิดขอบ'), 'See less', 'แสดงน้อยลง')),
     direction: 'ltr'
   };
 

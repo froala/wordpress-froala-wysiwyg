@@ -1,5 +1,5 @@
 /*!
- * froala_editor v5.2.0 (https://www.froala.com/wysiwyg-editor)
+ * froala_editor v5.3.0 (https://www.froala.com/wysiwyg-editor)
  * License https://froala.com/wysiwyg-editor/terms/
  * Copyright 2014-2026 Froala Labs
  */
@@ -10,12 +10,32 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.FroalaEditor));
 })(this, (function (FE) { 'use strict';
 
-  /**
-   * Traditional Chinese spoken in Taiwan.
-   */
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    }) : e[r] = t, e;
+  }
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r);
+      if ("object" != typeof i) return i;
+      throw new TypeError("@@toPrimitive must return a primitive value.");
+    }
+    return ("string" === r ? String : Number)(t);
+  }
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
 
+  var _translation;
   FE.LANGUAGE['zh_tw'] = {
-    translation: {
+    translation: (_translation = {
       // Place holder
       'Type something': "\u8F38\u5165\u4E00\u4E9B\u5167\u5BB9",
       // Basic formatting
@@ -37,6 +57,13 @@
       // Font
       'Font Family': '字体系列',
       'Font Size': "\u5B57\u578B\u5927\u5C0F",
+      'Enter font size': '輸入字型大小',
+      'Custom Font Size': '自訂字型大小',
+      'Custom': '自訂',
+      'Please enter a valid number': '請輸入有效數字',
+      'Value must be between': ' there 數值必須介於',
+      'and': '與',
+      'Apply': '套用',
       // Colors
       'Colors': '顏色',
       'Color': '顏色',
@@ -331,6 +358,7 @@
       // Export to Word
       'Export to Word': '匯出至 Word',
       'Ensure that all required dependent libraries are available for the plugin to work.': '確保所有必需的相依函式庫都可用，以使外掛程式能夠正常運作。',
+      'Ensure that all required configurations and dependent libraries are available for the plugin to work as expected.': '確保所有必需的配置和依賴庫都可用，以便插件按預期工作。',
       // Import_from_word
       'Import from Word': '從 Word 匯入',
       'Please upload a valid file': '請上傳有效檔案。',
@@ -410,8 +438,63 @@
       'to': '設定為',
       'in your configuration to provide consent.': '在您的設定中以提供同意。',
       'You can review the terms here:': '您可以在此處查看條款：',
-      'View AI Supplemental Terms': '查看 AI 補充條款'
-    },
+      'View AI Supplemental Terms': '查看 AI 補充條款',
+      'Switch Mode': '切換模式',
+      'Editing': '編輯',
+      'Edit document with real-time sync': '使用即時同步編輯文件',
+      'Suggesting': '建議',
+      'Add suggestions as Yjs-tracked changes': '將建議新增為由 Yjs 追蹤的變更',
+      'Viewing': '檢視',
+      'Read-only — no edits allowed': '唯讀 — 不允許編輯',
+      'Add Comment': '新增留言',
+      'Version History': '版本歷史',
+      'Hide Comments': '隱藏留言',
+      'Open': '未解決',
+      'Resolved': '已解決',
+      'Show comments': '顯示留言',
+      'No suggestions or comments yet.': '尚無建議或留言。',
+      'No resolved suggestions or comments.': '尚無已解決的建議或留言。',
+      'View All': '檢視全部',
+      'Open comment from': '開啟來自以下使用者的留言',
+      'more users': '更多使用者',
+      'Add': '新增',
+      'Add Space': '新增空格',
+      'Add Paragraph': '新增段落',
+      'Add Link': '新增連結',
+      'with': '為',
+      'Format': '格式',
+      'Removed': '已移除',
+      'Accept': '接受',
+      'Reject': '拒絕',
+      'Accepted': '已接受',
+      'Rejected': '已拒絕',
+      'Menu': '選單',
+      'Edit': '編輯',
+      'Re-open': '重新開啟',
+      'Resolve': '解決',
+      'Reply': '回覆',
+      'View All Replies': '檢視所有回覆',
+      'View Less': '顯示較少',
+      'comment or tag with @': '留言或使用 @ 標註',
+      'Comment': '留言',
+      'Saving...': '儲存中...',
+      'Saved': '已儲存',
+      'Auto Save': '自動儲存',
+      'Last saved': '上次儲存',
+      'Click to save a version now': '按一下立即儲存版本',
+      'just now': '剛剛',
+      's ago': '秒前',
+      'm ago': '分鐘前',
+      'h ago': '小時前',
+      'd ago': '天前',
+      'Add to Version History': '新增至版本歷史',
+      'Rename Version': '重新命名版本',
+      'Name this version': '命名此版本',
+      'Edit description': '編輯描述',
+      'Title': '標題',
+      'Title is required.': '標題為必填項目。',
+      'Description (optional)': '描述（選填）'
+    }, _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, "Save", '儲存'), 'Restore version', '還原版本'), 'Current content will be replaced.', '目前內容將被取代。'), 'Delete version', '刪除版本'), "Back", '返回'), 'Total Edits', '總編輯次數'), 'Previous version', '上一個版本'), 'Next version', '下一個版本'), 'of', '共'), 'Compare With', '比較對象'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'VERSION HISTORY', '版本歷史'), 'All', '全部'), 'Named Versions', '已命名版本'), 'No content.', '無內容。'), "More", '更多'), 'Current Version', '目前版本'), 'Compare', '比較'), 'Anonymous', '匿名'), 'Untitled', '未命名'), 'See more', '查看更多'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Restore', '還原'), 'Rename', '重新命名'), 'Delete description', '刪除描述'), 'Edits', '編輯'), 'Previous change', '上一項變更'), 'Next change', '下一項變更'), 'Exit Comparison', '退出比較'), 'Select Version to Compare With', '選擇要比較的版本'), 'Show', '顯示'), 'COMPARE WITH', '比較對象'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'No other versions.', '沒有其他版本。'), 'No content to compare.', '沒有可比較的內容。'), 'Comparing', '正在比較'), 'against', '與'), 'Exit comparison', '退出比較'), 'Save this version', '儲存此版本'), 'View version history', '查看版本歷史'), 'Check for updates', '檢查更新'), 'Modification', '修改'), 'Suggestion', '建議'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Lecture', '講座'), 'Show Open', '顯示未解決'), 'Add Horizontal Line', '新增水平線'), 'Add Emoticon', '新增表情符號'), 'Add Icon', '新增圖示'), 'Add Special Character', '新增特殊字元'), 'Add Image', '新增圖片'), 'Add Table', '新增表格'), 'Add Video', '新增影片'), 'Add File', '新增檔案'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Code Snippet', '新增程式碼片段'), 'Add Anchor', '新增錨點'), 'Add Page Break', '新增分頁符號'), 'Version Control', '版本控制'), 'Delete Table', '刪除表格'), 'Remove Table Header', '移除表頭'), 'Remove Table Footer', '移除表尾'), 'Delete Row', '刪除列'), 'Delete Column', '刪除欄'), 'Add Table Header', '新增表頭'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Add Table Footer', '新增表尾'), 'Insert Row Above', '在上方插入列'), 'Insert Row Below', '在下方插入列'), 'Insert Column Before', '在前方插入欄'), 'Insert Column After', '在後方插入欄'), 'Table Align', '表格對齊'), "Table Style", '表格樣式'), 'Table Cell', '表格儲存格'), 'Merge Cells', '合併儲存格'), 'Split Cell Vertically', '垂直分割儲存格'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'Split Cell Horizontally', '水平分割儲存格'), 'Cell Operation', '儲存格操作'), 'Remove Cell Style', '移除儲存格樣式'), 'Added', '已新增'), 'Formatted', '已格式化'), 'Changed', '已變更'), 'left', '左'), 'right', '右'), 'center', '置中'), 'top', '頂部'), _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_translation, 'middle', '中間'), 'bottom', '底部'), 'Deleted', '已刪除'), 'justify', '左右對齊'), 'See less', '顯示較少')),
     direction: 'ltr'
   };
 
