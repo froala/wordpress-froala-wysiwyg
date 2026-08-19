@@ -1,0 +1,24 @@
+/*!
+ * This file contains fixes for the styles that are being overriden
+ * by default WordPress styles.
+ */
+
+ .wp-block-post-comments-form .comment-form textarea.fr-code {
+    display: none;
+}
+
+body .wp-block-post-comments-form .fr-popup div.fr-input-line > input[type="text"]:focus {
+    border-color: #0098f7 !important;
+}
+
+body .wp-block-post-comments-form .fr-popup div.fr-input-line > input[type="text"] {
+    border-color: #999999 !important;
+}
+
+body .wp-block-post-comments-form .fr-popup div.fr-input-line > textarea[type="text"]:focus {
+    border-color: #0098f7 !important;
+}
+
+body .wp-block-post-comments-form .fr-popup div.fr-input-line > textarea[type="text"] {
+    border-color: #999999 !important;
+}
