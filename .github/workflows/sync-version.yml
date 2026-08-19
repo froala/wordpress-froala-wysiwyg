@@ -90,7 +90,7 @@ jobs:
           GIT_TOKEN: ${{ secrets.PAT }}
         run: |
           git clone --depth 1 \
-            "https://x-access-token:${GIT_TOKEN}@github.com/froala-travis-bot/wysiwyg-editor.git" \
+            "https://x-access-token:${GIT_TOKEN}@github.com/froala/wysiwyg-editor.git" \
             /tmp/wysiwyg-main
 
           rsync -av --delete /tmp/wysiwyg-main/js/ public/js/
@@ -126,7 +126,7 @@ jobs:
           fi
 
           PR_BODY=$(printf \
-            "release: yes\n\n## Release Notes (from primary repo)\n\n%s\n" \
+            "%s\n" \
             "$RELEASE_NOTES")
 
           gh pr create \
