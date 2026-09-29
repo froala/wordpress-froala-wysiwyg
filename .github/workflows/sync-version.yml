@@ -93,10 +93,10 @@ jobs:
             "https://x-access-token:${GIT_TOKEN}@github.com/froala/wysiwyg-editor.git" \
             /tmp/wysiwyg-main
 
-          rsync -av --delete /tmp/wysiwyg-main/js/ public/js/
-          rsync -av --delete /tmp/wysiwyg-main/css/ public/css/
-          rsync -av --delete /tmp/wysiwyg-main/js/ admin/js/
-          rsync -av --delete /tmp/wysiwyg-main/css/ admin/css/
+          rsync -av /tmp/wysiwyg-main/js/ public/js/
+          rsync -av /tmp/wysiwyg-main/css/ public/css/
+          rsync -av /tmp/wysiwyg-main/js/ admin/js/
+          rsync -av /tmp/wysiwyg-main/css/ admin/css/
 
       # --------------------------------------------
       # Commit & push
